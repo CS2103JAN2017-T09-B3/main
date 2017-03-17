@@ -13,6 +13,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.commons.util.FxViewUtil;
+import seedu.address.logic.DateComparator;
 import seedu.address.model.task.ReadOnlyTask;;
 
 /**
@@ -27,6 +28,7 @@ public class TaskListPanel extends UiPart<Region> {
 
     public TaskListPanel(AnchorPane personListPlaceholder, ObservableList<ReadOnlyTask> personList) {
         super(FXML);
+        personList = personList.sorted(new DateComparator());
         setConnections(personList);
         addToPlaceholder(personListPlaceholder);
     }
