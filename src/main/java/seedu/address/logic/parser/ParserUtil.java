@@ -24,7 +24,8 @@ import seedu.address.model.task.Title;
  */
 public class ParserUtil {
 
-    private static final Pattern INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>.+)");
+    private static final Pattern INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>\\d+).*");
+    private static final Pattern DEADLINE_ARGS_FORMAT = Pattern.compile("(?<keyword>deadline)", Pattern.CASE_INSENSITIVE);
 
     /**
      * Returns the specified index in the {@code command} if it is a positive unsigned integer
@@ -87,6 +88,15 @@ public class ParserUtil {
     public static Optional<TaskDateTime> parseDateTime(Optional<String> dateTime) throws IllegalValueException {
         assert dateTime != null;
         return dateTime.isPresent() ? Optional.of(new TaskDateTime(dateTime.get())) : Optional.empty();
+    }
+
+    public static Optional<String> parseDeadline(String command) {
+        final Matcher matcher = DEADLINE_ARGS_FORMAT.matcher(command.trim());
+        if (!matcher.find()) {
+            return Optional.empty();
+        }
+        String keyword = matcher.group("keyword");
+        return Optional.of(keyword);
     }
 
     /**

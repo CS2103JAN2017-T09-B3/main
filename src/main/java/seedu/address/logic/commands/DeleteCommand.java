@@ -1,9 +1,14 @@
 package seedu.address.logic.commands;
 
+import java.util.Optional;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.UnmodifiableObservableList;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
@@ -19,11 +24,20 @@ public class DeleteCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
+    public static final String MESSAGE_DELETE_DEADLINE_SUCCESS = "Deadline deleted for %1$s!";
+    public static final String EMPTY = "";
 
     public final int targetIndex;
+    public String deadline;
 
     public DeleteCommand(int targetIndex) {
         this.targetIndex = targetIndex;
+        this.deadline = EMPTY ;
+    }
+
+    public DeleteCommand(int targetIndex, String deadline) {
+        this.targetIndex = targetIndex;
+        this.deadline = deadline;
     }
 
     @Override
@@ -33,23 +47,32 @@ public class DeleteCommand extends Command {
 
         if (lastShownList.size() < targetIndex) {
 
-            System.out.println("invalid index");
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
-
         ReadOnlyTask taskToDelete = lastShownList.get(targetIndex - 1);
-
-        try {
-            int indexRemoved = model.deleteTask(taskToDelete);
-            model.getUndoStack().push(COMMAND_WORD);
-            System.out.println("getUndoStack() " + COMMAND_WORD);
-            model.getDeletedStackOfTasks().push(taskToDelete);
-            System.out.println("getDeletedStackOfTasks() " + taskToDelete.getAsText());
-            model.getDeletedStackOfTasksIndex().push(indexRemoved);
-        } catch (TaskNotFoundException tnfe) {
-            System.out.println("Task not found");
+        if (deadline.equals(EMPTY)) {
+            try {
+                int indexRemoved = model.deleteTask(taskToDelete);
+                model.getUndoStack().push(COMMAND_WORD);
+                model.getDeletedStackOfTasks().push(taskToDelete);
+                model.getDeletedStackOfTasksIndex().push(indexRemoved);
+            } catch (TaskNotFoundException tnfe) {
+                System.out.println("Task not found");
+            }
+            return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
+        } else {
+            try {
+                Optional<TaskDateTime> dateTime = Optional.of(new TaskDateTime(""));
+                EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
+                editTaskDescriptor.setDateTime(dateTime);
+                EditCommand taskToEdit = new EditCommand(targetIndex, editTaskDescriptor);
+                taskToEdit.setData(model);
+                taskToEdit.execute();
+            } catch(IllegalValueException ie) {
+                throw new CommandException(TaskDateTime.MESSAGE_DATE_TIME_CONSTRAINTS);
+            }
+            return new CommandResult(String.format(MESSAGE_DELETE_DEADLINE_SUCCESS, taskToDelete.getTitle().fullTitle));
         }
-        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
     }
 
 }
