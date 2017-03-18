@@ -29,13 +29,13 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 > * Items with `...` after them can have multiple instances.
 > * Parameters can be in any order.
 
-### Viewing help : `help`
+#### Viewing help : `help`
 
 Format: `help`
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
-### Adding a task: `add`
+#### Adding a task: `add`
 
 Adds a task to the task list.<br>
 Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
@@ -47,12 +47,12 @@ Examples:
 
 * `add t/CS2103 meeting d/03/03 #Programming Lab 2`
 
-### Listing all tasks : `list`
+#### Listing all tasks : `list`
 
 Shows a list of all tasks in the task list.<br>
 Format: `list`
 
-### Editing a task: `edit`
+#### Editing a task: `edit`
 
 Edits an existing task in the task list. <br>
 Format: `edit INDEX TITLE d/CONTENT from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
@@ -71,7 +71,7 @@ Examples:
 *  edit 2 Project meeting t/LT1<br>
    Edits the 2nd task to Project meeting and add hashtag LT1.
 
-### Finding all tasks containing any keyword in their title or due dates: `find`
+#### Finding all tasks containing any keyword in their title or due dates: `find`
 
 Find all tasks containing any of the given keywords or due by given date.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -93,7 +93,7 @@ Examples:
 * `find 23/03`<br>
   Returns Any task due by `23/03`.
 
-### Deleting a task : `delete`
+#### Deleting a task : `delete`
 
 Deletes the specified task from the task list. <br>
 Format: `delete INDEX`
@@ -113,7 +113,7 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task from the results of the `find` command.
 
-### Selecting a task : `select`
+#### Selecting a task : `select`
 
 Selects the task identified by the index number used in the last task listing.<br>
 Format: `select INDEX`
@@ -133,22 +133,22 @@ Examples:
   `select 1`<br>
   Selects the `1st task` from the results returned from the `find` command.
   
-### Clearing all tasks : `clear`
+#### Clearing all tasks : `clear`
 
 Clears all entries from the current task list.
 Format: clear
 
-### Exiting the program : `exit`
+#### Exiting the program : `exit`
 
 Exits the program.
 Format: exit
 
-### Saving the data : `save`
+#### Saving the data : `save`
 
 Tasks data are saved in the hard disk automatically after any command that changes the data.
 There is no need to save manually.
   
-### Undoing a previous command: `undo` 
+#### Undoing a previous command: `undo` 
 
 Undo previous add/ delete command. <br>
 Format: `undo`
