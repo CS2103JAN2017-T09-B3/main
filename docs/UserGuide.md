@@ -76,12 +76,12 @@ Examples:
 Find all tasks containing any of the given keywords or due by given date.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-`The keyword is case sensitive. e.g `project` will not match `Project`
- The order of the keywords does not matter. e.g. `Meeting Project` will match `Project Meeting`
- Search can based on task name, date or tags.
- Only complete word will be matched e.g. `Project` will not match `Projects`
- Tasks matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Project` will match `Project Meeting``
+>The keyword is case sensitive. e.g `project` will not match `Project`
+>The order of the keywords does not matter. e.g. `Meeting Project` will match `Project Meeting`
+>Search can based on task name, date or tags.
+>Only complete word will be matched e.g. `Project` will not match `Projects`
+>Tasks matching at least one keyword will be returned (i.e. `OR` search).
+ e.g. `Project` will match `Project Meeting`
 
 Examples:
 
