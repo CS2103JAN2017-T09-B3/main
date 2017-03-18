@@ -117,7 +117,7 @@ Format: `select INDEX`
 
 > Alternative: click to the task in the showing list
 
-> Select the task and display all details at the specified `INDEX`.<br>
+1> Select the task and display all details at the specified `INDEX`.<br>
 > The index refers to the index number shown in the most recent listing.<br>
 > The index **must be a positive integer** 1, 2, 3, ...
 
@@ -162,16 +162,14 @@ This command will undo the previous add/delete command which you had entered. Un
 
 | **Command** | **Format** |
 | ----------- | --------------- |
-| [Help](#viewing-help-help)| `help` |
+| [Help](#2-1-viewing-help-help)| `help` |
 | |e.g. ` help` |
-| Add  | `add t/TASK [d/task] [#tags]` |
+| [Add](#2-2-adding-a-task-add)| `add t/TASK [d/task] [#tags]` |
 | |e.g. ` add t/CS2103 meeting d/03/03 #Programming Lab 2` |
 | Exit | `exit`|
 | |e.g. `exit` |
 | List  | `show a list of task list in the list task` |
 | |e.g. `list Homework` |
-| Newlist | `Newlist NAME` |
-| |e.g. `Newlist Sports` |
 | Edit | `edit INDEX [t/TASK] [d/DATE] [#tags]` |
 | |e.g. ` edit 1 t/CS2101 meeting d/04/03 #Progress Report` |
 | Find  | `find KEYWORD [MORE_KEYWORDS]` |
@@ -185,5 +183,4 @@ This command will undo the previous add/delete command which you had entered. Un
 | |e.g. `undo` |
 | Clear | `clear` |
 | |e.g. `clear` |
-| Priority | `priority t/TASK p/RANK` |
-| |e.g. ` priority t/Project Meeting p/1` |
+
