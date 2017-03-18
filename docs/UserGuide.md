@@ -151,6 +151,7 @@ There is no need to save manually.
 #### Undoing a previous command: `undo` 
 
 This command will undo the previous add/delete command which you had entered. Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program. <br>
+
 Format: `undo`
 
 
