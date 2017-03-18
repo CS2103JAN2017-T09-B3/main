@@ -9,7 +9,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 3. [FAQ](#faq)
 4. [Command Summary](#command-summary)
 
-## 1. Quick Start
+#### 1. Quick Start
 
 1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
 2. Download and install the latest version of myPotato.
@@ -20,7 +20,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 5. Refer to the [Features](#features) section below for details of each command.<br>
 
 
-## 2. Features
+#### 2. Features
 
 > **Command Format**
 >
@@ -29,13 +29,13 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 > * Items with `...` after them can have multiple instances.
 > * Parameters can be in any order.
 
-#### 2.1. Viewing help : `help`
+### 2.1. Viewing help : `help`
 
 Format: `help`
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
-#### 2.2. Adding a task: `add`
+### 2.2. Adding a task: `add`
 
 Adds a task to the task list.<br>
 Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
@@ -47,23 +47,23 @@ Examples:
 
 * `add t/CS2103 meeting d/03/03 #Programming Lab 2`
 
-#### 2.3. Listing all tasks : `list`
+### 2.3. Listing all tasks : `list`
 
 Shows a list of all tasks in the task list.<br>
 Format: `list`
 
-#### 2.4. Editing a task: `edit`
+### 2.4. Editing a task: `edit`
 
 Edits an existing task in the task list. <br>
 Format: `edit INDEX TITLE d/CONTENT from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
 Format: `edit INDEX TITLE d/CONTENT by/[DATE] [TIME] [#tags]`
 
-> Edits the person at the specified INDEX. 
-> The index refers to the index number shown in the last person listing.
+> Edits the task at the specified INDEX. 
+> The index refers to the index number shown in the last task listing.
 > The index must be a positive integer 1, 2, 3, ...
 > Existing values will be updated to the input values.
 > When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-> You can remove all the person's tags by typing t/ without specifying any tags after it.
+> You can remove all the task's tags by typing t/ without specifying any tags after it.
 
 Examples:
 *  edit 1  d/22/03<br>
@@ -71,7 +71,7 @@ Examples:
 *  edit 2 Project meeting t/LT1<br>
    Edits the 2nd task to Project meeting and add hashtag LT1.
 
-#### 2.5. Finding all tasks containing any keyword in their title or due dates: `find`
+### 2.5. Finding all tasks containing any keyword in their title or due dates: `find`
 
 Find all tasks containing any of the given keywords or due by given date.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -90,7 +90,7 @@ Examples:
 * `find 23/03`<br>
   Returns Any task due by `23/03`.
 
-#### 2.6. Deleting a task : `delete`
+### 2.6. Deleting a task : `delete`
 
 Deletes the specified task from the task list. <br>
 Format: `delete INDEX`
@@ -110,7 +110,7 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task from the results of the `find` command.
 
-#### 2.7. Selecting a task : `select`
+### 2.7. Selecting a task : `select`
 
 Selects the task identified by the index number used in the last task listing.<br>
 Format: `select INDEX`
@@ -152,13 +152,13 @@ Format: `undo`
 
 This command will undo the previous add/delete command which you had entered. Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.  
  
-## 3. FAQ
+#### 3. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
        the file that contains the data of your previous myPotato folder.
 
-## 4. Command Summary
+#### 4. Command Summary
 
 | **Command** | **Format** |
 | ----------- | --------------- |
