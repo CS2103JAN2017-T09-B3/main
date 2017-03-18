@@ -17,7 +17,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
    > <img src="images/Ui.png" width="600">
 4. Type the command in the command line and press <kbd>Enter</kbd> to execute it. <br>
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
-5. Refer to the [Features](#features) section below for details of each command.<br>
+5. Refer to the [Features](#2-features) section below for details of each command.<br>
 
 
 ## 2. Features
