@@ -4,8 +4,8 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 
 ---
 
-1. [Quick Start](#quick-start)
-2. [Features](#features)
+1. [Quick Start](#1-quick-start)
+2. [Features](#2-features)
 3. [FAQ](#faq)
 4. [Command Summary](#command-summary)
 
@@ -41,7 +41,7 @@ Adds a task to the task list.<br>
 Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
 Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] [#tags]`
 
-> Tasks can have any number of tags (including 0)
+> Tasks can have any number of tags 
 
 Examples:
 
