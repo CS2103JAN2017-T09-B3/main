@@ -162,27 +162,27 @@ This command will undo the previous add/delete command which you had entered. Un
 
 | **Command** | **Format** |
 | ----------- | --------------- |
-| [Help](#2-1-viewing-help-help)| `help` |
+| [Help](#viewing-help-help)| `help` |
 | |e.g. ` help` |
-| [Add](#2-2-adding-a-task-add)| `add t/TASK [d/task] [#tags]` |
+| [Add](#adding-a-task-add)| `add t/TASK [d/task] [#tags]` |
 | |e.g. ` add t/CS2103 meeting d/03/03 #Programming Lab 2` |
-| [Exit](#2-9-exiting-the-program-exit)| `exit`|
+| [Exit](#exiting-the-program-exit)| `exit`|
 | |e.g. `exit` |
-| [List](#2-3-listing-all-tasks-list)| `show a list of task list in the list task` |
+| [List](#listing-all-tasks-list)| `show a list of task list in the list task` |
 | |e.g. `list Homework` |
-| [Edit](#2-4-editing-a-task-edit)| `edit INDEX [t/TASK] [d/DATE] [#tags]` |
+| [Edit](#editing-a-task-edit)| `edit INDEX [t/TASK] [d/DATE] [#tags]` |
 | |e.g. ` edit 1 t/CS2101 meeting d/04/03 #Progress Report` |
-| [Find](#2-5-finding-all-tasks-containing-any-keyword-in-their-title-or-due-dates-find)| `find KEYWORD [MORE_KEYWORDS]` |
+| [Find](#finding-all-tasks-containing-any-keyword-in-their-title-or-due-dates-find)| `find KEYWORD [MORE_KEYWORDS]` |
 | |e.g. ` find CS2101 meeting` |
 | |e.g. ` find #Programming Lab 2` |
-| [Delete](#2-6-deleting-a-task-delete)| `delete INDEX` |
+| [Delete](#deleting-a-task-delete)| `delete INDEX` |
 | |e.g. ` delete 3` |
-| [Select](#2-7-selecting-a-task-select)| `select INDEX` |
+| [Select](#selecting-a-task-select)| `select INDEX` |
 | |e.g.` select 2` |
-| [Undo](#2-11-undoing-a-previous-command-undo)| `undo`   |
+| [Undo](#undoing-a-previous-command-undo)| `undo`   |
 | |e.g. `undo` |
-| [Clear](#2-8-clearing-all-tasks-clear)| `clear` |
+| [Clear](#clearing-all-tasks-clear)| `clear` |
 | |e.g. `clear` |
-| [Save](#2-10-saving-the-data-save)| `save` |
+| [Save](#saving-the-data-save)| `save` |
 | |e.g. `save` |
 
