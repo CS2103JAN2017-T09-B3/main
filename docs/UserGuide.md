@@ -150,34 +150,7 @@ There is no need to save manually.
 Undo previous add/ delete command. <br>
 Format: `undo`
 
-### 2.12. Setting Priority: `priority`
-
-Set Priority for a task with 1 being the most important and 3 being the least important. <br>
-Format: `priority t/TASK p/RANK`
-
-> The `task` refers to the title of the task and the `rank` refers to the ranking of priorities.
-> The index **must be a positive integer** 1, 2, or 3.
-
-Examples:
-
-* `Priority t/meeting p/1`<br>
-   Mark the priority of meeting as most important
-* `Priority t/CS3230 assignment p/2`<br>
-   Mark the priority of CS3230 assignment as important
-* `Priority t/housework p/3`<br>
-   Mark the priority of housework as the least important
-
-### 2.13. Create a list task: Newlist
-
- Create a new task list 
- Format: Newlist NAME
- 
- The name refers to name of the new task list.
- 
- Examples:
- 
- * `Newlist Sport`
-    Create a new list called Sport
+This command will undo the previous add/delete command which you had entered. Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.  
  
 ## 3. FAQ
 
@@ -189,7 +162,7 @@ Examples:
 
 | **Command** | **Format** |
 | ----------- | --------------- |
-| Help | `help` |
+| [Help](#viewing-help-help)| `help` |
 | |e.g. ` help` |
 | Add  | `add t/TASK [d/task] [#tags]` |
 | |e.g. ` add t/CS2103 meeting d/03/03 #Programming Lab 2` |
