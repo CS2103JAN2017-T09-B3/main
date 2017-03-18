@@ -29,13 +29,13 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 > * Items with `...` after them can have multiple instances.
 > * Parameters can be in any order.
 
-### 2.1. Viewing help : `help`
+#### 2.1. Viewing help : `help`
 
 Format: `help`
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
-### 2.2. Adding a task: `add`
+#### 2.2. Adding a task: `add`
 
 Adds a task to the task list.<br>
 Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
