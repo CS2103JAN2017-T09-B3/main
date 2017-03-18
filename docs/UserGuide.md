@@ -117,7 +117,7 @@ Format: `select INDEX`
 
 > Alternative: click to the task in the showing list
 
-1> Select the task and display all details at the specified `INDEX`.<br>
+> Select the task and display all details at the specified `INDEX`.<br>
 > The index refers to the index number shown in the most recent listing.<br>
 > The index **must be a positive integer** 1, 2, 3, ...
 
