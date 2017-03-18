@@ -9,7 +9,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 3. [FAQ](#faq)
 4. [Command Summary](#command-summary)
 
-#### 1. Quick Start
+## 1. Quick Start
 
 1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
 2. Download and install the latest version of myPotato.
@@ -20,7 +20,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 5. Refer to the [Features](#features) section below for details of each command.<br>
 
 
-#### 2. Features
+## 2. Features
 
 > **Command Format**
 >
@@ -152,13 +152,13 @@ Format: `undo`
 
 This command will undo the previous add/delete command which you had entered. Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.  
  
-#### 3. FAQ
+## 3. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
        the file that contains the data of your previous myPotato folder.
 
-#### 4. Command Summary
+## 4. Command Summary
 
 | **Command** | **Format** |
 | ----------- | --------------- |
