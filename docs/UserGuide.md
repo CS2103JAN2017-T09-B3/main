@@ -47,12 +47,12 @@ Examples:
 
 * `add t/CS2103 meeting d/03/03 #Programming Lab 2`
 
-### 2.3. Listing all tasks : `list`
+#### 2.3. Listing all tasks : `list`
 
 Shows a list of all tasks in the task list.<br>
 Format: `list`
 
-### 2.4. Editing a task: `edit`
+#### 2.4. Editing a task: `edit`
 
 Edits an existing task in the task list. <br>
 Format: `edit INDEX TITLE d/CONTENT from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
@@ -71,7 +71,7 @@ Examples:
 *  edit 2 Project meeting t/LT1<br>
    Edits the 2nd task to Project meeting and add hashtag LT1.
 
-### 2.5. Finding all tasks containing any keyword in their title or due dates: `find`
+#### 2.5. Finding all tasks containing any keyword in their title or due dates: `find`
 
 Find all tasks containing any of the given keywords or due by given date.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -90,7 +90,7 @@ Examples:
 * `find 23/03`<br>
   Returns Any task due by `23/03`.
 
-### 2.6. Deleting a task : `delete`
+#### 2.6. Deleting a task : `delete`
 
 Deletes the specified task from the task list. <br>
 Format: `delete INDEX`
@@ -110,7 +110,7 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task from the results of the `find` command.
 
-### 2.7. Select a task : `select`
+#### 2.7. Selecting a task : `select`
 
 Selects the task identified by the index number used in the last task listing.<br>
 Format: `select INDEX`
@@ -135,17 +135,17 @@ Examples:
 Clears all entries from the current task list.
 Format: clear
 
-### 2.9. Exiting the program : exit
+### 2.9. Exiting the program : `exit`
 
 Exits the program.
 Format: exit
 
-### 2.10. Saving the data
+### 2.10. Saving the data : `save`
 
 Tasks data are saved in the hard disk automatically after any command that changes the data.
 There is no need to save manually.
   
-### 2.11. Undo previous command: `undo` 
+### 2.11. Undoing a previous command: `undo` 
 
 Undo previous add/ delete command. <br>
 Format: `undo`
@@ -166,21 +166,23 @@ This command will undo the previous add/delete command which you had entered. Un
 | |e.g. ` help` |
 | [Add](#2-2-adding-a-task-add)| `add t/TASK [d/task] [#tags]` |
 | |e.g. ` add t/CS2103 meeting d/03/03 #Programming Lab 2` |
-| Exit | `exit`|
+| [Exit](#2-9-exiting-the-program-exit)| `exit`|
 | |e.g. `exit` |
-| List  | `show a list of task list in the list task` |
+| [List](#2-3-listing-all-tasks-list)| `show a list of task list in the list task` |
 | |e.g. `list Homework` |
-| Edit | `edit INDEX [t/TASK] [d/DATE] [#tags]` |
+| [Edit](#2-4-editing-a-task-edit)| `edit INDEX [t/TASK] [d/DATE] [#tags]` |
 | |e.g. ` edit 1 t/CS2101 meeting d/04/03 #Progress Report` |
-| Find  | `find KEYWORD [MORE_KEYWORDS]` |
+| [Find](#2-5-finding-all-tasks-containing-any-keyword-in-their-title-or-due-dates-find)| `find KEYWORD [MORE_KEYWORDS]` |
 | |e.g. ` find CS2101 meeting` |
 | |e.g. ` find #Programming Lab 2` |
-| Delete | `delete INDEX` |
+| [Delete](#2-6-deleting-a-task-delete)| `delete INDEX` |
 | |e.g. ` delete 3` |
-| Select | `select INDEX` |
+| [Select](#2-7-selecting-a-task-select)| `select INDEX` |
 | |e.g.` select 2` |
-| Undo | `undo`   |
+| [Undo](#2-11-undoing-a-previous-command-undo)| `undo`   |
 | |e.g. `undo` |
-| Clear | `clear` |
+| [Clear](#2-8-clearing-all-tasks-clear)| `clear` |
 | |e.g. `clear` |
+| [Save](#2-10-saving-the-data-save)| `save` |
+| |e.g. `save` |
 
