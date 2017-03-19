@@ -3,7 +3,7 @@
 By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
 
 ---
-
+## Table Of Contents
 1. [Introduction](#1-introduction)
 2. [Setting Up](#2-setting-up)
 3. [Design](#3-design)
@@ -11,6 +11,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 5. [Testing](#5-testing)
 6. [Dev Ops](#6-dev-ops)
 
+## Appendix
 * [Appendix A: User Stories](#appendix-a--user-stories)
 * [Appendix B: Use Cases](#appendix-b--use-cases)
 * [Appendix C: Non Functional Requirements](#appendix-c--non-functional-requirements)
