@@ -129,7 +129,6 @@ public class EditCommand extends Command {
         }
 
         public void setDateTime(Optional<TaskDateTime> dateTime) {
-            assert dateTime != null;
             this.dateTime = dateTime;
         }
 

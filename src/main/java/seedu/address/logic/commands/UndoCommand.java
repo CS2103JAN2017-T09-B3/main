@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-import seedu.address.model.ModelManager;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
@@ -18,6 +17,7 @@ public class UndoCommand extends Command {
 
     private String prevCommand;
 
+    @Override
     public CommandResult execute() {
 
         if (!model.getUndoStack().isEmpty()) {

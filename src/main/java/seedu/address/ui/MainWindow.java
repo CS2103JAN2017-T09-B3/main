@@ -1,5 +1,11 @@
 package seedu.address.ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import javax.xml.bind.JAXBException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -9,20 +15,29 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
+import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.FxViewUtil;
+import seedu.address.commons.util.XmlUtil;
 import seedu.address.logic.Logic;
+import seedu.address.model.Model;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.storage.XmlSerializableAddressBook;
 
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Region> {
+    private static final String MESSAGE_FILE_NOT_FOUND = "File Not Found!";
+    private static final String MESSAGE_FILE_FAIL_TO_CONVERT = "File failed to be converted to .xml";
+    private static final String MESSAGE_FILE_FAIL_TO_CREATE = "failed to create File";
 
     private static final String ICON = "/images/address_book_32.png";
     private static final String FXML = "MainWindow.fxml";
@@ -35,6 +50,7 @@ public class MainWindow extends UiPart<Region> {
     // Independent Ui parts residing in this Ui container
     private TaskListPanel personListPanel;
     private Config config;
+    private Model model;
     private TaskDescription taskDescription;
     private TaskDetail taskDetail;
 
@@ -59,13 +75,14 @@ public class MainWindow extends UiPart<Region> {
     @FXML
     private AnchorPane taskDetailsPlaceholder;
 
-    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
+    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic, Model model) {
         super(FXML);
 
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
         this.config = config;
+        this.model = model;
 
         // Configure the UI
         setTitle(config.getAppTitle());
@@ -198,6 +215,40 @@ public class MainWindow extends UiPart<Region> {
 
     void show() {
         primaryStage.show();
+    }
+
+    /**
+     * Allows the user to select a file to save to.
+     */
+    @FXML
+    public void handleSaveAs() throws JAXBException, FileNotFoundException, IOException,
+                                        DataConversionException {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                                                        "XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showSaveDialog(primaryStage);
+
+        if (file != null) {
+            if (!file.getPath().endsWith(".xml")) {
+                file = new File(file.getPath() + ".xml");
+            }
+
+            try{
+                FileUtil.createIfMissing(file);
+                //config.setAddressBookFilePath(file);
+
+                XmlUtil.saveDataToFile(file, new XmlSerializableAddressBook(model.getAddressBook()));
+            } catch(JAXBException je) {
+                throw new JAXBException(MESSAGE_FILE_FAIL_TO_CONVERT);
+            } catch(FileNotFoundException fe) {
+                throw new FileNotFoundException(MESSAGE_FILE_NOT_FOUND);
+            } catch(IOException io) {
+                throw new IOException(MESSAGE_FILE_FAIL_TO_CREATE);
+            }
+
+        }
     }
 
     /**

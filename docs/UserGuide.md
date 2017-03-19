@@ -4,20 +4,20 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 
 ---
 
-1. [Quick Start](#quick-start)
-2. [Features](#features)
-3. [FAQ](#faq)
-4. [Command Summary](#command-summary)
+1. [Quick Start](#1-quick-start)
+2. [Features](#2-features)
+3. [FAQ](#3-faq)
+4. [Command Summary](#4-command-summary)
 
 ## 1. Quick Start
 
 1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
 2. Download and install the latest version of myPotato.
 3. Double-click the icon to start myPotato. The GUI should appear in a few seconds.
-   > <img src="images/Ui.png" width="600">
+   > <img src="images/UIss.png" width="600">
 4. Type the command in the command line and press <kbd>Enter</kbd> to execute it. <br>
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
-5. Refer to the [Features](#features) section below for details of each command.<br>
+5. Refer to the [Features](#2-features) section below for details of each command.<br>
 
 
 ## 2. Features
