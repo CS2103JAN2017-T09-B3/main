@@ -9,7 +9,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
-import seedu.address.model.task.DateValue;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
@@ -49,8 +48,10 @@ public class XmlAdaptedTask {
         title = source.getTitle().fullTitle;
         content = source.getContent().fullContent;
         TaskDateTime dateTime = source.getDateTime();
-        startDateTime = dateTime.getStartDateTime().isPresent() ? dateTime.getStartDateTime().get().getStringValue() : "";
-        endDateTime = dateTime.getEndDateTime().isPresent() ? dateTime.getEndDateTime().get().getStringValue() : "";
+        startDateTime = dateTime.getStartDateTime().isPresent()
+                ? dateTime.getStartDateTime().get().getStringValue() : "";
+        endDateTime = dateTime.getEndDateTime().isPresent()
+                ? dateTime.getEndDateTime().get().getStringValue() : "";
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));

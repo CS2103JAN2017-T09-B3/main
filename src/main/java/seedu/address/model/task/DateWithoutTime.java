@@ -48,12 +48,12 @@ public class DateWithoutTime extends DateValue {
     public int getMinute() {
         return -1;
     }
-    
+
     @Override
     public String getDateValue() {
         return this.value;
     }
-    
+
     @Override
     public String getTimeValue() {
         return "";
@@ -93,7 +93,7 @@ public class DateWithoutTime extends DateValue {
     public String toString() {
         return this.value;
     }
-    
+
     private void updateStringValue() {
         SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm");
         this.value = df.format(date);

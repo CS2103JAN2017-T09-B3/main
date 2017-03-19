@@ -12,7 +12,7 @@ public abstract class DateValue {
     public abstract int getYear();
     public abstract int getHour();
     public abstract int getMinute();
-    
+
     public abstract String getDateValue();
     public abstract String getTimeValue();
 

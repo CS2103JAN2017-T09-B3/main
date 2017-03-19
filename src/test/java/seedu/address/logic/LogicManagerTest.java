@@ -453,10 +453,12 @@ public class LogicManagerTest {
             cmd.append(PREFIX_CONTENT.toString()).append(p.getContent().toString() + " ");
 
             Optional<DateValue> startDateOption = p.getDateTime().getStartDateTime();
-            cmd.append(PREFIX_DATE_TIME_START.toString()).append(startDateOption.isPresent() ? startDateOption.get().getStringValue() : "" + " ");
+            cmd.append(PREFIX_DATE_TIME_START.toString())
+                .append(startDateOption.isPresent() ? startDateOption.get().getStringValue() : "" + " ");
 
             Optional<DateValue> endDateOption = p.getDateTime().getEndDateTime();
-            cmd.append(PREFIX_DATE_TIME_END.toString()).append(endDateOption.isPresent() ? endDateOption.get().getStringValue() : "" + " ");
+            cmd.append(PREFIX_DATE_TIME_END.toString())
+                .append(endDateOption.isPresent() ? endDateOption.get().getStringValue() : "" + " ");
 
             UniqueTagList tags = p.getTags();
             for (Tag t: tags) {

@@ -43,7 +43,8 @@ public class EditCommandParser {
         try {
             editPersonDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
             editPersonDescriptor.setContent(ParserUtil.parseContent(argsTokenizer.getValue(PREFIX_CONTENT)));
-            editPersonDescriptor.setDateTime(ParserUtil.parseDateTime(argsTokenizer.getValue(PREFIX_DATE_TIME_START), argsTokenizer.getValue(PREFIX_DATE_TIME_END)));
+            editPersonDescriptor.setDateTime(ParserUtil.parseDateTime(argsTokenizer.getValue(PREFIX_DATE_TIME_START),
+                    argsTokenizer.getValue(PREFIX_DATE_TIME_END)));
             editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_TAG))));
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());

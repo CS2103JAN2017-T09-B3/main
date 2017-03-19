@@ -84,12 +84,14 @@ public class ParserUtil {
     /**
      * Parses a {@code Optional<String> dateTime} into an {@code Optional<TaskDateTime>} if {@code dateTime} is present.
      */
-    public static Optional<TaskDateTime> parseDateTime(Optional<String> startDateTime, Optional<String> endDateTime) throws IllegalValueException {
+    public static Optional<TaskDateTime> parseDateTime(Optional<String> startDateTime, Optional<String> endDateTime)
+            throws IllegalValueException {
         assert startDateTime != null;
         assert endDateTime != null;
         String start = startDateTime.orElse("");
         String end = endDateTime.orElse("");
-        return (startDateTime.isPresent() || endDateTime.isPresent()) ? Optional.of(new TaskDateTime(start, end)) : Optional.empty();
+        return (startDateTime.isPresent() || endDateTime.isPresent())
+                ? Optional.of(new TaskDateTime(start, end)) : Optional.empty();
     }
 
     /**

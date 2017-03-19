@@ -26,7 +26,7 @@ public class TaskDateTime {
 
         String trimmedStartDateTime = startDateTime.trim();
         String trimmedEndDateTime = endDateTime.trim();
-        
+
         DateMaker maker = new DateMaker();
 
         maker.makeDate(trimmedStartDateTime);
@@ -36,11 +36,7 @@ public class TaskDateTime {
         this.endDateTime = maker.getDateValue();
 
         alignStartWithEndDateTime();
-   
-        if (isThereStartDateTime())
-            System.out.println(this.startDateTime.getStringValue());
-        if (isThereEndDateTime())
-            System.out.println(this.endDateTime.getStringValue());
+
         if (!isValidStartAndEndDateTime()) {
             throw new IllegalValueException(MESSAGE_START_END_INVALID);
         }
@@ -48,7 +44,7 @@ public class TaskDateTime {
 
     private boolean isValidStartAndEndDateTime() {
         return ((!isThereStartDateTime() || (!isThereEndDateTime())
-                ||isThereStartDateTime() && isThereEndDateTime()
+                || isThereStartDateTime() && isThereEndDateTime()
                 && this.startDateTime.getFullDate().before(this.endDateTime.getFullDate())));
     }
 
@@ -63,7 +59,7 @@ public class TaskDateTime {
     public boolean isThereStartDateTime() {
         return this.startDateTime != null;
     }
-    
+
     public boolean isThereEndDateTime() {
         return this.endDateTime != null;
     }

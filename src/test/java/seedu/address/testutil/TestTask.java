@@ -86,10 +86,12 @@ public class TestTask implements ReadOnlyTask {
             sb.append(PREFIX_CONTENT.toString() + this.getContent().fullContent + " ");
         }
         if (this.getDateTime().isThereStartDateTime()) {
-            sb.append(PREFIX_DATE_TIME_START.toString() + this.getDateTime().getStartDateTime().get().getStringValue() + " ");
+            sb.append(PREFIX_DATE_TIME_START.toString()
+                    + this.getDateTime().getStartDateTime().get().getStringValue() + " ");
         }
         if (this.getDateTime().isThereEndDateTime()) {
-            sb.append(PREFIX_DATE_TIME_END.toString() + this.getDateTime().getEndDateTime().get().getStringValue() + " ");
+            sb.append(PREFIX_DATE_TIME_END.toString()
+                    + this.getDateTime().getEndDateTime().get().getStringValue() + " ");
         }
         this.getTags().asObservableList().stream().forEach(s -> sb.append(PREFIX_TAG.toString() + s.tagName + " "));
         return sb.toString();

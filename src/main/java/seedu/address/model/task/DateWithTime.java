@@ -48,13 +48,13 @@ public class DateWithTime extends DateValue {
     public int getMinute() {
         return this.date.getMinutes();
     }
-    
+
     @Override
     public String getDateValue() {
         SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy");
         return df.format(this.date);
     }
-    
+
     @Override
     public String getTimeValue() {
         int colonIndex = this.value.indexOf(":");

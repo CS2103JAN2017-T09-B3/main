@@ -10,12 +10,12 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class DateMaker {
 
     private static final String[] DATE_FORMATS = { "dd/MM/yyyy", "dd/MM/yy", "dd/MM", "dd-MM-yyyy", "dd-MM-yy", "dd-MM",
-            "dd MMM", "EEE, dd MMM yyyy" };
+        "dd MMM", "EEE, dd MMM yyyy" };
 
     private static final String[] TIME_FORMATS = { "HH:mm", "hhaa", "hh:mmaa" };
 
     public static final String MESSAGE_DATE_TIME_CONSTRAINTS = "Invalid date and time format";
-    
+
     public static final int OLDEST_YEAR = 2000;
 
     private DateValue date;
