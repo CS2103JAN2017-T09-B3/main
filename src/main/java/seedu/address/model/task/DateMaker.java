@@ -66,8 +66,16 @@ public class DateMaker {
                 try {
                     Date parsedDate = df.parse(dateString);
                     return Optional.of(new DateWithTime(parsedDate));
-                } catch (ParseException pe) {
-                    continue;
+                } catch (ParseException pe1) {
+                    format = timeFormat + " " + dateFormat;
+                    df = new SimpleDateFormat(format);
+                    df.setLenient(false);
+                    try {
+                        Date parsedDate = df.parse(dateString);
+                        return Optional.of(new DateWithTime(parsedDate));
+                    } catch (ParseException pe2) {
+                        continue;
+                    }
                 }
             }
         }

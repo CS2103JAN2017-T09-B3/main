@@ -87,7 +87,9 @@ public class ParserUtil {
     public static Optional<TaskDateTime> parseDateTime(Optional<String> startDateTime, Optional<String> endDateTime) throws IllegalValueException {
         assert startDateTime != null;
         assert endDateTime != null;
-        return dateTime.isPresent() ? Optional.of(new TaskDateTime(dateTime.get())) : Optional.empty();
+        String start = startDateTime.orElse("");
+        String end = endDateTime.orElse("");
+        return (startDateTime.isPresent() || endDateTime.isPresent()) ? Optional.of(new TaskDateTime(start, end)) : Optional.empty();
     }
 
     /**

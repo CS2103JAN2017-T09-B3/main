@@ -37,6 +37,10 @@ public class TaskDateTime {
 
         alignStartWithEndDateTime();
    
+        if (isThereStartDateTime())
+            System.out.println(this.startDateTime.getStringValue());
+        if (isThereEndDateTime())
+            System.out.println(this.endDateTime.getStringValue());
         if (!isValidStartAndEndDateTime()) {
             throw new IllegalValueException(MESSAGE_START_END_INVALID);
         }

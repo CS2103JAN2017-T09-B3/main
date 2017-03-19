@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class DateWithoutTime extends DateValue {
 
-    private final String value;
+    private String value;
     private final Date date;
 
     public DateWithoutTime(Date date) {
@@ -62,31 +62,41 @@ public class DateWithoutTime extends DateValue {
     @Override
     public void setDate(int date) {
         this.date.setDate(date);
+        updateStringValue();
     }
 
     @Override
     public void setMonth(int month) {
-        this.setMonth(month);
+        this.setMonth(month - 1);
+        updateStringValue();
     }
 
     @Override
     public void setYear(int year) {
         this.date.setYear(year - 1900);
+        updateStringValue();
     }
 
     @Override
     public void setHour(int hour) {
         this.date.setHours(0);
+        updateStringValue();
     }
 
     @Override
     public void setMinute(int minute) {
-        this.date.setMinutes(0);;
+        this.date.setMinutes(0);
+        updateStringValue();
     }
 
     @Override
     public String toString() {
         return this.value;
+    }
+    
+    private void updateStringValue() {
+        SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm");
+        this.value = df.format(date);
     }
 
 }
