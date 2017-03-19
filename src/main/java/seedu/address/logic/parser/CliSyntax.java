@@ -10,7 +10,9 @@ import seedu.address.logic.parser.ArgumentTokenizer.Prefix;
 public class CliSyntax {
 
     /* Prefix definitions */
-    public static final Prefix PREFIX_DATE_TIME = new Prefix("by/");
+    public static final Prefix PREFIX_DATE_TIME_POINT = new Prefix("by/");
+    public static final Prefix PREFIX_DATE_TIME_START = new Prefix("from/");
+    public static final Prefix PREFIX_DATE_TIME_END = new Prefix("to/");
     public static final Prefix PREFIX_CONTENT = new Prefix("d/");
     public static final Prefix PREFIX_TAG = new Prefix("#");
 
