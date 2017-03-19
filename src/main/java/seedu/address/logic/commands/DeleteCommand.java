@@ -20,8 +20,7 @@ public class DeleteCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the task identified by the index number used in the last task listing.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: INDEX (must be a positive integer)\n" + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
     public static final String MESSAGE_DELETE_DEADLINE_SUCCESS = "Deadline deleted for %1$s!";
@@ -32,7 +31,7 @@ public class DeleteCommand extends Command {
 
     public DeleteCommand(int targetIndex) {
         this.targetIndex = targetIndex;
-        this.deadline = EMPTY ;
+        this.deadline = EMPTY;
     }
 
     public DeleteCommand(int targetIndex, String deadline) {
@@ -68,7 +67,7 @@ public class DeleteCommand extends Command {
                 EditCommand taskToEdit = new EditCommand(targetIndex, editTaskDescriptor);
                 taskToEdit.setData(model);
                 taskToEdit.execute();
-            } catch(IllegalValueException ie) {
+            } catch (IllegalValueException ie) {
                 throw new CommandException(TaskDateTime.MESSAGE_DATE_TIME_CONSTRAINTS);
             }
             return new CommandResult(String.format(MESSAGE_DELETE_DEADLINE_SUCCESS, taskToDelete.getTitle().fullTitle));

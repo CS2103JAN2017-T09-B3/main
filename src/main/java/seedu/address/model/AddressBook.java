@@ -1,6 +1,5 @@
 package seedu.address.model;
 
-import javafx.collections.ObservableList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -95,7 +94,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Updates the person in the list at position {@code index} with
      * {@code editedReadOnlyPerson}. {@code AddressBook}'s tag list will be
      * updated with the tags of {@code editedReadOnlyPerson}.
-     * 
+     *
      * @see #syncMasterTagListWith(Person)
      *
      * @throws DuplicatePersonException
@@ -140,7 +139,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Ensures that every tag in these persons: - exists in the master list
      * {@link #tags} - points to a Tag object in the master list
-     * 
+     *
      * @see #syncMasterTagListWith(Person)
      */
     private void syncMasterTagListWith(UniqueTaskList tasks) {
