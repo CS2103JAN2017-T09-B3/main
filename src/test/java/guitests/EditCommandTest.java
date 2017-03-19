@@ -27,7 +27,7 @@ public class EditCommandTest extends AddressBookGuiTest {
 
         TestTask editedPerson = new TaskBuilder().withTitle("Bobby")
                 .withContent("BobBob")
-                .withTaskDateTime("12/5/2017 23:00")
+                .withTaskDateTime("", "12/5/2017 23:00")
                 .withTags("husband").build();
 
         assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedPerson);

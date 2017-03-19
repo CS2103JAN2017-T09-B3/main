@@ -60,11 +60,11 @@ public class TaskDateTime {
         }
     }
 
-    private boolean isThereStartDateTime() {
+    public boolean isThereStartDateTime() {
         return this.startDateTime != null;
     }
     
-    private boolean isThereEndDateTime() {
+    public boolean isThereEndDateTime() {
         return this.endDateTime != null;
     }
 

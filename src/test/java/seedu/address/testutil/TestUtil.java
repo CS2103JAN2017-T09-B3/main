@@ -74,15 +74,15 @@ public class TestUtil {
         try {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                new Task(new Title("Ali Muster"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("Boris Mueller"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("Carl Kurz"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("Daniel Meier"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("Elle Meyer"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("Fiona Kunz"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("George Best"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("Hoon Meier"), new Content(""), new TaskDateTime(""), new UniqueTagList()),
-                new Task(new Title("Ida Mueller"),  new Content(""), new TaskDateTime(""), new UniqueTagList())
+                new Task(new Title("Ali Muster"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("Boris Mueller"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("Carl Kurz"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("Daniel Meier"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("Elle Meyer"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("Fiona Kunz"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("George Best"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("Hoon Meier"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
+                new Task(new Title("Ida Mueller"),  new Content(""), new TaskDateTime("", ""), new UniqueTagList())
             };
             //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {

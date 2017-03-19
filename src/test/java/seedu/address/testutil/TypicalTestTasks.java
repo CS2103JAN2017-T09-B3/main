@@ -17,16 +17,16 @@ public class TypicalTestTasks {
         try {
             alice = new TaskBuilder().withTitle("Alice Pauline")
                     .withContent("Alice Pauline content")
-                    .withTaskDateTime("1/2/2013 9:00")
+                    .withTaskDateTime("", "1/2/2013 9:00")
                     .withTags("friends").build();
             benson = new TaskBuilder().withTitle("Benson Meier")
                     .withContent("Benson Meier content")
-                    .withTaskDateTime("2/3/2014 10:00")
+                    .withTaskDateTime("", "2/3/2014 10:00")
                     .withTags("owesMoney", "friends").build();
             carl = new TaskBuilder().withTitle("Carl Kurz").withContent("Carl Kurz content").build();
             daniel = new TaskBuilder().withTitle("Daniel Meier").build();
             elle = new TaskBuilder().withTitle("Elle Meyer")
-                    .withTaskDateTime("3/4/2015 1:00").build();
+                    .withTaskDateTime("", "3/4/2015 1:00").build();
             fiona = new TaskBuilder().withTitle("Fiona Kunz")
                     .withContent("Fiona Kunz content").build();
             //george = new TaskBuilder().withTitle("George Best").build();
