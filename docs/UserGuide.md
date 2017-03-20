@@ -138,8 +138,8 @@ Examples:
 
 #### Finding all tasks containing any keyword in their title or due dates: `find`
 
-Find all tasks containing any of the given keywords or due by given date.<br>
-Format: `find KEYWORD [MORE_KEYWORDS]`
+In addition, you can simply find a specific task by entering the find command accompanied with the task name of due date in the following 
+format: `find KEYWORD [MORE_KEYWORDS]` <br>
 
 ###### The keyword is case sensitive. <br>
 e.g `project` will not match `Project`<br>
