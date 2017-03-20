@@ -4,6 +4,9 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 
 ---
 
+MyPotato is a user-friendly task scheduler which helps users to better manage their daily tasks. This application allows input and editing of tasks using an easy to use command line interface suitable for users of all technical background. 
+
+
 1. [Quick Start](#1-quick-start)
 2. [Features](#2-features)
 3. [FAQ](#3-faq)
