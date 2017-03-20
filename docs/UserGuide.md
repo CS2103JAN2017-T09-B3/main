@@ -93,19 +93,20 @@ Examples:
 
 #### Listing all tasks : `list`
 
-Shows a list of all tasks in the task list.<br>
+After adding the tasks you need, you can track them using the list command.<br>
+
 Format: `list`
 
 #### Selecting a task : `select`
 
-Selects the task identified by the index number used in the last task listing.<br>
+When you need the contents to a specific task, you can use the select command to choose the task from the list. <br>
+
 Format: `select INDEX`
 
 > Alternative: click to the task in the showing list
 
 > Select the task and display all details at the specified `INDEX`.<br>
 > The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
 
 Examples:
 
@@ -118,13 +119,13 @@ Examples:
 
 #### Editing a task: `edit`
 
-Edits an existing task in the task list. <br>
-Format: `edit INDEX TITLE d/CONTENT from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
-Format: `edit INDEX TITLE d/CONTENT by/[DATE] [TIME] [#tags]`
+You can update any part of a task using edit command <br>
+Format: `Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]`<br>
+
+* Formats of DATE and TIME are the same as add command
 
 > Edits the task at the specified INDEX. 
 > The index refers to the index number shown in the last task listing.
-> The index must be a positive integer 1, 2, 3, ...
 > Existing values will be updated to the input values.
 > When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 > You can remove all the task's tags by typing t/ without specifying any tags after it.
