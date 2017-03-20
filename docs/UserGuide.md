@@ -89,7 +89,7 @@ Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]`
 
 Examples:
 
-* `add t/CS2103 meeting d/03/03 #Programming Lab 2`
+* `add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101`
 
 #### Listing all tasks : `list`
 
