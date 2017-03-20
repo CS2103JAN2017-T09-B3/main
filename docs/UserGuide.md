@@ -69,9 +69,11 @@ You can add a task with or without deadline. Upon adding a task, there will be a
 Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] #[tags]`<br>
 Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]`
 
-##### TITLE is the name of a task
+However, do take note of the following:
 
-##### DATE can be in different formats 
+###### 1) TITLE is the name of a task
+
+###### 2) DATE can be in different formats 
                
       dd/MM/yyyy (e.g 15/3/2017)
       dd/MM/yy (e.g 15/3/17)
@@ -81,7 +83,7 @@ Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]`
       dd-MM: year will be specified as current year (e.g 15-3)
       dd MMM: year will be specified as current year (e.g 15 Mar)
 
-##### DATE can be in different formats 
+###### 3) DATE can be in different formats 
       
       HH:mm (e.g 12:15)
       HH :mm am/pm (e.g 9:15pm)
