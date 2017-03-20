@@ -19,6 +19,22 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
 5. Refer to the [Features](#2-features) section below for details of each command.<br>
 
+### Getting Started
+
+In this guide, we will guide you through all the features by the following list.
+
+
+      1.   Help
+      2.   Add a task
+      3.   Select a task
+      4.   Edit a task
+      5.   Find a task
+      6.   Delete a task
+      7.   Clear all tasks
+      8.   Undo a previous command
+      9.   Exit program
+
+
 
 ## 2. Features
 
