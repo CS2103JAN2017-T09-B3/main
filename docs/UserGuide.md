@@ -65,6 +65,7 @@ Format: `help`
 
 #### Adding a task: `add`
 You can add a task with or without deadline. Upon adding a task, there will be a feedback message stating that the task is successfully added and the content of the task will be displayed for your verification. <br>
+
 Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] #[tags]`<br>
 Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]`
 
@@ -120,15 +121,16 @@ Examples:
 #### Editing a task: `edit`
 
 You can update any part of a task using edit command <br>
+
 Format: `Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]`<br>
 
-> Edits the task at the specified INDEX. <br>
-> The index refers to the index number shown in the last task listing.<br>
-> Existing values will be updated to the input values. <br>
-> When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.<br>
-> You can remove all the task's tags by typing t/ without specifying any tags after it.
+##### Edits the task at the specified INDEX. <br>
+##### The index refers to the index number shown in the last task listing.<br>
+##### Existing values will be updated to the input values. <br>
+##### When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.<br>
+##### You can remove all the task's tags by typing t/ without specifying any tags after it.
 
-Formats of DATE and TIME are the same as add command
+>Formats of DATE and TIME are the same as add command
 
 Examples:
 *  edit 1  d/22/03<br>
