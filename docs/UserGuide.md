@@ -156,14 +156,11 @@ Examples:
 
 #### Deleting a task : `delete`
 
-Deletes the specified task from the task list. <br>
-Format: `delete INDEX`
+To use the delete command, the input should be in the following format: `delete INDEX`
 
 > Alternative: choose the task showing in the list. Type delete
 
-> Deletes the task at the specified `INDEX`. <br>
-> The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
+##### Task index can be found in the panel List on the left side of myPotato. Input the corresponding index number to delete the targeted task. If there is any deadline you need to remove from a task, simply key in “deadline” after the index.
 
 Examples:
 
