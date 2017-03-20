@@ -57,17 +57,35 @@ Note: Mypotato can help you to automatically sort your tasks according to their 
 
 #### Viewing help : `help`
 
+After Launching the application, if you need a cheatsheet of the command formats, MyPotato has a help function that displays the list of the commands. Simply enter “help” command for more information.
+
 Format: `help`
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
 #### Adding a task: `add`
+You can add a task with or without deadline. Upon adding a task, there will be a feedback message stating that the task is successfully added and the content of the task will be displayed for your verification. <br>
+Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] #[tags]`<br>
+Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]`
 
-Adds a task to the task list.<br>
-Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
-Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] [#tags]`
+***** TITLE is the name of a task
 
-> Tasks can have any number of tags 
+***** DATE can be in different formats 
+               
+      dd/MM/yyyy (e.g 15/3/2017)
+      dd/MM/yy (e.g 15/3/17)
+      dd/MM: year will be specified as current year (e.g 15/3)
+      dd-MM-yyyy (e.g 15-3-2017)
+      dd-MM-yy (e.g 15-3-17)
+      dd-MM: year will be specified as current year (e.g 15-3)
+      dd MMM: year will be specified as current year (e.g 15 Mar)
+
+***** DATE can be in different formats 
+      
+      HH:mm (e.g 12:15)
+      HH :mm am/pm (e.g 9:15pm)
+      HH am/pm (e.g 10am)
+    
 
 Examples:
 
