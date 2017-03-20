@@ -160,7 +160,7 @@ To use the delete command, the input should be in the following format: `delete 
 
 > Alternative: choose the task showing in the list. Type delete
 
-##### Task index can be found in the panel List on the left side of myPotato. Input the corresponding index number to delete the targeted task. If there is any deadline you need to remove from a task, simply key in “deadline” after the index.
+###### Task index can be found in the panel List on the left side of myPotato. Input the corresponding index number to delete the targeted task. If there is any deadline you need to remove from a task, simply key in “deadline” after the index.
 
 Examples:
 
@@ -173,33 +173,29 @@ Examples:
   
 #### Clearing all tasks : `clear`
 
-Clears all entries from the current task list.
-Format: clear
+To use the clear command, the input should be in the following format: `clear`
+
+###### This command allows you to clear your tasks when you do not need them anymore.
 
 #### Undoing a previous command: `undo` 
 
-This command will undo the previous add/delete command which you had entered. Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program. <br>
+To use the undo command, the input should be in the following format: `undo`
 
-Format: `undo`
+###### This command will undo the previous add/delete command which you had entered. Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.  
 
 #### Saving the data : `save`
 
-This command will save the current task list in the specified filepath.
-
-Format: `save FILEPATH`
+To save the current task list in a specific filepath, the input should be in the following format: `save FILEPATH`
 
 #### Open saved data : `open`
 
-This command will open the task list from the specified filepath.
-
-Format: `open FILEPATH`
+To open a task list from a specific filepath, the input should be in the following format: `open FILEPATH`
 
 #### Exiting the program : `exit`
 
-Exits the program.
+To use the exit command, the input should be in the following format: `exit`
 
-Format: `exit`
- 
+###### This command will allow you to exit and save your previous changes.
 
  
 ## 3. FAQ
