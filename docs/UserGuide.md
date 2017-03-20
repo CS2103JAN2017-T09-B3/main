@@ -29,15 +29,22 @@ In this guide, we will guide you through all the features by the following list.
 
       1.   Help
       2.   Add a task
-      3.   Select a task
-      4.   Edit a task
-      5.   Find a task
-      6.   Delete a task
-      7.   Clear all tasks
-      8.   Undo a previous command
-      9.   Exit program
+      3.   List all tasks
+      4.   Select a task
+      5.   Edit a task
+      6.   Find a task
+      7.   Delete a task
+      8.   Clear all tasks
+      9.   Undo a previous command
+      10.  Save task list
+      11.  Open task list
+      12.  Exit program
 
+#### Launch
 
+You can start the day by opening MyPotato to view the tasks to be completed for the current day. 
+
+Note: Mypotato can help you to automatically sort your tasks according to their deadlines. The earliest deadline will appear at the top of the list and floating tasks at the bottom.
 
 ## 2. Features
 
@@ -70,6 +77,26 @@ Examples:
 
 Shows a list of all tasks in the task list.<br>
 Format: `list`
+
+#### Selecting a task : `select`
+
+Selects the task identified by the index number used in the last task listing.<br>
+Format: `select INDEX`
+
+> Alternative: click to the task in the showing list
+
+> Select the task and display all details at the specified `INDEX`.<br>
+> The index refers to the index number shown in the most recent listing.<br>
+> The index **must be a positive integer** 1, 2, 3, ...
+
+Examples:
+
+* `list`<br>
+  `select 2`<br>
+  Selects the `2nd task`.
+* `find Project` <br>
+  `select 1`<br>
+  Selects the `1st task` from the results returned from the `find` command.
 
 #### Editing a task: `edit`
 
@@ -131,48 +158,36 @@ Examples:
 * `find Project`<br>
   `delete 1`<br>
   Deletes the 1st task from the results of the `find` command.
-
-#### Selecting a task : `select`
-
-Selects the task identified by the index number used in the last task listing.<br>
-Format: `select INDEX`
-
-> Alternative: click to the task in the showing list
-
-> Select the task and display all details at the specified `INDEX`.<br>
-> The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
-
-Examples:
-
-* `list`<br>
-  `select 2`<br>
-  Selects the `2nd task`.
-* `find Project` <br>
-  `select 1`<br>
-  Selects the `1st task` from the results returned from the `find` command.
   
 #### Clearing all tasks : `clear`
 
 Clears all entries from the current task list.
 Format: clear
 
-#### Exiting the program : `exit`
-
-Exits the program.
-Format: exit
-
-#### Saving the data : `save`
-
-Tasks data are saved in the hard disk automatically after any command that changes the data.
-There is no need to save manually.
-  
 #### Undoing a previous command: `undo` 
 
 This command will undo the previous add/delete command which you had entered. Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program. <br>
 
 Format: `undo`
 
+#### Saving the data : `save`
+
+This command will save the current task list in the specified filepath.
+
+Format: `save FILEPATH`
+
+#### Open saved data : `open`
+
+This command will open the task list from the specified filepath.
+
+Format: `open FILEPATH`
+
+#### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+ 
 
  
 ## 3. FAQ
