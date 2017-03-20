@@ -5,6 +5,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 ---
 
 ### Quick Links
+
 1. [Quick Start](#1-quick-start)
 2. [Features](#2-features)
 3. [FAQ](#3-faq)
@@ -12,7 +13,9 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 
 
 ### Welcome to MyPotato
-MyPotato is a user-friendly task scheduler which helps users to better manage their daily tasks. This application allows input and editing of tasks using an easy to use command line interface suitable for users of all technical background.
+
+MyPotato is a user-friendly task scheduler which helps users to better manage their daily tasks.<br>
+This application allows input and editing of tasks using an easy to use command line interface suitable for users of all technical background.
 
 
 ## 1. Quick Start
@@ -47,9 +50,10 @@ In this guide, we will guide you through all the features by the following list.
 
 ### Launch
 
-You can start the day by opening MyPotato to view the tasks to be completed for the current day. 
+You can start the day by opening MyPotato to view the tasks to be completed for the current day.<br>
 
-Note: Mypotato can help you to automatically sort your tasks according to their deadlines. The earliest deadline will appear at the top of the list and floating tasks at the bottom.
+Note: Mypotato can help you to automatically sort your tasks according to their deadlines.<br>
+The earliest deadline will appear at the top of the list and floating tasks at the bottom.
 
 
 ## 2. Features
