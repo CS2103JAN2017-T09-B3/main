@@ -258,28 +258,28 @@ To exit the program, simply type `exit`.
 
 | **Command** | **Format** |
 | ----------- | ---------- |
-| [Help](#help--help) | `help` |
-| | e.g. ` help` |
-| [Add](#add-task--add) | `add t/TASK [d/task] [#tags]` |
-| | e.g. ` add t/CS2103 meeting d/03/03 #Programming Lab 2` |
-| [List](#list-all-tasks--list) | `show a list of task list in the list task` |
-| | e.g. `list Homework` |
-| [Select](#select-task--select) | `select INDEX` |
-| | e.g.` select 2` |
-| [Edit](#edit-task--edit) | `edit INDEX [t/TASK] [d/DATE] [#tags]` |
-| | e.g. ` edit 1 t/CS2101 meeting d/04/03 #Progress Report` |
-| [Find](#find-tasks--find) | `find KEYWORD [MORE_KEYWORDS]` |
-| | e.g. ` find CS2101 meeting` |
-| | e.g. ` find #Programming Lab 2` |
-| [Delete](#delete-task--delete)| `delete INDEX` |
+| [Help](#help--help) | help |
+| | e.g. help |
+| [Add](#add-task--add) | add t/TASK [d/task] [#tags] |
+| | e.g. add t/CS2103 meeting d/03/03 #Programming Lab 2 |
+| [List](#list-all-tasks--list) | show a list of task list in the list task |
+| | e.g. list Homework |
+| [Select](#select-task--select) | select INDEX |
+| | e.g. select 2 |
+| [Edit](#edit-task--edit) | edit INDEX [t/TASK] [d/DATE] [#tags] |
+| | e.g. edit 1 t/CS2101 meeting d/04/03 #Progress Report |
+| [Find](#find-tasks--find) | find KEYWORD [MORE_KEYWORDS] |
+| | e.g. find CS2101 meeting |
+| | e.g. find #Programming Lab 2 |
+| [Delete](#delete-task--delete)| delete INDEX |
 | | e.g. ` delete 3` |
-| [Clear](#clear-all-tasks--clear)| `clear` |
-| | e.g. `clear` |
-| [Undo](#undo-a-previous-command--undo)| `undo` |
+| [Clear](#clear-all-tasks--clear)| clear |
+| | e.g. clear |
+| [Undo](#undo-a-previous-command--undo)| undo |
 | | e.g. `undo` |
-| [Save](#save-tasklist--save)| `save FILEPATH` |
-| | e.g. `save C:\CS2103\Project\myPotato.xml` |
-| [Open](#open-tasklist--open) | `open FILEPATH` |
-| | e.g. `open C:\CS2103\Project\myPotato.xml` |
-| [Exit](#exit-program--exit)| `exit` |
-| | e.g. `exit` |
+| [Save](#save-tasklist--save)| save FILEPATH |
+| | e.g. save C:\CS2103\Project\myPotato.xml |
+| [Open](#open-tasklist--open) | open FILEPATH |
+| | e.g. open C:\CS2103\Project\myPotato.xml |
+| [Exit](#exit-program--exit)| exit |
+| | e.g. exit |
