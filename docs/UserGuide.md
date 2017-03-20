@@ -103,7 +103,7 @@ However, do take note of the following:
 
 Examples:
 
-     `add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101`
+     add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
 #### List all Tasks : `list`
 
@@ -130,13 +130,13 @@ When you need the content to a specific task, you can use the select command to 
 
 Examples:
 
-    `list`<br>
-    `select 2`<br>
-    Select the `2nd task`.
+    list
+    select 2
+    Select the 2nd task
     
-    `find Project` <br>
-    `select 1`<br>
-    Select the `1st task` from the results returned from the `find` command.
+    find Project
+    select 1
+    Select the 1st task from the results returned from the find command
 
 #### Edit Task : `edit`
 
@@ -151,11 +151,11 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
 Examples:
 
-    edit 1  d/22/03<br>
-    Edits the due date of the 1st task to be 22/03.
+    edit 1  d/22/03
+    Edits the due date of the 1st task to be 22/03
     
-    edit 2 Project meeting t/LT1<br>
-    Edits the 2nd task to Project meeting and add hashtag LT1.
+    edit 2 Project meeting t/LT1
+    Edits the 2nd task to Project meeting and add hashtag LT1
 
 #### Find Tasks : `find`
 
@@ -184,11 +184,11 @@ However, do take note of the following:
 
 Examples:
 
-    `find Meeting`
-    Returns `Project Meeting`
+    find Meeting
+    Returns Project Meeting
     
-    `find 23/03`
-    Returns Any task due by `23/03`.
+    find 23/03
+    Returns Any task due by 23/03
 
 #### Delete Task : `delete`
 
@@ -206,13 +206,13 @@ If you have completed the task or need to delete unwanted task, simply input the
 
 Examples:
 
-    `list`<br>
-    `delete 2`<br>
-    Deletes the 2nd task.
+    list
+    delete 2
+    Deletes the 2nd task
   
-    `find Project`<br>
-    `delete 1`<br>
-    Deletes the 1st task from the results of the `find` command.
+    find Project
+    delete 1
+    Deletes the 1st task from the results of the `find` command
   
 #### Clear all Tasks : `clear`
 
