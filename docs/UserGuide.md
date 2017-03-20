@@ -69,6 +69,7 @@ After Launching the application, if you need a cheatsheet of the command formats
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
+
 ### Add Task : `add`
 You can add a task with or without deadline. Upon adding a task, the content of the task will be displayed on the right window for your verification. <br>
 
@@ -95,15 +96,16 @@ However, do take note of the following:
       HH am/pm (e.g 10am)
     
 
-Examples:
+      Examples:
+      add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
-     add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
 #### List all Tasks : `list`
 
 After adding the tasks you need, you can track them using the list command.<br>
 
     Format: list
+
 
 #### Select Task : `select`
 
@@ -112,12 +114,11 @@ When you need the content to a specific task, you can use the select command to 
     Format: select INDEX
 
 > Alternative: click to the task in the showing list <br>
-
 > Select the task and display all details at the specified `INDEX`<br>
 > The INDEX refers to the index number shown in the most recent listing<br>
 
-Examples:
-
+    Examples:
+    
     list
     select 2
     Select the 2nd task
@@ -134,7 +135,7 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
 > Edit the task at the specified INDEX. The index refers to the index number shown in the last task listing. Existing values will be updated to the input values. When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative. You can remove all the task's tags by typing t/ without specifying any tags after it.
 
-Examples:
+    Examples:
 
     edit 1  d/22/03
     Edits the due date of the 1st task to be 22/03
@@ -165,7 +166,7 @@ However, do take note of the following:
 > Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
 > e.g. `Project` will match `Project Meeting`
 
-Examples:
+    Examples:
 
     find Meeting
     Returns Project Meeting
@@ -184,7 +185,7 @@ If you have completed the task or need to delete unwanted task, simply input the
 > Input the corresponding index number to delete the targeted task.<br>
 > If there is any deadline you need to remove from a task, simply key in “deadline” after the index.
 
-Examples:
+    Examples:
 
     list
     delete 2
@@ -217,7 +218,7 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
 
     Format: save FILEPATH
 
-Examples:
+    Examples:
 
     save C:\CS2103\Project
     save C:\CS2103\Project\myPotato
@@ -229,7 +230,7 @@ Specify a valid xml file to load into myPotato.
 
     Format: open FILEPATH
 
-Examples:
+    Examples:
 
     open C:\CS2103\Project\taskmanager.xml
 
