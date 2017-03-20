@@ -24,7 +24,7 @@ public class SaveCommand extends Command {
     public static final String MESSAGE_INVALID_PATH = "Invalid Path";
     public static final String MESSAGE_WRITE_ACCESS_DENIED = "File Write Access Denied";
     public static final String MESSAGE_INVALID_FILE = "Invalid File";
-    public static final String DEFAULT_FILE = "taskmanager.xml";
+    public static final String DEFAULT_FILE = "/taskmanager.xml";
 
     private File file;
 
@@ -40,13 +40,13 @@ public class SaveCommand extends Command {
         assert model != null;
         try {
             if (file != null) {
-                FileUtil.createIfMissing(file);
                 if (file.isDirectory()) {
                     file = new File(file.getPath() + DEFAULT_FILE);
                 }
                 if (!file.getPath().endsWith(".xml")) {
                     file = new File(file.getPath() + ".xml");
                 }
+                FileUtil.createIfMissing(file);
                 XmlUtil.saveDataToFile(file, new XmlSerializableAddressBook(model.getAddressBook()));
                 model.getConfig().setAddressBookFilePath(file.getCanonicalPath());
                 ConfigUtil.saveConfig(model.getConfig(), Config.DEFAULT_CONFIG_FILE);
@@ -59,7 +59,7 @@ public class SaveCommand extends Command {
         } catch (JAXBException Exception) {
             return new CommandResult(MESSAGE_WRITE_ACCESS_DENIED);
         }
-         return new CommandResult(MESSAGE_SUCCESS + file.getName());
+         return new CommandResult(MESSAGE_SUCCESS + file.getPath());
     }
 
 }

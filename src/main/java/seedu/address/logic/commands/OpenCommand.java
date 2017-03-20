@@ -20,7 +20,7 @@ public class OpenCommand extends Command {
             + "Parameters: FILELOCATION" + "Example: " + COMMAND_WORD
             + " data/taskmanager.xml";
 
-    public static final String MESSAGE_SUCCESS = "Tasks saved to ";
+    public static final String MESSAGE_SUCCESS = "Loaded ";
     public static final String MESSAGE_INVALID_PATH = "Invalid Path";
     public static final String MESSAGE_READ_ACCESS_DENIED = "File Read Access Denied";
     public static final String MESSAGE_INVALID_FILE = "Invalid File";
@@ -29,7 +29,7 @@ public class OpenCommand extends Command {
     private File file;
 
     /**
-     * Creates a SaveCommand using a File
+     * Creates a OpenCommand using a File
      */
     public OpenCommand(File file) {
         this.file = file;
@@ -40,10 +40,10 @@ public class OpenCommand extends Command {
         assert model != null;
         try {
             ReadOnlyAddressBook taskData = XmlUtil.getDataFromFile(file, XmlSerializableAddressBook.class);
-            model.resetData(taskData);
-            model.getConfig().setAddressBookFilePath(file.getCanonicalPath());
+            model.getConfig().setAddressBookFilePath(file.getAbsolutePath());
             ConfigUtil.saveConfig(model.getConfig(), Config.DEFAULT_CONFIG_FILE);
             model.updateFileLocation();
+            model.resetData(taskData);
         } catch (IOException io) {
             return new CommandResult(MESSAGE_INVALID_PATH);
         } catch (JAXBException Exception) {

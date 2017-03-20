@@ -10,6 +10,7 @@ import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.events.ui.ChangedFileLocationRequestEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.task.ReadOnlyTask;
@@ -79,6 +80,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void updateFileLocation() {
+        raise(new ChangedFileLocationRequestEvent(config));
         indicateAddressBookChanged();
     }
 

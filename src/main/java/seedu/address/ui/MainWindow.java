@@ -223,7 +223,7 @@ public class MainWindow extends UiPart<Region> {
 
         logic.execute(COMMAND_SAVE + file.getAbsolutePath());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
-        return new CommandResult(String.format(MESSAGE_SUCCESS_SAVE, file));
+        return new CommandResult(MESSAGE_SUCCESS_SAVE + file.getName());
     }
 
     @FXML
@@ -237,7 +237,7 @@ public class MainWindow extends UiPart<Region> {
         File file = fileChooser.showOpenDialog(primaryStage);
         logic.execute(COMMAND_OPEN + file.getAbsolutePath());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
-        return new CommandResult(String.format(file.getName(), MESSAGE_SUCCESS_OPEN));
+        return new CommandResult(file.getName() + MESSAGE_SUCCESS_OPEN);
     }
 
     /**
