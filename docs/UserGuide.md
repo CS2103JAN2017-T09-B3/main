@@ -65,21 +65,15 @@ Note: Mypotato can help you to automatically sort your tasks according to their 
 
 After Launching the application, if you need a cheatsheet of the command formats, MyPotato has a help function that displays the list of the commands. Simply enter “help” command for more information.
 
-
-| **Format** |
-| ---------- |
-| `help` |
+    Format: help
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
 ### Add Task : `add`
 You can add a task with or without deadline. Upon adding a task, the content of the task will be displayed on the right window for your verification. <br>
 
-
-| **Format** |
-| ---------- |
-| `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] #[tags]` |
-| `add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]` |
+    Format: add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] #[tags]
+            add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]
 
 However, do take note of the following:
 
@@ -109,19 +103,13 @@ Examples:
 
 After adding the tasks you need, you can track them using the list command.<br>
 
-
-| **Format** |
-| ---------- |
-| `list` |
+    Format: list
 
 #### Select Task : `select`
 
 When you need the content to a specific task, you can use the select command to select the task from the list. <br>
 
-
-| **Format** |
-| ---------- |
-| `select INDEX` |
+    Format: select INDEX
 
 > Alternative: click to the task in the showing list <br>
 
@@ -142,12 +130,9 @@ Examples:
 
 You can update any part of a task using edit command. The formats of DATE and TIME are the same as add command <br>
 
+    Format: Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]
 
-| **Format** |
-| ---------- |
-| `Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]` |
-
-###### Edit the task at the specified INDEX. The index refers to the index number shown in the last task listing. Existing values will be updated to the input values. When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative. You can remove all the task's tags by typing t/ without specifying any tags after it.
+> Edit the task at the specified INDEX. The index refers to the index number shown in the last task listing. Existing values will be updated to the input values. When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative. You can remove all the task's tags by typing t/ without specifying any tags after it.
 
 Examples:
 
@@ -162,9 +147,7 @@ Examples:
 In addition, you can simply find tasks by entering the `find` command accompanied with keywords or numbers in their title, description and dates.
 
 
-| **Format** |
-| ---------- |
-| `find KEYWORD [MORE_KEYWORDS]` |
+    Format: find KEYWORD [MORE_KEYWORDS]
 
 However, do take note of the following:
 
@@ -194,10 +177,7 @@ Examples:
 
 If you have completed the task or need to delete unwanted task, simply input the `delete` command.
 
-
-| **Format** |
-| ---------- |
-| delete INDEX [TASKDETAILS] |
+    Format: delete INDEX [TASKDETAIL]
 
 > Alternative: choose the task showing in the list and type delete.<br>
 > Task index can be found in the panel List on the left side of myPotato.<br>
@@ -218,10 +198,7 @@ Examples:
 
 Need an efficient way to remove all tasks? Simply enter `clear` to remove the entire list of tasks.
 
-
-| **Format** |
-| ---------- |
-| `clear` |
+    Format: clear
 
 > This command allows you to clear your tasks when you do not need them anymore.
 
@@ -229,10 +206,7 @@ Need an efficient way to remove all tasks? Simply enter `clear` to remove the en
 
 Accidentally removed your task? Fret not, simply enter the `undo` command to revert your changes.
 
-
-| **Format** |
-| ---------- |
-| `undo` |
+    Format:  undo
 
 > This command will undo the previous add/delete command which you had entered. 
 > Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.  
@@ -241,10 +215,7 @@ Accidentally removed your task? Fret not, simply enter the `undo` command to rev
 
 Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently.
 
-
-| **Format** |
-| ---------- |
-| `save FILEPATH` |
+    Format: save FILEPATH
 
 Examples:
 
@@ -256,10 +227,7 @@ Examples:
 
 Specify a valid xml file to load into myPotato.
 
-
-| **Format** |
-| ---------- |
-| `open FILEPATH` |
+    Format: open FILEPATH
 
 Examples:
 
@@ -269,10 +237,7 @@ Examples:
 
 To exit the program, simply type `exit`.
 
-
-| **Format** |
-| ---------- |
-| `exit` |
+    Format: exit
 
 > This command will allow you to exit and save your previous changes.
 
