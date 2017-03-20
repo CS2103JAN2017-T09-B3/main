@@ -127,11 +127,7 @@ Format: `Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/
 
 ##### Note: Formats of DATE and TIME are the same as add command
 
-###### Edits the task at the specified INDEX. 
-###### The index refers to the index number shown in the last task listing.
-###### Existing values will be updated to the input values. 
-###### When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-###### You can remove all the task's tags by typing t/ without specifying any tags after it.
+###### Edits the task at the specified INDEX. The index refers to the index number shown in the last task listing. Existing values will be updated to the input values. When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative. You can remove all the task's tags by typing t/ without specifying any tags after it.
 
 Examples:
 *  edit 1  d/22/03<br>
