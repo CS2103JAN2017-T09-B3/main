@@ -37,7 +37,7 @@ In this guide, we will guide you through all the features by the following list.
 | 3. [List all Tasks](#list-all-tasks--list) |
 | 4. [Select Task](#select-task--select) |
 | 5. [Edit Task](#edit-task--edit) |
-| 6. [Find Task](#find-tasks--find) |
+| 6. [Find Tasks](#find-tasks--find) |
 | 7. [Delete Task](#delete-task--delete) |
 | 8. [Clear all Tasks](#clear-all-tasks--clear) |
 | 9. [Undo a Previous Command](#undo-a-previous-command--undo) |
@@ -192,7 +192,7 @@ Examples:
 
 #### Delete Task : `delete`
 
-To use the delete command, the input should be in the following format: `delete INDEX`
+If you have completed the task or need to delete unwanted task, simply input the `delete` command.
 
 
 | **Format** |
@@ -216,7 +216,7 @@ Examples:
   
 #### Clear all Tasks : `clear`
 
-To use the clear command, the input should be in the following format: `clear`
+Need an efficient way to remove all tasks? Simply enter `clear` to remove the entire list of tasks.
 
 
 | **Format** |
@@ -227,7 +227,7 @@ To use the clear command, the input should be in the following format: `clear`
 
 #### Undo a Previous Command : `undo` 
 
-To use the undo command, the input should be in the following format: `undo`
+Accidentally removed your task? Fret not, simply enter the `undo` command to revert your changes.
 
 
 | **Format** |
@@ -239,7 +239,7 @@ To use the undo command, the input should be in the following format: `undo`
 
 #### Save TaskList : `save`
 
-To save the current task list in a specific filepath, the input should be in the following format:
+Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently.
 
 
 | **Format** |
@@ -254,7 +254,7 @@ Examples:
 
 #### Open TaskList : `open`
 
-To open a task list from a specific filepath, the input should be in the following format: 
+Specify a valid xml file to load into myPotato.
 
 
 | **Format** |
@@ -267,7 +267,7 @@ Examples:
 
 #### Exit program : `exit`
 
-To use the exit command, the input should be in the following format: `exit`
+To exit the program, simply type `exit`.
 
 
 | **Format** |
@@ -307,9 +307,9 @@ To use the exit command, the input should be in the following format: `exit`
 | |e.g. `clear` |
 | [Undo](#undo-a-previous-command--undo)| `undo`   |
 | |e.g. `undo` |
-| [Save](#save-tasklist--save)| `save` |
-| |e.g. `save` |
-| [Open](#open-tasklist--open) | `open` |
-| |e.g. `open` |
+| [Save](#save-tasklist--save)| `save FILEPATH` |
+| |e.g. `save C:\CS2103\Project\myPotato.xml` |
+| [Open](#open-tasklist--open) | `open FILEPATH` |
+| |e.g. `open C:\CS2103\Project\myPotato.xml` |
 | [Exit](#exit-program--exit)| `exit`|
 | |e.g. `exit` |
