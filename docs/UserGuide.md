@@ -137,14 +137,16 @@ Examples:
 In addition, you can simply find a specific task by entering the find command accompanied with the task name of due date in the following 
 format: `find KEYWORD [MORE_KEYWORDS]` <br>
 
-###### The keyword is case sensitive. <br>
+However, do take not of the following:
+
+###### 1) The keyword is case sensitive. <br>
 e.g `project` will not match `Project`<br>
-###### The order of the keywords does not matter. <br>
+###### 2) The order of the keywords does not matter. <br>
 e.g. `Meeting Project` will match `Project Meeting`<br>
-###### Search can based on task name, date or tags.<br>
-###### Only complete word will be matched  <br>
+###### 3) Search can based on task name, date or tags.<br>
+###### 4) Only complete word will be matched  <br>
 e.g. `Project` will not match `Projects`<br>
-###### Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
+###### 5) Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
 e.g. `Project` will match `Project Meeting`
 
 Examples:
