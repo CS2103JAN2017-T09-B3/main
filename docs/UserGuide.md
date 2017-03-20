@@ -17,7 +17,7 @@ MyPotato is a user-friendly task scheduler which helps users to better manage th
 1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
 2. Download and install the latest version of myPotato.
 3. Double-click the icon to start myPotato. The GUI should appear in a few seconds.
-   > <img src="images/Ui.png" width="600">
+   > <img src="images/MyPotato-1.PNG" width="600">
 4. Type the command in the command line and press <kbd>Enter</kbd> to execute it. <br>
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
 5. Refer to the [Features](#2-features) section below for details of each command.<br>
