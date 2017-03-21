@@ -7,6 +7,12 @@ import java.util.Optional;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
+//@@author A0144895N
+/**
+ * Makes a date object of type {@code DateValue} from given input string of all forms specified in
+ * {@code DATE_FORMATS} and {@code TIME_FORMATS}
+ * Date and time can be in any order
+ */
 public class DateMaker {
 
     private static final String[] DATE_FORMATS = { "dd/MM/yyyy", "dd/MM/yy", "dd/MM", "dd-MM-yyyy", "dd-MM-yy", "dd-MM",
@@ -24,6 +30,10 @@ public class DateMaker {
         resetMaker();
     }
 
+    /**
+     * Input string can be empty. In this case, the date object is null
+     * @throws IllegalValueException: given input string is not in supported format
+     */
     public void makeDate(String dateString) throws IllegalValueException {
         resetMaker();
         if (dateString.equals("")) {
@@ -57,6 +67,9 @@ public class DateMaker {
         }
     }
 
+    /**
+     * Makes date object containing both date and time information
+     */
     private Optional<DateWithTime> makeAsDateWithTime(String dateString) {
         for (String dateFormat : DATE_FORMATS) {
             for (String timeFormat : TIME_FORMATS) {
@@ -82,6 +95,9 @@ public class DateMaker {
         return Optional.empty();
     }
 
+    /**
+     * Makes date object containing only date information
+     */
     private Optional<DateWithoutTime> makeAsDateWithoutTime(String dateString) {
         for (String dateFormat : DATE_FORMATS) {
             SimpleDateFormat df = new SimpleDateFormat(dateFormat);
@@ -96,6 +112,9 @@ public class DateMaker {
         return Optional.empty();
     }
 
+    /**
+     * Makes date object containing only time information
+     */
     private Optional<DateWithTime> makeAsTimeOnly(String dateString) {
         for (String timeFormat : TIME_FORMATS) {
             SimpleDateFormat df = new SimpleDateFormat(timeFormat);
@@ -110,12 +129,18 @@ public class DateMaker {
         return Optional.empty();
     }
 
+    /**
+     * Sets year of this date object to be the current year if the date object containing only time information
+     */
     private void refineYear() {
         if (this.date.getYear() < OLDEST_YEAR) {
             this.date.setYear(getCurrentTime().getYear());
         }
     }
 
+    /**
+     * Returns a date object representing current date time
+     */
     public DateValue getCurrentTime() {
         Date current = new Date();
         return new DateWithTime(current);

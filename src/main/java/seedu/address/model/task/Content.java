@@ -2,6 +2,8 @@ package seedu.address.model.task;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
+
+//@@author A0144895N - reused
 /**
  * Represents a Task's content in the task manager.
  * Guarantees: immutable; is valid as declared in {@link #isValidContent(String)}

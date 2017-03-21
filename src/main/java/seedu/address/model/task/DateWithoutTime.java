@@ -3,6 +3,11 @@ package seedu.address.model.task;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//@@author A0144895N
+/**
+* Represents a deadline with only date
+* Trying to get time information from this date object will get -1
+*/
 public class DateWithoutTime extends DateValue {
 
     private String value;
@@ -94,6 +99,9 @@ public class DateWithoutTime extends DateValue {
         return this.value;
     }
 
+    /**
+     * updates string representing date when changing date and time value
+     */
     private void updateStringValue() {
         SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm");
         this.value = df.format(date);

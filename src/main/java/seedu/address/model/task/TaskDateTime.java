@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
+//@@author A0144895N
 /**
  * Represents a Task's due date in the task manager. Guarantees: immutable; is
  * valid as declared in {@link #isValidDate(String)}
@@ -42,12 +43,18 @@ public class TaskDateTime {
         }
     }
 
+    /*
+     * Returns true if start date comes before end date or there is no either start date or end date
+     */
     private boolean isValidStartAndEndDateTime() {
         return ((!isThereStartDateTime() || (!isThereEndDateTime())
                 || isThereStartDateTime() && isThereEndDateTime()
                 && this.startDateTime.getFullDate().before(this.endDateTime.getFullDate())));
     }
 
+    /*
+     * Assigns date of end date to start date if start date has only time
+     */
     private void alignStartWithEndDateTime() {
         if (isThereStartDateTime() && isThereEndDateTime() && this.startDateTime.getYear() < DateMaker.OLDEST_YEAR) {
             this.startDateTime.setDate(this.endDateTime.getDate());
@@ -56,10 +63,16 @@ public class TaskDateTime {
         }
     }
 
+    /**
+     * Returns true if the start time is not null
+     */
     public boolean isThereStartDateTime() {
         return this.startDateTime != null;
     }
 
+    /**
+     * Returns true if the end time is not null
+     */
     public boolean isThereEndDateTime() {
         return this.endDateTime != null;
     }
