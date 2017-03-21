@@ -203,7 +203,7 @@ Need an efficient way to remove all tasks? Simply enter `clear` to remove the en
 
 > This command allows you to clear your tasks when you do not need them anymore.
 
-#### Undo a Previous Command : `undo` 
+#### Undo a Previous Command : `undo`
 
 Accidentally removed your task? Fret not, simply enter the `undo` command to revert your changes.
 
