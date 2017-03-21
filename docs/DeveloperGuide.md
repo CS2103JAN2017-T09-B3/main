@@ -58,9 +58,9 @@ _Figure 2.2.1 : Architecture Diagram_
 6. Tick and select `files from packages`, click `Change...`, and select the `resources` package
 7. Click OK twice. Rebuild project if prompted
 
-> Note: 
+> Note:
 > In step 6, click on `files from packages` in order to enable the `Change...` button
-> Right click on the project (in Eclipse package explorer) to activate Checkstyle, 
+> Right click on the project (in Eclipse package explorer) to activate Checkstyle,
 choose Checkstyle > Activate Checkstyle
 
 ### 2.4. Troubleshooting project setup
@@ -91,7 +91,7 @@ _Figure 3.1.1 : Architecture Diagram_
 The **_Architecture Diagram_** given above explains the high-level design of myPotato.
 Given below is a quick overview of each component.
 
-> Tip: 
+> Tip:
 > The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
 > To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
@@ -113,7 +113,7 @@ Two of those classes play important roles at the architecture level.
 * The [**`Model`**](#34-model-component) represents a collection of classes that are independent from the 3 other main components and manages the in-memory data.
 * The [**`Storage`**](#35-storage-component) represents a collection of classes that writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
 
-Let’s dive into the 4 main components and observe how the classes are connected and the work flow of various events. For each of the main component,  
+Let’s dive into the 4 main components and observe how the classes are connected and the work flow of various events. For each of the main component:
 
 * The API in an `interface` is defined with the same name as the Component.
 * The functionality is managed by using a `{Component Name}Manager` class.
@@ -376,7 +376,7 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | see a list of tasks I have done in a certain day | track the progress
 `* *` | user | duplicate a task | duplicate a task conveniently
 `* *` | user | delete many tasks at once | save time
-`* *` | user | pin my tasks | take note of the most important tasks 
+`* *` | user | pin my tasks | take note of the most important tasks
 `* *` | user | categorize my task | find my task conveniently
 `* *` | user | search task by task name| find a specific task without scrolling
 `* *` | user | advanced command suggestion | know what format to follow without referring to the command list
@@ -385,7 +385,7 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | have a login function | have privacy
 `* *` | user | have an auto complete feature | save my time typing
 `* *` | user | use the task manager anywhere | access it as and when I want.
-`* *` | user | add a tag to a task | group my tasks 
+`* *` | user | add a tag to a task | group my tasks
 `*` | user | export the list of my tasks | send it to another user
 `*` | user | set my profile picture | feel more personal
 `*` | user | option to turn off the task reminder | choose not be prompted again after I have accomplished my task
