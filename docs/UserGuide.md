@@ -67,7 +67,7 @@ The earliest deadline will appear at the top of the list and floating tasks at t
 
 ### Help : `help`
 
-After Launching the application, if you need a cheatsheet of the command formats, MyPotato has a help function that displays the list of the commands. Simply enter “help” command for more information.
+After Launching the application, if you need a cheatsheet of the command formats, MyPotato has a help function that displays the list of the commands. Simply enter `help` command for more information.
 
     Format: help
 
@@ -83,8 +83,8 @@ You can add a task with or without deadline. Upon adding a task, the content of 
 However, do take note of the following:
 
 > TITLE is the name of a task <br>
-> DATE can be in different formats 
-               
+> DATE can be in different formats
+
       dd/MM/yyyy (e.g 15/3/2017)
       dd/MM/yy (e.g 15/3/17)
       dd/MM: year will be specified as current year (e.g 15/3)
@@ -93,12 +93,12 @@ However, do take note of the following:
       dd-MM: year will be specified as current year (e.g 15-3)
       dd MMM: year will be specified as current year (e.g 15 Mar)
 
-> TIME can be in different formats 
-      
+> TIME can be in different formats
+
       HH:mm (e.g 12:15)
       HH :mm am/pm (e.g 9:15pm)
       HH am/pm (e.g 10am)
-    
+
 
       Examples:
       add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
@@ -122,11 +122,10 @@ When you need the content to a specific task, you can use the select command to 
 > The INDEX refers to the index number shown in the most recent listing<br>
 
     Examples:
-    
     list
     select 2
     Select the 2nd task
-    
+
     find Project
     select 1
     Select the 1st task from the results returned from the find command
@@ -140,10 +139,9 @@ You can update any part of a task using edit command. The formats of DATE and TI
 > Edit the task at the specified INDEX. The index refers to the index number shown in the last task listing. Existing values will be updated to the input values. When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative. You can remove all the task's tags by typing t/ without specifying any tags after it.
 
     Examples:
-
     edit 1  d/22/03
     Edits the due date of the 1st task to be 22/03
-    
+
     edit 2 Project meeting t/LT1
     Edits the 2nd task to Project meeting and add hashtag LT1
 
@@ -171,10 +169,9 @@ However, do take note of the following:
 > e.g. `Project` will match `Project Meeting`
 
     Examples:
-
     find Meeting
     Returns Project Meeting
-    
+
     find 23/03
     Returns Any task due by 23/03
 
@@ -187,18 +184,17 @@ If you have completed the task or need to delete unwanted task, simply input the
 > Alternative: choose the task showing in the list and type delete.<br>
 > Task index can be found in the panel List on the left side of myPotato.<br>
 > Input the corresponding index number to delete the targeted task.<br>
-> If there is any deadline you need to remove from a task, simply key in “deadline” after the index.
+> If there is any deadline you need to remove from a task, simply key in `deadline` after the index.
 
     Examples:
-
     list
     delete 2
     Deletes the 2nd task
-  
+
     find Project
     delete 1
     Deletes the 1st task from the results of the `find` command
-  
+
 #### Clear all Tasks : `clear`
 
 Need an efficient way to remove all tasks? Simply enter `clear` to remove the entire list of tasks.
@@ -207,14 +203,14 @@ Need an efficient way to remove all tasks? Simply enter `clear` to remove the en
 
 > This command allows you to clear your tasks when you do not need them anymore.
 
-#### Undo a Previous Command : `undo` 
+#### Undo a Previous Command : `undo`
 
 Accidentally removed your task? Fret not, simply enter the `undo` command to revert your changes.
 
     Format:  undo
 
-> This command will undo the previous add/delete command which you had entered. 
-> Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.  
+> This command will undo the previous add/delete command which you had entered.
+> Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.
 
 #### Save TaskList : `save`
 
@@ -223,7 +219,6 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
     Format: save FILEPATH
 
     Examples:
-
     save C:\CS2103\Project
     save C:\CS2103\Project\myPotato
     save C:\CS2103\Project\myPotato.xml
@@ -235,7 +230,6 @@ Specify a valid xml file to load into myPotato.
     Format: open FILEPATH
 
     Examples:
-
     open C:\CS2103\Project\taskmanager.xml
 
 #### Exit program : `exit`
