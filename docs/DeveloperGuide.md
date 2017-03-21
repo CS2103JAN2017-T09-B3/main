@@ -18,7 +18,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 
 ## 1. Introduction
 
-MyPotato is a task manager which provides a platform for users to organize their tasks efficiently. Our objective is to create a user interface that allows the user to manage their tasks conveniently with minimal use of a mouse. 
+MyPotato is a task manager which provides a platform for users to organize their tasks efficiently. Our objective is to create a user interface that allows the user to manage their tasks conveniently with minimal use of a mouse.
 
 The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to responding with a feedback.
 
@@ -41,7 +41,7 @@ The purpose of this guide is to aid the developer in enhancing the application a
    in the prerequisites above)
 3. Click `File` > `Import`
 4. Click `Gradle` > `Existing Gradle Project` > `Next` > `Next`
-   
+
 <img src="images/ImportGradle.png" width="600"><br>
 _Figure 2.2.1 : Architecture Diagram_
 
@@ -186,7 +186,7 @@ _Figure 3.3.1 : Structure of the Logic Component_
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
  API call.<br>
- 
+
 <img src="images/DeletePersonSdForLogic.png" width="800"><br>
 _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Command_
 
@@ -220,7 +220,7 @@ The `Storage` component:
 
 * UserPrefsStorage can save `UserPref` objects in json format and read it upon opening myPotato.
 * TaskManagerStorage can save the Task Manager data in xml format and read it upon opening myPotato.
-.
+
 
 ### 3.6. Common classes
 
@@ -384,7 +384,7 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | sync with google calendar | use a calendar to schedule my tasks.
 `* *` | user | have a login function | have privacy
 `* *` | user | have an auto complete feature | save my time typing
-`* *` | user | use the task manager anywhere | access it as and when I want. 
+`* *` | user | use the task manager anywhere | access it as and when I want.
 `* *` | user | add a tag to a task | group my tasks 
 `*` | user | export the list of my tasks | send it to another user
 `*` | user | set my profile picture | feel more personal
@@ -477,7 +477,7 @@ Use case ends.
 
 > 3a1. myPotato shows an error message<br>
   Use case resumes at Step 2
- 
+
 ####Use case: Undo a task
 
 **MSS**
@@ -494,7 +494,7 @@ Use case ends.
 
 > 2a1. myPotato shows an error message
   Use case resumes at step 2
-  
+
 ####Use case: Setting Priority
 
 **MSS**
@@ -511,7 +511,7 @@ Use case ends.
 
 > 2a1. myPotato shows an error message
   Use case resumes at step 2
-  
+
 3a. the list is empty
 
 > Use case ends
@@ -546,7 +546,7 @@ Author: Tang Di Feng
 
 Pros:
 
-* Email and Calendar features. 
+* Email and Calendar features.
 * Sync Email directly into Calendar. Jim will be able to schedule his tasks.
 * Integrated search function for finding emails, contacts, date. Jim will be able to find a specific task.
 * Portable
@@ -601,15 +601,15 @@ Cons
 
 Author: Zhang Yan Hao
 
-Pros: 
-      
+Pros:
+
 * HiTask has data backup, I think this feature is suitable for Jim,
 * since Jim is a forgetful person, he might delete some important task accidentally.
 * HiTask can sync with google calendar, I think this is useful since Jim may have plenty tasks,
 * he might need to rely heavily on google calendar to help him organize his schedule.
 * HiTask is easy to use, available in office, at home and on the road. I think this is useful for Jim,
 * Jim is a busy man, so he might use his free time like on his way to work or back home to check his schedule.
- 
+
 Cons:
 
 * HiTask is a team project management and task collaboration, I think this feature is not suitable for Jim,

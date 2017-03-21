@@ -213,7 +213,7 @@ public class MainWindow extends UiPart<Region> {
      * Allows the user to select/create a file to save to.
      */
     @FXML
-    public CommandResult handleSaveAs() throws CommandException{
+    public CommandResult handleSaveAs() throws CommandException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                                                         "XML files (*.xml)", "*.xml");
@@ -227,7 +227,7 @@ public class MainWindow extends UiPart<Region> {
     }
 
     @FXML
-    public CommandResult handleOpen() throws CommandException{
+    public CommandResult handleOpen() throws CommandException {
         FileChooser fileChooser = new FileChooser();
 
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
