@@ -59,11 +59,11 @@ public class MainApp extends Application {
 
         initLogging(config);
 
-        model = initModelManager(storage, userPrefs);
+        model = initModelManager(storage, userPrefs, config);
 
         logic = new LogicManager(model, storage);
 
-        ui = new UiManager(logic, config, userPrefs, model);
+        ui = new UiManager(logic, config, userPrefs);
 
         initEventsCenter();
     }
@@ -73,7 +73,7 @@ public class MainApp extends Application {
         return applicationParameters.get(parameterName);
     }
 
-    private Model initModelManager(Storage storage, UserPrefs userPrefs) {
+    private Model initModelManager(Storage storage, UserPrefs userPrefs, Config config) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         try {
@@ -90,7 +90,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs, config);
     }
 
     private void initLogging(Config config) {

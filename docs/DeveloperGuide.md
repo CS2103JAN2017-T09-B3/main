@@ -20,7 +20,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 
 ## 1. Introduction
 
-MyPotato is a task manager which provides a platform for users to organize their tasks efficiently. Our objective is to create a user interface that allows the user to manage their tasks conveniently with minimal use of a mouse. 
+MyPotato is a task manager which provides a platform for users to organize their tasks efficiently. Our objective is to create a user interface that allows the user to manage their tasks conveniently with minimal use of a mouse.
 
 The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to responding with a constructive feedback.
 
@@ -43,7 +43,7 @@ The purpose of this guide is to aid the developer in enhancing the application a
    in the prerequisites above)
 3. Click `File` > `Import`
 4. Click `Gradle` > `Existing Gradle Project` > `Next` > `Next`
-   
+
 <img src="images/ImportGradle.png" width="600"><br>
 _Figure 2.2.1 : Architecture Diagram_
 
@@ -60,9 +60,11 @@ _Figure 2.2.1 : Architecture Diagram_
 6. Tick and select `files from packages`, click `Change...`, and select the `resources` package
 7. Click OK twice. Rebuild project if prompted
 
-> Note: <br>
-> * In step 6, click on `files from packages` in order to enable the `Change...` button <br>
-> * Right click on the project (in Eclipse package explorer) to activate Checkstyle, choose Checkstyle > Activate Checkstyle
+
+> Note:<br>
+> In step 6, click on `files from packages` in order to enable the `Change...` button<br>
+> Right click on the project (in Eclipse package explorer) to activate Checkstyle,
+> choose Checkstyle > Activate Checkstyle
 
 ### 2.4. Troubleshooting project setup
 
@@ -87,7 +89,7 @@ _Figure 3.1.1 : Architecture Diagram_
 The **_Architecture Diagram_** given above explains the high-level design of myPotato.
 Given below is a quick overview of each component.
 
-> Tip: 
+> Tip:
 > The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
 > To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
@@ -110,6 +112,7 @@ Let’s dive into the 4 main components and observe how the classes are connecte
 * The [**`Model`**](#34-model-component) represents a collection of classes that are independent from the 3 other main components and manages the in-memory data.
 * The [**`Storage`**](#35-storage-component) represents a collection of classes that writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
 
+Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 For each of the main component:
 
 * The [API](#api) in an `interface` is defined with the same name as the Component.
@@ -182,8 +185,9 @@ _Figure 3.3.1 : Structure of the Logic Component_
 4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui` reassuring the user that the command is executed.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
+
 [API](#api) call.<br>
- 
+
 <img src="images/DeletePersonSdForLogic.png" width="800"><br>
 _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Command_
 
@@ -218,7 +222,7 @@ The `Storage` component:
 
 * UserPrefsStorage can save `UserPref` objects in json format and read it upon opening myPotato.
 * TaskManagerStorage can save the Task Manager data in xml format and read it upon opening myPotato.
-.
+
 
 ### 3.6. Common classes
 
@@ -371,7 +375,7 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | see a list of tasks I have done in a certain day | track the progress
 `* *` | user | duplicate a task | duplicate a task conveniently
 `* *` | user | delete many tasks at once | save time
-`* *` | user | pin my tasks | take note of the most important tasks 
+`* *` | user | pin my tasks | take note of the most important tasks
 `* *` | user | categorize my task | find my task conveniently
 `* *` | user | search task by task name| find a specific task without scrolling
 `* *` | user | advanced command suggestion | know what format to follow without referring to the command list
@@ -379,8 +383,8 @@ Priority | As a ... | I want to ... | So that I can...
 `* *` | user | sync with google calendar | use a calendar to schedule my tasks.
 `* *` | user | have a login function | have privacy
 `* *` | user | have an auto complete feature | save my time typing
-`* *` | user | use the task manager anywhere | access it as and when I want. 
-`* *` | user | add a tag to a task | group my tasks 
+`* *` | user | use the task manager anywhere | access it as and when I want.
+`* *` | user | add a tag to a task | group my tasks
 `*` | user | export the list of my tasks | send it to another user
 `*` | user | set my profile picture | feel more personal
 `*` | user | option to turn off the task reminder | choose not be prompted again after I have accomplished my task
@@ -472,7 +476,7 @@ Use case ends.
 
 > 3a1. myPotato shows an error message<br>
   Use case resumes at Step 2
- 
+
 ####Use case: Undo a task
 
 **MSS**
@@ -489,7 +493,7 @@ Use case ends.
 
 > 2a1. myPotato shows an error message
   Use case resumes at step 2
-  
+
 ####Use case: Setting Priority
 
 **MSS**
@@ -506,7 +510,7 @@ Use case ends.
 
 > 2a1. myPotato shows an error message
   Use case resumes at step 2
-  
+
 3a. the list is empty
 
 > Use case ends
@@ -547,7 +551,7 @@ Author: Tang Di Feng
 
 Pros:
 
-* Email and Calendar features. 
+* Email and Calendar features.
 * Sync Email directly into Calendar. Jim will be able to schedule his tasks.
 * Integrated search function for finding emails, contacts, date. Jim will be able to find a specific task.
 * Portable
@@ -602,15 +606,15 @@ Cons
 
 Author: Zhang Yan Hao
 
-Pros: 
-      
+Pros:
+
 * HiTask has data backup, I think this feature is suitable for Jim,
 * since Jim is a forgetful person, he might delete some important task accidentally.
 * HiTask can sync with google calendar, I think this is useful since Jim may have plenty tasks,
 * he might need to rely heavily on google calendar to help him organize his schedule.
 * HiTask is easy to use, available in office, at home and on the road. I think this is useful for Jim,
 * Jim is a busy man, so he might use his free time like on his way to work or back home to check his schedule.
- 
+
 Cons:
 
 * HiTask is a team project management and task collaboration, I think this feature is not suitable for Jim,

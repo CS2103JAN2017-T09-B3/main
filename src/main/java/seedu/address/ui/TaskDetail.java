@@ -41,7 +41,7 @@ public class TaskDetail extends UiPart<Region> {
         placeholder.getChildren().addAll(getRoot());
     }
 
-    public void loadPersonPage(ReadOnlyTask task) {
+    public void loadTaskPage(ReadOnlyTask task) {
         labelTaskName.setTextFill(Color.CHOCOLATE);
         String taggings = "";
         title.setText(task.getTitle().toString());
