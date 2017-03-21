@@ -222,7 +222,7 @@ public class MainWindow extends UiPart<Region> {
         File file = fileChooser.showSaveDialog(primaryStage);
 
         logic.execute(COMMAND_SAVE + file.getAbsolutePath());
-        new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
+        updateStatusBarFooter();
         return new CommandResult(MESSAGE_SUCCESS_SAVE + file.getName());
     }
 
@@ -236,8 +236,12 @@ public class MainWindow extends UiPart<Region> {
 
         File file = fileChooser.showOpenDialog(primaryStage);
         logic.execute(COMMAND_OPEN + file.getAbsolutePath());
-        new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
+        updateStatusBarFooter();
         return new CommandResult(file.getName() + MESSAGE_SUCCESS_OPEN);
+    }
+
+    void updateStatusBarFooter() {
+        new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
     }
 
     /**
