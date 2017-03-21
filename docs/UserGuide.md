@@ -4,20 +4,56 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 
 ---
 
+### Quick Links
+
 1. [Quick Start](#1-quick-start)
 2. [Features](#2-features)
 3. [FAQ](#3-faq)
 4. [Command Summary](#4-command-summary)
+
+
+### Welcome to MyPotato
+
+MyPotato is a user-friendly task scheduler which helps users to better manage their daily tasks.<br>
+This application allows input and editing of tasks using an easy to use command line interface suitable for users of all technical background.
+
 
 ## 1. Quick Start
 
 1. Ensure you have Java version `1.8.0_60` or later installed in your Computer.<br>
 2. Download and install the latest version of myPotato.
 3. Double-click the icon to start myPotato. The GUI should appear in a few seconds.
-   > <img src="images/UIss.png" width="600">
+   > <img src="images/MyPotato-1.PNG" width="600">
 4. Type the command in the command line and press <kbd>Enter</kbd> to execute it. <br>
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
 5. Refer to the [Features](#2-features) section below for details of each command.<br>
+
+### Getting Started
+
+In this guide, we will guide you through all the features by the following list.
+
+
+| **Features** |
+| ---------- |
+| 1. [Help](#help--help) |
+| 2. [Add Task](#add-task--add) |
+| 3. [List all Tasks](#list-all-tasks--list) |
+| 4. [Select Task](#select-task--select) |
+| 5. [Edit Task](#edit-task--edit) |
+| 6. [Find Tasks](#find-tasks--find) |
+| 7. [Delete Task](#delete-task--delete) |
+| 8. [Clear all Tasks](#clear-all-tasks--clear) |
+| 9. [Undo a Previous Command](#undo-a-previous-command--undo) |
+| 10. [Save TaskList](#save-tasklist--save) |
+| 11. [Open TaskList](#open-tasklist--open) |
+| 12. [Exit Program](#exit-program--exit) |
+
+### Launch
+
+You can start the day by opening MyPotato to view the tasks to be completed for the current day.<br>
+
+Note: Mypotato can help you to automatically sort your tasks according to their deadlines.<br>
+The earliest deadline will appear at the top of the list and floating tasks at the bottom.
 
 
 ## 2. Features
@@ -29,188 +65,221 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 > * Items with `...` after them can have multiple instances.
 > * Parameters can be in any order.
 
-### 2.1. Viewing help : `help`
+### Help : `help`
 
-Format: `help`
+After Launching the application, if you need a cheatsheet of the command formats, MyPotato has a help function that displays the list of the commands. Simply enter “help” command for more information.
+
+    Format: help
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
-### 2.2. Adding a task: `add`
 
-Adds a task to the task list.<br>
-Format: `add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
-Format: `add TITLE d/[CONTENT] by/[DATE] [TIME] [#tags]`
+### Add Task : `add`
+You can add a task with or without deadline. Upon adding a task, the content of the task will be displayed on the right window for your verification. <br>
 
-> Tasks can have any number of tags (including 0)
+    Format: add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] #[tags]
+            add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]
 
-Examples:
+However, do take note of the following:
 
-* `add t/CS2103 meeting d/03/03 #Programming Lab 2`
+> TITLE is the name of a task <br>
+> DATE can be in different formats 
+               
+      dd/MM/yyyy (e.g 15/3/2017)
+      dd/MM/yy (e.g 15/3/17)
+      dd/MM: year will be specified as current year (e.g 15/3)
+      dd-MM-yyyy (e.g 15-3-2017)
+      dd-MM-yy (e.g 15-3-17)
+      dd-MM: year will be specified as current year (e.g 15-3)
+      dd MMM: year will be specified as current year (e.g 15 Mar)
 
-### 2.3. Listing all tasks : `list`
+> TIME can be in different formats 
+      
+      HH:mm (e.g 12:15)
+      HH :mm am/pm (e.g 9:15pm)
+      HH am/pm (e.g 10am)
+    
 
-Shows a list of all tasks in the task list.<br>
-Format: `list`
+      Examples:
+      add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
-### 2.4. Editing a task: `edit`
 
-Edits an existing task in the task list. <br>
-Format: `edit INDEX TITLE d/CONTENT from/[DATE] [TIME] to/[DATE] [TIME] [#tags]`<br>
-Format: `edit INDEX TITLE d/CONTENT by/[DATE] [TIME] [#tags]`
+#### List all Tasks : `list`
 
-> Edits the person at the specified INDEX. 
-> The index refers to the index number shown in the last person listing.
-> The index must be a positive integer 1, 2, 3, ...
-> Existing values will be updated to the input values.
-> When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-> You can remove all the person's tags by typing t/ without specifying any tags after it.
+After adding the tasks you need, you can track them using the list command.<br>
 
-Examples:
-*  edit 1  d/22/03<br>
-   Edits the due date of the 1st task to be 22/03.
-*  edit 2 Project meeting t/LT1<br>
-   Edits the 2nd task to Project meeting and add hashtag LT1.
+    Format: list
 
-### 2.5. Finding all tasks containing any keyword in their title or due dates: `find`
 
-Find all tasks containing any of the given keywords or due by given date.<br>
-Format: `find KEYWORD [MORE_KEYWORDS]`
+#### Select Task : `select`
 
-> * The keyword is case sensitive. e.g `project` will not match `Project`
-> * The order of the keywords does not matter. e.g. `Meeting Project` will match `Project Meeting`
-> * Search can based on task name, date or tags.
-> * Only complete word will be matched e.g. `Project` will not match `Projects`
-> * Tasks matching at least one keyword will be returned (i.e. `OR` search).
-    e.g. `Project` will match `Project Meeting`
+When you need the content to a specific task, you can use the select command to select the task from the list. <br>
 
-Examples:
+    Format: select INDEX
 
-* `find Meeting`<br>
-  Returns `Project Meeting`
-* `find 23/03`<br>
-  Returns Any task due by `23/03`.
+> Alternative: click to the task in the showing list <br>
+> Select the task and display all details at the specified `INDEX`<br>
+> The INDEX refers to the index number shown in the most recent listing<br>
 
-### 2.6. Deleting a task : `delete`
+    Examples:
+    
+    list
+    select 2
+    Select the 2nd task
+    
+    find Project
+    select 1
+    Select the 1st task from the results returned from the find command
 
-Deletes the specified task from the task list. <br>
-Format: `delete INDEX`
+#### Edit Task : `edit`
 
-> Alternative: choose the task showing in the list. Type delete
+You can update any part of a task using edit command. The formats of DATE and TIME are the same as add command <br>
 
-> Deletes the task at the specified `INDEX`. <br>
-> The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
+    Format: Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]
 
-Examples:
+> Edit the task at the specified INDEX. The index refers to the index number shown in the last task listing. Existing values will be updated to the input values. When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative. You can remove all the task's tags by typing t/ without specifying any tags after it.
 
-* `list`<br>
-  `delete 2`<br>
-  Deletes the 2nd task.
-* `find Project`<br>
-  `delete 1`<br>
-  Deletes the 1st task from the results of the `find` command.
+    Examples:
 
-### 2.7. Select a task : `select`
+    edit 1  d/22/03
+    Edits the due date of the 1st task to be 22/03
+    
+    edit 2 Project meeting t/LT1
+    Edits the 2nd task to Project meeting and add hashtag LT1
 
-Selects the task identified by the index number used in the last task listing.<br>
-Format: `select INDEX`
+#### Find Tasks : `find`
 
-> Alternative: click to the task in the showing list
+In addition, you can simply find tasks by entering the `find` command accompanied with keywords or numbers in their title, description and dates.
 
-> Select the task and display all details at the specified `INDEX`.<br>
-> The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
 
-Examples:
+    Format: find KEYWORD [MORE_KEYWORDS]
 
-* `list`<br>
-  `select 2`<br>
-  Selects the `2nd task`.
-* `find Project` <br>
-  `select 1`<br>
-  Selects the `1st task` from the results returned from the `find` command.
+However, do take note of the following:
+
+> The keyword is case sensitive. <br>
+> e.g `project` will not match `Project`<br>
+
+> The order of the keywords does not matter. <br>
+> e.g. `Meeting Project` will match `Project Meeting`<br>
+
+> Search can based on title, description or dates.<br>
+
+> Only complete word will be matched  <br>
+> e.g. `Project` will not match `Projects`<br>
+
+> Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
+> e.g. `Project` will match `Project Meeting`
+
+    Examples:
+
+    find Meeting
+    Returns Project Meeting
+    
+    find 23/03
+    Returns Any task due by 23/03
+
+#### Delete Task : `delete`
+
+If you have completed the task or need to delete unwanted task, simply input the `delete` command.
+
+    Format: delete INDEX [TASKDETAIL]
+
+> Alternative: choose the task showing in the list and type delete.<br>
+> Task index can be found in the panel List on the left side of myPotato.<br>
+> Input the corresponding index number to delete the targeted task.<br>
+> If there is any deadline you need to remove from a task, simply key in “deadline” after the index.
+
+    Examples:
+
+    list
+    delete 2
+    Deletes the 2nd task
   
-### 2.8. Clearing all tasks : `clear`
-
-Clears all entries from the current task list.
-Format: clear
-
-### 2.9. Exiting the program : exit
-
-Exits the program.
-Format: exit
-
-### 2.10. Saving the data
-
-Tasks data are saved in the hard disk automatically after any command that changes the data.
-There is no need to save manually.
+    find Project
+    delete 1
+    Deletes the 1st task from the results of the `find` command
   
-### 2.11. Undo previous command: `undo` 
+#### Clear all Tasks : `clear`
 
-Undo previous add/ delete command. <br>
-Format: `undo`
+Need an efficient way to remove all tasks? Simply enter `clear` to remove the entire list of tasks.
 
-### 2.12. Setting Priority: `priority`
+    Format: clear
 
-Set Priority for a task with 1 being the most important and 3 being the least important. <br>
-Format: `priority t/TASK p/RANK`
+> This command allows you to clear your tasks when you do not need them anymore.
 
-> The `task` refers to the title of the task and the `rank` refers to the ranking of priorities.
-> The index **must be a positive integer** 1, 2, or 3.
+#### Undo a Previous Command : `undo` 
 
-Examples:
+Accidentally removed your task? Fret not, simply enter the `undo` command to revert your changes.
 
-* `Priority t/meeting p/1`<br>
-   Mark the priority of meeting as most important
-* `Priority t/CS3230 assignment p/2`<br>
-   Mark the priority of CS3230 assignment as important
-* `Priority t/housework p/3`<br>
-   Mark the priority of housework as the least important
+    Format:  undo
 
-### 2.13. Create a list task: Newlist
+> This command will undo the previous add/delete command which you had entered. 
+> Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.  
 
- Create a new task list 
- Format: Newlist NAME
- 
- The name refers to name of the new task list.
- 
- Examples:
- 
- * `Newlist Sport`
-    Create a new list called Sport
- 
+#### Save TaskList : `save`
+
+Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently.
+
+    Format: save FILEPATH
+
+    Examples:
+
+    save C:\CS2103\Project
+    save C:\CS2103\Project\myPotato
+    save C:\CS2103\Project\myPotato.xml
+
+#### Open TaskList : `open`
+
+Specify a valid xml file to load into myPotato.
+
+    Format: open FILEPATH
+
+    Examples:
+
+    open C:\CS2103\Project\taskmanager.xml
+
+#### Exit program : `exit`
+
+To exit the program, simply type `exit`.
+
+    Format: exit
+
+> This command will allow you to exit and save your previous changes.
+
+
 ## 3. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
        the file that contains the data of your previous myPotato folder.
 
+
 ## 4. Command Summary
 
 | **Command** | **Format** |
-| ----------- | --------------- |
-| Help | `help` |
-| |e.g. ` help` |
-| Add  | `add t/TASK [d/task] [#tags]` |
-| |e.g. ` add t/CS2103 meeting d/03/03 #Programming Lab 2` |
-| Exit | `exit`|
-| |e.g. `exit` |
-| List  | `show a list of task list in the list task` |
-| |e.g. `list Homework` |
-| Newlist | `Newlist NAME` |
-| |e.g. `Newlist Sports` |
-| Edit | `edit INDEX [t/TASK] [d/DATE] [#tags]` |
-| |e.g. ` edit 1 t/CS2101 meeting d/04/03 #Progress Report` |
-| Find  | `find KEYWORD [MORE_KEYWORDS]` |
-| |e.g. ` find CS2101 meeting` |
-| |e.g. ` find #Programming Lab 2` |
-| Delete | `delete INDEX` |
-| |e.g. ` delete 3` |
-| Select | `select INDEX` |
-| |e.g.` select 2` |
-| Undo | `undo`   |
-| |e.g. `undo` |
-| Clear | `clear` |
-| |e.g. `clear` |
-| Priority | `priority t/TASK p/RANK` |
-| |e.g. ` priority t/Project Meeting p/1` |
+| ----------- | ---------- |
+| [Help](#help--help) | help |
+| | e.g. help |
+| [Add](#add-task--add) | add t/TASK [d/task] [#tags] |
+| | e.g. add t/CS2103 meeting d/03/03 #Programming Lab 2 |
+| [List](#list-all-tasks--list) | show a list of task list in the list task |
+| | e.g. list Homework |
+| [Select](#select-task--select) | select INDEX |
+| | e.g. select 2 |
+| [Edit](#edit-task--edit) | edit INDEX [t/TASK] [d/DATE] [#tags] |
+| | e.g. edit 1 t/CS2101 meeting d/04/03 #Progress Report |
+| [Find](#find-tasks--find) | find KEYWORD [MORE_KEYWORDS] |
+| | e.g. find CS2101 meeting |
+| | e.g. find #Programming Lab 2 |
+| [Delete](#delete-task--delete)| delete INDEX |
+| | e.g. ` delete 3` |
+| [Clear](#clear-all-tasks--clear)| clear |
+| | e.g. clear |
+| [Undo](#undo-a-previous-command--undo)| undo |
+| | e.g. `undo` |
+| [Save](#save-tasklist--save)| save FILEPATH |
+| | e.g. save C:\CS2103\Project\myPotato.xml |
+| [Open](#open-tasklist--open) | open FILEPATH |
+| | e.g. open C:\CS2103\Project\myPotato.xml |
+| [Exit](#exit-program--exit)| exit |
+| | e.g. exit |
