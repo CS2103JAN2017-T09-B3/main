@@ -17,7 +17,8 @@ public class UndoCommand extends Command {
     public static final String MESSAGE_FAIL = "No previous command found";
 
     private String prevCommand;
-
+    
+    @Override
     public CommandResult execute() {
 
         if (!model.getUndoStack().isEmpty()) {
@@ -82,3 +83,4 @@ public class UndoCommand extends Command {
     }
 
 }
+
