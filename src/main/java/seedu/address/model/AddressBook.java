@@ -52,7 +52,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
 
-    	//this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
+//this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
 
         this();
         resetData(toBeCopied);
@@ -101,7 +101,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         syncMasterTagListWith(tasks);
     }
 
-    public synchronized  void revertEmptyAddressBook(ReadOnlyAddressBook backUp) throws DuplicateTagException, DuplicateTaskException {
+    public synchronized  void revertEmptyAddressBook(ReadOnlyAddressBook backUp) throws
+                                                        DuplicateTagException, DuplicateTaskException {
         resetData(backUp.getTaskList(), backUp.getTagList());
     }
 

@@ -16,14 +16,14 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
  */
 public interface Model {
 
-	Stack<String> getUndoStack();
-	Stack<ReadOnlyTask> getDeletedStackOfTasksAdd();
-	Stack<ReadOnlyTask> getDeletedStackOfTasks();
-	Stack<Integer> getDeletedStackOfTasksIndex();
+    Stack<String> getUndoStack();
+    Stack<ReadOnlyTask> getDeletedStackOfTasksAdd();
+    Stack<ReadOnlyTask> getDeletedStackOfTasks();
+    Stack<Integer> getDeletedStackOfTasksIndex();
 
-	/** Clears existing backing model and replaces with the provided new data.
-	 * @throws DuplicateTaskException
-	 * @throws DuplicateTagException */
+    /** Clears existing backing model and replaces with the provided new data.
+     * @throws DuplicateTaskException
+     * @throws DuplicateTagException */
     void resetData(ReadOnlyAddressBook newData);
 
     /** Returns the AddressBook */

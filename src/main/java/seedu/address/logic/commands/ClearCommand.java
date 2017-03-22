@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
 import seedu.address.model.AddressBook;
-import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
-import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 /**
  * Clears the address book.
