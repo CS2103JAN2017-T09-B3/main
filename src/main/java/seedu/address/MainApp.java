@@ -61,7 +61,7 @@ public class MainApp extends Application {
 
         initLogging(config);
 
-        model = initModelManager(storage, userPrefs);
+        model = initModelManager(storage, userPrefs, config);
 
         logic = new LogicManager(model, storage);
 
@@ -75,7 +75,7 @@ public class MainApp extends Application {
         return applicationParameters.get(parameterName);
     }
 
-    private Model initModelManager(Storage storage, UserPrefs userPrefs) throws DuplicateTagException, DuplicateTaskException {
+    private Model initModelManager(Storage storage, UserPrefs userPrefs, Config config) throws DuplicateTagException, DuplicateTaskException {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         try {
@@ -92,7 +92,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs, config);
     }
 
     private void initLogging(Config config) {
@@ -192,4 +192,3 @@ public class MainApp extends Application {
         launch(args);
     }
 }
-
