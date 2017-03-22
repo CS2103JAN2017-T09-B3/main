@@ -113,7 +113,7 @@ After adding the tasks you need, you can track them using the list command.<br>
 
 #### Select Task : `select`
 
-When you need the content to a specific task, you can use the select command to select the task from the list. <br>
+When you need the content to a specific task, you can use the select command to select the task from the list.<br>
 
     Format: select INDEX
 
@@ -132,11 +132,15 @@ When you need the content to a specific task, you can use the select command to 
 
 #### Edit Task : `edit`
 
-You can update any part of a task using edit command. The formats of DATE and TIME are the same as add command <br>
+You can update any part of a task using edit command. The formats of DATE and TIME are the same as add command.<br>
 
     Format: Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]
 
-> Edit the task at the specified INDEX. The index refers to the index number shown in the last task listing. Existing values will be updated to the input values. When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative. You can remove all the task's tags by typing t/ without specifying any tags after it.
+> Edit the task at the specified INDEX<br>
+> The index refers to the index number shown in the last task listing<br>
+> Existing values will be updated to the input values<br>
+> When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative<br>
+> You can remove all the task's tags by typing t/ without specifying any tags after it
 
     Examples:
     edit 1  d/22/03
@@ -162,7 +166,7 @@ However, do take note of the following:
 
 > Search can based on title, description or dates.<br>
 
-> Only complete word will be matched  <br>
+> Only complete word will be matched.  <br>
 > e.g. `Project` will not match `Projects`<br>
 
 > Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
@@ -190,6 +194,10 @@ If you have completed the task or need to delete unwanted task, simply input the
     list
     delete 2
     Deletes the 2nd task
+    
+    list
+    delete 1 deadline
+    Deletes only the deadline of 1st task 
 
     find Project
     delete 1
@@ -265,8 +273,9 @@ To exit the program, simply type `exit`.
 | [Find](#find-tasks--find) | find KEYWORD [MORE_KEYWORDS] |
 | | e.g. find CS2101 meeting |
 | | e.g. find #Programming Lab 2 |
-| [Delete](#delete-task--delete)| delete INDEX |
+| [Delete](#delete-task--delete)| delete INDEX [TASKDETAIL] |
 | | e.g. ` delete 3` |
+| | e.g. ` delete 3 deadline` |
 | [Clear](#clear-all-tasks--clear)| clear |
 | | e.g. clear |
 | [Undo](#undo-a-previous-command--undo)| undo |
