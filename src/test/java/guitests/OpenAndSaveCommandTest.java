@@ -12,21 +12,21 @@ import seedu.address.testutil.TestTask;
 
 //files are automatically written to the saved location
 public class OpenAndSaveCommandTest extends AddressBookGuiTest {
-    private final String FILE_DIR = "data/";
-    private final String FILE_NAME = "data/taskmanager";
-    private final String FILE_ALTERNATE_NAME = "data/myPotato";
-    private final String FILE_XML_EXTENSION = ".xml";
+    public final String FILE_DIR = "data/";
+    public final String FILE_NAME = "data/taskmanager";
+    public final String FILE_ALTERNATE_NAME = "data/myPotato";
+    public final String FILE_XML_EXTENSION = ".xml";
 
     //Open and save files functionality
     @Test
     public void save_file() {
         assertSaveResult("save " + FILE_DIR, FILE_NAME);                     //Default filename: taskmanager.xml
-        assertOpenResult("open " + FILE_DIR, td.getTypicalTasks());                      // File Directory
-        assertSaveResult("save " + FILE_NAME, FILE_NAME);                                // without .xml
-        assertOpenResult("open " + FILE_NAME, td.getTypicalTasks());                     // without .xml
-        assertSaveResult("save " + FILE_NAME + FILE_XML_EXTENSION, FILE_NAME);           // with .xml
-        assertOpenResult("open " + FILE_NAME + FILE_XML_EXTENSION, td.getTypicalTasks());// with .xml
-        assertSaveResult("save " + FILE_ALTERNATE_NAME, FILE_ALTERNATE_NAME);//Ensure successful save, to be used for test cases
+        assertOpenResult("open " + FILE_DIR, td.getTypicalTasks());                       // File Directory
+        assertSaveResult("save " + FILE_NAME, FILE_NAME);                                 // without .xml
+        assertOpenResult("open " + FILE_NAME, td.getTypicalTasks());                      // without .xml
+        assertSaveResult("save " + FILE_NAME + FILE_XML_EXTENSION, FILE_NAME);            // with .xml
+        assertOpenResult("open " + FILE_NAME + FILE_XML_EXTENSION, td.getTypicalTasks()); // with .xml
+        assertSaveResult("save " + FILE_ALTERNATE_NAME, FILE_ALTERNATE_NAME); //Ensure successful save, to be used for test cases
     }
 
     //Save file, Delete and Open file to retrieve the saved data
@@ -53,12 +53,12 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
 
     //Ensure save functions properly
     private void assertSaveResult(String command, String filename) {
-        File FILE_TEST = new File(filename + FILE_XML_EXTENSION);
-        if(FileUtil.isFileExists(FILE_TEST)) {
-            FileUtil.deleteFile(FILE_TEST);
+        File testfile = new File(filename + FILE_XML_EXTENSION);
+        if (FileUtil.isFileExists(testfile)) {
+            FileUtil.deleteFile(testfile);
         }
         commandBox.runCommand(command);
-        assertTrue(FileUtil.isFileExists(FILE_TEST));
+        assertTrue(FileUtil.isFileExists(testfile));
     }
 
     //Ensure open functions properly
