@@ -85,4 +85,11 @@ public class FileUtil {
         return pathWithForwardSlash.replace("/", File.separator);
     }
 
+    /**
+     * Delete File
+     */
+    public static void deleteFile(File file) {
+        file.delete();
+    }
+
 }
