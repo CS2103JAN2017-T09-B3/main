@@ -12,16 +12,15 @@ import seedu.address.testutil.TestTask;
 
 //files are automatically written to the saved location
 public class OpenAndSaveCommandTest extends AddressBookGuiTest {
-    public final String FILE_DIR = "data/";
-    public final String FILE_NAME = "data/taskmanager";
-    public final String FILE_ALTERNATE_NAME = "data/myPotato";
-    public final String FILE_XML_EXTENSION = ".xml";
+    public static final String FILE_DIR = "data/";
+    public static final String FILE_NAME = "data/taskmanager";
+    public static final String FILE_ALTERNATE_NAME = "data/myPotato";
+    public static final String FILE_XML_EXTENSION = ".xml";
 
     // Open and save files functionality
     @Test
     public void save_file() {
-        assertSaveResult("save " + FILE_DIR, FILE_NAME); // Default filename:
-                                                         // taskmanager.xml
+        assertSaveResult("save " + FILE_DIR, FILE_NAME); // Default filename: taskmanager.xml
         assertOpenResult("open " + FILE_DIR, td.getTypicalTasks()); // FileDirectory
         assertSaveResult("save " + FILE_NAME, FILE_NAME); // without .xml
         assertOpenResult("open " + FILE_NAME, td.getTypicalTasks()); // without .xml
