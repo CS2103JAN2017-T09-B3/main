@@ -104,7 +104,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void updateTask(int index, ReadOnlyTask editedReadOnlyTask) throws UniqueTaskList.DuplicateTaskException {
         assert editedReadOnlyTask != null;
-
+        System.out.println("AddressBookupdateTask");
         Task editedTask = new Task(editedReadOnlyTask);
         syncMasterTagListWith(editedTask);
         // TODO: the tags master list will be updated even though the below line

@@ -4,7 +4,9 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 public class MarkAsDoneCommand extends Command {
 
@@ -16,6 +18,7 @@ public class MarkAsDoneCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_MARK_TASK_SUCCESS = "Marked Task as done: %1$s";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task manager";
 
     public final int targetIndex;
 
@@ -36,12 +39,15 @@ public class MarkAsDoneCommand extends Command {
 
         ReadOnlyTask taskToMark = lastShownList.get(targetIndex - 1);
 
-        try {
-            model.markTask(taskToMark);
-        } catch (TaskNotFoundException tnfe) {
-            System.out.println("Task not found");
+        try{
+        	this.markTask(taskToMark);
+        }catch (UniqueTaskList.DuplicateTaskException e) {
+        	throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
     }
-
+    public void markTask(ReadOnlyTask taskToMark) throws DuplicateTaskException{
+    	Task task = (Task) taskToMark;
+    	task.getStatus().setStatus(true);
+    }
 }

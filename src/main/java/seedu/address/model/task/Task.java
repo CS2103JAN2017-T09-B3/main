@@ -14,14 +14,14 @@ public class Task implements ReadOnlyTask {
     private Title title;
     private Content content;
     private TaskDateTime dateTime;
-    private boolean status;
+    private Status status;
 
     private UniqueTagList tags;
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Title title, Content content, TaskDateTime dateTime, UniqueTagList tags, boolean status) {
+    public Task(Title title, Content content, TaskDateTime dateTime, UniqueTagList tags, Status status) {
         assert !CollectionUtil.isAnyNull(title);
         this.title = title;
         this.content = content;
@@ -108,10 +108,10 @@ public class Task implements ReadOnlyTask {
     public String toString() {
         return getAsText();
     }
-    public void setStatus(boolean status){
+    public void setStatus(Status status){
     	this.status = status;
     }
-    public boolean getStatus(){
+    public Status getStatus(){
     	return status;
     }
 

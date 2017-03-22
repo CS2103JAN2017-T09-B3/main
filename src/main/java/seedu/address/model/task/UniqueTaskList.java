@@ -51,12 +51,12 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void updateTask(int index, ReadOnlyTask editedTask) throws DuplicateTaskException {
         assert editedTask != null;
-
+        System.out.println("UniqueupdateTask");
         Task taskToUpdate = internalList.get(index);
         if (!taskToUpdate.equals(editedTask) && internalList.contains(editedTask)) {
             throw new DuplicateTaskException();
         }
-
+        System.out.println("Resetting data");
         taskToUpdate.resetData(editedTask);
         // TODO: The code below is just a workaround to notify observers of the updated task.
         // The right way is to implement observable properties in the Task class.
@@ -152,27 +152,6 @@ public class UniqueTaskList implements Iterable<Task> {
         }
         return taskFoundAndMarked;
     }
-    //Mark a task as done
-    public void mark(Task toMark) {
-        assert toMark != null;
-        if (toMark.getStatus() == true) {
-        	System.out.println("The task has been marked as done already");
-        }
-        else {
-        toMark.setStatus(true);
-        }
-    }
-    //Mark a task as undone
-    public void unmark(Task toUnmark){
-    	assert toUnmark != null;
-        if (toUnmark.getStatus() == false) {
-        	System.out.println("The task has not been done yet");
-        }
-        else {
-        toUnmark.setStatus(false);
-        }
-    }
-
 }
 
 
