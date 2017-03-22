@@ -51,12 +51,12 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void updateTask(int index, ReadOnlyTask editedTask) throws DuplicateTaskException {
         assert editedTask != null;
-
+        System.out.println("UniqueupdateTask");
         Task taskToUpdate = internalList.get(index);
         if (!taskToUpdate.equals(editedTask) && internalList.contains(editedTask)) {
             throw new DuplicateTaskException();
         }
-
+        System.out.println("Resetting data");
         taskToUpdate.resetData(editedTask);
         // TODO: The code below is just a workaround to notify observers of the updated task.
         // The right way is to implement observable properties in the Task class.
@@ -130,7 +130,27 @@ public class UniqueTaskList implements Iterable<Task> {
      * there is no such matching task in the list.
      */
     public static class TaskNotFoundException extends Exception {}
-
+    
+    //Marks the equivalent task from the list.
+    //throws TaskNotFoundException if no such task could be found in the list.
+    public boolean mark(ReadOnlyTask toMark) throws TaskNotFoundException {
+        assert toMark != null;
+        final boolean taskFoundAndMarked = internalList.contains(toMark);
+        if (!taskFoundAndMarked) {
+            throw new TaskNotFoundException();
+        }
+        return taskFoundAndMarked;
+    }
+    
+    //Marks the equivalent task from the list.
+    //throws TaskNotFoundException if no such task could be found in the list.
+    public boolean unmark(ReadOnlyTask toUnmark) throws TaskNotFoundException {
+        assert toUnmark != null;
+        final boolean taskFoundAndMarked = internalList.contains(toUnmark);
+        if (!taskFoundAndMarked) {
+            throw new TaskNotFoundException();
+        }
+        return taskFoundAndMarked;
+    }
 }
-
 
