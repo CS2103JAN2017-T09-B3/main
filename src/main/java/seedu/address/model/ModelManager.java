@@ -6,9 +6,12 @@ import java.util.logging.Logger;
 
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
+import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.events.storage.ChangedFileLocationRequestEvent;
+import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
@@ -19,13 +22,13 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
- * Represents the in-memory model of the address book data.
- * All changes to any model should be synchronized.
+  * Represents the in-memory model of the address book data. All changes to any
+  * model should be synchronized.
  */
 public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final AddressBook taskManager;
     private final FilteredList<ReadOnlyTask> filteredTasks;
     private final Stack<String> stackOfUndo;
     private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd;
@@ -33,14 +36,14 @@ public class ModelManager extends ComponentManager implements Model {
     private final Stack<Integer> stackOfDeletedTaskIndex;
     private final Stack<ReadOnlyAddressBook> stackOfAddressBook;
     
-    
+    private Config config;
     
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      * @throws DuplicateTaskException 
      * @throws DuplicateTagException 
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs) throws DuplicateTagException, DuplicateTaskException {
+    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs, Config config) throws DuplicateTagException, DuplicateTaskException {
         super();
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
         
@@ -49,21 +52,22 @@ public class ModelManager extends ComponentManager implements Model {
         stackOfDeletedTasks = new Stack<>();
         stackOfDeletedTaskIndex = new Stack<>();
         stackOfAddressBook = new Stack<>();
-
+        this.config = config;
+        
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
-        filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
+        this.taskManager = new AddressBook(addressBook);
+        filteredTasks = new FilteredList<>(this.taskManager.getTaskList());
     }
 
     public ModelManager() throws DuplicateTagException, DuplicateTaskException {
-        this(new AddressBook(), new UserPrefs());
+    	this(new AddressBook(), new UserPrefs(), new Config());
     }
 
     @Override
     public void resetData(ReadOnlyAddressBook newData) {
-    	stackOfAddressBook.push(new AddressBook(addressBook));
-    	addressBook.resetData(newData);
+    	stackOfAddressBook.push(new AddressBook(taskManager));
+    	taskManager.resetData(newData);
         indicateAddressBookChanged();
     }
     
@@ -74,27 +78,39 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
     
+    @Override
+    public Config getConfig() {
+        return config;
+    }
+    
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+        return taskManager;
     }
 
     /** Raises an event to indicate the model has changed */
     private void indicateAddressBookChanged() {
-        raise(new AddressBookChangedEvent(addressBook));
+        raise(new AddressBookChangedEvent(taskManager));
+    }
+    
+    @Override
+    public void updateFileLocation() {
+        raise(new ChangedFileLocationRequestEvent(config));
+        raise(new UpdateStatusBarFooterEvent());
+        indicateAddressBookChanged();
     }
 
     @Override
     public synchronized int deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-        int indexRemoved = addressBook.removeTask(target);
+        int indexRemoved = taskManager.removeTask(target);
         indicateAddressBookChanged();
         return indexRemoved;
     }
 
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-        addressBook.addTask(task);
+        taskManager.addTask(task);
         updateFilteredListToShowAll();
         indicateAddressBookChanged();
     }
@@ -105,7 +121,7 @@ public class ModelManager extends ComponentManager implements Model {
         assert editedTask != null;
 
         int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
-        addressBook.updateTask(taskIndex, editedTask);
+        taskManager.updateTask(taskIndex, editedTask);
         indicateAddressBookChanged();
     }
     
@@ -130,11 +146,9 @@ public class ModelManager extends ComponentManager implements Model {
     }
     
     
-    
-    
 
-    //=========== Filtered Person List Accessors =============================================================
-
+    // =========== Filtered Person List Accessors
+    // =============================================================
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
         return new UnmodifiableObservableList<>(filteredTasks);
@@ -154,7 +168,8 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTasks.setPredicate(expression::satisfies);
     }
 
-    //========== Inner classes/interfaces used for filtering =================================================
+    // ========== Inner classes/interfaces used for filtering
+    // =================================================
 
     interface Expression {
         boolean satisfies(ReadOnlyTask task);
@@ -207,5 +222,11 @@ public class ModelManager extends ComponentManager implements Model {
             return "name=" + String.join(", ", nameKeyWords);
         }
     }
+
+	@Override
+	public void updateFilteredTaskList(boolean isInContent, Set<String> keywords) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
