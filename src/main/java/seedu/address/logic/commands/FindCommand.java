@@ -16,14 +16,16 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " meeting";
 
     private final Set<String> keywords;
+    private final boolean isInContent;
 
-    public FindCommand(Set<String> keywords) {
+    public FindCommand(boolean isInContent, Set<String> keywords) {
         this.keywords = keywords;
+        this.isInContent = isInContent;
     }
 
     @Override
     public CommandResult execute() {
-        model.updateFilteredTaskList(keywords);
+        model.updateFilteredTaskList(isInContent, keywords);
         return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
     }
 

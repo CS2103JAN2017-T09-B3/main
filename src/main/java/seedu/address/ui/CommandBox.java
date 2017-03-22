@@ -2,6 +2,8 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import org.controlsfx.control.textfield.TextFields;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
@@ -20,6 +22,9 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     public static final String ERROR_STYLE_CLASS = "error";
 
+    private final String[] COMMAND_LIST = {"add", "clear", "delete", "edit", "find", "help",
+        "list", "select", "undo", "save", "open"};
+
     private final Logic logic;
 
     @FXML
@@ -28,6 +33,7 @@ public class CommandBox extends UiPart<Region> {
     public CommandBox(AnchorPane commandBoxPlaceholder, Logic logic) {
         super(FXML);
         this.logic = logic;
+        TextFields.bindAutoCompletion(commandTextField, COMMAND_LIST);
         addToPlaceholder(commandBoxPlaceholder);
     }
 
