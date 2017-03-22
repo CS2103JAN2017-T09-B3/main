@@ -22,7 +22,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     public static final String ERROR_STYLE_CLASS = "error";
 
-    private final String[] COMMAND_LIST = {"add", "clear", "delete", "edit", "find", "help",
+    private static final String[] COMMAND_LIST = {"add", "clear", "delete", "edit", "find", "help",
         "list", "select", "undo", "save", "open", "exit"};
 
     private final Logic logic;

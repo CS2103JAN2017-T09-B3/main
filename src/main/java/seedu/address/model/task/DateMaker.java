@@ -35,6 +35,7 @@ public class DateMaker {
      * @throws IllegalValueException: given input string is not in supported format
      */
     public void makeDate(String dateString) throws IllegalValueException {
+        assert dateString != null;
         resetMaker();
         if (dateString.equals("")) {
             date = null;
