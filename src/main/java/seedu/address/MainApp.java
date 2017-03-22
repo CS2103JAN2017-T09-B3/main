@@ -25,6 +25,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
@@ -73,7 +75,7 @@ public class MainApp extends Application {
         return applicationParameters.get(parameterName);
     }
 
-    private Model initModelManager(Storage storage, UserPrefs userPrefs, Config config) {
+    private Model initModelManager(Storage storage, UserPrefs userPrefs, Config config) throws DuplicateTagException, DuplicateTaskException {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         try {

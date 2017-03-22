@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import javafx.collections.ObservableList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,15 +8,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
-
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 /**
  * Wraps all data at the address-book level Duplicates are not allowed (by
@@ -45,10 +48,19 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Creates an AddressBook using the Persons and Tags in the
      * {@code toBeCopied}
+     * @throws DuplicateTaskException 
+     * @throws DuplicateTagException 
      */
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    	
+    	//this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
+    	
         this();
         resetData(toBeCopied);
+    }
+    
+    public AddressBook(UniqueTaskList tasks, UniqueTagList tags) {
+        resetData(tasks.getInternalList(), tags.getInternalList());
     }
 
     //// list overwrite operations
@@ -76,6 +88,25 @@ public class AddressBook implements ReadOnlyAddressBook {
         syncMasterTagListWith(tasks);
     }
 
+    public void resetData(Collection<? extends ReadOnlyTask> newTasks, Collection<Tag> newTags) {
+        try {
+            setTasks(newTasks.stream().map(Task::new).collect(Collectors.toList()));
+        } catch (UniqueTaskList.DuplicateTaskException e) {
+            assert false : "AddressBooks should not have duplicate tasks";
+        }
+        try {
+            setTags(newTags);
+        } catch (UniqueTagList.DuplicateTagException e) {
+            assert false : "AddressBooks should not have duplicate tags";
+        }
+        syncMasterTagListWith(tasks);
+    }
+    
+    public synchronized  void revertEmptyAddressBook(ReadOnlyAddressBook backUp) throws DuplicateTagException, DuplicateTaskException {
+        resetData(backUp.getTaskList(), backUp.getTagList());
+    }
+    
+    
     //// person-level operations
 
     /**
@@ -95,7 +126,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Updates the person in the list at position {@code index} with
      * {@code editedReadOnlyPerson}. {@code AddressBook}'s tag list will be
      * updated with the tags of {@code editedReadOnlyPerson}.
-     *
+     * 
      * @see #syncMasterTagListWith(Person)
      *
      * @throws DuplicatePersonException
@@ -140,6 +171,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Ensures that every tag in these persons: - exists in the master list
      * {@link #tags} - points to a Tag object in the master list
+     * 
      * @see #syncMasterTagListWith(Person)
      */
     private void syncMasterTagListWith(UniqueTaskList tasks) {
@@ -194,4 +226,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         // your own
         return Objects.hash(tasks, tags);
     }
+    
+    public UniqueTaskList getUniqueTaskList() {
+        return this.tasks;
+    }
+
+    @Override
+    public UniqueTagList getUniqueTagList() {
+        return this.tags;
+    }
 }
+
