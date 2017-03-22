@@ -89,6 +89,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException {
         assert editedTask != null;
+        System.out.println("updateTask");
 
         int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
         addressBook.updateTask(taskIndex, editedTask);
@@ -194,4 +195,19 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
+	@Override
+	public int markTask(ReadOnlyTask target) throws TaskNotFoundException {
+		int indexMarked = addressBook.markTask(target);
+        indicateAddressBookChanged();
+        return indexMarked;
+	}
+
+	@Override
+	public int unmarkTask(ReadOnlyTask target) throws TaskNotFoundException {
+		int indexUnmarked = addressBook.unmarkTask(target);
+        indicateAddressBookChanged();
+        return indexUnmarked;
+	}
+
 }
+

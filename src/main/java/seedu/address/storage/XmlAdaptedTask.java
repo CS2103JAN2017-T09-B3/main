@@ -10,6 +10,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
@@ -26,6 +27,8 @@ public class XmlAdaptedTask {
     private String content;
     @XmlElement
     private String dateTime;
+    @XmlElement
+    private boolean status;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -46,6 +49,7 @@ public class XmlAdaptedTask {
         title = source.getTitle().fullTitle;
         content = source.getContent().fullContent;
         dateTime = source.getDateTime().value;
+        status = source.getStatus().status;
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
@@ -66,6 +70,7 @@ public class XmlAdaptedTask {
         final Content content = new Content(this.content);
         final TaskDateTime dateTime = new TaskDateTime(this.dateTime);
         final UniqueTagList tags = new UniqueTagList(taskTags);
-        return new Task(title, content, dateTime, tags);
+        final Status status = new Status(this.status);
+        return new Task(title, content, dateTime, tags, status);
     }
 }
