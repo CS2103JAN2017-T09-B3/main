@@ -1,5 +1,6 @@
 package seedu.address.model.task;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -93,7 +94,7 @@ public class UniqueTaskList implements Iterable<Task> {
     public UnmodifiableObservableList<Task> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
-    
+
     public ObservableList<Task> getInternalList() {
         return internalList;
     }

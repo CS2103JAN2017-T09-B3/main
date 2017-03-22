@@ -194,10 +194,10 @@ If you have completed the task or need to delete unwanted task, simply input the
     list
     delete 2
     Deletes the 2nd task
-    
+
     list
     delete 1 deadline
-    Deletes only the deadline of 1st task 
+    Deletes only the deadline of 1st task
 
     find Project
     delete 1

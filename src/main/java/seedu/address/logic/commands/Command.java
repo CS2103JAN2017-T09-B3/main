@@ -27,8 +27,8 @@ public abstract class Command {
      *
      * @return feedback message of the operation result for display
      * @throws CommandException If an error occurs during command execution.
-     * @throws DuplicateTaskException 
-     * @throws DuplicateTagException 
+     * @throws DuplicateTaskException \
+     * @throws DuplicateTagException
      */
     public abstract CommandResult execute() throws CommandException;
 
