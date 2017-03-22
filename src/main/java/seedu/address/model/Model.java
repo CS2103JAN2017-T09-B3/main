@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.util.Set;
 import java.util.Stack;
 
+import seedu.address.commons.core.Config;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
@@ -29,6 +30,12 @@ public interface Model {
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
+
+    /**Returns the config*/
+    Config getConfig();
+
+    /** Raises an event to indicate the model has changed */
+    void updateFileLocation();
 
     /** Deletes the given task. */
     int deleteTask(ReadOnlyTask target) throws UniqueTaskList.TaskNotFoundException;
@@ -64,5 +71,4 @@ public interface Model {
      * Filters only in title otherwise.
      */
     void updateFilteredTaskList(boolean isInContent, Set<String> keywords);
-
 }

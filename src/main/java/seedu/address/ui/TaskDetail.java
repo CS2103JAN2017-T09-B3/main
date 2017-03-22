@@ -41,14 +41,16 @@ public class TaskDetail extends UiPart<Region> {
         placeholder.getChildren().addAll(getRoot());
     }
 
-    public void loadPersonPage(ReadOnlyTask task) {
+    public void loadTaskPage(ReadOnlyTask task) {
         labelTaskName.setTextFill(Color.CHOCOLATE);
         String taggings = "";
         title.setText(task.getTitle().toString());
+      
         startTime.setText(task.getDateTime().getStartDateTime().isPresent() ?
                 task.getDateTime().getStartDateTime().get().getDateValue() : "");
         endTime.setText(task.getDateTime().getEndDateTime().isPresent() ?
                 task.getDateTime().getEndDateTime().get().getDateValue() : "");
+
         for (Tag tag: task.getTags()) {
             taggings += tag.toString();
         }

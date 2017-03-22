@@ -14,18 +14,20 @@ import seedu.address.logic.commands.IncorrectCommand;
 public class DeleteCommandParser {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the DeleteCommand
-     * and returns an DeleteCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the
+     * DeleteCommand and returns an DeleteCommand object for execution.
      */
     public Command parse(String args) {
 
+        Optional<String> deadline = ParserUtil.parseDeadline(args);
         Optional<Integer> index = ParserUtil.parseIndex(args);
         if (!index.isPresent()) {
-            return new IncorrectCommand(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         }
-
-        return new DeleteCommand(index.get());
+        if (!deadline.isPresent()) {
+            return new DeleteCommand(index.get());
+        }
+        return new DeleteCommand(index.get(), deadline.get());
     }
 
 }

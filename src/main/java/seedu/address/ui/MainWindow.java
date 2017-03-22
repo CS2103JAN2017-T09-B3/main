@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -9,12 +11,15 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.ReadOnlyTask;
 
@@ -23,6 +28,10 @@ import seedu.address.model.task.ReadOnlyTask;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Region> {
+    private static final String MESSAGE_SUCCESS_SAVE = "File location saved at";
+    private static final String MESSAGE_SUCCESS_OPEN = " sucessfully loaded!";
+    private static final String COMMAND_OPEN = "open ";
+    private static final String COMMAND_SAVE = "save ";
 
     private static final String ICON = "/images/address_book_32.png";
     private static final String FXML = "MainWindow.fxml";
@@ -33,7 +42,7 @@ public class MainWindow extends UiPart<Region> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private TaskListPanel personListPanel;
+    private TaskListPanel taskListPanel;
     private Config config;
     private TaskDescription taskDescription;
     private TaskDetail taskDetail;
@@ -45,7 +54,7 @@ public class MainWindow extends UiPart<Region> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private AnchorPane personListPanelPlaceholder;
+    private AnchorPane taskListPanelPlaceholder;
 
     @FXML
     private AnchorPane resultDisplayPlaceholder;
@@ -119,7 +128,7 @@ public class MainWindow extends UiPart<Region> {
     void fillInnerParts() {
         taskDescription = new TaskDescription(getTaskDescriptionPlaceholder());
         taskDetail = new TaskDetail(getTaskDetailsPlaceholder());
-        personListPanel = new TaskListPanel(getPersonListPlaceholder(), logic.getFilteredTaskList());
+        taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
         new ResultDisplay(getResultDisplayPlaceholder());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
         new CommandBox(getCommandBoxPlaceholder(), logic);
@@ -137,8 +146,8 @@ public class MainWindow extends UiPart<Region> {
         return resultDisplayPlaceholder;
     }
 
-    private AnchorPane getPersonListPlaceholder() {
-        return personListPanelPlaceholder;
+    private AnchorPane getTaskListPlaceholder() {
+        return taskListPanelPlaceholder;
     }
 
     private AnchorPane getTaskDescriptionPlaceholder() {
@@ -201,6 +210,41 @@ public class MainWindow extends UiPart<Region> {
     }
 
     /**
+     * Allows the user to select/create a file to save to.
+     */
+    @FXML
+    public CommandResult handleSaveAs() throws CommandException {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                                                        "XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showSaveDialog(primaryStage);
+
+        logic.execute(COMMAND_SAVE + file.getAbsolutePath());
+        updateStatusBarFooter();
+        return new CommandResult(MESSAGE_SUCCESS_SAVE + file.getName());
+    }
+
+    @FXML
+    public CommandResult handleOpen() throws CommandException {
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showOpenDialog(primaryStage);
+        logic.execute(COMMAND_OPEN + file.getAbsolutePath());
+        updateStatusBarFooter();
+        return new CommandResult(file.getName() + MESSAGE_SUCCESS_OPEN);
+    }
+
+    void updateStatusBarFooter() {
+        new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
+    }
+
+    /**
      * Closes the application.
      */
     @FXML
@@ -208,12 +252,12 @@ public class MainWindow extends UiPart<Region> {
         raise(new ExitAppRequestEvent());
     }
 
-    public TaskListPanel getPersonListPanel() {
-        return this.personListPanel;
+    public TaskListPanel getTaskListPanel() {
+        return this.taskListPanel;
     }
 
-    void loadPersonPage(ReadOnlyTask person) {
-        taskDescription.loadPersonPage(person);
-        taskDetail.loadPersonPage(person);
+    void loadTaskPage(ReadOnlyTask task) {
+        taskDescription.loadTaskPage(task);
+        taskDetail.loadTaskPage(task);
     }
 }

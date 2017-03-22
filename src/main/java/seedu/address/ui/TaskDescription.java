@@ -26,7 +26,7 @@ public class TaskDescription extends UiPart<Region> {
         placeholder.getChildren().addAll(content);
     }
 
-    public void loadPersonPage(ReadOnlyTask task) {
+    public void loadTaskPage(ReadOnlyTask task) {
         content.setText(task.getContent().toString());
     }
 
