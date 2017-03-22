@@ -117,7 +117,6 @@ public class TaskListPanelHandle extends GuiHandle {
      */
     public TaskCardHandle navigateToTask(ReadOnlyTask task) {
         int index = getPersonIndex(task);
-
         guiRobot.interact(() -> {
             getListView().scrollTo(index);
             guiRobot.sleep(150);
@@ -134,7 +133,7 @@ public class TaskListPanelHandle extends GuiHandle {
     public int getPersonIndex(ReadOnlyTask targetTask) {
         List<ReadOnlyTask> tasksInList = getListView().getItems();
         for (int i = 0; i < tasksInList.size(); i++) {
-            if (tasksInList.get(i).getContent().equals(targetTask.getContent())) {
+            if (tasksInList.get(i).getTitle().equals(targetTask.getTitle())) {
                 return i;
             }
         }
