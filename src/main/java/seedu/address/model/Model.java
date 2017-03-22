@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.Stack;
 
 import seedu.address.commons.core.UnmodifiableObservableList;
+import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
@@ -19,7 +20,9 @@ public interface Model {
 	Stack<ReadOnlyTask> getDeletedStackOfTasks();
 	Stack<Integer> getDeletedStackOfTasksIndex();
 
-	/** Clears existing backing model and replaces with the provided new data. */
+	/** Clears existing backing model and replaces with the provided new data. 
+	 * @throws DuplicateTaskException 
+	 * @throws DuplicateTagException */
     void resetData(ReadOnlyAddressBook newData);
 
     /** Returns the AddressBook */
@@ -30,6 +33,8 @@ public interface Model {
 
     /** Adds the given task */
     void addTask(Task task) throws UniqueTaskList.DuplicateTaskException;
+    
+    void revertData();
 
     /**
      * Updates the task located at {@code filteredTaskListIndex} with {@code editedTask}.
