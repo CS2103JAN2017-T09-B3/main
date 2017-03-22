@@ -11,9 +11,11 @@ import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
@@ -29,13 +31,16 @@ public class ModelManager extends ComponentManager implements Model {
     private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd;
     private final Stack<ReadOnlyTask> stackOfDeletedTasks;
     private final Stack<Integer> stackOfDeletedTaskIndex;
+    private final Stack<ReadOnlyAddressBook> stackOfAddressBook;
     
     
     
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
+     * @throws DuplicateTaskException 
+     * @throws DuplicateTagException 
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs) throws DuplicateTagException, DuplicateTaskException {
         super();
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
         
@@ -43,6 +48,7 @@ public class ModelManager extends ComponentManager implements Model {
         stackOfDeletedTasksAdd = new Stack<>();
         stackOfDeletedTasks = new Stack<>();
         stackOfDeletedTaskIndex = new Stack<>();
+        stackOfAddressBook = new Stack<>();
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
@@ -50,13 +56,21 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
     }
 
-    public ModelManager() {
+    public ModelManager() throws DuplicateTagException, DuplicateTaskException {
         this(new AddressBook(), new UserPrefs());
     }
 
     @Override
     public void resetData(ReadOnlyAddressBook newData) {
-        addressBook.resetData(newData);
+    	stackOfAddressBook.push(new AddressBook(addressBook));
+    	addressBook.resetData(newData);
+        indicateAddressBookChanged();
+    }
+    
+    @Override
+    public synchronized void revertData() {
+        resetData(this.stackOfAddressBook.pop());
+        //AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
         indicateAddressBookChanged();
     }
     
