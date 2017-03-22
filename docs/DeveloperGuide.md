@@ -105,7 +105,7 @@ Two of those classes play important roles at the architecture level.
   is used by components to communicate with other components using events (i.e. a form of _Event Driven_ design)
 * **`LogsCenter`** : Used by many classes to write log messages to the [App](#app) log file.
 
-Let’s dive into the 4 main components and observe how the classes are connected and the work flow of various events. 
+Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 
 * The [**`UI`**](#32-ui-component) represents a collection of classes that provides support for the user to interact with our application.
 * The [**`Logic`**](#33-logic-component) represents a collection of classes that parses the user input to execute the right command before returning an appropriate feedback.
@@ -537,7 +537,7 @@ Use case ends.
 
 > A contact detail that is not meant to be shared with others
 
-#### APP 
+#### APP
 > Application, myPotato
 
 #### API

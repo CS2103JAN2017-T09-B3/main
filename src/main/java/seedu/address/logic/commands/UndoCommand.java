@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-import seedu.address.model.ModelManager;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
@@ -17,7 +16,7 @@ public class UndoCommand extends Command {
     public static final String MESSAGE_FAIL = "No previous command found";
 
     private String prevCommand;
-    
+
     @Override
     public CommandResult execute() {
 
@@ -31,7 +30,7 @@ public class UndoCommand extends Command {
 
             case DeleteCommand.COMMAND_WORD:
                 return undoDelete();
-                
+
             case ClearCommand.COMMAND_WORD:
                 return undoClear();
 
@@ -75,7 +74,7 @@ public class UndoCommand extends Command {
         }
         return new CommandResult(String.format(UndoCommand.MESSAGE_SUCCESS));
     }
-    
+
     private CommandResult undoClear() {
         assert model != null;
         model.revertData();

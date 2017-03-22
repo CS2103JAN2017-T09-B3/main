@@ -22,8 +22,8 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
-  * Represents the in-memory model of the address book data. All changes to any
-  * model should be synchronized.
+ * Represents the in-memory model of the address book data. All changes to any
+ * model should be synchronized.
  */
 public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -40,10 +40,12 @@ public class ModelManager extends ComponentManager implements Model {
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
+     *
      * @throws DuplicateTaskException
      * @throws DuplicateTagException
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs, Config config) throws DuplicateTagException, DuplicateTaskException {
+    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs, Config config)
+            throws DuplicateTagException, DuplicateTaskException {
         super();
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
 
@@ -61,20 +63,20 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     public ModelManager() throws DuplicateTagException, DuplicateTaskException {
-    	this(new AddressBook(), new UserPrefs(), new Config());
+        this(new AddressBook(), new UserPrefs(), new Config());
     }
 
     @Override
     public void resetData(ReadOnlyAddressBook newData) {
-    	stackOfAddressBook.push(new AddressBook(taskManager));
-    	taskManager.resetData(newData);
+        stackOfAddressBook.push(new AddressBook(taskManager));
+        taskManager.resetData(newData);
         indicateAddressBookChanged();
     }
 
     @Override
     public synchronized void revertData() {
         resetData(this.stackOfAddressBook.pop());
-        //AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
+        // AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
         indicateAddressBookChanged();
     }
 
@@ -82,7 +84,6 @@ public class ModelManager extends ComponentManager implements Model {
     public Config getConfig() {
         return config;
     }
-
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
@@ -145,15 +146,14 @@ public class ModelManager extends ComponentManager implements Model {
         return stackOfDeletedTaskIndex;
     }
 
-
-
     // =========== Filtered Person List Accessors
     // =============================================================
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
-    	//here to change the list order according to the date comparator.
+        // here to change the list order according to the date comparator.
         return new UnmodifiableObservableList<>(filteredTasks);
-        //return new UnmodifiableObservableList<>(filteredTasks.sorted(new DateComparator()));
+        // return new UnmodifiableObservableList<>(filteredTasks.sorted(new
+        // DateComparator()));
     }
 
     @Override
@@ -201,6 +201,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     interface Qualifier {
         boolean run(ReadOnlyTask task);
+
         @Override
         String toString();
     }
@@ -217,11 +218,11 @@ public class ModelManager extends ComponentManager implements Model {
         @Override
         public boolean run(ReadOnlyTask task) {
             return nameKeyWords.stream()
-                    .filter(isInContent ? keyword -> (StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)
-                            || StringUtil.containsWordIgnoreCase(task.getContent().fullContent, keyword))
+                    .filter(isInContent
+                            ? keyword -> (StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)
+                                    || StringUtil.containsWordIgnoreCase(task.getContent().fullContent, keyword))
                             : keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
-                    .findAny()
-                    .isPresent();
+                    .findAny().isPresent();
         }
 
         @Override
