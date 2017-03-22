@@ -57,8 +57,8 @@ public interface Model {
     void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask) throws UniqueTaskList.DuplicateTaskException;
 
     /**
-     * Returns the filtered task list as an {@code UnmodifiableObservableList
-     * <ReadOnlyTask>}
+     * Returns the filtered task list as an
+     * {@code UnmodifiableObservableList<ReadOnlyTask>}
      */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
 
@@ -66,9 +66,9 @@ public interface Model {
     void updateFilteredListToShowAll();
 
     /**
-     * Updates the filter of the filtered person list to filter by the given
-     * keywords
+     * Updates the filter of the filtered task list to filter by the given
+     * keywords. Filters in both title and content of task if isInContent is true.
+     * Filters only in title otherwise.
      */
-    void updateFilteredTaskList(Set<String> keywords);
-
+    void updateFilteredTaskList(boolean isInContent, Set<String> keywords);
 }

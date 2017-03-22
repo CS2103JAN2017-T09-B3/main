@@ -26,7 +26,7 @@ import seedu.address.model.task.Title;
 public class ParserUtil {
 
     private static final Pattern INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>\\d+).*");
-    private static final Pattern DEADLINE_ARGS_FORMAT = Pattern.compile("(?<keyword>deadline)",
+    private static final Pattern DEADLINE_ARGS_FORMAT = Pattern.compile("((?<keyword>deadline))",
                                                                     Pattern.CASE_INSENSITIVE);
 
     /**
@@ -91,9 +91,14 @@ public class ParserUtil {
      * Parses a {@code Optional<String> dateTime} into an {@code Optional
      * <TaskDateTime>} if {@code dateTime} is present.
      */
-    public static Optional<TaskDateTime> parseDateTime(Optional<String> dateTime) throws IllegalValueException {
-        assert dateTime != null;
-        return dateTime.isPresent() ? Optional.of(new TaskDateTime(dateTime.get())) : Optional.empty();
+    public static Optional<TaskDateTime> parseDateTime(Optional<String> startDateTime, Optional<String> endDateTime)
+            throws IllegalValueException {
+        assert startDateTime != null;
+        assert endDateTime != null;
+        String start = startDateTime.orElse("");
+        String end = endDateTime.orElse("");
+        return (startDateTime.isPresent() || endDateTime.isPresent())
+                ? Optional.of(new TaskDateTime(start, end)) : Optional.empty();
     }
 
     public static Optional<String> parseDeadline(String command) {

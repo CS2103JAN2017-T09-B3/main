@@ -144,8 +144,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void updateFilteredTaskList(Set<String> keywords) {
-        updateFilteredTaskList(new PredicateExpression(new NameQualifier(keywords)));
+    public void updateFilteredTaskList(boolean isInContent, Set<String> keywords) {
+        updateFilteredTaskList(new PredicateExpression(new NameQualifier(isInContent, keywords)));
     }
 
     private void updateFilteredTaskList(Expression expression) {
@@ -190,15 +190,22 @@ public class ModelManager extends ComponentManager implements Model {
 
     private class NameQualifier implements Qualifier {
         private Set<String> nameKeyWords;
+        private boolean isInContent;
 
-        NameQualifier(Set<String> nameKeyWords) {
+        NameQualifier(boolean isInContent, Set<String> nameKeyWords) {
             this.nameKeyWords = nameKeyWords;
+            this.isInContent = isInContent;
         }
 
+        //@@author A0144895N
         @Override
         public boolean run(ReadOnlyTask task) {
             return nameKeyWords.stream()
-                    .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)).findAny()
+                    .filter(isInContent
+                            ? keyword -> (StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)
+                                    || StringUtil.containsWordIgnoreCase(task.getContent().fullContent, keyword))
+                            : keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
+                    .findAny()
                     .isPresent();
         }
 

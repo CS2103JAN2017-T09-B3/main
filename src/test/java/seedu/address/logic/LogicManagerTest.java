@@ -7,13 +7,15 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_END;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.After;
 import org.junit.Before;
@@ -45,6 +47,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
+import seedu.address.model.task.DateValue;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
@@ -416,7 +419,7 @@ public class LogicManagerTest {
         Task adam() throws Exception {
             Title title = new Title("Project Meeting");
             Content content = new Content("Meeting project CS2103 at UTown");
-            TaskDateTime dateTime = new TaskDateTime("8/3/2017 15:00");
+            TaskDateTime dateTime = new TaskDateTime("2pm", "6pm 15 Mar");
             Tag tag1 = new Tag("tag1");
             Tag tag2 = new Tag("longertag2");
             UniqueTagList tags = new UniqueTagList(tag1, tag2);
@@ -434,7 +437,7 @@ public class LogicManagerTest {
             return new Task(
                     new Title("Task " + seed),
                     new Content(""),
-                    new TaskDateTime("8/3/2017 15:00"),
+                    new TaskDateTime("", "14 Jul 6am"),
                     new UniqueTagList(new Tag("tag" + Math.abs(seed)), new Tag("tag" + Math.abs(seed + 1)))
             );
         }
@@ -449,7 +452,13 @@ public class LogicManagerTest {
 
             cmd.append(PREFIX_CONTENT.toString()).append(p.getContent().toString() + " ");
 
-            cmd.append(PREFIX_DATE_TIME.toString()).append(p.getDateTime().value + " ");
+            Optional<DateValue> startDateOption = p.getDateTime().getStartDateTime();
+            cmd.append(PREFIX_DATE_TIME_START.toString())
+                .append(startDateOption.isPresent() ? startDateOption.get().getStringValue() : "" + " ");
+
+            Optional<DateValue> endDateOption = p.getDateTime().getEndDateTime();
+            cmd.append(PREFIX_DATE_TIME_END.toString())
+                .append(endDateOption.isPresent() ? endDateOption.get().getStringValue() : "" + " ");
 
             UniqueTagList tags = p.getTags();
             for (Tag t: tags) {
@@ -533,7 +542,7 @@ public class LogicManagerTest {
             return new Task(
                     new Title(title),
                     new Content("content hehe"),
-                    new TaskDateTime("22/2/2017 11:00"),
+                    new TaskDateTime("", "22/2/2017 11:00"),
                     new UniqueTagList(new Tag("tag"))
             );
         }

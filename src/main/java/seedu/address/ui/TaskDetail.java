@@ -45,7 +45,12 @@ public class TaskDetail extends UiPart<Region> {
         labelTaskName.setTextFill(Color.CHOCOLATE);
         String taggings = "";
         title.setText(task.getTitle().toString());
-        endTime.setText(task.getDateTime().toString());
+
+        startTime.setText(task.getDateTime().getStartDateTime().isPresent() ?
+                task.getDateTime().getStartDateTime().get().getDateValue() : "");
+        endTime.setText(task.getDateTime().getEndDateTime().isPresent() ?
+                task.getDateTime().getEndDateTime().get().getDateValue() : "");
+
         for (Tag tag: task.getTags()) {
             taggings += tag.toString();
         }

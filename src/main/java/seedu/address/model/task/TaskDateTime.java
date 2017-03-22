@@ -1,22 +1,21 @@
 package seedu.address.model.task;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Optional;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
+//@@author A0144895N
 /**
  * Represents a Task's due date in the task manager. Guarantees: immutable; is
  * valid as declared in {@link #isValidDate(String)}
  */
 public class TaskDateTime {
 
-    public static final String MESSAGE_DATE_TIME_CONSTRAINTS = "Due date should contain valid date in format "
-            + "day/month/year hour:minute";
+    public static final String MESSAGE_START_END_INVALID = "Start time should be before end time";
+    public static final String DEFAULT_VALUE = "";
 
-    public final String value;
-    public final Date date;
+    private final DateValue startDateTime;
+    private final DateValue endDateTime;
 
     /**
      * Validates given name.
@@ -24,82 +23,97 @@ public class TaskDateTime {
      * @throws IllegalValueException
      *             if given name string is invalid.
      */
-    public TaskDateTime(String dateTime) throws IllegalValueException {
+    public TaskDateTime(String startDateTime, String endDateTime) throws IllegalValueException {
 
-        String trimmedDateTime = dateTime.trim();
-        if (!isThereDateTimeInInput(trimmedDateTime)) {
-            this.value = trimmedDateTime;
-            this.date = null;
-        } else if (!isValidDateTime(trimmedDateTime)) {
-            throw new IllegalValueException(MESSAGE_DATE_TIME_CONSTRAINTS);
-        } else {
-            Date parsedDateTime = parseDateTime(trimmedDateTime);
-            this.value = trimmedDateTime;
-            this.date = parsedDateTime;
+        String trimmedStartDateTime = startDateTime.trim();
+        String trimmedEndDateTime = endDateTime.trim();
+
+        DateMaker maker = new DateMaker();
+
+        maker.makeDate(trimmedStartDateTime);
+        this.startDateTime = maker.getDateValue();
+
+        maker.makeDate(trimmedEndDateTime);
+        this.endDateTime = maker.getDateValue();
+
+        alignStartWithEndDateTime();
+
+        if (!isValidStartAndEndDateTime()) {
+            throw new IllegalValueException(MESSAGE_START_END_INVALID);
+        }
+    }
+
+    /*
+     * Returns true if start date comes before end date or there is no either start date or end date
+     */
+    private boolean isValidStartAndEndDateTime() {
+        return ((!isThereStartDateTime() || (!isThereEndDateTime())
+                || isThereStartDateTime() && isThereEndDateTime()
+                && this.startDateTime.getFullDate().before(this.endDateTime.getFullDate())));
+    }
+
+    /*
+     * Assigns date of end date to start date if start date has only time
+     */
+    private void alignStartWithEndDateTime() {
+        if (isThereStartDateTime() && isThereEndDateTime() && this.startDateTime.getYear() < DateMaker.OLDEST_YEAR) {
+            this.startDateTime.setDate(this.endDateTime.getDate());
+            this.startDateTime.setMonth(this.endDateTime.getMonth());
+            this.startDateTime.setYear(this.endDateTime.getYear());
         }
     }
 
     /**
-     * Returns true if a given string is valid date
+     * Returns true if the start time is not null
      */
-    public static boolean isValidDateTime(String value) {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        format.setLenient(false);
-        try {
-            format.parse(value);
-        } catch (ParseException e) {
-            return false;
-        }
-        return true;
+    public boolean isThereStartDateTime() {
+        return this.startDateTime != null;
     }
 
     /**
-     * Returns true if input string is not null
+     * Returns true if the end time is not null
      */
-    public static boolean isThereDateTimeInInput(String value) {
-        return !value.equals("");
+    public boolean isThereEndDateTime() {
+        return this.endDateTime != null;
     }
 
-    /**
-     * Returns true if this TaskDateTime contains non-null date and time
-     */
-    public boolean isThereDateTime() {
-        return !this.value.equals("");
+    public Optional<DateValue> getStartDateTime() {
+        return isThereStartDateTime() ? Optional.of(this.startDateTime) : Optional.empty();
     }
 
-    /**
-     * Returns object containing date and time given by string value
-     * @param value
-     * @return
-     */
-    public Date parseDateTime(String value) throws IllegalValueException {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        format.setLenient(false);
-        Date result;
-        try {
-            result = format.parse(value);
-        } catch (ParseException e) {
-            throw new IllegalValueException(MESSAGE_DATE_TIME_CONSTRAINTS);
-        }
-        return result;
+    public Optional<DateValue> getEndDateTime() {
+        return isThereEndDateTime() ? Optional.of(this.endDateTime) : Optional.empty();
     }
 
     @Override
     public String toString() {
-        return value;
+        if (!isThereStartDateTime() && !isThereEndDateTime()) {
+            return "";
+        } else if (!isThereStartDateTime()) {
+            return this.endDateTime.getStringValue();
+        } else if (!isThereEndDateTime()) {
+            return this.startDateTime.getStringValue();
+        } else {
+            if (this.startDateTime.getDateValue().equals(this.endDateTime.getDateValue())) {
+                return this.startDateTime.getDateValue() + " "
+                        + this.startDateTime.getTimeValue() + " - " + this.endDateTime.getTimeValue();
+            } else {
+                return this.startDateTime.getStringValue() + " - " + this.endDateTime.getStringValue();
+            }
+        }
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TaskDateTime // instanceof handles nulls
-                        && this.value.equals(((TaskDateTime) other).value)); // state
-                                                                              // check
+                        && this.toString().equals(((TaskDateTime) other).toString())); // state
+        // check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return toString().hashCode();
     }
 
 }

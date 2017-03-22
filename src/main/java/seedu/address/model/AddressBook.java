@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javafx.collections.ObservableList;
+
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
@@ -139,7 +140,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Ensures that every tag in these persons: - exists in the master list
      * {@link #tags} - points to a Tag object in the master list
-     *
      * @see #syncMasterTagListWith(Person)
      */
     private void syncMasterTagListWith(UniqueTaskList tasks) {

@@ -1,7 +1,8 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_END;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_START;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -23,7 +24,7 @@ public class TestTask implements ReadOnlyTask {
 
     public TestTask() throws IllegalValueException {
         content = new Content("");
-        dateTime = new TaskDateTime("");
+        dateTime = new TaskDateTime("", "");
         tags = new UniqueTagList();
     }
 
@@ -84,8 +85,13 @@ public class TestTask implements ReadOnlyTask {
         if (this.getContent().isThereContent()) {
             sb.append(PREFIX_CONTENT.toString() + this.getContent().fullContent + " ");
         }
-        if (this.getDateTime().isThereDateTime()) {
-            sb.append(PREFIX_DATE_TIME.toString() + this.getDateTime().value + " ");
+        if (this.getDateTime().isThereStartDateTime()) {
+            sb.append(PREFIX_DATE_TIME_START.toString()
+                    + this.getDateTime().getStartDateTime().get().getStringValue() + " ");
+        }
+        if (this.getDateTime().isThereEndDateTime()) {
+            sb.append(PREFIX_DATE_TIME_END.toString()
+                    + this.getDateTime().getEndDateTime().get().getStringValue() + " ");
         }
         this.getTags().asObservableList().stream().forEach(s -> sb.append(PREFIX_TAG.toString() + s.tagName + " "));
         return sb.toString();
