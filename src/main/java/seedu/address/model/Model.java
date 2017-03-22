@@ -55,6 +55,8 @@ public interface Model {
      *             filtered list.
      */
     void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask) throws UniqueTaskList.DuplicateTaskException;
+    
+    void revertData();
 
     /**
      * Returns the filtered task list as an
