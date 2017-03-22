@@ -15,7 +15,6 @@ import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
-import seedu.address.logic.DateComparator;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
@@ -36,25 +35,25 @@ public class ModelManager extends ComponentManager implements Model {
     private final Stack<ReadOnlyTask> stackOfDeletedTasks;
     private final Stack<Integer> stackOfDeletedTaskIndex;
     private final Stack<ReadOnlyAddressBook> stackOfAddressBook;
-    
+
     private Config config;
-    
+
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
-     * @throws DuplicateTaskException 
-     * @throws DuplicateTagException 
+     * @throws DuplicateTaskException
+     * @throws DuplicateTagException
      */
     public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs, Config config) throws DuplicateTagException, DuplicateTaskException {
         super();
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
-        
+
         stackOfUndo = new Stack<>();
         stackOfDeletedTasksAdd = new Stack<>();
         stackOfDeletedTasks = new Stack<>();
         stackOfDeletedTaskIndex = new Stack<>();
         stackOfAddressBook = new Stack<>();
         this.config = config;
-        
+
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.taskManager = new AddressBook(addressBook);
@@ -71,19 +70,19 @@ public class ModelManager extends ComponentManager implements Model {
     	taskManager.resetData(newData);
         indicateAddressBookChanged();
     }
-    
+
     @Override
     public synchronized void revertData() {
         resetData(this.stackOfAddressBook.pop());
         //AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
         indicateAddressBookChanged();
     }
-    
+
     @Override
     public Config getConfig() {
         return config;
     }
-    
+
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
@@ -94,7 +93,7 @@ public class ModelManager extends ComponentManager implements Model {
     private void indicateAddressBookChanged() {
         raise(new AddressBookChangedEvent(taskManager));
     }
-    
+
     @Override
     public void updateFileLocation() {
         raise(new ChangedFileLocationRequestEvent(config));
@@ -125,35 +124,36 @@ public class ModelManager extends ComponentManager implements Model {
         taskManager.updateTask(taskIndex, editedTask);
         indicateAddressBookChanged();
     }
-    
+
     @Override
     public Stack<String> getUndoStack() {
         return stackOfUndo;
     }
-   
+
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasksAdd() {
         return stackOfDeletedTasksAdd;
     }
-    
+
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasks() {
         return stackOfDeletedTasks;
     }
-    
+
     @Override
     public Stack<Integer> getDeletedStackOfTasksIndex() {
         return stackOfDeletedTaskIndex;
     }
-    
-    
+
+
 
     // =========== Filtered Person List Accessors
     // =============================================================
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
     	//here to change the list order according to the date comparator.
-        return new UnmodifiableObservableList<>(filteredTasks.sorted(new DateComparator()));
+        return new UnmodifiableObservableList<>(filteredTasks);
+        //return new UnmodifiableObservableList<>(filteredTasks.sorted(new DateComparator()));
     }
 
     @Override
@@ -162,8 +162,8 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void updateFilteredTaskList(Set<String> keywords) {
-        updateFilteredTaskList(new PredicateExpression(new NameQualifier(keywords)));
+    public void updateFilteredTaskList(boolean isInContent, Set<String> keywords) {
+        updateFilteredTaskList(new PredicateExpression(new NameQualifier(isInContent, keywords)));
     }
 
     private void updateFilteredTaskList(Expression expression) {
@@ -175,6 +175,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     interface Expression {
         boolean satisfies(ReadOnlyTask task);
+
         @Override
         String toString();
     }
@@ -206,15 +207,19 @@ public class ModelManager extends ComponentManager implements Model {
 
     private class NameQualifier implements Qualifier {
         private Set<String> nameKeyWords;
+        private boolean isInContent;
 
-        NameQualifier(Set<String> nameKeyWords) {
+        NameQualifier(boolean isInContent, Set<String> nameKeyWords) {
             this.nameKeyWords = nameKeyWords;
+            this.isInContent = isInContent;
         }
 
         @Override
         public boolean run(ReadOnlyTask task) {
             return nameKeyWords.stream()
-                    .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
+                    .filter(isInContent ? keyword -> (StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)
+                            || StringUtil.containsWordIgnoreCase(task.getContent().fullContent, keyword))
+                            : keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
                     .findAny()
                     .isPresent();
         }
@@ -224,11 +229,5 @@ public class ModelManager extends ComponentManager implements Model {
             return "name=" + String.join(", ", nameKeyWords);
         }
     }
-
-	@Override
-	public void updateFilteredTaskList(boolean isInContent, Set<String> keywords) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

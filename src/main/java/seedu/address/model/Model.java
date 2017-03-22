@@ -15,23 +15,23 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
  * The API of the Model component.
  */
 public interface Model {
-	
-	Stack<String> getUndoStack();	
+
+	Stack<String> getUndoStack();
 	Stack<ReadOnlyTask> getDeletedStackOfTasksAdd();
 	Stack<ReadOnlyTask> getDeletedStackOfTasks();
 	Stack<Integer> getDeletedStackOfTasksIndex();
 
-	/** Clears existing backing model and replaces with the provided new data. 
-	 * @throws DuplicateTaskException 
+	/** Clears existing backing model and replaces with the provided new data.
+	 * @throws DuplicateTaskException
 	 * @throws DuplicateTagException */
     void resetData(ReadOnlyAddressBook newData);
 
     /** Returns the AddressBook */
     ReadOnlyAddressBook getAddressBook();
-    
+
     /**Returns the config*/
     Config getConfig();
-    
+
     /** Raises an event to indicate the model has changed */
     void updateFileLocation();
 
@@ -40,7 +40,7 @@ public interface Model {
 
     /** Adds the given task */
     void addTask(Task task) throws UniqueTaskList.DuplicateTaskException;
-    
+
     void revertData();
 
     /**
@@ -60,7 +60,7 @@ public interface Model {
     void updateFilteredListToShowAll();
 
     /** Updates the filter of the filtered person list to filter by the given keywords*/
-    void updateFilteredTaskList(Set<String> keywords);
-    
+    void updateFilteredTaskList(boolean isInContent, Set<String> keywords);
+
 
 }

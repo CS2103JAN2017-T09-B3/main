@@ -1,6 +1,5 @@
 package seedu.address.model;
 
-import javafx.collections.ObservableList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -48,17 +47,17 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Creates an AddressBook using the Persons and Tags in the
      * {@code toBeCopied}
-     * @throws DuplicateTaskException 
-     * @throws DuplicateTagException 
+     * @throws DuplicateTaskException
+     * @throws DuplicateTagException
      */
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
-    	
+
     	//this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
-    	
+
         this();
         resetData(toBeCopied);
     }
-    
+
     public AddressBook(UniqueTaskList tasks, UniqueTagList tags) {
         resetData(tasks.getInternalList(), tags.getInternalList());
     }
@@ -101,12 +100,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
         syncMasterTagListWith(tasks);
     }
-    
+
     public synchronized  void revertEmptyAddressBook(ReadOnlyAddressBook backUp) throws DuplicateTagException, DuplicateTaskException {
         resetData(backUp.getTaskList(), backUp.getTagList());
     }
-    
-    
+
+
     //// person-level operations
 
     /**
@@ -126,7 +125,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Updates the person in the list at position {@code index} with
      * {@code editedReadOnlyPerson}. {@code AddressBook}'s tag list will be
      * updated with the tags of {@code editedReadOnlyPerson}.
-     * 
+     *
      * @see #syncMasterTagListWith(Person)
      *
      * @throws DuplicatePersonException
@@ -171,7 +170,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Ensures that every tag in these persons: - exists in the master list
      * {@link #tags} - points to a Tag object in the master list
-     * 
+     *
      * @see #syncMasterTagListWith(Person)
      */
     private void syncMasterTagListWith(UniqueTaskList tasks) {
@@ -226,12 +225,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         // your own
         return Objects.hash(tasks, tags);
     }
-    
+
     public UniqueTaskList getUniqueTaskList() {
         return this.tasks;
     }
 
-    @Override
     public UniqueTagList getUniqueTagList() {
         return this.tags;
     }
