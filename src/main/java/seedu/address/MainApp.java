@@ -25,6 +25,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
@@ -59,7 +61,7 @@ public class MainApp extends Application {
 
         initLogging(config);
 
-        model = initModelManager(storage, userPrefs, config);
+        model = initModelManager(storage, userPrefs);
 
         logic = new LogicManager(model, storage);
 
@@ -73,7 +75,7 @@ public class MainApp extends Application {
         return applicationParameters.get(parameterName);
     }
 
-    private Model initModelManager(Storage storage, UserPrefs userPrefs, Config config) {
+    private Model initModelManager(Storage storage, UserPrefs userPrefs) throws DuplicateTagException, DuplicateTaskException {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         try {
@@ -90,7 +92,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs, config);
+        return new ModelManager(initialData, userPrefs);
     }
 
     private void initLogging(Config config) {
@@ -184,6 +186,12 @@ public class MainApp extends Application {
     public void handleExitAppRequestEvent(ExitAppRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         this.stop();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
     }
 
     public static void main(String[] args) {
