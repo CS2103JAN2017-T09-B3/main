@@ -26,7 +26,7 @@ import seedu.address.model.task.Title;
 public class ParserUtil {
 
     private static final Pattern INDEX_ARGS_FORMAT = Pattern.compile("(?<targetIndex>\\d+).*");
-    private static final Pattern DEADLINE_ARGS_FORMAT = Pattern.compile("(?<keyword>deadline)",
+    private static final Pattern DEADLINE_ARGS_FORMAT = Pattern.compile("((?<keyword>deadline))",
                                                                     Pattern.CASE_INSENSITIVE);
 
     /**

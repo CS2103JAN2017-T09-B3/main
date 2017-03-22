@@ -7,6 +7,7 @@ import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.task.DateMaker;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
@@ -61,14 +62,14 @@ public class DeleteCommand extends Command {
             return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
         } else {
             try {
-                Optional<TaskDateTime> dateTime = Optional.of(new TaskDateTime(""));
+                Optional<TaskDateTime> dateTime = Optional.of(new TaskDateTime("", ""));
                 EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
                 editTaskDescriptor.setDateTime(dateTime);
                 EditCommand taskToEdit = new EditCommand(targetIndex, editTaskDescriptor);
                 taskToEdit.setData(model);
                 taskToEdit.execute();
             } catch (IllegalValueException ie) {
-                throw new CommandException(TaskDateTime.MESSAGE_DATE_TIME_CONSTRAINTS);
+                throw new CommandException(DateMaker.MESSAGE_DATE_TIME_CONSTRAINTS);
             }
             return new CommandResult(String.format(MESSAGE_DELETE_DEADLINE_SUCCESS, taskToDelete.getTitle().fullTitle));
         }
