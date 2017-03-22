@@ -23,7 +23,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
 
     private final String[] COMMAND_LIST = {"add", "clear", "delete", "edit", "find", "help",
-        "list", "select", "undo", "save", "open"};
+        "list", "select", "undo", "save", "open", "exit"};
 
     private final Logic logic;
 
