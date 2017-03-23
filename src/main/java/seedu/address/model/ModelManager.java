@@ -153,7 +153,7 @@ public class ModelManager extends ComponentManager implements Model {
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
         // here to change the list order according to the date comparator.
         //return new UnmodifiableObservableList<>(filteredTasks);
-         return new UnmodifiableObservableList<>(filteredTasks.sorted(new
+        return new UnmodifiableObservableList<>(filteredTasks.sorted(new
          DateComparator()));
     }
 

@@ -107,7 +107,7 @@ public class Task implements ReadOnlyTask {
     public String toString() {
         return getAsText();
     }
-    //@@ Zhang Yan Hao A0135753A
+    //@@Zhang Yan Hao A0135753A
     public void setStatus(Status status){
     	this.status = status;
     }

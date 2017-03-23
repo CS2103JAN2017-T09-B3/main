@@ -8,7 +8,7 @@ import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
-	
+
 public class MarkAsUndoneCommand extends Command {
 
     public static final String COMMAND_WORD = "markasundone";
@@ -40,14 +40,14 @@ public class MarkAsUndoneCommand extends Command {
 
         ReadOnlyTask taskToUnmark = lastShownList.get(targetIndex - 1);
 
-        try{
+        try {
         	this.unmarkTask(taskToUnmark);
-        }catch (UniqueTaskList.DuplicateTaskException e) {
+        } catch (UniqueTaskList.DuplicateTaskException e) {
         	throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
         return new CommandResult(String.format(MESSAGE_UNMARK_TASK_SUCCESS, taskToUnmark));
     }
-    public void unmarkTask(ReadOnlyTask taskToUnmark) throws DuplicateTaskException{
+    public void unmarkTask(ReadOnlyTask taskToUnmark) throws DuplicateTaskException {
     	Task task = (Task) taskToUnmark;
     	task.getStatus().setStatus(false);
     }
