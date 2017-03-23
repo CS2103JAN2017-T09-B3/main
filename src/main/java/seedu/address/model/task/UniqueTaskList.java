@@ -93,7 +93,7 @@ public class UniqueTaskList implements Iterable<Task> {
         return new UnmodifiableObservableList<>(internalList);
     }
 
-    
+
     //@@author A0125221Y
     public ObservableList<Task> getInternalList() {
         return internalList;
