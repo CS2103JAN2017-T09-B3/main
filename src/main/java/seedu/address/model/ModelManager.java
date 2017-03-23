@@ -138,17 +138,17 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasksAdd() {
-        return stackOfDeletedTasksAdd ;
+        return stackOfDeletedTasksAdd;
     }
 
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasks() {
-        return stackOfDeletedTasks ;
+        return stackOfDeletedTasks;
     }
 
     @Override
     public Stack<Integer> getDeletedStackOfTasksIndex() {
-        return stackOfDeletedTaskIndex ;
+        return stackOfDeletedTaskIndex;
     }
     
     //@@author
