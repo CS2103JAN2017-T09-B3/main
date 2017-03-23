@@ -35,9 +35,11 @@ public interface ReadOnlyTask {
         builder.append(getTitle() + "\n")
                .append("Content: " + getContent() + "\n")
                .append("Deadline: " + getDateTime().toString() + "\n")
+               .append("Status: " + getStatus() + "\n")
                .append("Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }
+    Status getStatus();
 
 }

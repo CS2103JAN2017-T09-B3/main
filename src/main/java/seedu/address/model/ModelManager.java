@@ -14,6 +14,7 @@ import seedu.address.commons.events.storage.ChangedFileLocationRequestEvent;
 import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.DateComparator;
 import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
@@ -151,9 +152,9 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
         // here to change the list order according to the date comparator.
-        return new UnmodifiableObservableList<>(filteredTasks);
-        // return new UnmodifiableObservableList<>(filteredTasks.sorted(new
-        // DateComparator()));
+        //return new UnmodifiableObservableList<>(filteredTasks);
+         return new UnmodifiableObservableList<>(filteredTasks.sorted(new
+         DateComparator()));
     }
 
     @Override

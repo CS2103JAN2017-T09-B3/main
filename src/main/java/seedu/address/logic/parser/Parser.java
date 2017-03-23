@@ -16,6 +16,8 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncorrectCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MarkAsDoneCommand;
+import seedu.address.logic.commands.MarkAsUndoneCommand;
 import seedu.address.logic.commands.OpenCommand;
 import seedu.address.logic.commands.SaveCommand;
 import seedu.address.logic.commands.SelectCommand;
@@ -82,6 +84,12 @@ public class Parser {
 
         case OpenCommand.COMMAND_WORD:
             return new OpenCommandParser().parse(arguments);
+        
+        case MarkAsDoneCommand.COMMAND_WORD:
+        	return new MarkAsDoneCommandParser().parse(arguments);
+        	
+        case MarkAsUndoneCommand.COMMAND_WORD:
+        	return new MarkAsUndoneCommandParser().parse(arguments);
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);
