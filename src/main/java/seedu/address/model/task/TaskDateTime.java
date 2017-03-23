@@ -36,7 +36,7 @@ public class TaskDateTime {
         maker.makeDate(trimmedEndDateTime);
         this.endDateTime = maker.getDateValue();
 
-        alignStartWithEndDateTime();
+        alignStartDateTime();
 
         if (!isValidStartAndEndDateTime()) {
             throw new IllegalValueException(MESSAGE_START_END_INVALID);
@@ -53,13 +53,21 @@ public class TaskDateTime {
     }
 
     /*
-     * Assigns date of end date to start date if start date has only time
+     * Assigns date of end date to start date (if there is end date) or current date (if there is no end date)
+     * if start date has only time
      */
-    private void alignStartWithEndDateTime() {
-        if (isThereStartDateTime() && isThereEndDateTime() && this.startDateTime.getYear() < DateMaker.OLDEST_YEAR) {
-            this.startDateTime.setDate(this.endDateTime.getDate());
-            this.startDateTime.setMonth(this.endDateTime.getMonth());
-            this.startDateTime.setYear(this.endDateTime.getYear());
+    private void alignStartDateTime() {
+        if (isThereStartDateTime() && this.startDateTime.getYear() < DateMaker.OLDEST_YEAR) {
+            if (isThereEndDateTime()) {
+                this.startDateTime.setDate(this.endDateTime.getDate());
+                this.startDateTime.setMonth(this.endDateTime.getMonth());
+                this.startDateTime.setYear(this.endDateTime.getYear());
+            } else {
+                DateValue currentTime = DateMaker.getCurrentTime();
+                this.startDateTime.setDate(currentTime.getDate());
+                this.startDateTime.setMonth(currentTime.getMonth());
+                this.startDateTime.setYear(currentTime.getYear());
+            }
         }
     }
 

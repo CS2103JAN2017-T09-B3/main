@@ -142,7 +142,7 @@ public class DateMaker {
     /**
      * Returns a date object representing current date time
      */
-    public DateValue getCurrentTime() {
+    public static DateValue getCurrentTime() {
         Date current = new Date();
         return new DateWithTime(current);
     }
