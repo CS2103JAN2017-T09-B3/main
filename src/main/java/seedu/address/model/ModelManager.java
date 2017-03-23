@@ -80,8 +80,8 @@ public class ModelManager extends ComponentManager implements Model {
         // AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
         indicateAddressBookChanged();
     }
-
     //@@author
+
     @Override
     public Config getConfig() {
         return config;
@@ -92,6 +92,7 @@ public class ModelManager extends ComponentManager implements Model {
         return taskManager;
     }
 
+    //@@author A0135807A
     /** Raises an event to indicate the model has changed */
     private void indicateAddressBookChanged() {
         raise(new AddressBookChangedEvent(taskManager));
@@ -103,6 +104,7 @@ public class ModelManager extends ComponentManager implements Model {
         raise(new UpdateStatusBarFooterEvent());
         indicateAddressBookChanged();
     }
+    //@@author
 
     //@@author A0125221Y
     @Override
@@ -111,8 +113,8 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
         return indexRemoved;
     }
-
     //@@author
+
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         taskManager.addTask(task);
@@ -150,8 +152,8 @@ public class ModelManager extends ComponentManager implements Model {
     public Stack<Integer> getDeletedStackOfTasksIndex() {
         return stackOfDeletedTaskIndex;
     }
-
     //@@author
+
     // =========== Filtered Person List Accessors
     // =============================================================
     @Override
