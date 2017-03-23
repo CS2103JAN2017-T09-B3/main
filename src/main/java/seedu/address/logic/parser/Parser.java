@@ -74,11 +74,9 @@ public class Parser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        //@@author A0125221Y
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
 
-        //@@author
         case SaveCommand.COMMAND_WORD:
             return new SaveCommandParser().parse(arguments);
 
