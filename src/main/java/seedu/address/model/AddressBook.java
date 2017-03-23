@@ -57,7 +57,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         this();
         resetData(toBeCopied);
     }
-
+    
+    //@@author A0125221Y
     public AddressBook(UniqueTaskList tasks, UniqueTagList tags) {
         resetData(tasks.getInternalList(), tags.getInternalList());
     }
@@ -86,7 +87,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
         syncMasterTagListWith(tasks);
     }
-
+    
+    //@@author A0125221Y
     public void resetData(Collection<? extends ReadOnlyTask> newTasks, Collection<Tag> newTags) {
         try {
             setTasks(newTasks.stream().map(Task::new).collect(Collectors.toList()));
@@ -106,7 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(backUp.getTaskList(), backUp.getTagList());
     }
 
-
+    //@@author 
     //// person-level operations
 
     /**
@@ -201,7 +203,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         return tasks.asObservableList().size() + " tasks, " + tags.asObservableList().size() + " tags";
         // TODO: refine later
     }
-
+    
+    //@@author A0125221Y
     @Override
     public ObservableList<ReadOnlyTask> getTaskList() {
         return new UnmodifiableObservableList<>(tasks.asObservableList());
@@ -211,7 +214,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<Tag> getTagList() {
         return new UnmodifiableObservableList<>(tags.asObservableList());
     }
-
+    
+    //@@author
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -235,4 +239,3 @@ public class AddressBook implements ReadOnlyAddressBook {
         return this.tags;
     }
 }
-
