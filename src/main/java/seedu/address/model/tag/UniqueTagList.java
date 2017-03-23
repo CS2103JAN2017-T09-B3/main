@@ -115,11 +115,13 @@ public class UniqueTagList implements Iterable<Tag> {
                 .filter(tag -> !alreadyInside.contains(tag))
                 .forEach(internalList::add);
     }
-
+    
+    //@@author A0125221Y
     public ObservableList<Tag> getInternalList() {
         return internalList;
     }
-
+    
+    //@@author
     /**
      * Returns true if the list contains an equivalent Tag as the given argument.
      */
