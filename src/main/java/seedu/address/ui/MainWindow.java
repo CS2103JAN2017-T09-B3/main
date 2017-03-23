@@ -68,6 +68,9 @@ public class MainWindow extends UiPart<Region> {
     @FXML
     private AnchorPane taskDetailsPlaceholder;
 
+    @FXML
+    private AnchorPane tabPlaceholder;
+
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
         super(FXML);
 
@@ -129,6 +132,7 @@ public class MainWindow extends UiPart<Region> {
         taskDescription = new TaskDescription(getTaskDescriptionPlaceholder());
         taskDetail = new TaskDetail(getTaskDetailsPlaceholder());
         taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
+        new TabList(getTabPlaceholder());
         new ResultDisplay(getResultDisplayPlaceholder());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
         new CommandBox(getCommandBoxPlaceholder(), logic);
@@ -156,6 +160,10 @@ public class MainWindow extends UiPart<Region> {
 
     private AnchorPane getTaskDetailsPlaceholder() {
         return taskDetailsPlaceholder;
+    }
+
+    private AnchorPane getTabPlaceholder() {
+        return tabPlaceholder;
     }
 
     void hide() {
