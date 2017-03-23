@@ -2,7 +2,6 @@ package seedu.address.storage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import javax.xml.bind.JAXBException;
 
 import seedu.address.commons.exceptions.DataConversionException;
@@ -35,5 +34,4 @@ public class XmlFileStorage {
             throw new DataConversionException(e);
         }
     }
-
 }
