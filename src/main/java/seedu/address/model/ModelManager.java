@@ -31,9 +31,9 @@ public class ModelManager extends ComponentManager implements Model {
     private final AddressBook taskManager;
     private final FilteredList<ReadOnlyTask> filteredTasks;
     private final Stack<String> stackOfUndo;
-    private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd ;
-    private final Stack<ReadOnlyTask> stackOfDeletedTasks ;
-    private final Stack<Integer> stackOfDeletedTaskIndex ;
+    private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd;
+    private final Stack<ReadOnlyTask> stackOfDeletedTasks;
+    private final Stack<Integer> stackOfDeletedTaskIndex;
     private final Stack<ReadOnlyAddressBook> stackOfAddressBook;
 
     private Config config;
@@ -50,9 +50,9 @@ public class ModelManager extends ComponentManager implements Model {
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
 
         stackOfUndo = new Stack<>();
-        stackOfDeletedTasksAdd  = new Stack<>();
-        stackOfDeletedTasks  = new Stack<>();
-        stackOfDeletedTaskIndex  = new Stack<>();
+        stackOfDeletedTasksAdd = new Stack<>();
+        stackOfDeletedTasks = new Stack<>();
+        stackOfDeletedTaskIndex = new Stack<>();
         stackOfAddressBook = new Stack<>();
         this.config = config;
 
