@@ -31,9 +31,9 @@ public class ModelManager extends ComponentManager implements Model {
     private final AddressBook taskManager;
     private final FilteredList<ReadOnlyTask> filteredTasks;
     private final Stack<String> stackOfUndo;
-    private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd;
-    private final Stack<ReadOnlyTask> stackOfDeletedTasks;
-    private final Stack<Integer> stackOfDeletedTaskIndex;
+    private final Stack<ReadOnlyTask> deletedTasksForAdd;
+    private final Stack<ReadOnlyTask> deletedTasksForDel;
+    private final Stack<Integer> deletedTasksIndex;
     private final Stack<ReadOnlyAddressBook> stackOfAddressBook;
 
     private Config config;
@@ -50,9 +50,9 @@ public class ModelManager extends ComponentManager implements Model {
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
 
         stackOfUndo = new Stack<>();
-        stackOfDeletedTasksAdd = new Stack<>();
-        stackOfDeletedTasks = new Stack<>();
-        stackOfDeletedTaskIndex = new Stack<>();
+        deletedTasksForAdd = new Stack<>();
+        deletedTasksForDel = new Stack<>();
+        deletedTasksIndex = new Stack<>();
         stackOfAddressBook = new Stack<>();
         this.config = config;
 
@@ -65,21 +65,23 @@ public class ModelManager extends ComponentManager implements Model {
     public ModelManager() throws DuplicateTagException, DuplicateTaskException {
         this(new AddressBook(), new UserPrefs(), new Config());
     }
-
+    
+    //@@author A0125221Y
     @Override
     public void resetData(ReadOnlyAddressBook newData) {
         stackOfAddressBook.push(new AddressBook(taskManager));
         taskManager.resetData(newData);
         indicateAddressBookChanged();
     }
-
+    
     @Override
     public synchronized void revertData() {
         resetData(this.stackOfAddressBook.pop());
         // AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
         indicateAddressBookChanged();
     }
-
+    
+    //@@author
     @Override
     public Config getConfig() {
         return config;
@@ -101,14 +103,16 @@ public class ModelManager extends ComponentManager implements Model {
         raise(new UpdateStatusBarFooterEvent());
         indicateAddressBookChanged();
     }
-
+    
+    //@@author A0125221Y
     @Override
     public synchronized int deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
         int indexRemoved = taskManager.removeTask(target);
         indicateAddressBookChanged();
         return indexRemoved;
     }
-
+    
+    //@@author
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         taskManager.addTask(task);
@@ -125,7 +129,8 @@ public class ModelManager extends ComponentManager implements Model {
         taskManager.updateTask(taskIndex, editedTask);
         indicateAddressBookChanged();
     }
-
+    
+    //@@author A0125221Y
     @Override
     public Stack<String> getUndoStack() {
         return stackOfUndo;
@@ -133,19 +138,20 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasksAdd() {
-        return stackOfDeletedTasksAdd;
+        return deletedTasksForAdd;
     }
 
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasks() {
-        return stackOfDeletedTasks;
+        return deletedTasksForDel;
     }
 
     @Override
     public Stack<Integer> getDeletedStackOfTasksIndex() {
-        return stackOfDeletedTaskIndex;
+        return deletedTasksIndex;
     }
-
+    
+    //@@author
     // =========== Filtered Person List Accessors
     // =============================================================
     @Override
