@@ -77,6 +77,7 @@ public class StorageManager extends ComponentManager implements Storage {
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
 
+  //@@author A0135807A
     @Override
     public void setFileLocation(String filepath) {
         addressBookStorage.setFileLocation(filepath);
