@@ -22,30 +22,6 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
-package seedu.address.model;
-
-import java.util.Set;
-import java.util.Stack;
-import java.util.logging.Logger;
-
-import javafx.collections.transformation.FilteredList;
-import seedu.address.commons.core.ComponentManager;
-import seedu.address.commons.core.Config;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.commons.events.model.AddressBookChangedEvent;
-import seedu.address.commons.events.storage.ChangedFileLocationRequestEvent;
-import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.commons.util.StringUtil;
-import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.UniqueTaskList;
-import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
-import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
-
-/**
  * Represents the in-memory model of the address book data. All changes to any
  * model should be synchronized.
  */
@@ -55,9 +31,9 @@ public class ModelManager extends ComponentManager implements Model {
     private final AddressBook taskManager;
     private final FilteredList<ReadOnlyTask> filteredTasks;
     private final Stack<String> stackOfUndo;
-    private final Stack<ReadOnlyTask> deletedTasksForAdd;
-    private final Stack<ReadOnlyTask> deletedTasksForDel;
-    private final Stack<Integer> deletedTasksIndex;
+    private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd ;
+    private final Stack<ReadOnlyTask> stackOfDeletedTasks ;
+    private final Stack<Integer> stackOfDeletedTaskIndex ;
     private final Stack<ReadOnlyAddressBook> stackOfAddressBook;
 
     private Config config;
@@ -74,9 +50,9 @@ public class ModelManager extends ComponentManager implements Model {
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
 
         stackOfUndo = new Stack<>();
-        deletedTasksForAdd = new Stack<>();
-        deletedTasksForDel = new Stack<>();
-        deletedTasksIndex = new Stack<>();
+        stackOfDeletedTasksAdd  = new Stack<>();
+        stackOfDeletedTasks  = new Stack<>();
+        stackOfDeletedTaskIndex  = new Stack<>();
         stackOfAddressBook = new Stack<>();
         this.config = config;
 
@@ -162,187 +138,17 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasksAdd() {
-        return deletedTasksForAdd;
+        return stackOfDeletedTasksAdd ;
     }
 
     @Override
     public Stack<ReadOnlyTask> getDeletedStackOfTasks() {
-        return deletedTasksForDel;
+        return stackOfDeletedTasks ;
     }
 
     @Override
     public Stack<Integer> getDeletedStackOfTasksIndex() {
-        return deletedTasksIndex;
-    }
-    
-    //@@author
-    // =========== Filtered Person List Accessors
-    // =============================================================
-    @Override
-    public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
-        // here to change the list order according to the date comparator.
-        return new UnmodifiableObservableList<>(filteredTasks);
-        // return new UnmodifiableObservableList<>(filteredTasks.sorted(new
-        // DateComparator()));
-    }
-
-    @Override
-    public void updateFilteredListToShowAll() {
-        filteredTasks.setPredicate(null);
-    }
-
-    @Override
-    public void updateFilteredTaskList(boolean isInContent, Set<String> keywords) {
-        updateFilteredTaskList(new PredicateExpression(new NameQualifier(isInContent, keywords)));
-    }
-
-    private void updateFilteredTaskList(Expression expression) {
-        filteredTasks.setPredicate(expression::satisfies);
-    }
-
-    // ========== Inner classes/interfaces used for filtering
-    // =================================================
-
-    interface Expression {
-        boolean satisfies(ReadOnlyTask task);
-
-        @Override
-        String toString();
-    }
-
-    private class PredicateExpression implements Expression {
-
-        private final Qualifier qualifier;
-
-        PredicateExpression(Qualifier qualifier) {
-            this.qualifier = qualifier;
-        }
-
-        @Override
-        public boolean satisfies(ReadOnlyTask task) {
-            return qualifier.run(task);
-        }
-
-        @Override
-        public String toString() {
-            return qualifier.toString();
-        }
-    }
-
-    interface Qualifier {
-        boolean run(ReadOnlyTask task);
-
-        @Override
-        String toString();
-    }
-
-    private class NameQualifier implements Qualifier {
-        private Set<String> nameKeyWords;
-        private boolean isInContent;
-
-        NameQualifier(boolean isInContent, Set<String> nameKeyWords) {
-            this.nameKeyWords = nameKeyWords;
-            this.isInContent = isInContent;
-        }
-
-        @Override
-        public boolean run(ReadOnlyTask task) {
-            return nameKeyWords.stream()
-                    .filter(isInContent
-                            ? keyword -> (StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)
-                                    || StringUtil.containsWordIgnoreCase(task.getContent().fullContent, keyword))
-                            : keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
-                    .findAny().isPresent();
-        }
-
-        @Override
-        public String toString() {
-            return "name=" + String.join(", ", nameKeyWords);
-        }
-    }
-
-}
-    public void resetData(ReadOnlyAddressBook newData) {
-        stackOfAddressBook.push(new AddressBook(taskManager));
-        taskManager.resetData(newData);
-        indicateAddressBookChanged();
-    }
-    
-    @Override
-    public synchronized void revertData() {
-        resetData(this.stackOfAddressBook.pop());
-        // AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
-        indicateAddressBookChanged();
-    }
-    
-    //@@author
-    @Override
-    public Config getConfig() {
-        return config;
-    }
-
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return taskManager;
-    }
-
-    /** Raises an event to indicate the model has changed */
-    private void indicateAddressBookChanged() {
-        raise(new AddressBookChangedEvent(taskManager));
-    }
-
-    @Override
-    public void updateFileLocation() {
-        raise(new ChangedFileLocationRequestEvent(config));
-        raise(new UpdateStatusBarFooterEvent());
-        indicateAddressBookChanged();
-    }
-    
-    //@@author A0125221Y
-    @Override
-    public synchronized int deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-        int indexRemoved = taskManager.removeTask(target);
-        indicateAddressBookChanged();
-        return indexRemoved;
-    }
-    
-    //@@author
-    @Override
-    public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-        taskManager.addTask(task);
-        updateFilteredListToShowAll();
-        indicateAddressBookChanged();
-    }
-
-    @Override
-    public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
-            throws UniqueTaskList.DuplicateTaskException {
-        assert editedTask != null;
-
-        int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
-        taskManager.updateTask(taskIndex, editedTask);
-        indicateAddressBookChanged();
-    }
-    
-    //@@author A0125221Y
-    @Override
-    public Stack<String> getUndoStack() {
-        return stackOfUndo;
-    }
-
-    @Override
-    public Stack<ReadOnlyTask> getDeletedStackOfTasksAdd() {
-        return deletedTasksForAdd;
-    }
-
-    @Override
-    public Stack<ReadOnlyTask> getDeletedStackOfTasks() {
-        return deletedTasksForDel;
-    }
-
-    @Override
-    public Stack<Integer> getDeletedStackOfTasksIndex() {
-        return deletedTasksIndex;
+        return stackOfDeletedTaskIndex ;
     }
     
     //@@author
