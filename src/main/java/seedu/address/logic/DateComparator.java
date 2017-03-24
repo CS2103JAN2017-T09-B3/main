@@ -1,7 +1,8 @@
 //@@Zhang Yan Hao A0135753A
 package seedu.address.logic;
 
-import java.util.Comparator;	
+import java.util.Comparator;
+
 import seedu.address.model.task.ReadOnlyTask;
 
 public class DateComparator implements Comparator<ReadOnlyTask> {
@@ -79,7 +80,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
                         return compareMinute(task1, task2);
                     } else {
                         return compareHour(task1, task2);
-                        }
+                    }
                 } else {
                     return compareDay(task1, task2);
                     }
