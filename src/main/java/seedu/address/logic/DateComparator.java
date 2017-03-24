@@ -72,7 +72,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
         return Integer.compare(minute1, minute2);
     }
     @Override
-    public int compare(ReadOnlyTask task1,ReadOnlyTask task2) {
+    public int compare(ReadOnlyTask task1, ReadOnlyTask task2) {
         if (compareYear(task1, task2) == 0) {
             if (compareMonth(task1, task2) == 0) {
                 if (compareDay(task1, task2) == 0) {
