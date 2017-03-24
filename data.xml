@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addressbook>
+    <tasks>
+        <title>Alice Pauline</title>
+        <content>Alice Pauline content</content>
+        <startDateTime></startDateTime>
+        <endDateTime>Fri, 01 Feb 2013 09:00</endDateTime>
+        <tagged>friends</tagged>
+    </tasks>
+    <tasks>
+        <title>Benson Meier</title>
+        <content>Benson Meier content</content>
+        <startDateTime></startDateTime>
+        <endDateTime>Sun, 02 Mar 2014 10:00</endDateTime>
+        <tagged>owesMoney</tagged>
+        <tagged>friends</tagged>
+    </tasks>
+    <tasks>
+        <title>Elle Meyer</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime>Fri, 03 Apr 2015 01:00</endDateTime>
+    </tasks>
+    <tasks>
+        <title>Fiona Kunz</title>
+        <content>Fiona Kunz content</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+    </tasks>
+    <tasks>
+        <title>Daniel Meier</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+    </tasks>
+    <tasks>
+        <title>Carl Kurz</title>
+        <content>Carl Kurz content</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+    </tasks>
+    <tags>friends</tags>
+    <tags>owesMoney</tags>
+</addressbook>

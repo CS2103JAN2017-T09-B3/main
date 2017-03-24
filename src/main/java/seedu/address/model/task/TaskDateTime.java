@@ -14,8 +14,8 @@ public class TaskDateTime {
     public static final String MESSAGE_START_END_INVALID = "Start time should be before end time";
     public static final String DEFAULT_VALUE = "";
 
-    private final DateValue startDateTime;
-    private final DateValue endDateTime;
+    public final DateValue startDateTime;
+    public final DateValue endDateTime;
 
     /**
      * Validates given name.
