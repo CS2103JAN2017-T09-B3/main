@@ -149,11 +149,11 @@ public class EditCommand extends Command {
         }
         //@@ Zhang Yan Hao A0135753A
         public void setStatus(Optional<Status> status) {
-        	assert status != null;
-        	this.status = status;
+            assert status != null;
+            this.status = status;
         }
         public Optional<Status> getStatus() {
-        	return status;
+            return status;
         }
 
     }

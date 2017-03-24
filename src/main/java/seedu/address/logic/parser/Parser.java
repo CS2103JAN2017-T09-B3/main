@@ -86,10 +86,10 @@ public class Parser {
             return new OpenCommandParser().parse(arguments);
 
         case MarkAsDoneCommand.COMMAND_WORD:
-        	return new MarkAsDoneCommandParser().parse(arguments);
+            return new MarkAsDoneCommandParser().parse(arguments);
 
         case MarkAsUndoneCommand.COMMAND_WORD:
-        	return new MarkAsUndoneCommandParser().parse(arguments);
+            return new MarkAsUndoneCommandParser().parse(arguments);
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);

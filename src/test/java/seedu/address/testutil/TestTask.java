@@ -100,12 +100,13 @@ public class TestTask implements ReadOnlyTask {
     }
     //@@Zhang Yan Hao A0135753A
     public void setStatus(Status status){
-    	this.status = status;
+        this.status = status;
     }
 
 	@Override
-	public Status getStatus() {
-		return status;
-	}
+    public Status getStatus() {
+        return status;
+    }
+
 }
 
