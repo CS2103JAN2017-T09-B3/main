@@ -83,12 +83,12 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
                     }
                 } else {
                     return compareDay(task1, task2);
-                    }
+                }
             } else {
                 return compareMonth(task1, task2);
-                }
+            }
         } else {
             return compareYear(task1, task2);
-            }
+        }
     }
 }
