@@ -62,6 +62,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(UniqueTaskList tasks, UniqueTagList tags) {
         resetData(tasks.getInternalList(), tags.getInternalList());
     }
+    //@@author
 
     //// list overwrite operations
 
@@ -107,8 +108,8 @@ public class AddressBook implements ReadOnlyAddressBook {
                                                         DuplicateTagException, DuplicateTaskException {
         resetData(backUp.getTaskList(), backUp.getTagList());
     }
-
     //@@author
+
     //// person-level operations
 
     /**
@@ -214,8 +215,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<Tag> getTagList() {
         return new UnmodifiableObservableList<>(tags.asObservableList());
     }
-
     //@@author
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

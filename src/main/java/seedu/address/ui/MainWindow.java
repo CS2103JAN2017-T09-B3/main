@@ -243,6 +243,7 @@ public class MainWindow extends UiPart<Region> {
     void updateStatusBarFooter() {
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
     }
+    //author
 
     /**
      * Closes the application.
