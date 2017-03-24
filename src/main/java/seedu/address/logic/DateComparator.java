@@ -6,7 +6,7 @@ import java.util.Comparator;
 import seedu.address.model.task.ReadOnlyTask;
 
 public class DateComparator implements Comparator<ReadOnlyTask> {
-	public int compareYear(ReadOnlyTask task1, ReadOnlyTask task2) {
+    public int compareYear(ReadOnlyTask task1, ReadOnlyTask task2) {
 		int year1 = 0, 
 		    year2 = 0;
 		if (!task1.getDateTime().isThereEndDateTime()) {
@@ -21,7 +21,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
 		}
 		return Integer.compare(year1, year2);
 	}
-	public int compareMonth(ReadOnlyTask task1, ReadOnlyTask task2) {
+    public int compareMonth(ReadOnlyTask task1, ReadOnlyTask task2) {
 		int month1 = 0,
 		    month2 = 0;
 		if (!task1.getDateTime().isThereEndDateTime()) {
@@ -36,7 +36,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
 		}
 		return Integer.compare(month1, month2);
 	}
-	public int compareDay(ReadOnlyTask task1, ReadOnlyTask task2) {
+    public int compareDay(ReadOnlyTask task1, ReadOnlyTask task2) {
 		int day1 = 0, 
 			day2 = 0;
 		if (!task1.getDateTime().isThereEndDateTime()) {
@@ -51,7 +51,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
 		}
 		return Integer.compare(day1, day2);
 	}
-	public int compareHour(ReadOnlyTask task1, ReadOnlyTask task2) {
+    public int compareHour(ReadOnlyTask task1, ReadOnlyTask task2) {
 		int hour1 = 0, 
 			hour2 = 0;
 		if (!task1.getDateTime().isThereEndDateTime()) {
@@ -66,7 +66,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
 		}
 		return Integer.compare(hour1, hour2);
 	}
-	public int compareMinute(ReadOnlyTask task1, ReadOnlyTask task2) {
+    public int compareMinute(ReadOnlyTask task1, ReadOnlyTask task2) {
 		int minute1 = 0, 
 			minute2 = 0;
 		if (!task1.getDateTime().isThereEndDateTime()) {
@@ -82,7 +82,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
 		return Integer.compare(minute1, minute2);
 	}
 	@Override
-	public int compare(ReadOnlyTask task1,ReadOnlyTask task2) {
+    public int compare(ReadOnlyTask task1,ReadOnlyTask task2) {
 		if (compareYear(task1,task2) == 0) {
 			if (compareMonth(task1,task2) == 0) {
 				if (compareDay(task1,task2)==0) {
