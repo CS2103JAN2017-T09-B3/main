@@ -78,9 +78,17 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
                 if (compareDay(task1, task2) == 0) {
                     if (compareHour(task1, task2) == 0) {
                         return compareMinute(task1, task2);
-                    } else {return compareHour(task1, task2);}
-                } else {return compareDay(task1, task2);}
-            } else {return compareMonth(task1, task2);}
-        } else {return compareYear(task1, task2);}
+                    } else {
+                    	return compareHour(task1, task2);
+                    	}
+                } else {
+                	return compareDay(task1, task2);
+                	}
+            } else {
+            	return compareMonth(task1, task2);
+            	}
+        } else {
+        	return compareYear(task1, task2);
+        	}
     }
 }
