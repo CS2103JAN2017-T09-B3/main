@@ -13,7 +13,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
             year1 = 2099;
         } else if (!task2.getDateTime().isThereEndDateTime()) {
             year2 = 2099;
-		} else {
+        } else {
             year1 = task1.getDateTime().endDateTime.getYear();
             year2 = task2.getDateTime().endDateTime.getYear();
         }
@@ -71,7 +71,7 @@ public class DateComparator implements Comparator<ReadOnlyTask> {
         }
         return Integer.compare(minute1, minute2);
     }
-	@Override
+    @Override
     public int compare(ReadOnlyTask task1,ReadOnlyTask task2) {
         if (compareYear(task1, task2) == 0) {
             if (compareMonth(task1, task2) == 0) {
