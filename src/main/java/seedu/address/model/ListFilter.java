@@ -8,7 +8,7 @@ import seedu.address.model.task.DateValue;
 import seedu.address.model.task.DateWithTime;
 import seedu.address.model.task.ReadOnlyTask;
 
-//@author A0144895N
+//@@author A0144895N
 public class ListFilter {
 
     public ListFilter() {}
