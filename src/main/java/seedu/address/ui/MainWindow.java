@@ -63,11 +63,11 @@ public class MainWindow extends UiPart<Region> {
     @FXML
     private AnchorPane statusbarPlaceholder;
 
-//    @FXML
-//    private AnchorPane taskDescriptionPlaceholder;
-//
-//    @FXML
-//    private AnchorPane taskDetailsPlaceholder;
+    @FXML
+    private AnchorPane taskDescriptionPlaceholder;
+
+    @FXML
+    private AnchorPane taskDetailsPlaceholder;
 
     @FXML
     private AnchorPane tabPlaceholder;
@@ -130,8 +130,8 @@ public class MainWindow extends UiPart<Region> {
     }
 
     void fillInnerParts() {
-//        taskDescription = new TaskDescription(getTaskDescriptionPlaceholder());
-//        taskDetail = new TaskDetail(getTaskDetailsPlaceholder());
+        taskDescription = new TaskDescription(getTaskDescriptionPlaceholder());
+        taskDetail = new TaskDetail(getTaskDetailsPlaceholder());
         taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
         tabList = new TabList(getTabPlaceholder());
         new ResultDisplay(getResultDisplayPlaceholder());
@@ -155,13 +155,13 @@ public class MainWindow extends UiPart<Region> {
         return taskListPanelPlaceholder;
     }
 
-//    private AnchorPane getTaskDescriptionPlaceholder() {
-//        return taskDescriptionPlaceholder;
-//    }
-//
-//    private AnchorPane getTaskDetailsPlaceholder() {
-//        return taskDetailsPlaceholder;
-//    }
+    private AnchorPane getTaskDescriptionPlaceholder() {
+        return taskDescriptionPlaceholder;
+    }
+
+    private AnchorPane getTaskDetailsPlaceholder() {
+        return taskDetailsPlaceholder;
+    }
 
     private AnchorPane getTabPlaceholder() {
         return tabPlaceholder;

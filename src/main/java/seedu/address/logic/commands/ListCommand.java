@@ -4,8 +4,9 @@ import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.SwitchToTabRequestEvent;
 import seedu.address.commons.exceptions.IllegalValueException;
 
+//@@author A0144895N
 /**
- * Lists all tasks in myPotato to the user.
+ * Lists filtered tasks in myPotato to the user.
  */
 public class ListCommand extends Command {
 
