@@ -147,6 +147,14 @@ public class DateMaker {
         return new DateWithTime(current);
     }
 
+    /**
+     * Returns a date object representing current date only
+     */
+    public static DateValue getCurrentDate() {
+        Date current = new Date();
+        return new DateWithoutTime(current);
+    }
+
     private void resetMaker() {
         date = null;
     }

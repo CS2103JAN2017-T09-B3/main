@@ -13,8 +13,8 @@ import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.commons.events.storage.ChangedFileLocationRequestEvent;
 import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
 import seedu.address.commons.util.CollectionUtil;
-import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
+import seedu.address.model.task.DateMaker;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
@@ -158,77 +158,17 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void updateFilteredListToShowAll() {
-        filteredTasks.setPredicate(null);
+        ListFilter.filterAll(filteredTasks);
+    }
+
+    @Override
+    public void updateFilteredListToShowToday() {
+        ListFilter.filterEndDate(filteredTasks, DateMaker.getCurrentDate());
     }
 
     @Override
     public void updateFilteredTaskList(boolean isInContent, Set<String> keywords) {
-        updateFilteredTaskList(new PredicateExpression(new NameQualifier(isInContent, keywords)));
-    }
-
-    private void updateFilteredTaskList(Expression expression) {
-        filteredTasks.setPredicate(expression::satisfies);
-    }
-
-    // ========== Inner classes/interfaces used for filtering
-    // =================================================
-
-    interface Expression {
-        boolean satisfies(ReadOnlyTask task);
-
-        @Override
-        String toString();
-    }
-
-    private class PredicateExpression implements Expression {
-
-        private final Qualifier qualifier;
-
-        PredicateExpression(Qualifier qualifier) {
-            this.qualifier = qualifier;
-        }
-
-        @Override
-        public boolean satisfies(ReadOnlyTask task) {
-            return qualifier.run(task);
-        }
-
-        @Override
-        public String toString() {
-            return qualifier.toString();
-        }
-    }
-
-    interface Qualifier {
-        boolean run(ReadOnlyTask task);
-
-        @Override
-        String toString();
-    }
-
-    private class NameQualifier implements Qualifier {
-        private Set<String> nameKeyWords;
-        private boolean isInContent;
-
-        NameQualifier(boolean isInContent, Set<String> nameKeyWords) {
-            this.nameKeyWords = nameKeyWords;
-            this.isInContent = isInContent;
-        }
-
-        @Override
-        public boolean run(ReadOnlyTask task) {
-            return nameKeyWords.stream()
-                    .filter(isInContent
-                            ? keyword -> (StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)
-                                    || StringUtil.containsWordIgnoreCase(task.getContent().fullContent, keyword))
-                            : keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
-                    .findAny().isPresent();
-        }
-
-        @Override
-        public String toString() {
-            return "name=" + String.join(", ", nameKeyWords);
-        }
+        ListFilter.filterKeywords(filteredTasks, isInContent, keywords);
     }
 
 }

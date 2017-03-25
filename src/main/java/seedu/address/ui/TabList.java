@@ -8,6 +8,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
+//@@author A0144895N
 public class TabList extends UiPart<Region> {
 
     private static final String[] TAB_LIST = { "All", "Today", "Completed" };
@@ -24,6 +25,20 @@ public class TabList extends UiPart<Region> {
         tabPlaceholder.getChildren().add(tabList);
         tabs = new ArrayList<Tab>();
         initTabs();
+    }
+
+    public void switchTo(String tab) {
+        assert tab != null;
+
+        int tabIndex = -1;
+        for (int i = 0; i < TAB_LIST.length; i++) {
+            if (tab.equals(TAB_LIST[i].toLowerCase())) {
+                tabIndex = i;
+                break;
+            }
+        }
+
+        tabList.getSelectionModel().select(tabIndex);
     }
 
     private void initTabs() {

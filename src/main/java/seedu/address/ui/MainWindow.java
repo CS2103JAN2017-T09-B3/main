@@ -46,6 +46,7 @@ public class MainWindow extends UiPart<Region> {
     private Config config;
     private TaskDescription taskDescription;
     private TaskDetail taskDetail;
+    private TabList tabList;
 
     @FXML
     private AnchorPane commandBoxPlaceholder;
@@ -132,7 +133,7 @@ public class MainWindow extends UiPart<Region> {
 //        taskDescription = new TaskDescription(getTaskDescriptionPlaceholder());
 //        taskDetail = new TaskDetail(getTaskDetailsPlaceholder());
         taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
-        new TabList(getTabPlaceholder());
+        tabList = new TabList(getTabPlaceholder());
         new ResultDisplay(getResultDisplayPlaceholder());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
         new CommandBox(getCommandBoxPlaceholder(), logic);
@@ -267,5 +268,9 @@ public class MainWindow extends UiPart<Region> {
     void loadTaskPage(ReadOnlyTask task) {
         taskDescription.loadTaskPage(task);
         taskDetail.loadTaskPage(task);
+    }
+
+    void switchTab(String tab) {
+        tabList.switchTo(tab);
     }
 }

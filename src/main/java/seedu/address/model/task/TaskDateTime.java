@@ -68,6 +68,11 @@ public class TaskDateTime {
                 this.startDateTime.setMonth(currentTime.getMonth());
                 this.startDateTime.setYear(currentTime.getYear());
             }
+        } else if (isThereEndDateTime() && this.endDateTime.getYear() < DateMaker.OLDEST_YEAR) {
+            DateValue currentTime = DateMaker.getCurrentTime();
+            this.endDateTime.setDate(currentTime.getDate());
+            this.endDateTime.setMonth(currentTime.getMonth());
+            this.endDateTime.setYear(currentTime.getYear());
         }
     }
 

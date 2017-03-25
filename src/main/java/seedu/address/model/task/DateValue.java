@@ -19,6 +19,8 @@ public abstract class DateValue {
     //returns a string of time only
     public abstract String getTimeValue();
 
+    public abstract boolean isWithTime();
+
     public abstract int getDate();
     public abstract int getMonth();
     public abstract int getYear();
@@ -30,6 +32,4 @@ public abstract class DateValue {
     public abstract void setYear(int year);
     public abstract void setHour(int hour);
     public abstract void setMinute(int minute);
-
-    public abstract String toString();
 }
