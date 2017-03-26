@@ -34,6 +34,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
@@ -74,15 +75,15 @@ public class TestUtil {
         try {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                new Task(new Title("Ali Muster"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("Boris Mueller"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("Carl Kurz"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("Daniel Meier"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("Elle Meyer"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("Fiona Kunz"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("George Best"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("Hoon Meier"), new Content(""), new TaskDateTime("", ""), new UniqueTagList()),
-                new Task(new Title("Ida Mueller"),  new Content(""), new TaskDateTime("", ""), new UniqueTagList())
+                new Task(new Title("Ali Muster"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("Boris Mueller"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("Carl Kurz"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("Daniel Meier"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("Elle Meyer"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("Fiona Kunz"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("George Best"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("Hoon Meier"), new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false)),
+                new Task(new Title("Ida Mueller"),  new Content(""), new TaskDateTime("", ""), new UniqueTagList(), new Status(false))
             };
             //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {
