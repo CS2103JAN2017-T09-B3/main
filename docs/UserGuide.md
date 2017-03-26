@@ -12,9 +12,9 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `FEB 2017`  &nbsp;&nbsp;&n
 4. [Command Summary](#4-command-summary)
 
 
-### Welcome to MyPotato
+### Welcome to myPotato
 
-MyPotato is a user-friendly task scheduler which helps users to better manage their daily tasks.<br>
+myPotato is a user-friendly task scheduler which helps users to better manage their daily tasks.<br>
 This application allows input and editing of tasks using an easy to use command line interface suitable for users of all technical background.
 
 
@@ -50,9 +50,9 @@ In this guide, we will guide you through all the features by the following list.
 
 ### Launch
 
-You can start the day by opening MyPotato to view the tasks to be completed for the current day.<br>
+You can start the day by opening myPotato to view the tasks to be completed for the current day.<br>
 
-Note: Mypotato can help you to automatically sort your tasks according to their deadlines.<br>
+Note: myPotato can help you to automatically sort your tasks according to their deadlines.<br>
 The earliest deadline will appear at the top of the list and floating tasks at the bottom.
 
 
@@ -67,7 +67,7 @@ The earliest deadline will appear at the top of the list and floating tasks at t
 
 ### Help : `help`
 
-After Launching the application, if you need a cheatsheet of the command formats, MyPotato has a help function that displays the list of the commands. Simply enter `help` command for more information.
+After Launching the application, if you need a cheatsheet of the command formats, myPotato has a help function that displays the list of the commands. Simply enter `help` command for more information.
 
     Format: help
 
