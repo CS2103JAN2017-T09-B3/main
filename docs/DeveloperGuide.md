@@ -154,7 +154,7 @@ Author: Long & Ivan
 <img src="images/UiClassDiagram.png" width="800"><br>
 _Figure 3.2.1 : Structure of the UI Component_
 
-[**API**](#api) : [`Ui.java`](../src/main/java/seedu/myPotato/ui/Ui.java) in /src/main/java/seedu/myPotato/ui
+[**API**](#api) : [`Ui.java`](../src/main/java/seedu/myPotato/ui/Ui.java) in `/src/main/java/seedu/myPotato/ui`
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
 `StatusBarFooter`, `TaskDescription` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
@@ -177,11 +177,11 @@ Author: Long, Ivan, Di Feng, Yan Hao
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.3.1 : Structure of the Logic Component_
 
-[**API**](#api) : [`Logic.java`](../src/main/java/seedu/myPotato/logic/Logic.java) in src/main/java/seedu/myPotato/logic
+[**API**](#api) : [`Logic.java`](../src/main/java/seedu/myPotato/logic/Logic.java) in `src/main/java/seedu/myPotato/logic`
 
 1. `Logic` uses the `Parser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
-3. The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
+3. The command execution can affect the `Model` (e.g. adding a task) and/or raise events.
 4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui` reassuring the user that the command is executed.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
@@ -198,7 +198,7 @@ Author: Yan Hao
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
 
-[**API**](#api) : [`Model.java`](../src/main/java/seedu/myPotato/model/Model.java)
+[**API**](#api) : [`Model.java`](../src/main/java/seedu/myPotato/model/Model.java) in `src/main/java/seedu/myPotato/model`
 
 The `Model`:
 
@@ -216,7 +216,7 @@ Author: Di Feng
 <img src="images/StorageClassDiagram.png" width="800"><br>
 _Figure 3.5.1 : Structure of the Storage Component_
 
-[**API**](#api) : [`Storage.java`](../src/main/java/seedu/myPotato/storage/Storage.java) in /src/main/java/seedu/myPotato/storage
+[**API**](#api) : [`Storage.java`](../src/main/java/seedu/myPotato/storage/Storage.java) in `/src/main/java/seedu/myPotato/storage`
 
 The `Storage` component:
 
@@ -393,7 +393,6 @@ Priority | As a ... | I want to ... | So that I can...
 `*` | user | set different frequency for my task reminder | prepare for the tasks.
 `*` | user |  open my task list offline | open my task list without Internet access
 
-{More to be added}
 
 ## Appendix B : Use Cases
 
@@ -521,7 +520,7 @@ Use case ends.
 ## Appendix C : Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java `1.8.0_60` or higher installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2. Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands)
    should be able to accomplish most of the tasks faster using commands than using the mouse.
 

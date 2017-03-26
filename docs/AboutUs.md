@@ -38,5 +38,5 @@ We welcome contributions. See [Contact Us](ContactUs.md) page for more info.
 
 * [Tang Di Feng](https://github.com/e0011840)
 * [My DuyHoang Long](https://github.com/myduyhoanglong)
-* [Ivan Koh] (https://github.com/ivankws)
-* [Zhang Yan Hao] (https://github.com/vane1992)
+* [Ivan Koh](https://github.com/ivankws)
+* [Zhang Yan Hao](https://github.com/vane1992)
