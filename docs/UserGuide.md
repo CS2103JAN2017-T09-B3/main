@@ -222,7 +222,11 @@ Accidentally removed your task? Fret not, simply enter the `undo` command to rev
 
 #### Save TaskList : `save`
 
-Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently.
+Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently. Upon successful command execution, `Tasks saved to FILELOCATION` message will be displayed.<br>
+
+> Note:<br>
+> Future changes will be automatically saved to your specified FILELOCATION.<br>
+> myPotato will load the most recent saved FILELOCATION on start-up.
 
     Format: save FILEPATH
 
@@ -233,7 +237,7 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
 
 #### Open TaskList : `open`
 
-Specify a valid xml file to load into myPotato.
+Specify a valid xml file to load into myPotato. Upon successful command execution, `Loaded FILENAME` message will be displayed.
 
     Format: open FILEPATH
 
