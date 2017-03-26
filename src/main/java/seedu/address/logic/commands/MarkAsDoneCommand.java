@@ -40,15 +40,15 @@ public class MarkAsDoneCommand extends Command {
 
         ReadOnlyTask taskToMark = lastShownList.get(targetIndex - 1);
 
-        try{
-        	this.markTask(taskToMark);
-        }catch (UniqueTaskList.DuplicateTaskException e) {
-        	throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        try {
+            this.markTask(taskToMark);
+        } catch (UniqueTaskList.DuplicateTaskException e) {
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
     }
-    public void markTask(ReadOnlyTask taskToMark) throws DuplicateTaskException{
-    	Task task = (Task) taskToMark;
-    	task.getStatus().setStatus(true);
+    public void markTask(ReadOnlyTask taskToMark) throws DuplicateTaskException {
+        Task task = (Task) taskToMark;
+        task.getStatus().setStatus(true);
     }
 }

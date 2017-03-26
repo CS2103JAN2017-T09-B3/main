@@ -110,10 +110,10 @@ public class Task implements ReadOnlyTask {
     }
 
     //@@Zhang Yan Hao A0135753A
-    public void setStatus(Status status){
+    public void setStatus(Status status) {
     	this.status = status;
     }
-    public Status getStatus(){
+    public Status getStatus() {
     	return status;
     }
 

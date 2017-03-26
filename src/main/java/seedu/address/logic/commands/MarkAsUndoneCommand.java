@@ -40,15 +40,15 @@ public class MarkAsUndoneCommand extends Command {
 
         ReadOnlyTask taskToUnmark = lastShownList.get(targetIndex - 1);
 
-        try{
-        	this.unmarkTask(taskToUnmark);
-        }catch (UniqueTaskList.DuplicateTaskException e) {
-        	throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        try {
+            this.unmarkTask(taskToUnmark);
+        } catch (UniqueTaskList.DuplicateTaskException e) {
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
         return new CommandResult(String.format(MESSAGE_UNMARK_TASK_SUCCESS, taskToUnmark));
     }
-    public void unmarkTask(ReadOnlyTask taskToUnmark) throws DuplicateTaskException{
-    	Task task = (Task) taskToUnmark;
-    	task.getStatus().setStatus(false);
+    public void unmarkTask(ReadOnlyTask taskToUnmark) throws DuplicateTaskException {
+        Task task = (Task) taskToUnmark;
+        task.getStatus().setStatus(false);
     }
 }

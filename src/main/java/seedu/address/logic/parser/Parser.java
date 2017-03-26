@@ -87,10 +87,10 @@ public class Parser {
         
         //@@Zhang Yan Hao A0135753A
         case MarkAsDoneCommand.COMMAND_WORD:
-        	return new MarkAsDoneCommandParser().parse(arguments);
+            return new MarkAsDoneCommandParser().parse(arguments);
         
         case MarkAsUndoneCommand.COMMAND_WORD:
-        	return new MarkAsUndoneCommandParser().parse(arguments);
+            return new MarkAsUndoneCommandParser().parse(arguments);
         //@@Zhang Yan Hao
 
         default:
