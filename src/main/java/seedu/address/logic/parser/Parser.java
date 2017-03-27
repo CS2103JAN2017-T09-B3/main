@@ -21,6 +21,7 @@ import seedu.address.logic.commands.MarkAsUndoneCommand;
 import seedu.address.logic.commands.OpenCommand;
 import seedu.address.logic.commands.SaveCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.ShowDoneCommand;
 import seedu.address.logic.commands.UndoCommand;
 
 /**
@@ -85,13 +86,17 @@ public class Parser {
         case OpenCommand.COMMAND_WORD:
             return new OpenCommandParser().parse(arguments);
         
-        //@@Zhang Yan Hao A0135753A
+        //@@author A0135753A
         case MarkAsDoneCommand.COMMAND_WORD:
             return new MarkAsDoneCommandParser().parse(arguments);
         
         case MarkAsUndoneCommand.COMMAND_WORD:
             return new MarkAsUndoneCommandParser().parse(arguments);
-        //@@Zhang Yan Hao
+
+        case ShowDoneCommand.COMMAND_WORD:
+        	return new ShowDoneCommand();
+
+        //@@author
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);

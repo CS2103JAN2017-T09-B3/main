@@ -148,7 +148,7 @@ public class EditCommand extends Command {
             return tags;
         }
         
-        //@@Zhang Yan Hao A0135753A
+        //@@author A0135753A
         public void setStatus(Optional<Status> status) {
             assert status != null;
             this.status = status;

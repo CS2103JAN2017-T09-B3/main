@@ -109,7 +109,7 @@ public class Task implements ReadOnlyTask {
         return getAsText();
     }
 
-    //@@Zhang Yan Hao A0135753A
+    //@@author A0135753A
     public void setStatus(Status status) {
     	this.status = status;
     }

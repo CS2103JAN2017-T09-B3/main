@@ -1,4 +1,4 @@
-//@@Zhang Yan Hao A0135753A
+//@@author A0135753A
 package seedu.address.model.task;
 
 public class Status{

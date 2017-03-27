@@ -62,5 +62,5 @@ public interface Model {
     /** Updates the filter of the filtered person list to filter by the given keywords*/
     void updateFilteredTaskList(boolean isInContent, Set<String> keywords);
 
-
+    UnmodifiableObservableList<ReadOnlyTask> getDoneTaskList();
 }
