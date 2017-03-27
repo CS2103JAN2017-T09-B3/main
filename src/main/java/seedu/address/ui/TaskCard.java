@@ -26,8 +26,8 @@ public class TaskCard extends UiPart<Region> {
 
     public TaskCard(ReadOnlyTask task, int displayedIndex) {
         super(FXML);
-        title.setText(task.getTitle().fullTitle);
-        id.setText(displayedIndex + ". ");
+        title.setText(task.getTitle().fullTitle + " ");
+        id.setText(displayedIndex + ".");
         dateTime.setText(task.getDateTime().toString());
         content.setText(task.getContent().fullContent);
         initTags(task);

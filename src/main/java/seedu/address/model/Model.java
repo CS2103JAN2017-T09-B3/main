@@ -59,6 +59,9 @@ public interface Model {
     /** Updates the filter of the filtered person list to show all persons */
     void updateFilteredListToShowAll();
 
+    /** Updates the filter of the filtered task list to show today tasks */
+    void updateFilteredListToShowToday();
+
     /** Updates the filter of the filtered person list to filter by the given keywords*/
     void updateFilteredTaskList(boolean isInContent, Set<String> keywords);
 

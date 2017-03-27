@@ -12,6 +12,10 @@ public class DateWithTime extends DateValue {
     private String value;
     private final Date date;
 
+    public DateWithTime() {
+        this.value = "";
+        this.date = new Date(1970, 1, 1);
+    }
     public DateWithTime(Date date) {
         this.date = date;
         SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm");
@@ -26,6 +30,11 @@ public class DateWithTime extends DateValue {
     @Override
     public Date getFullDate() {
         return this.date;
+    }
+
+    @Override
+    public boolean isWithTime() {
+        return true;
     }
 
     @Override
@@ -98,6 +107,13 @@ public class DateWithTime extends DateValue {
     @Override
     public String toString() {
         return this.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o == this
+                || (o instanceof DateWithTime
+                && this.getDateValue().equals(((DateWithTime) o).getDateValue()));
     }
 
     /**

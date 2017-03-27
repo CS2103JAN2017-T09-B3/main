@@ -32,7 +32,7 @@ public class TaskCardHandle extends GuiHandle {
     }
 
     public String getTitle() {
-        return getTextFromLabel(TITLE_FIELD_ID);
+        return getTextFromLabel(TITLE_FIELD_ID).trim();
     }
 
     public String getContent() {
