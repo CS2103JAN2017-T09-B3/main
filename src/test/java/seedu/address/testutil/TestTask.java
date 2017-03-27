@@ -99,13 +99,13 @@ public class TestTask implements ReadOnlyTask {
         return sb.toString();
     }
     //@@Zhang Yan Hao A0135753A
-    public void setStatus(Status status){
-    	this.status = status;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
-	@Override
-	public Status getStatus() {
-		return status;
-	}
+    @Override
+    public Status getStatus() {
+        return status;
+    }
 }
 

@@ -1,9 +1,9 @@
 //@@author A0135753A
 package seedu.address.model.task;
 
-public class Status{
-    public static final boolean markDone = true;
-    public static final boolean markUndone = false;
+public class Status {
+    public static final boolean MARKDONE = true;
+    public static final boolean MARKUNDONE = false;
     public boolean status;
     public Status(boolean status) {
         this.status = status;

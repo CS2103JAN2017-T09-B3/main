@@ -85,16 +85,16 @@ public class Parser {
 
         case OpenCommand.COMMAND_WORD:
             return new OpenCommandParser().parse(arguments);
-        
+
         //@@author A0135753A
         case MarkAsDoneCommand.COMMAND_WORD:
             return new MarkAsDoneCommandParser().parse(arguments);
-        
+
         case MarkAsUndoneCommand.COMMAND_WORD:
             return new MarkAsUndoneCommandParser().parse(arguments);
 
         case ShowDoneCommand.COMMAND_WORD:
-        	return new ShowDoneCommand();
+            return new ShowDoneCommand();
 
         //@@author
 
