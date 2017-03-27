@@ -14,7 +14,6 @@ import seedu.address.model.task.UniqueTaskList;
 public class TypicalTestTasks {
 
     public TestTask alice, benson, carl, daniel, elle, fiona, hoon, ida;
-    //public TestTask alice, benson, carl, fiona, hoon;
 
     public TypicalTestTasks() {
         try {
@@ -24,9 +23,10 @@ public class TypicalTestTasks {
                     .withTags("friends").build();
             benson = new TaskBuilder().withTitle("Benson Meier")
                     .withContent("Benson Meier content")
-                    .withTaskDateTime("", "2/3/2014 10:00")
+                    .withTaskDateTime("2-3-2014 3am", "15/3/2014 10:00")
                     .withTags("owesMoney", "friends").build();
-            carl = new TaskBuilder().withTitle("Carl Kurz").withContent("Carl Kurz content").build();
+            carl = new TaskBuilder().withTitle("Carl Kurz")
+                    .withTaskDateTime("3pm 1-2-2015", "").build();
             daniel = new TaskBuilder().withTitle("Daniel Meier").build();
             elle = new TaskBuilder().withTitle("Elle Meyer")
                     .withTaskDateTime("", "3/4/2015 1:00").build();
@@ -35,7 +35,8 @@ public class TypicalTestTasks {
             //george = new TaskBuilder().withTitle("George Best").build();
 
             // Manually added
-            hoon = new TaskBuilder().withTitle("Hoon Meier").build();
+            hoon = new TaskBuilder().withTitle("Hoon Meier")
+                    .withTaskDateTime("3pm", "5pm 27.12.17").build();
             ida = new TaskBuilder().withTitle("Ida Mueller").build();
         } catch (IllegalValueException e) {
             e.printStackTrace();

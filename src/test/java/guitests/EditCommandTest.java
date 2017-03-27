@@ -22,13 +22,37 @@ public class EditCommandTest extends AddressBookGuiTest {
 
     @Test
     public void edit_allFieldsSpecified_success() throws Exception {
-        String detailsToEdit = "Bobby c/BobBob end/12/5/2017 23:00 #husband";
+        String detailsToEdit = "Bobby c/BobBob end/12/5 11pm #husband";
         int addressBookIndex = 1;
 
         TestTask editedTask = new TaskBuilder().withTitle("Bobby")
                 .withContent("BobBob")
-                .withTaskDateTime("", "12/5/2017 23:00")
+                .withTaskDateTime("", "12/5 11pm")
                 .withTags("husband").build();
+
+        assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedTask);
+    }
+
+    //@@author A0144895N
+    @Test
+    public void edit_onlyEndDeadline_success() throws Exception {
+        String detailsToEdit = "end/7 Dec 12pm";
+        int addressBookIndex = 2;
+
+        TestTask taskToEdit = expectedTasksList[addressBookIndex - 1];
+        TestTask editedTask = new TaskBuilder(taskToEdit).withEndDateTime("7 Dec 12pm").build();
+
+        assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedTask);
+    }
+
+    //@@author A0144895N
+    @Test
+    public void edit_onlyStartDeadline_success() throws Exception {
+        String detailsToEdit = "start/7 Dec 2010 12pm";
+        int addressBookIndex = 2;
+
+        TestTask taskToEdit = expectedTasksList[addressBookIndex - 1];
+        TestTask editedTask = new TaskBuilder(taskToEdit).withStartDateTime("7 Dec 2010 12pm").build();
 
         assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedTask);
     }
@@ -98,7 +122,7 @@ public class EditCommandTest extends AddressBookGuiTest {
 
     @Test
     public void edit_duplicatePerson_failure() {
-        commandBox.runCommand("edit 3 Alice Pauline end/1/2/2013 9:00 #friends");
+        commandBox.runCommand("edit 3 Alice Pauline end/1/2/2013 9am #friends");
         assertResultMessage(EditCommand.MESSAGE_DUPLICATE_TASK);
     }
 

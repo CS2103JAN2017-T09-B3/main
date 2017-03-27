@@ -28,6 +28,7 @@ public class TestTask implements ReadOnlyTask {
         content = new Content("");
         dateTime = new TaskDateTime("", "");
         tags = new UniqueTagList();
+        status = new Status(false);
     }
 
     /**

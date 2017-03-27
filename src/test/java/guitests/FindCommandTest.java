@@ -12,11 +12,31 @@ public class FindCommandTest extends AddressBookGuiTest {
     @Test
     public void find_nonEmptyList() {
         assertFindResult("find Mark"); // no results
-        assertFindResult("find Meier", td.benson, td.daniel); // multiple results
+        assertFindResult("find Meier", td.benson, td.daniel); // multiple
+                                                              // results
 
-        //find after deleting one result
+        // find after deleting one result
         commandBox.runCommand("delete 1");
         assertFindResult("find Meier", td.daniel);
+    }
+
+    // @@author A0144895N
+    @Test
+    public void find_caseInsensitive() {
+        assertFindResult("find fiona", td.fiona);
+        assertFindResult("find alice", td.alice);
+    }
+
+    // @@author A0144895N
+    @Test
+    public void find_partialWord() {
+        assertFindResult("find on", td.benson, td.fiona);
+    }
+
+    // @@author A0144895N
+    @Test
+    public void find_inContent() {
+        assertFindResult("find content/ con", td.alice, td.benson, td.fiona);
     }
 
     @Test

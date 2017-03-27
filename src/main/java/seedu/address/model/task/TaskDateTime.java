@@ -103,6 +103,14 @@ public class TaskDateTime {
         return isThereEndDateTime() ? Optional.of(this.endDateTime) : Optional.empty();
     }
 
+    public String getStartDateTimeString() {
+        return isThereStartDateTime() ? this.startDateTime.getStringValue() : "";
+    }
+
+    public String getEndDateTimeString() {
+        return isThereEndDateTime() ? this.endDateTime.getStringValue() : "";
+    }
+
     @Override
     public String toString() {
         if (!isThereStartDateTime() && !isThereEndDateTime()) {

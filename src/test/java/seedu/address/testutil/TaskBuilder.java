@@ -40,6 +40,18 @@ public class TaskBuilder {
         return this;
     }
 
+    public TaskBuilder withStartDateTime(String startDateTime) throws IllegalValueException {
+        String endDateTime = this.task.getDateTime().getEndDateTimeString();
+        this.task.setTaskDateTime(new TaskDateTime(startDateTime, endDateTime));
+        return this;
+    }
+
+    public TaskBuilder withEndDateTime(String endDateTime) throws IllegalValueException {
+        String startDateTime = this.task.getDateTime().getStartDateTimeString();
+        this.task.setTaskDateTime(new TaskDateTime(startDateTime, endDateTime));
+        return this;
+    }
+
     public TaskBuilder withTags(String ... tags) throws IllegalValueException {
         task.setTags(new UniqueTagList());
         for (String tag: tags) {
