@@ -179,4 +179,16 @@ public class ModelManager extends ComponentManager implements Model {
         ListFilter.filterKeywords(filteredTasks, isInContent, keywords);
     }
 
+    //@@author A0135753A
+    @Override
+    public UnmodifiableObservableList<ReadOnlyTask> getDoneTaskList() {
+        FilteredList<ReadOnlyTask> newList = filteredTasks;
+        for (ReadOnlyTask task : newList) {
+            if (!task.getStatus().status) {
+                newList.remove(task);
+            }
+        }
+        return new UnmodifiableObservableList<>(newList);
+    }
+
 }
