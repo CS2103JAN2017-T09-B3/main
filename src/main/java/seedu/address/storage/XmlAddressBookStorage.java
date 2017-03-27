@@ -75,6 +75,7 @@ public class XmlAddressBookStorage implements AddressBookStorage {
         XmlFileStorage.saveDataToFile(file, new XmlSerializableAddressBook(addressBook));
     }
 
+  //@@author A0135807A
     @Override
     public void setFileLocation(String filepath) {
         this.filePath = filepath;

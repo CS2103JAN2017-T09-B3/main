@@ -12,6 +12,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.storage.XmlSerializableAddressBook;
 
+//@@author A0135807A
 public class OpenCommand extends Command {
 
     public static final String COMMAND_WORD = "open";
@@ -24,6 +25,7 @@ public class OpenCommand extends Command {
     public static final String MESSAGE_INVALID_PATH = "Invalid Path";
     public static final String MESSAGE_READ_ACCESS_DENIED = "File Read Access Denied";
     public static final String MESSAGE_INVALID_FILE = "Invalid File";
+
     public static final String DEFAULT_FILE = "taskmanager.xml";
 
     private File file;

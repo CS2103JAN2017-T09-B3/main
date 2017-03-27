@@ -10,6 +10,7 @@ import seedu.address.commons.util.FxViewUtil;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.ReadOnlyTask;
 
+//@@author A0135807A
 /**
  * Displays the task details and content.
  */

@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
@@ -80,8 +81,9 @@ public class EditCommand extends Command {
         Content updatedContent = editTaskDescriptor.getContent().orElseGet(taskToEdit::getContent);
         TaskDateTime updatedDateTime = editTaskDescriptor.getDateTime().orElseGet(taskToEdit::getDateTime);
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
+        Status status = editTaskDescriptor.getStatus().orElseGet(taskToEdit::getStatus);
 
-        return new Task(updatedTitle, updatedContent, updatedDateTime, updatedTags);
+        return new Task(updatedTitle, updatedContent, updatedDateTime, updatedTags, status);
     }
 
     /**
@@ -93,6 +95,7 @@ public class EditCommand extends Command {
         private Optional<Content> content = Optional.empty();
         private Optional<TaskDateTime> dateTime = Optional.empty();
         private Optional<UniqueTagList> tags = Optional.empty();
+        private Optional<Status> status = Optional.empty();
 
         public EditTaskDescriptor() {}
 
@@ -143,6 +146,14 @@ public class EditCommand extends Command {
 
         public Optional<UniqueTagList> getTags() {
             return tags;
+        }
+        //@@author A0135753A
+        public void setStatus(Optional<Status> status) {
+            assert status != null;
+            this.status = status;
+        }
+        public Optional<Status> getStatus() {
+            return status;
         }
     }
 }
