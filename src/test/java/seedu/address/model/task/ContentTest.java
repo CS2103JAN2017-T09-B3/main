@@ -9,12 +9,12 @@ public class ContentTest {
 
     @Test
     public void isValidContent() {
-        // invalid name
+        // invalid content
         assertFalse(Content.isValidContent(" ")); // spaces only
         assertFalse(Content.isValidContent("^")); // only non-alphanumeric characters
         assertFalse(Content.isValidContent("meeting*")); // contains non-alphanumeric characters
 
-        // valid name
+        // valid content
         assertTrue(Content.isValidContent("")); // empty string
         assertTrue(Content.isValidContent("peter jack")); // alphabets only
         assertTrue(Content.isValidContent("12345")); // numbers only
