@@ -40,6 +40,10 @@ public class ListFilter {
         }
     }
 
+    public static void filterCompleted (FilteredList<ReadOnlyTask> filteredList) {
+        filteredList.setPredicate(t -> t.getStatus().getStatus());
+    }
+
  // ========== Inner classes/interfaces used for filtering
     // =================================================
 

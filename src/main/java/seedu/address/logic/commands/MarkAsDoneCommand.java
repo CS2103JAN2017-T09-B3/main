@@ -5,7 +5,6 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
@@ -48,7 +47,7 @@ public class MarkAsDoneCommand extends Command {
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
     }
     public void markTask(ReadOnlyTask taskToMark) throws DuplicateTaskException {
-        Task task = (Task) taskToMark;
-        task.getStatus().setStatus(true);
+        taskToMark.getStatus().setStatus(true);
+//        Task task = (Task) taskToMark;
     }
 }

@@ -18,7 +18,7 @@ public class DateWithTime extends DateValue {
     }
     public DateWithTime(Date date) {
         this.date = date;
-        SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm");
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yy HH:mm");
         this.value = df.format(date);
     }
 
@@ -64,7 +64,7 @@ public class DateWithTime extends DateValue {
 
     @Override
     public String getDateValue() {
-        SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yy");
         return df.format(this.date);
     }
 
@@ -120,7 +120,7 @@ public class DateWithTime extends DateValue {
      * updates string representing date when changing date and time value
      */
     private void updateStringValue() {
-        SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm");
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yy HH:mm");
         this.value = df.format(date);
     }
 }

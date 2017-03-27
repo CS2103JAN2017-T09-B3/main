@@ -58,7 +58,7 @@
             </VBox>
             <VBox minWidth = "0.0" prefHeight="200.0" prefWidth="0.0">
                <children>
-                  <AnchorPane fx:id="taskDetailsPlaceholder" prefHeight="200.0" prefWidth="200.0" />
+                  <AnchorPane fx:id="taskDetailsPlaceholder" prefHeight="200.0" prefWidth="340.0" />
                   <AnchorPane fx:id="taskDescriptionPlaceholder" prefWidth="340">
                       <padding>
                           <Insets bottom="10" left="10" right="10" top="10" />

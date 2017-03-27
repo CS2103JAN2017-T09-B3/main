@@ -56,6 +56,7 @@ public class XmlAdaptedTask {
                 ? dateTime.getStartDateTime().get().getStringValue() : "";
         endDateTime = dateTime.getEndDateTime().isPresent()
                 ? dateTime.getEndDateTime().get().getStringValue() : "";
+        status = source.getStatus().getStatus();
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));

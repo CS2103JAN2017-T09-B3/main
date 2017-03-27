@@ -10,43 +10,56 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <GridPane HBox.hgrow="ALWAYS">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-            </columnConstraints>
-            <children>
-                <VBox alignment="CENTER_LEFT" minHeight="70.0" GridPane.columnIndex="0">
-                    <stylesheets>
-                        <URL value="@DarkTheme.css" />
-                        <URL value="@Extensions.css" />
-                    </stylesheets>
-                    <padding>
-                        <Insets bottom="5" left="15" right="5" top="5" />
-                    </padding>
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8.0.111"
+	xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<GridPane HBox.hgrow="ALWAYS">
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+					prefWidth="150.0" />
+			</columnConstraints>
+			<children>
+				<HBox GridPane.columnIndex="0" alignment="CENTER_LEFT"
+					minWidth="200.0">
+					<children>
+						<VBox alignment="CENTER_LEFT" minHeight="70.0">
+							<stylesheets>
+								<URL value="@DarkTheme.css" />
+								<URL value="@Extensions.css" />
+							</stylesheets>
+							<padding>
+								<Insets bottom="5" left="15" right="5" top="5" />
+							</padding>
 
-                    <children>
-                        <HBox alignment="CENTER_LEFT" spacing="5">
-                            <children>
-                                <HBox minWidth="500.0">
-                                	<padding>
-                        				<Insets bottom="0" left="0" right="0" top="0" />
-                    				</padding>
-                                    <Label id="id" fx:id="id" />
-                                    <Label id="title" fx:id="title" text="title" />
-                                    <FlowPane id="tags" fx:id="tags" />
-                                </HBox>
-                            </children>
-                        </HBox>
-                        <Label id="content" fx:id="content" text="content" />
-                        <Label id="dateTime" fx:id="dateTime" text="dateTime" />
-                    </children>
-                </VBox>
-            </children>
-         <rowConstraints>
-            <RowConstraints />
-         </rowConstraints>
-        </GridPane>
-    </children>
+							<children>
+								<HBox alignment="CENTER_LEFT" spacing="5">
+									<children>
+										<HBox minWidth="100.0">
+											<padding>
+												<Insets bottom="0" left="0" right="0" top="0" />
+											</padding>
+											<Label id="id" fx:id="id" minWidth="10.0" />
+											<Label id="title" fx:id="title" text="title" minWidth="50.0" />
+											<FlowPane id="tags" fx:id="tags" />
+										</HBox>
+									</children>
+								</HBox>
+								<Label id="content" fx:id="content" text="content" />
+
+							</children>
+						</VBox>
+						<HBox alignment="CENTER_RIGHT" minWidth="100.0" >
+							<children>
+								<Label id="dateTime" fx:id="dateTime" text="dateTime"
+									minWidth="100.0" maxWidth="200.0" />
+							</children>
+						</HBox>
+					</children>
+				</HBox>
+			</children>
+			<rowConstraints>
+				<RowConstraints />
+			</rowConstraints>
+		</GridPane>
+	</children>
 </HBox>

@@ -179,6 +179,11 @@ public class ModelManager extends ComponentManager implements Model {
         ListFilter.filterKeywords(filteredTasks, isInContent, keywords);
     }
 
+    @Override
+    public void updateFilteredListToShowCompleted() {
+        ListFilter.filterCompleted(filteredTasks);
+    }
+
     //@@author A0135753A
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getDoneTaskList() {

@@ -16,7 +16,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class DateMaker {
 
     private static final String[] DATE_FORMATS = { "dd/MM/yyyy", "dd/MM/yy", "dd/MM", "dd-MM-yyyy", "dd-MM-yy", "dd-MM",
-        "dd MMM", "EEE, dd MMM yyyy" };
+        "dd MMM", "EEE, dd MMM yyyy", "dd.MM.yy" };
 
     private static final String[] TIME_FORMATS = { "HH:mm", "hhaa", "hh:mmaa" };
 
