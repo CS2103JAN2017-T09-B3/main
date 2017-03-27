@@ -147,7 +147,6 @@ public class EditCommand extends Command {
         public Optional<UniqueTagList> getTags() {
             return tags;
         }
-
         //@@author A0135753A
         public void setStatus(Optional<Status> status) {
             assert status != null;
