@@ -1,26 +1,26 @@
 @font-face {
 	font-family: OpenSans-Bold;
-	src: url(OpenSans-Bold.ttf);
+	src: url(src/main/resources/view/OpenSans-Bold.ttf);
 }
 
 @font-face {
 	font-family: OpenSans-Light;
-	src: url(OpenSans-Light.ttf);
+	src: url(src/main/resources/view/OpenSans-Light.ttf);
 }
 
 @font-face {
 	font-family: OpenSans-LightItalic;
-	src: url(OpenSans-LightItalic.ttf);
+	src: url(src/main/resources/view/OpenSans-LightItalic.ttf);
 }
 
 @font-face {
 	font-family: OpenSans-Regular;
-	src: url(OpenSans-Regular.ttf);
+	src: url(src/main/resources/view/OpenSans-Regular.ttf);
 }
 
 @font-face {
 	font-family: OpenSans-Italic;
-	src: url(OpenSans-Italic.ttf);
+	src: url(src/main/resources/view/OpenSans-Italic.ttf);
 }
 
 .root {
