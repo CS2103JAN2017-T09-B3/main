@@ -8,6 +8,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
+import seedu.address.model.task.DateValue;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
@@ -25,8 +26,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
             + "by the index number used in the last task listing. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) CONTENT by/DATE_TIME [#TAG]...\n"
-            + "Example: " + COMMAND_WORD + " 1 Pay c/bill end/10am 15 Jul #overspeed";
+            + "Parameters: INDEX (must be a positive integer) CONTENT by/DATE_TIME [#TAG]...\n" + "Example: "
+            + COMMAND_WORD + " 1 Pay c/bill end/10am 15 Jul #overspeed";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -36,8 +37,10 @@ public class EditCommand extends Command {
     private final EditTaskDescriptor editTaskDescriptor;
 
     /**
-     * @param filteredTaskListIndex the index of the task in the filtered task list to edit
-     * @param editTaskDescriptor details to edit the task with
+     * @param filteredTaskListIndex
+     *            the index of the task in the filtered task list to edit
+     * @param editTaskDescriptor
+     *            details to edit the task with
      */
     public EditCommand(int filteredTaskListIndex, EditTaskDescriptor editTaskDescriptor) {
         assert filteredTaskListIndex > 0;
@@ -73,13 +76,22 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
      * edited with {@code editTaskDescriptor}.
      */
-    private static Task createEditedTask(ReadOnlyTask taskToEdit,
-                                             EditTaskDescriptor editTaskDescriptor) {
+    private static Task createEditedTask(ReadOnlyTask taskToEdit, EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
 
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
         Content updatedContent = editTaskDescriptor.getContent().orElseGet(taskToEdit::getContent);
-        TaskDateTime updatedDateTime = editTaskDescriptor.getDateTime().orElseGet(taskToEdit::getDateTime);
+
+        DateValue updatedStartDateTime = editTaskDescriptor.getDateTime().isPresent()
+                ? editTaskDescriptor.getDateTime().get().getStartDateTime()
+                        .orElse(taskToEdit.getDateTime().getStartDateTime().orElse(null))
+                : taskToEdit.getDateTime().getStartDateTime().orElse(null);
+        DateValue updatedEndDateTime = editTaskDescriptor.getDateTime().isPresent()
+                ? editTaskDescriptor.getDateTime().get().getEndDateTime()
+                        .orElse(taskToEdit.getDateTime().getEndDateTime().orElse(null))
+                : taskToEdit.getDateTime().getEndDateTime().orElse(null);
+        TaskDateTime updatedDateTime = new TaskDateTime(updatedStartDateTime, updatedEndDateTime);
+
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
         Status status = editTaskDescriptor.getStatus().orElseGet(taskToEdit::getStatus);
 
@@ -87,8 +99,8 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the task with. Each non-empty field value will replace the
-     * corresponding field value of the task.
+     * Stores the details to edit the task with. Each non-empty field value will
+     * replace the corresponding field value of the task.
      */
     public static class EditTaskDescriptor {
         private Optional<Title> title = Optional.empty();
@@ -97,7 +109,8 @@ public class EditCommand extends Command {
         private Optional<UniqueTagList> tags = Optional.empty();
         private Optional<Status> status = Optional.empty();
 
-        public EditTaskDescriptor() {}
+        public EditTaskDescriptor() {
+        }
 
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             this.title = toCopy.getTitle();
@@ -147,11 +160,13 @@ public class EditCommand extends Command {
         public Optional<UniqueTagList> getTags() {
             return tags;
         }
-        //@@author A0135753A
+
+        // @@author A0135753A
         public void setStatus(Optional<Status> status) {
             assert status != null;
             this.status = status;
         }
+
         public Optional<Status> getStatus() {
             return status;
         }

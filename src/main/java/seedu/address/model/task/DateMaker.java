@@ -37,6 +37,7 @@ public class DateMaker {
     public void makeDate(String dateString) throws IllegalValueException {
         assert dateString != null;
         resetMaker();
+        dateString = dateString.trim();
         if (dateString.equals("")) {
             date = null;
             return;

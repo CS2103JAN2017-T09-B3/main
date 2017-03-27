@@ -43,6 +43,11 @@ public class TaskDateTime {
         }
     }
 
+    public TaskDateTime(DateValue startDateTime, DateValue endDateTime) {
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+    }
+
     /*
      * Returns true if start date comes before end date or there is no either start date or end date
      */
