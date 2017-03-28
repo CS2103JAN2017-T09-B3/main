@@ -33,8 +33,10 @@ public class TaskDetail extends UiPart<Region> {
 
     private static final String FXML = "TaskDetail.fxml";
     private static final String COMMAND_EDIT = "edit %1$s %2$s";
+
     private static final String MESSAGE_SUPPORT = "Press Enter to save %1$s!";
     private static final String MESSAGE_TAG = "Create a tag with a Prefix '#'.";
+  
     private Logic logic;
 
     private String saveTitle;
@@ -100,7 +102,7 @@ public class TaskDetail extends UiPart<Region> {
 
     /**
      * @param placeholder
-     *            The AnchorPane where the TaskDetail must be inserted.
+     * The AnchorPane where the TaskDetail must be inserted.
      */
     public TaskDetail(AnchorPane placeholder, Logic logic) {
         super(FXML);
@@ -108,6 +110,11 @@ public class TaskDetail extends UiPart<Region> {
         startTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Start Time"));
         endTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "End Time"));
         tags.promptTextProperty().set(MESSAGE_TAG);
+
+        title.setText(String.format(MESSAGE_SUPPORT, "Title"));
+        startTime.setText(String.format(MESSAGE_SUPPORT, "Start Time"));
+        endTime.setText(String.format(MESSAGE_SUPPORT, "End Time"));
+        tags.setText(MESSAGE_NOT_EDITABLE);
 
         labelTaskTitle.setStyle("-fx-text-fill: white");
         labelStartTime.setStyle("-fx-text-fill: white");
@@ -167,8 +174,6 @@ public class TaskDetail extends UiPart<Region> {
 
         title.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
-                if (getSaveTitle().isEmpty()) {
-                }
                 saveAndShowContent(task, PREFIX_TITLE, getSaveTitle(), title);
             }
         });

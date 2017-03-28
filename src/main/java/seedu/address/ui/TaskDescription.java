@@ -29,6 +29,7 @@ public class TaskDescription extends UiPart<Region> {
     private static final String COMMAND_EDIT = "edit %1$s %2$s";
 
     private Logic logic;
+
     private String newContent; // store latest Content
 
     @FXML
@@ -71,9 +72,9 @@ public class TaskDescription extends UiPart<Region> {
     public void loadTaskPage(ReadOnlyTask task) {
         content.setText(task.getContent().toString());
         setNewContent(task.getContent().toString());
-
+      
         content.textProperty().addListener((observable, oldContent, newContent) -> setNewContent(newContent));
-
+      
         content.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 saveAndShowContent(task, getNewContent());
