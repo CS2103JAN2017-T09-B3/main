@@ -1,13 +1,15 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.parser.CliSyntax.EMPTY_STRING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_START;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import seedu.address.commons.util.FxViewUtil;
@@ -26,7 +28,14 @@ public class TaskDetail extends UiPart<Region> {
     private static final String FXML = "TaskDetail.fxml";
     private static final String COMMAND_EDIT = "edit %1$s %2$s";
     private static final String UNABLE_TO_EDIT = "Unable to edit Time/Tags";
+    private static final String MESSAGE_SUPPORT = "Press Enter to save %1$s!";
+    private static final String MESSAGE_NOT_EDITABLE = "Create a tag with a Prefix '#'.";
     private Logic logic;
+
+    private String saveTitle;
+    private String saveStartTime;
+    private String saveEndTime;
+    private String saveTags;
 
     @FXML
     private TextField title;
@@ -52,12 +61,49 @@ public class TaskDetail extends UiPart<Region> {
     @FXML
     private Label labelTags;
 
+    public String getSaveTitle() {
+        return saveTitle;
+    }
+
+    public String getSaveStartTime() {
+        return saveStartTime;
+    }
+
+    public String getSaveEndTime() {
+        return saveEndTime;
+    }
+
+    public String getSaveTags() {
+        return saveTags;
+    }
+
+    public void setSaveTitle(String saveTitle) {
+        this.saveTitle = saveTitle;
+    }
+
+    public void setSaveStartTime(String saveStartTime) {
+        this.saveStartTime = saveStartTime;
+    }
+
+    public void setSaveEndTime(String saveEndTime) {
+        this.saveEndTime = saveEndTime;
+    }
+
+    public void setSaveTags(String saveTags) {
+        this.saveTags = saveTags;
+    }
+
     /**
      * @param placeholder
      *            The AnchorPane where the TaskDetail must be inserted
      */
     public TaskDetail(AnchorPane placeholder, Logic logic) {
         super(FXML);
+
+        title.setText(String.format(MESSAGE_SUPPORT, "Title"));
+        startTime.setText(String.format(MESSAGE_SUPPORT, "Start Time"));
+        endTime.setText(String.format(MESSAGE_SUPPORT, "End Time"));
+        tags.setText(MESSAGE_NOT_EDITABLE);
 
         labelTaskTitle.setStyle("-fx-text-fill: white");
         labelStartTime.setStyle("-fx-text-fill: white");
@@ -69,16 +115,24 @@ public class TaskDetail extends UiPart<Region> {
         this.logic = logic;
     }
 
-    public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix, String newContent, TextField field) {
+    /**
+     * Update the task with the newDetail
+     *
+     * @param taskToEdit
+     * @param prefix
+     * @param newDetail
+     * @param field
+     */
+    public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix, String newDetail, TextField field) {
         assert logic != null;
 
         try {
             logic.execute(String.format(COMMAND_EDIT, logic.getFilteredTaskList().indexOf(taskToEdit) + 1,
-                    prefix.toString() + newContent));
+                    prefix.toString() + newDetail));
         } catch (CommandException ce) {
             new CommandException(UNABLE_TO_EDIT);
         }
-        field.setText(newContent);
+        field.setText(newDetail);
     }
 
     public void loadTaskPage(ReadOnlyTask task) {
@@ -86,33 +140,50 @@ public class TaskDetail extends UiPart<Region> {
 
         String taggings = "";
         title.setText(task.getTitle().toString());
-        title.editableProperty().set(false);
 
         startTime.setText(task.getDateTime().getStartDateTime().isPresent()
-                ? task.getDateTime().getStartDateTime().get().getDateValue() : "");
+                ? task.getDateTime().getStartDateTime().get().toString() : "");
         endTime.setText(task.getDateTime().getEndDateTime().isPresent()
-                ? task.getDateTime().getEndDateTime().get().getDateValue() : "");
+                ? task.getDateTime().getEndDateTime().get().toString() : "");
 
         for (Tag tag : task.getTags()) {
             taggings += tag.toString();
         }
         tags.setText(taggings);
-        tags.editableProperty().set(false);
 
-        startTime.textProperty().addListener(new ChangeListener<String>() {
+        title.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveTitle(newvalue));
+        startTime.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveStartTime(newvalue));
+        endTime.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveEndTime(newvalue));
+        tags.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveTags(newvalue));
 
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldStartTime,
-                    String newStartTime) {
-                saveAndShowContent(task, PREFIX_DATE_TIME_START, newStartTime, startTime);
+
+        title.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                saveAndShowContent(task, PREFIX_TITLE, getSaveTitle(), title);
             }
         });
 
-        endTime.textProperty().addListener(new ChangeListener<String>() {
+        startTime.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                saveAndShowContent(task, PREFIX_DATE_TIME_START, getSaveStartTime(), startTime);
+            }
+        });
 
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldEndTime, String newEndTime) {
-                saveAndShowContent(task, PREFIX_DATE_TIME_END, newEndTime, endTime);
+        endTime.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                saveAndShowContent(task, PREFIX_DATE_TIME_END, getSaveEndTime(), endTime);
+            }
+        });
+
+        tags.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER && !getSaveTags().isEmpty()) {
+                if (getSaveTags().startsWith(PREFIX_TAG.toString())) {
+                    saveAndShowContent(task, PREFIX_TAG, getSaveTags().substring(1), tags);
+                } else {
+                    saveAndShowContent(task, PREFIX_TAG, getSaveTags(), tags);
+                }
+            } else if(keyEvent.getCode() == KeyCode.ENTER && getSaveTags().isEmpty()) {
+                saveAndShowContent(task, PREFIX_TAG, EMPTY_STRING, tags);
             }
         });
     }
