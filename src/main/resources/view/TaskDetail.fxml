@@ -25,10 +25,10 @@
             <Label fx:id="labelStartTime" prefHeight="17.0" prefWidth="80.0" text="Start Time" textFill="WHITE" GridPane.rowIndex="1" />
             <Label fx:id="labelEndTime" prefHeight="17.0" prefWidth="79.0" text="End Time" textFill="WHITE" GridPane.rowIndex="2" />
             <Label fx:id="labelTags" text="Tags" textFill="WHITE" GridPane.rowIndex="3" />
+            <TextField fx:id="title" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
             <TextField fx:id="startTime" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="endTime" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="tags" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="title" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
