@@ -126,8 +126,8 @@ public class MainWindow extends UiPart<Region> {
     }
 
     void fillInnerParts() {
-        taskDescription = new TaskDescription(getTaskDescriptionPlaceholder());
-        taskDetail = new TaskDetail(getTaskDetailsPlaceholder());
+        taskDescription = new TaskDescription(getTaskDescriptionPlaceholder(), logic);
+        taskDetail = new TaskDetail(getTaskDetailsPlaceholder(), logic);
         taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
         new ResultDisplay(getResultDisplayPlaceholder());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
@@ -256,8 +256,10 @@ public class MainWindow extends UiPart<Region> {
     public TaskListPanel getTaskListPanel() {
         return this.taskListPanel;
     }
-
+    //@@author A0135807A
     void loadTaskPage(ReadOnlyTask task) {
+        taskDescription = new TaskDescription(getTaskDescriptionPlaceholder(), logic);
+        taskDetail = new TaskDetail(getTaskDetailsPlaceholder(), logic);
         taskDescription.loadTaskPage(task);
         taskDetail.loadTaskPage(task);
     }

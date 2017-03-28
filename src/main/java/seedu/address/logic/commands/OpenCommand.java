@@ -13,6 +13,10 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.storage.XmlSerializableAddressBook;
 
 //@@author A0135807A
+/**
+ * Open a .xml file from user specified location locally.
+ * Default saved file location to ./data/taskmanager.xml.
+ */
 public class OpenCommand extends Command {
 
     public static final String COMMAND_WORD = "open";
@@ -21,17 +25,16 @@ public class OpenCommand extends Command {
             + "Parameters: FILELOCATION" + "Example: " + COMMAND_WORD
             + " data/taskmanager.xml";
 
-    public static final String MESSAGE_SUCCESS = "Loaded ";
+    public static final String MESSAGE_SUCCESS = "Loaded %1$s";
     public static final String MESSAGE_INVALID_PATH = "Invalid Path";
     public static final String MESSAGE_READ_ACCESS_DENIED = "File Read Access Denied";
-    public static final String MESSAGE_INVALID_FILE = "Invalid File";
 
     public static final String DEFAULT_FILE = "taskmanager.xml";
 
     private File file;
 
     /**
-     * Creates a OpenCommand using a File
+     * Creates a OpenCommand using a File.
      */
     public OpenCommand(File file) {
         this.file = file;
@@ -51,7 +54,7 @@ public class OpenCommand extends Command {
         } catch (JAXBException Exception) {
             return new CommandResult(MESSAGE_READ_ACCESS_DENIED);
         }
-        return new CommandResult(MESSAGE_SUCCESS + file.getName());
+        return new CommandResult(String.format(MESSAGE_SUCCESS, file.getName()));
     }
 
 }
