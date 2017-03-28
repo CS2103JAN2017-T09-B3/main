@@ -18,6 +18,7 @@ import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
+import seedu.address.commons.events.ui.UpdateUiTaskDescriptionEvent;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
@@ -125,10 +126,17 @@ public class UiManager extends ComponentManager implements Ui {
         mainWindow.loadTaskPage(event.getNewSelection());
     }
 
+    //author A0135807A
     @Subscribe
     private void handleUpdateStatusBarFooterEvent(UpdateStatusBarFooterEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.updateStatusBarFooter();
+    }
+
+    @Subscribe
+    private void handleUpdateUiTaskDescriptionEvent(UpdateUiTaskDescriptionEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        mainWindow.loadTaskPage(event.getEditedTask());
     }
 
 }

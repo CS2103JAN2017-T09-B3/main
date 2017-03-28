@@ -13,7 +13,8 @@ import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
- * Deletes a task identified using it's last displayed index from the list
+ * Deletes a task identified using it's last displayed index from the list.
+ * Delete a task deadline.
  */
 public class DeleteCommand extends Command {
 

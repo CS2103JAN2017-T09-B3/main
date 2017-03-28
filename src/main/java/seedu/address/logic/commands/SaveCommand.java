@@ -13,6 +13,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.storage.XmlSerializableAddressBook;
 
 //@@author A0135807A
+/**
+ * Save to a user specified location locally.
+ * Default saved filename set to /taskmanager.xml.
+ */
 public class SaveCommand extends Command {
 
     public static final String COMMAND_WORD = "save";
@@ -21,16 +25,15 @@ public class SaveCommand extends Command {
             + "Parameters: FILELOCATION" + "Example: " + COMMAND_WORD
             + " data/taskmanager.xml";
 
-    public static final String MESSAGE_SUCCESS = "Tasks saved to ";
+    public static final String MESSAGE_SUCCESS = "Tasks saved to %1$s";
     public static final String MESSAGE_INVALID_PATH = "Invalid Path";
     public static final String MESSAGE_WRITE_ACCESS_DENIED = "File Write Access Denied";
-    public static final String MESSAGE_INVALID_FILE = "Invalid File";
     public static final String DEFAULT_FILE = "/taskmanager.xml";
 
     private File file;
 
     /**
-     * Creates a SaveCommand using a File
+     * Creates a SaveCommand using a File.
      */
     public SaveCommand(File file) {
         this.file = file;
@@ -53,14 +56,14 @@ public class SaveCommand extends Command {
                 ConfigUtil.saveConfig(model.getConfig(), Config.DEFAULT_CONFIG_FILE);
                 model.updateFileLocation();
             } else {
-                return new CommandResult(MESSAGE_INVALID_FILE);
+                return new CommandResult(MESSAGE_INVALID_PATH);
             }
         } catch (IOException io) {
             return new CommandResult(MESSAGE_INVALID_PATH);
         } catch (JAXBException Exception) {
             return new CommandResult(MESSAGE_WRITE_ACCESS_DENIED);
         }
-        return new CommandResult(MESSAGE_SUCCESS + file.getPath());
+        return new CommandResult(String.format(MESSAGE_SUCCESS, file.getPath()));
     }
 
 }
