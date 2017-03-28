@@ -106,6 +106,11 @@ public class ModelManager extends ComponentManager implements Model {
         raise(new UpdateStatusBarFooterEvent());
         indicateAddressBookChanged();
     }
+
+    /** Raises event to update the Ui TaskDescription when task is edited using command line */
+    public void updateUiTaskDescription(ReadOnlyTask editedTask) {
+        raise(new UpdateUiTaskDescriptionEvent(editedTask));
+    }
     //@@author
 
     //@@author A0125221Y
@@ -131,7 +136,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
         taskManager.updateTask(taskIndex, editedTask);
-        raise(new UpdateUiTaskDescriptionEvent(editedTask));
+        updateUiTaskDescription(editedTask);
         indicateAddressBookChanged();
     }
 
