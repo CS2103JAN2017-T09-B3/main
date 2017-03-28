@@ -12,6 +12,7 @@ import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.commons.events.storage.ChangedFileLocationRequestEvent;
 import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
+import seedu.address.commons.events.ui.UpdateUiTaskDescriptionEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
@@ -92,12 +93,13 @@ public class ModelManager extends ComponentManager implements Model {
         return taskManager;
     }
 
-    //@@author A0135807A
     /** Raises an event to indicate the model has changed */
     private void indicateAddressBookChanged() {
         raise(new AddressBookChangedEvent(taskManager));
     }
 
+    //@@author A0135807A
+    /** Raises events to update the file location in storage and status bar in UI */
     @Override
     public void updateFileLocation() {
         raise(new ChangedFileLocationRequestEvent(config));
@@ -129,6 +131,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
         taskManager.updateTask(taskIndex, editedTask);
+        raise(new UpdateUiTaskDescriptionEvent(editedTask));
         indicateAddressBookChanged();
     }
 

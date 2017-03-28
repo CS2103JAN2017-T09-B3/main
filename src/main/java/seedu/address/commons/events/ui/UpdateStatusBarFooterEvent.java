@@ -4,7 +4,7 @@ import seedu.address.commons.events.BaseEvent;
 
 //@@author A0135807A
 /**
- * Indicates a request for App termination
+ * Indicates a request to update the StatusBarFooter
  */
 public class UpdateStatusBarFooterEvent extends BaseEvent {
 
