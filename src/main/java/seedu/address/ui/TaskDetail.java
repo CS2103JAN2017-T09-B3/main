@@ -95,7 +95,7 @@ public class TaskDetail extends UiPart<Region> {
 
     /**
      * @param placeholder
-     *            The AnchorPane where the TaskDetail must be inserted
+     * The AnchorPane where the TaskDetail must be inserted.
      */
     public TaskDetail(AnchorPane placeholder, Logic logic) {
         super(FXML);
@@ -116,12 +116,12 @@ public class TaskDetail extends UiPart<Region> {
     }
 
     /**
-     * Update the task with the newDetail
+     * Update the task with the newDetail.
      *
-     * @param taskToEdit
-     * @param prefix
-     * @param newDetail
-     * @param field
+     * @param taskToEdit selected task.
+     * @param prefix format to differentiate parameters.
+     * @param newDetail to be updated to the right task.
+     * @param field text field to obtain user input.
      */
     public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix, String newDetail, TextField field) {
         assert logic != null;
@@ -182,7 +182,7 @@ public class TaskDetail extends UiPart<Region> {
                 } else {
                     saveAndShowContent(task, PREFIX_TAG, getSaveTags(), tags);
                 }
-            } else if(keyEvent.getCode() == KeyCode.ENTER && getSaveTags().isEmpty()) {
+            } else if (keyEvent.getCode() == KeyCode.ENTER && getSaveTags().isEmpty()) {
                 saveAndShowContent(task, PREFIX_TAG, EMPTY_STRING, tags);
             }
         });
