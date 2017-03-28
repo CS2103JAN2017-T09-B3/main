@@ -43,6 +43,7 @@ public class OpenCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         assert model != null;
+        assert file != null;
         try {
             ReadOnlyAddressBook taskData = XmlUtil.getDataFromFile(file, XmlSerializableAddressBook.class);
             model.getConfig().setAddressBookFilePath(file.getAbsolutePath());

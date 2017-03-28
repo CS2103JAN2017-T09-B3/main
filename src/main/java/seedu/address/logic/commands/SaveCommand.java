@@ -42,6 +42,8 @@ public class SaveCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         assert model != null;
+        assert file != null;
+
         try {
             if (file != null) {
                 if (file.isDirectory()) {
