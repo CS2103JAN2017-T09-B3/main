@@ -34,6 +34,10 @@ public class ModelManager extends ComponentManager implements Model {
     private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd;
     private final Stack<ReadOnlyTask> stackOfDeletedTasks;
     private final Stack<Integer> stackOfDeletedTaskIndex;
+    private final Stack<ReadOnlyTask> stackOfOldTask;
+    private final Stack<ReadOnlyTask> stackOfCurrentTask;
+    private final Stack<ReadOnlyTask> stackOfOldNextTask;
+    private final Stack<ReadOnlyTask> stackOfNewNextTask;
     private final Stack<ReadOnlyAddressBook> stackOfAddressBook;
 
     private Config config;
@@ -54,6 +58,10 @@ public class ModelManager extends ComponentManager implements Model {
         stackOfDeletedTasks = new Stack<>();
         stackOfDeletedTaskIndex = new Stack<>();
         stackOfAddressBook = new Stack<>();
+        stackOfOldTask = new Stack<>();
+        stackOfCurrentTask = new Stack<>();
+        stackOfOldNextTask = new Stack<>();
+        stackOfNewNextTask = new Stack<>();
         this.config = config;
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
@@ -134,6 +142,14 @@ public class ModelManager extends ComponentManager implements Model {
 
     //@@author A0125221Y
     @Override
+    public synchronized void updateTask(ReadOnlyTask old, Task toUpdate)
+            throws TaskNotFoundException, DuplicateTaskException {
+        taskManager.updateTask(old, toUpdate);
+        indicateAddressBookChanged();
+    }
+
+    //@@author A0125221Y
+    @Override
     public Stack<String> getUndoStack() {
         return stackOfUndo;
     }
@@ -151,6 +167,26 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public Stack<Integer> getDeletedStackOfTasksIndex() {
         return stackOfDeletedTaskIndex;
+    }
+
+    @Override
+    public Stack<ReadOnlyTask> getOldTask() {
+        return stackOfOldTask;
+    }
+
+    @Override
+    public Stack<ReadOnlyTask> getCurrentTask() {
+        return stackOfCurrentTask;
+    }
+
+    @Override
+    public Stack<ReadOnlyTask> getOldNextTask() {
+        return stackOfOldNextTask;
+    }
+
+    @Override
+    public Stack<ReadOnlyTask> getNewNextTask() {
+        return stackOfNewNextTask;
     }
     //@@author
 
@@ -229,7 +265,7 @@ public class ModelManager extends ComponentManager implements Model {
                     .filter(isInContent
                             ? keyword -> (StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword)
                                     || StringUtil.containsWordIgnoreCase(task.getContent().fullContent, keyword))
-                            : keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
+                                    : keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
                     .findAny().isPresent();
         }
 
@@ -240,3 +276,4 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
 }
+
