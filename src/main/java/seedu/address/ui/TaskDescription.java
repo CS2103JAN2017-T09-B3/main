@@ -87,9 +87,9 @@ public class TaskDescription extends UiPart<Region> {
         });
         content.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.SPACE || keyEvent.getCode() == KeyCode.ENTER
-                    || keyEvent.getCode() == KeyCode.BACK_SPACE || keyEvent.getCode() == KeyCode.DELETE ) {
-              setOldContent(getNewContent());
-              saveAndShowContent(task, getNewContent());
+                    || keyEvent.getCode() == KeyCode.BACK_SPACE || keyEvent.getCode() == KeyCode.DELETE) {
+                setOldContent(getNewContent());
+                saveAndShowContent(task, getNewContent());
             }
         });
     }

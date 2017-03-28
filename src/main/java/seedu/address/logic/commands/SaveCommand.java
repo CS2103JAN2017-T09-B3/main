@@ -63,7 +63,7 @@ public class SaveCommand extends Command {
         } catch (JAXBException Exception) {
             return new CommandResult(MESSAGE_WRITE_ACCESS_DENIED);
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS,file.getPath()));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, file.getPath()));
     }
 
 }

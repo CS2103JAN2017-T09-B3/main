@@ -16,7 +16,7 @@ public class SaveCommandParser {
      * and returns an SaveCommand object for execution.
      */
     public Command parse(String args) {
-        if(args.trim().equals("")) {
+        if (args.trim().equals("")) {
             File file = new File("\"\"");
             return new SaveCommand(file);
         }

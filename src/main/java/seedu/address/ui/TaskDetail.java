@@ -1,4 +1,5 @@
 package seedu.address.ui;
+
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_START;
 
@@ -52,7 +53,8 @@ public class TaskDetail extends UiPart<Region> {
     private Label labelTags;
 
     /**
-     * @param placeholder The AnchorPane where the TaskDetail must be inserted
+     * @param placeholder
+     *            The AnchorPane where the TaskDetail must be inserted
      */
     public TaskDetail(AnchorPane placeholder, Logic logic) {
         super(FXML);
@@ -67,12 +69,9 @@ public class TaskDetail extends UiPart<Region> {
         this.logic = logic;
     }
 
-    public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix,
-            String newContent, TextField field) {
+    public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix, String newContent, TextField field) {
         try {
-            logic.execute(String.format(
-                    COMMAND_EDIT,
-                    logic.getFilteredTaskList().indexOf(taskToEdit) + 1,
+            logic.execute(String.format(COMMAND_EDIT, logic.getFilteredTaskList().indexOf(taskToEdit) + 1,
                     prefix.toString() + newContent));
         } catch (CommandException ce) {
             new CommandException(UNABLE_TO_EDIT);
@@ -83,14 +82,14 @@ public class TaskDetail extends UiPart<Region> {
     public void loadTaskPage(ReadOnlyTask task) {
         String taggings = "";
         title.setText(task.getTitle().toString());
-        title.editableProperty().set(false);;
+        title.editableProperty().set(false);
 
-        startTime.setText(task.getDateTime().getStartDateTime().isPresent() ?
-                task.getDateTime().getStartDateTime().get().getDateValue() : "");
-        endTime.setText(task.getDateTime().getEndDateTime().isPresent() ?
-                task.getDateTime().getEndDateTime().get().getDateValue() : "");
+        startTime.setText(task.getDateTime().getStartDateTime().isPresent()
+                ? task.getDateTime().getStartDateTime().get().getDateValue() : "");
+        endTime.setText(task.getDateTime().getEndDateTime().isPresent()
+                ? task.getDateTime().getEndDateTime().get().getDateValue() : "");
 
-        for (Tag tag: task.getTags()) {
+        for (Tag tag : task.getTags()) {
             taggings += tag.toString();
         }
         tags.setText(taggings);
@@ -99,7 +98,8 @@ public class TaskDetail extends UiPart<Region> {
         startTime.textProperty().addListener(new ChangeListener<String>() {
 
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldStartTime, String newStartTime) {
+            public void changed(ObservableValue<? extends String> observable, String oldStartTime,
+                    String newStartTime) {
                 saveAndShowContent(task, PREFIX_DATE_TIME_START, newStartTime, startTime);
             }
         });
