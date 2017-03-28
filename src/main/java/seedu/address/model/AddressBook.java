@@ -1,3 +1,4 @@
+
 package seedu.address.model;
 
 import java.util.Collection;
@@ -18,6 +19,7 @@ import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
+import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * Wraps all data at the address-book level Duplicates are not allowed (by
@@ -52,7 +54,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
 
-//this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
+        //this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
 
         this();
         resetData(toBeCopied);
@@ -105,7 +107,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     public synchronized  void revertEmptyAddressBook(ReadOnlyAddressBook backUp) throws
-                                                        DuplicateTagException, DuplicateTaskException {
+    DuplicateTagException, DuplicateTaskException {
         resetData(backUp.getTaskList(), backUp.getTagList());
     }
     //@@author
@@ -149,6 +151,15 @@ public class AddressBook implements ReadOnlyAddressBook {
         // not tagged to any person
         // in the person list.
         tasks.updateTask(index, editedTask);
+    }
+
+    //@@author A0125221Y
+    public boolean updateTask(ReadOnlyTask old, Task toUpdate) throws TaskNotFoundException, DuplicateTaskException {
+        if (tasks.update(old, toUpdate)) {
+            return true;
+        } else {
+            throw new UniqueTaskList.TaskNotFoundException();
+        }
     }
 
     /**
