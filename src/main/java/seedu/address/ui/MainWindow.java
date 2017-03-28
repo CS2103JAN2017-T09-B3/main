@@ -125,7 +125,7 @@ public class MainWindow extends UiPart<Region> {
         });
     }
 
-    void fillInnerParts() {
+    public void fillInnerParts() {
         taskDescription = new TaskDescription(getTaskDescriptionPlaceholder(), logic);
         taskDetail = new TaskDetail(getTaskDetailsPlaceholder(), logic);
         taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
@@ -194,7 +194,7 @@ public class MainWindow extends UiPart<Region> {
     /**
      * Returns the current size and the position of the main Window.
      */
-    GuiSettings getCurrentGuiSetting() {
+    public GuiSettings getCurrentGuiSetting() {
         return new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
     }
@@ -205,7 +205,7 @@ public class MainWindow extends UiPart<Region> {
         helpWindow.show();
     }
 
-    void show() {
+    public void show() {
         primaryStage.show();
     }
   //@@author A0135807A
@@ -240,7 +240,7 @@ public class MainWindow extends UiPart<Region> {
         return new CommandResult(file.getName() + MESSAGE_SUCCESS_OPEN);
     }
 
-    void updateStatusBarFooter() {
+    public void updateStatusBarFooter() {
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
     }
     //author
@@ -257,7 +257,7 @@ public class MainWindow extends UiPart<Region> {
         return this.taskListPanel;
     }
     //@@author A0135807A
-    void loadTaskPage(ReadOnlyTask task) {
+    public void loadTaskPage(ReadOnlyTask task) {
         taskDescription = new TaskDescription(getTaskDescriptionPlaceholder(), logic);
         taskDetail = new TaskDetail(getTaskDetailsPlaceholder(), logic);
         taskDescription.loadTaskPage(task);
