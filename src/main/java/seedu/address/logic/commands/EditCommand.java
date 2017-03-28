@@ -24,8 +24,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
             + "by the index number used in the last task listing. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) CONTENT by/DATE_TIME [#TAG]...\n"
-            + "Example: " + COMMAND_WORD + " 1 Pay c/bill end/10am 15 Jul #overspeed";
+            + "Parameters: INDEX (must be a positive integer) CONTENT by/DATE_TIME [#TAG]...\n" + "Example: "
+            + COMMAND_WORD + " 1 Pay c/bill end/10am 15 Jul #overspeed";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -35,8 +35,10 @@ public class EditCommand extends Command {
     private final EditTaskDescriptor editTaskDescriptor;
 
     /**
-     * @param filteredTaskListIndex the index of the task in the filtered task list to edit
-     * @param editTaskDescriptor details to edit the task with
+     * @param filteredTaskListIndex
+     *            the index of the task in the filtered task list to edit
+     * @param editTaskDescriptor
+     *            details to edit the task with
      */
     public EditCommand(int filteredTaskListIndex, EditTaskDescriptor editTaskDescriptor) {
         assert filteredTaskListIndex > 0;
@@ -55,20 +57,18 @@ public class EditCommand extends Command {
         if (filteredTaskListIndex >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
-        //model.getUndoStack().push(COMMAND_WORD);
+        // model.getUndoStack().push(COMMAND_WORD);
         ReadOnlyTask taskToEdit = lastShownList.get(filteredTaskListIndex);
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
-        //ReadOnlyTask testing = lastShownList.get(filteredTaskListIndex - 1);
-
+        // ReadOnlyTask testing = lastShownList.get(filteredTaskListIndex - 1);
 
         try {
-        	System.out.println("test");
             model.getUndoStack().push(COMMAND_WORD);
             model.getOldTask().push(new Task(taskToEdit));
             model.getCurrentTask().push(new Task(editedTask));
             model.updateTask(filteredTaskListIndex, editedTask);
-            //model.getOldTask().push(taskToEdit);
-            //model.getCurrentTask().push(editedTask);
+            // model.getOldTask().push(taskToEdit);
+            // model.getCurrentTask().push(editedTask);
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
@@ -80,8 +80,7 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
      * edited with {@code editTaskDescriptor}.
      */
-    private static Task createEditedTask(ReadOnlyTask taskToEdit,
-                                             EditTaskDescriptor editTaskDescriptor) {
+    private static Task createEditedTask(ReadOnlyTask taskToEdit, EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
         Content updatedContent = editTaskDescriptor.getContent().orElseGet(taskToEdit::getContent);
@@ -92,8 +91,8 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the task with. Each non-empty field value will replace the
-     * corresponding field value of the task.
+     * Stores the details to edit the task with. Each non-empty field value will
+     * replace the corresponding field value of the task.
      */
     public static class EditTaskDescriptor {
         private Optional<Title> title = Optional.empty();
@@ -101,7 +100,9 @@ public class EditCommand extends Command {
         private Optional<TaskDateTime> dateTime = Optional.empty();
         private Optional<UniqueTagList> tags = Optional.empty();
 
-        public EditTaskDescriptor() {}
+        public EditTaskDescriptor() {
+        }
+
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             this.title = toCopy.getTitle();
             this.content = toCopy.getContent();

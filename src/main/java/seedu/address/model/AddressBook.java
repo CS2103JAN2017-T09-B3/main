@@ -49,22 +49,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Creates an AddressBook using the Persons and Tags in the
      * {@code toBeCopied}
+     *
      * @throws DuplicateTaskException
      * @throws DuplicateTagException
      */
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
 
-        //this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
+        // this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
 
         this();
         resetData(toBeCopied);
     }
 
-    //@@author A0125221Y
+    // @@author A0125221Y
     public AddressBook(UniqueTaskList tasks, UniqueTagList tags) {
         resetData(tasks.getInternalList(), tags.getInternalList());
     }
-    //@@author
+    // @@author
 
     //// list overwrite operations
 
@@ -91,7 +92,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         syncMasterTagListWith(tasks);
     }
 
-    //@@author A0125221Y
+    // @@author A0125221Y
     public void resetData(Collection<? extends ReadOnlyTask> newTasks, Collection<Tag> newTags) {
         try {
             setTasks(newTasks.stream().map(Task::new).collect(Collectors.toList()));
@@ -106,11 +107,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         syncMasterTagListWith(tasks);
     }
 
-    public synchronized  void revertEmptyAddressBook(ReadOnlyAddressBook backUp) throws
-    DuplicateTagException, DuplicateTaskException {
+    public synchronized void revertEmptyAddressBook(ReadOnlyAddressBook backUp)
+            throws DuplicateTagException, DuplicateTaskException {
         resetData(backUp.getTaskList(), backUp.getTagList());
     }
-    //@@author
+    // @@author
 
     //// person-level operations
 
@@ -153,7 +154,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.updateTask(index, editedTask);
     }
 
-    //@@author A0125221Y
+    // @@author A0125221Y
     public boolean updateTask(ReadOnlyTask old, Task toUpdate) throws TaskNotFoundException, DuplicateTaskException {
         if (tasks.update(old, toUpdate)) {
             return true;
@@ -216,7 +217,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         // TODO: refine later
     }
 
-    //@@author A0125221Y
+    // @@author A0125221Y
     @Override
     public ObservableList<ReadOnlyTask> getTaskList() {
         return new UnmodifiableObservableList<>(tasks.asObservableList());
@@ -226,7 +227,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<Tag> getTagList() {
         return new UnmodifiableObservableList<>(tags.asObservableList());
     }
-    //@@author
+    // @@author
 
     @Override
     public boolean equals(Object other) {
