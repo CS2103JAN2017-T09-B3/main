@@ -55,12 +55,20 @@ public class EditCommand extends Command {
         if (filteredTaskListIndex >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
-
+        //model.getUndoStack().push(COMMAND_WORD);
         ReadOnlyTask taskToEdit = lastShownList.get(filteredTaskListIndex);
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
+        //ReadOnlyTask testing = lastShownList.get(filteredTaskListIndex - 1);
+
 
         try {
+        	System.out.println("test");
+            model.getUndoStack().push(COMMAND_WORD);
+            model.getOldTask().push(new Task(taskToEdit));
+            model.getCurrentTask().push(new Task(editedTask));
             model.updateTask(filteredTaskListIndex, editedTask);
+            //model.getOldTask().push(taskToEdit);
+            //model.getCurrentTask().push(editedTask);
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
@@ -75,7 +83,6 @@ public class EditCommand extends Command {
     private static Task createEditedTask(ReadOnlyTask taskToEdit,
                                              EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
-
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
         Content updatedContent = editTaskDescriptor.getContent().orElseGet(taskToEdit::getContent);
         TaskDateTime updatedDateTime = editTaskDescriptor.getDateTime().orElseGet(taskToEdit::getDateTime);
@@ -95,7 +102,6 @@ public class EditCommand extends Command {
         private Optional<UniqueTagList> tags = Optional.empty();
 
         public EditTaskDescriptor() {}
-
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             this.title = toCopy.getTitle();
             this.content = toCopy.getContent();
