@@ -10,16 +10,23 @@ import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
+import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
 
+    //@@author A0125221Y
     Stack<String> getUndoStack();
     Stack<ReadOnlyTask> getDeletedStackOfTasksAdd();
     Stack<ReadOnlyTask> getDeletedStackOfTasks();
     Stack<Integer> getDeletedStackOfTasksIndex();
+    Stack<ReadOnlyTask> getOldNextTask();
+    Stack<ReadOnlyTask> getNewNextTask();
+    Stack<ReadOnlyTask> getOldTask();
+    Stack<ReadOnlyTask> getCurrentTask();
+    //@@author
 
     /** Clears existing backing model and replaces with the provided new data.
      * @throws DuplicateTaskException
@@ -53,6 +60,8 @@ public interface Model {
     void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException;
 
+    void updateTask(ReadOnlyTask old, Task toUpdate) throws TaskNotFoundException, DuplicateTaskException;
+
     /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
 
@@ -61,6 +70,4 @@ public interface Model {
 
     /** Updates the filter of the filtered person list to filter by the given keywords*/
     void updateFilteredTaskList(boolean isInContent, Set<String> keywords);
-
-
 }
