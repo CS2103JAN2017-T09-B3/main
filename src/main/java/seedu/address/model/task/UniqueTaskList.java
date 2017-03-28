@@ -93,6 +93,16 @@ public class UniqueTaskList implements Iterable<Task> {
         return new UnmodifiableObservableList<>(internalList);
     }
 
+    //@@author A0125221Y
+    public boolean update(ReadOnlyTask old, Task toUpdate) throws TaskNotFoundException, DuplicateTaskException {
+        assert old != null;
+        final boolean taskFoundAndUpdated = internalList.contains(old);
+        if (!taskFoundAndUpdated) {
+            throw new TaskNotFoundException();
+        }
+        internalList.set(internalList.indexOf(old), toUpdate);
+        return taskFoundAndUpdated;
+    }
 
     //@@author A0125221Y
     public ObservableList<Task> getInternalList() {
@@ -108,8 +118,8 @@ public class UniqueTaskList implements Iterable<Task> {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UniqueTaskList // instanceof handles nulls
-                && this.internalList.equals(
-                ((UniqueTaskList) other).internalList));
+                        && this.internalList.equals(
+                                ((UniqueTaskList) other).internalList));
     }
 
     @Override
