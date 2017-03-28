@@ -16,7 +16,6 @@ public class UndoCommand extends Command {
 
 	public static final String MESSAGE_SUCCESS = "Previous command has been undo";
 	public static final String MESSAGE_FAIL = "No previous command found";
-	public static final String MESSAGE_FAIL1 = "testing";
 
 	private static final String MESSAGE_DUPLICATE_TASK = "Task is already existed";
 
@@ -51,7 +50,7 @@ public class UndoCommand extends Command {
 			prevCommand = "";
 		}
 
-		return new CommandResult(MESSAGE_FAIL1);
+		return new CommandResult(MESSAGE_FAIL);
 
 	}
 
