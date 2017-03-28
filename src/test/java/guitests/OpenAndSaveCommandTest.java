@@ -31,7 +31,7 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
 
     /** Open and save files functionality. */
     @Test
-    public void Save_And_OpenFile() {
+    public void saveAndOpenFile() {
         // Default filename :taskmanager.xml
         assertSaveResult(COMMAND_SAVE + FILE_DIR, FILE_NAME);
         assertOpenResult(COMMAND_OPEN + FILE_DIR, testTask); // FileDirectory
@@ -49,7 +49,7 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
      * location.
      */
     @Test
-    public void Save_And_CheckTaskList() {
+    public void saveAndCheckTaskList() {
         assertTrue(taskListPanel.isListMatching(testTask));
         assertSaveResult(COMMAND_SAVE + FILE_NAME, FILE_NAME);
         assertSaveResult(COMMAND_SAVE + FILE_ALTERNATE_NAME, FILE_ALTERNATE_NAME);
@@ -61,7 +61,7 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
 
     /** Test invalid Command confirmation. */
     @Test
-    public void Invalid_Command() {
+    public void invalidCommand() {
         commandBox.runCommand(SaveCommand.COMMAND_WORD + FILE_DIR);
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
         commandBox.runCommand(OpenCommand.COMMAND_WORD + FILE_NAME);
