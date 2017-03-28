@@ -151,11 +151,11 @@ public class TaskDetail extends UiPart<Region> {
         }
         tags.setText(taggings);
 
-        title.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveTitle(newvalue));
-        startTime.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveStartTime(newvalue));
-        endTime.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveEndTime(newvalue));
-        tags.textProperty().addListener((observable, oldvalue, newvalue) -> setSaveTags(newvalue));
-
+        title.textProperty().addListener((observable, oldTitle, newTitle) -> setSaveTitle(newTitle));
+        startTime.textProperty()
+                .addListener((observable, oldStartTime, newStartTime) -> setSaveStartTime(newStartTime));
+        endTime.textProperty().addListener((observable, oldEndTime, newEndTime) -> setSaveEndTime(newEndTime));
+        tags.textProperty().addListener((observable, oldTags, newTags) -> setSaveTags(newTags));
 
         title.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
