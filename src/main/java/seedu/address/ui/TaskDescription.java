@@ -2,8 +2,6 @@ package seedu.address.ui;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTENT;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
@@ -27,22 +25,13 @@ public class TaskDescription extends UiPart<Region> {
 
 
     private Logic logic;
-    private String oldContent; //store previous Content
     private String newContent; //store latest Content
 
     @FXML
     private TextArea content;
 
-    public String getOldContent() {
-        return oldContent;
-    }
-
     public String getNewContent() {
         return newContent;
-    }
-
-    public void setOldContent(String newContent) {
-        this.oldContent = newContent;
     }
 
     public void setNewContent(String newContent) {
@@ -60,7 +49,6 @@ public class TaskDescription extends UiPart<Region> {
         FxViewUtil.applyAnchorBoundaryParameters(content, 0.0, 0.0, 0.0, 0.0);
         placeholder.getChildren().addAll(content);
         this.logic = logic;
-        setOldContent("");
     }
 
     public void saveAndShowContent(ReadOnlyTask taskToEdit, String newContent) {
@@ -75,20 +63,13 @@ public class TaskDescription extends UiPart<Region> {
     }
 
     public void loadTaskPage(ReadOnlyTask task) {
-        setOldContent(task.getContent().toString());
         content.setText(task.getContent().toString());
         setNewContent(task.getContent().toString());
 
-        content.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldContent, String newContent) {
-                setNewContent(newContent);
-            }
-        });
+        content.textProperty().addListener((observable, oldContent, newContent) ->  setNewContent(newContent));
+
         content.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.SPACE || keyEvent.getCode() == KeyCode.ENTER
-                    || keyEvent.getCode() == KeyCode.BACK_SPACE || keyEvent.getCode() == KeyCode.DELETE) {
-                setOldContent(getNewContent());
+            if (keyEvent.getCode() == KeyCode.ENTER) {
                 saveAndShowContent(task, getNewContent());
             }
         });

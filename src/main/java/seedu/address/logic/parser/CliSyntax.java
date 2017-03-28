@@ -8,6 +8,8 @@ import seedu.address.logic.parser.ArgumentTokenizer.Prefix;
  * Contains Command Line Interface (CLI) syntax definitions common to multiple commands
  */
 public class CliSyntax {
+    /* Empty String */
+    public static final String EMPTY_STRING = "";
 
     /* Prefix definitions */
     public static final Prefix PREFIX_TITLE = new Prefix("");
