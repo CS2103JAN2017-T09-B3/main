@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 //@@author A0125221Y
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
@@ -15,6 +16,9 @@ public class UndoCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Previous command has been undo";
     public static final String MESSAGE_FAIL = "No previous command found";
+    public static final String MESSAGE_FAIL1 = "testing";
+
+    private static final String MESSAGE_DUPLICATE_TASK = "Task is already existed";
 
     private String prevCommand;
 
@@ -35,12 +39,19 @@ public class UndoCommand extends Command {
             case ClearCommand.COMMAND_WORD:
                 return undoClear();
 
+            case EditCommand.COMMAND_WORD:
+                try {
+					return undoEdit();
+				} catch (TaskNotFoundException e) {
+					e.printStackTrace();
+				}
+
             }
         } else {
             prevCommand = "";
         }
 
-        return new CommandResult(MESSAGE_FAIL);
+        return new CommandResult(MESSAGE_FAIL1);
 
     }
 
@@ -80,6 +91,24 @@ public class UndoCommand extends Command {
         assert model != null;
         model.revertData();
         return new CommandResult(UndoCommand.MESSAGE_SUCCESS);
+    }
+
+    private CommandResult undoEdit() throws TaskNotFoundException {
+        assert model != null;
+        if (model.getOldTask().isEmpty() && model.getCurrentTask().isEmpty()) {
+            return new CommandResult(String.format(UndoCommand.MESSAGE_FAIL));
+        } else {
+            try {
+                Task toChangeInto = (Task) model.getOldTask().pop();
+                Task theOriginal = (Task) model.getCurrentTask().pop();
+                model.updateTask(theOriginal, toChangeInto);
+                model.getOldNextTask().push(theOriginal);
+                model.getNewNextTask().push(toChangeInto);
+            } catch (UniqueTaskList.DuplicateTaskException utle) {
+                return new CommandResult(UndoCommand.MESSAGE_DUPLICATE_TASK);
+            }
+            return new CommandResult(UndoCommand.MESSAGE_SUCCESS);
+        }
     }
 
 }
