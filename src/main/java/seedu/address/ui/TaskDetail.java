@@ -100,7 +100,7 @@ public class TaskDetail extends UiPart<Region> {
 
     /**
      * @param placeholder
-     * The AnchorPane where the TaskDetail must be inserted.
+     *            The AnchorPane where the TaskDetail must be inserted.
      */
     public TaskDetail(AnchorPane placeholder, Logic logic) {
         super(FXML);
@@ -131,8 +131,8 @@ public class TaskDetail extends UiPart<Region> {
         assert logic != null;
 
         try {
-            CommandResult commandResult = logic.execute(String.format(COMMAND_EDIT, logic.getFilteredTaskList().indexOf(taskToEdit) + 1,
-                    prefix.toString() + newDetail));
+            CommandResult commandResult = logic.execute(String.format(COMMAND_EDIT,
+                    logic.getFilteredTaskList().indexOf(taskToEdit) + 1, prefix.toString() + newDetail));
             setStyleToIndicateCommandSuccess(field);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
         } catch (CommandException e) {
@@ -167,7 +167,7 @@ public class TaskDetail extends UiPart<Region> {
 
         title.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
-                if(getSaveTitle().isEmpty()) {
+                if (getSaveTitle().isEmpty()) {
                 }
                 saveAndShowContent(task, PREFIX_TITLE, getSaveTitle(), title);
             }
