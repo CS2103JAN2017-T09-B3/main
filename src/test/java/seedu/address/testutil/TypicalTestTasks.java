@@ -51,7 +51,6 @@ public class TypicalTestTasks {
     }
 
     public TestTask[] getTypicalTasks() {
-//        return new TestTask[]{alice, benson, carl, fiona};
         return new TestTask[]{alice, benson, carl, daniel, elle, fiona};
     }
 

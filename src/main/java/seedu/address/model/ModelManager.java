@@ -245,6 +245,5 @@ public class ModelManager extends ComponentManager implements Model {
         public String toString() {
             return "name=" + String.join(", ", nameKeyWords);
         }
-    }
-
+    }    
 }

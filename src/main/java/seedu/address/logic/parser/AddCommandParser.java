@@ -36,12 +36,14 @@ public class AddCommandParser {
             Optional<String> startDateTime = argsTokenizer.getValue(PREFIX_DATE_TIME_START);
             Optional<String> endDateTime = argsTokenizer.getValue(PREFIX_DATE_TIME_END);
             Optional<List<String>> tags = argsTokenizer.getAllValues(PREFIX_TAG);
+
             return new AddCommand(
                     title.get(),
                     content.orElse(DEFAULT_VALUE),
                     startDateTime.orElse(DEFAULT_VALUE),
                     endDateTime.orElse(DEFAULT_VALUE),
-                    ParserUtil.toSet(tags)
+                    ParserUtil.toSet(tags),
+                    false
             );
         } catch (NoSuchElementException nsee) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
