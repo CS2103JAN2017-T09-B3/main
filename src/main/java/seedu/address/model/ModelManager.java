@@ -153,6 +153,7 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void updateTask(ReadOnlyTask old, Task toUpdate)
             throws TaskNotFoundException, DuplicateTaskException {
         taskManager.updateTask(old, toUpdate);
+        updateUiTaskDescription(toUpdate);
         indicateAddressBookChanged();
     }
 
