@@ -70,6 +70,8 @@ public class TaskDetail extends UiPart<Region> {
     }
 
     public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix, String newContent, TextField field) {
+        assert logic != null;
+
         try {
             logic.execute(String.format(COMMAND_EDIT, logic.getFilteredTaskList().indexOf(taskToEdit) + 1,
                     prefix.toString() + newContent));
@@ -80,6 +82,8 @@ public class TaskDetail extends UiPart<Region> {
     }
 
     public void loadTaskPage(ReadOnlyTask task) {
+        assert task != null;
+
         String taggings = "";
         title.setText(task.getTitle().toString());
         title.editableProperty().set(false);
