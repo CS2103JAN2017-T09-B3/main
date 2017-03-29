@@ -15,7 +15,7 @@ public class DateWithoutTime extends DateValue {
 
     public DateWithoutTime(Date date) {
         this.date = date;
-        SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yy");
         this.value = df.format(date);
     }
 
@@ -27,6 +27,11 @@ public class DateWithoutTime extends DateValue {
     @Override
     public Date getFullDate() {
         return this.date;
+    }
+
+    @Override
+    public boolean isWithTime() {
+        return false;
     }
 
     @Override
@@ -103,7 +108,7 @@ public class DateWithoutTime extends DateValue {
      * updates string representing date when changing date and time value
      */
     private void updateStringValue() {
-        SimpleDateFormat df = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm");
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yy");
         this.value = df.format(date);
     }
 

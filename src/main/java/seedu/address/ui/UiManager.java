@@ -16,6 +16,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
+import seedu.address.commons.events.ui.SwitchToTabRequestEvent;
 import seedu.address.commons.events.ui.TaskPanelSelectionChangedEvent;
 import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
 import seedu.address.commons.events.ui.UpdateUiTaskDescriptionEvent;
@@ -127,6 +128,12 @@ public class UiManager extends ComponentManager implements Ui {
     }
 
     //author A0135807A
+    @Subscribe
+    private void handleSwitchToTabRequestEvent(SwitchToTabRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        mainWindow.switchTab(event.getTargetTab());
+    }
+
     @Subscribe
     private void handleUpdateStatusBarFooterEvent(UpdateStatusBarFooterEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));

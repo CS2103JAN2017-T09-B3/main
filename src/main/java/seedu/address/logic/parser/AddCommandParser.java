@@ -36,6 +36,7 @@ public class AddCommandParser {
             Optional<String> startDateTime = argsTokenizer.getValue(PREFIX_DATE_TIME_START);
             Optional<String> endDateTime = argsTokenizer.getValue(PREFIX_DATE_TIME_END);
             Optional<List<String>> tags = argsTokenizer.getAllValues(PREFIX_TAG);
+
             return new AddCommand(
                     title.get(),
                     content.orElse(DEFAULT_VALUE),

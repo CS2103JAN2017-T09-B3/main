@@ -50,6 +50,7 @@ import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
 import seedu.address.model.task.Content;
 import seedu.address.model.task.DateValue;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
@@ -252,8 +253,8 @@ public class LogicManagerTest {
         // prepare address book state
         helper.addToModel(model, 2);
 
-        assertCommandSuccess("list",
-                ListCommand.MESSAGE_SUCCESS,
+        assertCommandSuccess("list all",
+                ListCommand.MESSAGE_ALL_SUCCESS,
                 expectedAB,
                 expectedList);
     }
@@ -425,7 +426,8 @@ public class LogicManagerTest {
             Tag tag1 = new Tag("tag1");
             Tag tag2 = new Tag("longertag2");
             UniqueTagList tags = new UniqueTagList(tag1, tag2);
-            return new Task(title, content, dateTime, tags);
+            Status status = new Status(false);
+            return new Task(title, content, dateTime, tags, status);
         }
 
         /**
@@ -440,7 +442,8 @@ public class LogicManagerTest {
                     new Title("Task " + seed),
                     new Content(""),
                     new TaskDateTime("", "14 Jul 6am"),
-                    new UniqueTagList(new Tag("tag" + Math.abs(seed)), new Tag("tag" + Math.abs(seed + 1)))
+                    new UniqueTagList(new Tag("tag" + Math.abs(seed)), new Tag("tag" + Math.abs(seed + 1))),
+                    new Status(false)
             );
         }
 
@@ -545,7 +548,8 @@ public class LogicManagerTest {
                     new Title(title),
                     new Content("content hehe"),
                     new TaskDateTime("", "22/2/2017 11:00"),
-                    new UniqueTagList(new Tag("tag"))
+                    new UniqueTagList(new Tag("tag")),
+                    new Status(false)
             );
         }
     }

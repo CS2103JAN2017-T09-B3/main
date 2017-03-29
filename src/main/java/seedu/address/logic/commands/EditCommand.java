@@ -8,7 +8,9 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
+import seedu.address.model.task.DateValue;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
@@ -24,7 +26,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
             + "by the index number used in the last task listing. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) CONTENT by/DATE_TIME [#TAG]...\n" + "Example: "
+            + "Parameters: INDEX (must be a positive integer) [TITLE] c/[CONTENT] "
+            + "start/[DATE][TIME] end/[DATE][END] #[TAG]...\n" + "Example: "
             + COMMAND_WORD + " 1 Pay c/bill end/10am 15 Jul #overspeed";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
@@ -84,10 +87,21 @@ public class EditCommand extends Command {
         assert taskToEdit != null;
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
         Content updatedContent = editTaskDescriptor.getContent().orElseGet(taskToEdit::getContent);
-        TaskDateTime updatedDateTime = editTaskDescriptor.getDateTime().orElseGet(taskToEdit::getDateTime);
-        UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
 
-        return new Task(updatedTitle, updatedContent, updatedDateTime, updatedTags);
+        DateValue updatedStartDateTime = editTaskDescriptor.getDateTime().isPresent()
+                ? editTaskDescriptor.getDateTime().get().getStartDateTime()
+                        .orElse(taskToEdit.getDateTime().getStartDateTime().orElse(null))
+                : taskToEdit.getDateTime().getStartDateTime().orElse(null);
+        DateValue updatedEndDateTime = editTaskDescriptor.getDateTime().isPresent()
+                ? editTaskDescriptor.getDateTime().get().getEndDateTime()
+                        .orElse(taskToEdit.getDateTime().getEndDateTime().orElse(null))
+                : taskToEdit.getDateTime().getEndDateTime().orElse(null);
+        TaskDateTime updatedDateTime = new TaskDateTime(updatedStartDateTime, updatedEndDateTime);
+
+        UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
+        Status status = editTaskDescriptor.getStatus().orElseGet(taskToEdit::getStatus);
+
+        return new Task(updatedTitle, updatedContent, updatedDateTime, updatedTags, status);
     }
 
     /**
@@ -99,6 +113,7 @@ public class EditCommand extends Command {
         private Optional<Content> content = Optional.empty();
         private Optional<TaskDateTime> dateTime = Optional.empty();
         private Optional<UniqueTagList> tags = Optional.empty();
+        private Optional<Status> status = Optional.empty();
 
         public EditTaskDescriptor() {
         }
@@ -150,6 +165,16 @@ public class EditCommand extends Command {
 
         public Optional<UniqueTagList> getTags() {
             return tags;
+        }
+
+        // @@author A0135753A
+        public void setStatus(Optional<Status> status) {
+            assert status != null;
+            this.status = status;
+        }
+
+        public Optional<Status> getStatus() {
+            return status;
         }
     }
 }

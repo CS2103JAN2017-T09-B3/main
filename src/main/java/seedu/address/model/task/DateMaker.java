@@ -16,7 +16,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class DateMaker {
 
     private static final String[] DATE_FORMATS = { "dd/MM/yyyy", "dd/MM/yy", "dd/MM", "dd-MM-yyyy", "dd-MM-yy", "dd-MM",
-        "dd MMM", "EEE, dd MMM yyyy" };
+        "dd MMM", "dd MMM yyyy", "dd MMM yy", "EEE, dd MMM yyyy", "dd.MM.yy" };
 
     private static final String[] TIME_FORMATS = { "HH:mm", "hhaa", "hh:mmaa" };
 
@@ -37,6 +37,7 @@ public class DateMaker {
     public void makeDate(String dateString) throws IllegalValueException {
         assert dateString != null;
         resetMaker();
+        dateString = dateString.trim();
         if (dateString.equals("")) {
             date = null;
             return;
@@ -142,9 +143,17 @@ public class DateMaker {
     /**
      * Returns a date object representing current date time
      */
-    public DateValue getCurrentTime() {
+    public static DateValue getCurrentTime() {
         Date current = new Date();
         return new DateWithTime(current);
+    }
+
+    /**
+     * Returns a date object representing current date only
+     */
+    public static DateValue getCurrentDate() {
+        Date current = new Date();
+        return new DateWithoutTime(current);
     }
 
     private void resetMaker() {

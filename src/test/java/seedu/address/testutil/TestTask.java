@@ -9,6 +9,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
 
@@ -21,11 +22,13 @@ public class TestTask implements ReadOnlyTask {
     private Content content;
     private TaskDateTime dateTime;
     private UniqueTagList tags;
+    private Status status;
 
     public TestTask() throws IllegalValueException {
         content = new Content("");
         dateTime = new TaskDateTime("", "");
         tags = new UniqueTagList();
+        status = new Status(false);
     }
 
     /**
@@ -95,6 +98,15 @@ public class TestTask implements ReadOnlyTask {
         }
         this.getTags().asObservableList().stream().forEach(s -> sb.append(PREFIX_TAG.toString() + s.tagName + " "));
         return sb.toString();
+    }
+    //@@Zhang Yan Hao A0135753A
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    @Override
+    public Status getStatus() {
+        return status;
     }
 }
 

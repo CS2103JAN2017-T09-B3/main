@@ -65,9 +65,17 @@ public interface Model {
     /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
 
-    /** Updates the filter of the filtered person list to show all persons */
+    /** Updates the filter of the filtered task list to show all persons */
     void updateFilteredListToShowAll();
 
-    /** Updates the filter of the filtered person list to filter by the given keywords*/
+    /** Updates the filter of the filtered task list to show today tasks */
+    void updateFilteredListToShowToday();
+
+    /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(boolean isInContent, Set<String> keywords);
+
+    /** Updates the filter of the filtered task list to show completed tasks */
+    void updateFilteredListToShowCompleted();
+
+    UnmodifiableObservableList<ReadOnlyTask> getDoneTaskList();
 }

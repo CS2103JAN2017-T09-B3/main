@@ -46,6 +46,7 @@ public class MainWindow extends UiPart<Region> {
     private Config config;
     private TaskDescription taskDescription;
     private TaskDetail taskDetail;
+    private TabList tabList;
 
     @FXML
     private AnchorPane commandBoxPlaceholder;
@@ -67,6 +68,9 @@ public class MainWindow extends UiPart<Region> {
 
     @FXML
     private AnchorPane taskDetailsPlaceholder;
+
+    @FXML
+    private AnchorPane tabPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
         super(FXML);
@@ -129,6 +133,7 @@ public class MainWindow extends UiPart<Region> {
         taskDescription = new TaskDescription(getTaskDescriptionPlaceholder(), logic);
         taskDetail = new TaskDetail(getTaskDetailsPlaceholder(), logic);
         taskListPanel = new TaskListPanel(getTaskListPlaceholder(), logic.getFilteredTaskList());
+        tabList = new TabList(getTabPlaceholder());
         new ResultDisplay(getResultDisplayPlaceholder());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
         new CommandBox(getCommandBoxPlaceholder(), logic);
@@ -156,6 +161,10 @@ public class MainWindow extends UiPart<Region> {
 
     private AnchorPane getTaskDetailsPlaceholder() {
         return taskDetailsPlaceholder;
+    }
+
+    private AnchorPane getTabPlaceholder() {
+        return tabPlaceholder;
     }
 
     void hide() {
@@ -256,11 +265,16 @@ public class MainWindow extends UiPart<Region> {
     public TaskListPanel getTaskListPanel() {
         return this.taskListPanel;
     }
+
     //@@author A0135807A
     public void loadTaskPage(ReadOnlyTask task) {
         taskDescription = new TaskDescription(getTaskDescriptionPlaceholder(), logic);
         taskDetail = new TaskDetail(getTaskDetailsPlaceholder(), logic);
         taskDescription.loadTaskPage(task);
         taskDetail.loadTaskPage(task);
+    }
+
+    public void switchTab(String tab) {
+        tabList.switchTo(tab);
     }
 }
