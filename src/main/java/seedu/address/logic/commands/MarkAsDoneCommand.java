@@ -32,8 +32,6 @@ public class MarkAsDoneCommand extends Command {
         UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
 
         if (lastShownList.size() < targetIndex) {
-
-            System.out.println("invalid index");
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
@@ -41,6 +39,7 @@ public class MarkAsDoneCommand extends Command {
 
         try {
             this.markTask(taskToMark);
+            model.updateTask(targetIndex, taskToMark);
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }

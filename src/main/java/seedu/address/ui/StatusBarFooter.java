@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -50,7 +51,8 @@ public class StatusBarFooter extends UiPart<Region> {
 
     @Subscribe
     public void handleAddressBookChangedEvent(AddressBookChangedEvent abce) {
-        String lastUpdated = (new Date()).toString();
+        SimpleDateFormat df = new SimpleDateFormat("EEE dd.MM.yyyy HH:mm:ss");
+        String lastUpdated = df.format(new Date());
         logger.info(LogsCenter.getEventHandlingLogMessage(abce, "Setting last updated status to " + lastUpdated));
         setSyncStatus("Last Updated: " + lastUpdated);
     }

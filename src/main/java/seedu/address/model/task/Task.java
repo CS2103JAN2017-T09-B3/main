@@ -89,6 +89,7 @@ public class Task implements ReadOnlyTask {
         this.setContent(replacement.getContent());
         this.setDateTime(replacement.getDateTime());
         this.setTags(replacement.getTags());
+        this.setStatus(replacement.getStatus());
     }
 
     @Override
