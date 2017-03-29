@@ -1,3 +1,4 @@
+//@@author A0135807A
 package seedu.address.ui;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CONTENT;
@@ -18,7 +19,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.task.ReadOnlyTask;
 
-//@@author A0135807A
 /**
  * The Task Description of the App.
  */
@@ -76,17 +76,10 @@ public class TaskDescription extends UiPart<Region> {
 
         content.textProperty().addListener((observable, oldContent, newContent) -> setNewContent(newContent));
 
-//        content.setOnKeyPressed(keyEvent -> {
-//            if (keyEvent.getCode() == KeyCode.ENTER) {
-//                saveAndShowContent(task, getNewContent());
-//            }
-//            keyEvent.consume();
-//        });
         content.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 saveAndShowContent(task, getNewContent());
             }
-            keyEvent.consume();
         });
     }
 
@@ -105,3 +98,4 @@ public class TaskDescription extends UiPart<Region> {
     }
 
 }
+
