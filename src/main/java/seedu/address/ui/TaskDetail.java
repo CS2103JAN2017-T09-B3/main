@@ -194,17 +194,18 @@ public class TaskDetail extends UiPart<Region> {
     }
 
     /**
-     * Sets the Task Description style to indicate a successful command.
+     * Sets the Task Details style to indicate a successful command.
      */
     private void setStyleToIndicateCommandSuccess(TextField textField) {
         textField.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
     }
 
     /**
-     * Sets the Task Description style to indicate a failed command.
+     * Sets the Task Details style to indicate a failed command.
      */
     private void setStyleToIndicateCommandFailure(TextField textField) {
         textField.getStyleClass().add(CommandBox.ERROR_STYLE_CLASS);
     }
 
 }
+
