@@ -72,9 +72,9 @@ public class TaskDescription extends UiPart<Region> {
     public void loadTaskPage(ReadOnlyTask task) {
         content.setText(task.getContent().toString());
         setNewContent(task.getContent().toString());
-      
+
         content.textProperty().addListener((observable, oldContent, newContent) -> setNewContent(newContent));
-      
+
         content.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 saveAndShowContent(task, getNewContent());
