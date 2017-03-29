@@ -86,7 +86,6 @@ public class TaskDescription extends UiPart<Region> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 saveAndShowContent(task, getNewContent());
             }
-            keyEvent.consume();
         });
     }
 

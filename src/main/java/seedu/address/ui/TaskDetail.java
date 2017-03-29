@@ -1,3 +1,4 @@
+//@@author A0135807A
 package seedu.address.ui;
 
 import static seedu.address.logic.parser.CliSyntax.EMPTY_STRING;
@@ -24,7 +25,6 @@ import seedu.address.logic.parser.ArgumentTokenizer.Prefix;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.ReadOnlyTask;
 
-//@@author A0135807A
 /**
  * Displays the task details and content.
  */
@@ -39,10 +39,6 @@ public class TaskDetail extends UiPart<Region> {
 
     private Logic logic;
 
-    private String saveTitle;
-    private String saveStartTime;
-    private String saveEndTime;
-    private String saveTags;
 
     @FXML
     private TextField title;
@@ -68,38 +64,6 @@ public class TaskDetail extends UiPart<Region> {
     @FXML
     private Label labelTags;
 
-    public String getSaveTitle() {
-        return saveTitle;
-    }
-
-    public String getSaveStartTime() {
-        return saveStartTime;
-    }
-
-    public String getSaveEndTime() {
-        return saveEndTime;
-    }
-
-    public String getSaveTags() {
-        return saveTags;
-    }
-
-    public void setSaveTitle(String saveTitle) {
-        this.saveTitle = saveTitle;
-    }
-
-    public void setSaveStartTime(String saveStartTime) {
-        this.saveStartTime = saveStartTime;
-    }
-
-    public void setSaveEndTime(String saveEndTime) {
-        this.saveEndTime = saveEndTime;
-    }
-
-    public void setSaveTags(String saveTags) {
-        this.saveTags = saveTags;
-    }
-
     /**
      * @param placeholder
      * The AnchorPane where the TaskDetail must be inserted.
@@ -108,16 +72,8 @@ public class TaskDetail extends UiPart<Region> {
         super(FXML);
         initPromptText();
         initStyle();
-        labelTaskTitle.setFocusTraversable(false);
-        labelStartTime.setFocusTraversable(false);
-        labelEndTime.setFocusTraversable(false);
-        labelTags.setFocusTraversable(false);
-        //left right top btm
-        FxViewUtil.applyAnchorBoundaryParameters(getRoot(), 0.0, 0.0, 0.0, 0.0);
-        FxViewUtil.applyAnchorBoundaryParameters(title, 100.0, 130.0, 10.0, 150.0);
-        FxViewUtil.applyAnchorBoundaryParameters(startTime, 100.0, 130.0, 50.0, 110.0);
-        FxViewUtil.applyAnchorBoundaryParameters(endTime, 100.0, 130.0, 90.0, 70.0);
-        FxViewUtil.applyAnchorBoundaryParameters(tags, 100.0, 130.0, 130.0, 30.0);
+        initAnchorBoundary();
+        stopFocusTranversable();
         placeholder.getChildren().addAll(getRoot(), title, startTime, endTime, tags);
         this.logic = logic;
     }
@@ -145,38 +101,22 @@ public class TaskDetail extends UiPart<Region> {
         }
     }
 
+    /** load task details from TaskCard.
+     *  SetKeyPressedEvent on enter to save details.
+     *
+     * @param task cannot be null.
+     */
     public void loadTaskPage(ReadOnlyTask task) {
         assert task != null;
 
         init(task);
-
-        title.textProperty().addListener((observable, oldTitle, newTitle) -> setSaveTitle(newTitle));
-        startTime.textProperty()
-                .addListener((observable, oldStartTime, newStartTime) -> setSaveStartTime(newStartTime));
-        endTime.textProperty().addListener((observable, oldEndTime, newEndTime) -> setSaveEndTime(newEndTime));
-        tags.textProperty().addListener((observable, oldTags, newTags) -> setSaveTags(newTags));
-
-        title.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.ENTER) {
-                saveAndShowContent(task, PREFIX_TITLE, getSaveTitle(), title);
-            }
-        });
-
-        startTime.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.ENTER) {
-                saveAndShowContent(task, PREFIX_DATE_TIME_START, getSaveStartTime(), startTime);
-            }
-        });
-
-        endTime.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.ENTER) {
-                saveAndShowContent(task, PREFIX_DATE_TIME_END, getSaveEndTime(), endTime);
-            }
-        });
+        initKeyPressedEvents(task, PREFIX_TITLE, title.getText(), title);
+        initKeyPressedEvents(task, PREFIX_DATE_TIME_START, startTime.getText(), startTime);
+        initKeyPressedEvents(task, PREFIX_DATE_TIME_END, endTime.getText(), endTime);
 
         tags.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER && !tags.getText().isEmpty()) {
-                if (getSaveTags().startsWith(PREFIX_TAG.toString())) {
+                if (tags.getText().startsWith(PREFIX_TAG.toString())) {
                     saveAndShowContent(task, PREFIX_TAG, tags.getText().substring(1), tags);
                 } else {
                     saveAndShowContent(task, PREFIX_TAG, tags.getText(), tags);
@@ -187,6 +127,21 @@ public class TaskDetail extends UiPart<Region> {
         });
     }
 
+    /**
+     * @param task cannot be null.
+     * @param prefix to differentiate command.
+     * @param updatedText to read from User Interface.
+     * @param field must be a valid TextField.
+     */
+    public void initKeyPressedEvents(ReadOnlyTask task, Prefix prefix, String updatedText, TextField field) {
+        field.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                saveAndShowContent(task, prefix, field.getText(), field);
+            }
+        });
+    }
+
+    /** PromptTexts to remind users how to save*/
     public void initPromptText() {
         title.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Title"));
         startTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Start Time"));
@@ -194,6 +149,7 @@ public class TaskDetail extends UiPart<Region> {
         tags.promptTextProperty().set(MESSAGE_TAG);
     }
 
+    /** fill Label color*/
     public void initStyle() {
         labelTaskTitle.setStyle("-fx-text-fill: white");
         labelStartTime.setStyle("-fx-text-fill: white");
@@ -201,25 +157,40 @@ public class TaskDetail extends UiPart<Region> {
         labelTags.setStyle("-fx-text-fill: white");
     }
 
+    /** Allocate TextFields Boundary*/
+    public void initAnchorBoundary() {
+        FxViewUtil.applyAnchorBoundaryParameters(getRoot(), 0.0, 0.0, 0.0, 0.0);
+        FxViewUtil.applyAnchorBoundaryParameters(title, 120.0, 100.0, 10.0, 150.0);
+        FxViewUtil.applyAnchorBoundaryParameters(startTime, 120.0, 100.0, 50.0, 110.0);
+        FxViewUtil.applyAnchorBoundaryParameters(endTime, 120.0, 100.0, 90.0, 70.0);
+        FxViewUtil.applyAnchorBoundaryParameters(tags, 120.0, 100.0, 130.0, 30.0);
+    }
+
+    /** stop FocusTranversable in the following fields */
+    public void stopFocusTranversable() {
+        labelTaskTitle.setFocusTraversable(false);
+        labelStartTime.setFocusTraversable(false);
+        labelEndTime.setFocusTraversable(false);
+        labelTags.setFocusTraversable(false);
+    }
+
+    /** Read Task details and displays on User Interface
+     *
+     * @param task cannot be null.
+     */
     public void init(ReadOnlyTask task) {
+        assert task != null;
+
         String taggings = EMPTY_STRING;
-
         title.setText(task.getTitle().toString());
-        setSaveTitle(title.getText());
-
         startTime.setText(task.getDateTime().getStartDateTime().isPresent()
-                ? task.getDateTime().getStartDateTime().get().toString() : "");
-        setSaveStartTime(startTime.getText());
-
+                ? task.getDateTime().getStartDateTime().get().toString() : EMPTY_STRING);
         endTime.setText(task.getDateTime().getEndDateTime().isPresent()
-                ? task.getDateTime().getEndDateTime().get().toString() : "");
-        setSaveEndTime(endTime.getText());
-
+                ? task.getDateTime().getEndDateTime().get().toString() : EMPTY_STRING);
         for (Tag tag : task.getTags()) {
             taggings += tag.toString();
         }
         tags.setText(taggings);
-        setSaveTags(taggings);
     }
 
     /**
