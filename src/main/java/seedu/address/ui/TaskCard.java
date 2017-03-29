@@ -32,7 +32,7 @@ public class TaskCard extends UiPart<Region> {
         if (task.getStatus().getStatus()) {
             dateTime.setStyle("-fx-text-fill: green");
         }
-        content.setText(task.getContent().fullContent);;
+        content.setText(task.getContent().fullContent);
         initTags(task);
     }
 

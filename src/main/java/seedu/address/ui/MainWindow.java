@@ -266,12 +266,12 @@ public class MainWindow extends UiPart<Region> {
         return this.taskListPanel;
     }
 
-    void loadTaskPage(ReadOnlyTask task) {
+    public void loadTaskPage(ReadOnlyTask task) {
         taskDescription.loadTaskPage(task);
         taskDetail.loadTaskPage(task);
     }
 
-    void switchTab(String tab) {
+    public void switchTab(String tab) {
         tabList.switchTo(tab);
     }
 }

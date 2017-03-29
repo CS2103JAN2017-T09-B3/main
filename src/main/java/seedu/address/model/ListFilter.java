@@ -11,8 +11,6 @@ import seedu.address.model.task.ReadOnlyTask;
 //@@author A0144895N
 public class ListFilter {
 
-    public ListFilter() {}
-
     public static void filterAll(FilteredList<ReadOnlyTask> filteredList) {
         filteredList.setPredicate(null);
     }

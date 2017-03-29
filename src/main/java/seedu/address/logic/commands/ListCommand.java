@@ -55,6 +55,10 @@ public class ListCommand extends Command {
             EventsCenter.getInstance().post(new SwitchToTabRequestEvent("completed"));
             model.updateFilteredListToShowCompleted();
             return new CommandResult(MESSAGE_COMPLETED_SUCCESS);
+        } else if (isAll) {
+            EventsCenter.getInstance().post(new SwitchToTabRequestEvent("all"));
+            model.updateFilteredListToShowAll();
+            return new CommandResult(MESSAGE_ALL_SUCCESS);
         } else {
             EventsCenter.getInstance().post(new SwitchToTabRequestEvent("all"));
             model.updateFilteredListToShowAll();
