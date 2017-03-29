@@ -54,7 +54,8 @@ public class TaskDateTime {
     private boolean isValidStartAndEndDateTime() {
         return ((!isThereStartDateTime() || (!isThereEndDateTime())
                 || isThereStartDateTime() && isThereEndDateTime()
-                && this.startDateTime.getFullDate().before(this.endDateTime.getFullDate())));
+                && (this.startDateTime.getFullDate().before(this.endDateTime.getFullDate())
+                        || this.startDateTime.getFullDate().equals(this.endDateTime.getFullDate()))));
     }
 
     /*

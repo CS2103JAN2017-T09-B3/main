@@ -127,7 +127,7 @@ public class UiManager extends ComponentManager implements Ui {
         mainWindow.loadTaskPage(event.getNewSelection());
     }
 
-    //author A0135807A
+    //author A0144895N
     @Subscribe
     private void handleSwitchToTabRequestEvent(SwitchToTabRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
