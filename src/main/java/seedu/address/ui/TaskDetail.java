@@ -143,7 +143,6 @@ public class TaskDetail extends UiPart<Region> {
             logger.info("Invalid Command: " + newDetail);
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
-        field.setText(newDetail);
     }
 
     public void loadTaskPage(ReadOnlyTask task) {
@@ -176,16 +175,15 @@ public class TaskDetail extends UiPart<Region> {
         });
 
         tags.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.ENTER && !getSaveTags().isEmpty()) {
+            if (keyEvent.getCode() == KeyCode.ENTER && !tags.getText().isEmpty()) {
                 if (getSaveTags().startsWith(PREFIX_TAG.toString())) {
-                    saveAndShowContent(task, PREFIX_TAG, getSaveTags().substring(1), tags);
+                    saveAndShowContent(task, PREFIX_TAG, tags.getText().substring(1), tags);
                 } else {
-                    saveAndShowContent(task, PREFIX_TAG, getSaveTags(), tags);
+                    saveAndShowContent(task, PREFIX_TAG, tags.getText(), tags);
                 }
-            } else if (keyEvent.getCode() == KeyCode.ENTER && getSaveTags().isEmpty()) {
+            } else if (keyEvent.getCode() == KeyCode.ENTER && tags.getText().isEmpty()) {
                 saveAndShowContent(task, PREFIX_TAG, EMPTY_STRING, tags);
             }
-            keyEvent.consume();
         });
     }
 
