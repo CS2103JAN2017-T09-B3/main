@@ -16,9 +16,9 @@ import seedu.address.testutil.TestUtil;
 //@@author A0135807A
 /** files are automatically written to the saved location. */
 public class OpenAndSaveCommandTest extends AddressBookGuiTest {
-    public static final String FILE_DIR = "./src/test/data/sandbox/";
-    public static final String FILE_NAME = "./src/test/data/sandbox/taskmanager";
-    public static final String FILE_ALTERNATE_NAME = "./src/test/data/sandbox/myPotato";
+    public static final String FILE_DIR = "src/test/data/sandbox/";
+    public static final String FILE_NAME = "src/test/data/sandbox/taskmanager";
+    public static final String FILE_ALTERNATE_NAME = "src/test/data/sandbox/myPotato";
     public static final String FILE_XML_EXTENSION = ".xml";
 
     public static final String COMMAND_SAVE = "save ";
@@ -89,4 +89,5 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
         commandBox.runCommand(command);
         assertTrue(taskListPanel.isListMatching(expectedhits));
     }
+
 }

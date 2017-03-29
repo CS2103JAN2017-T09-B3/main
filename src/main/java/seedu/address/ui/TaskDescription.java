@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
@@ -24,7 +25,7 @@ import seedu.address.model.task.ReadOnlyTask;
 public class TaskDescription extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(TaskDescription.class);
 
-    private static final String MESSAGE_SUPPORT = "Data will be saved when you press ENTER.";
+    private static final String MESSAGE_SUPPORT = "Content will be saved when you press ENTER.";
     private static final String FXML = "TaskDescription.fxml";
     private static final String COMMAND_EDIT = "edit %1$s %2$s";
 
@@ -75,10 +76,17 @@ public class TaskDescription extends UiPart<Region> {
 
         content.textProperty().addListener((observable, oldContent, newContent) -> setNewContent(newContent));
 
-        content.setOnKeyPressed(keyEvent -> {
+//        content.setOnKeyPressed(keyEvent -> {
+//            if (keyEvent.getCode() == KeyCode.ENTER) {
+//                saveAndShowContent(task, getNewContent());
+//            }
+//            keyEvent.consume();
+//        });
+        content.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 saveAndShowContent(task, getNewContent());
             }
+            keyEvent.consume();
         });
     }
 
