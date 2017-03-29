@@ -106,18 +106,19 @@ public class TaskDetail extends UiPart<Region> {
      */
     public TaskDetail(AnchorPane placeholder, Logic logic) {
         super(FXML);
-        title.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Title"));
-        startTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Start Time"));
-        endTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "End Time"));
-        tags.promptTextProperty().set(MESSAGE_TAG);
-
-        labelTaskTitle.setStyle("-fx-text-fill: white");
-        labelStartTime.setStyle("-fx-text-fill: white");
-        labelEndTime.setStyle("-fx-text-fill: white");
-        labelTags.setStyle("-fx-text-fill: white");
-
+        initPromptText();
+        initStyle();
+        labelTaskTitle.setFocusTraversable(false);
+        labelStartTime.setFocusTraversable(false);
+        labelEndTime.setFocusTraversable(false);
+        labelTags.setFocusTraversable(false);
+        //left right top btm
         FxViewUtil.applyAnchorBoundaryParameters(getRoot(), 0.0, 0.0, 0.0, 0.0);
-        placeholder.getChildren().addAll(getRoot());
+        FxViewUtil.applyAnchorBoundaryParameters(title, 100.0, 130.0, 10.0, 150.0);
+        FxViewUtil.applyAnchorBoundaryParameters(startTime, 100.0, 130.0, 50.0, 110.0);
+        FxViewUtil.applyAnchorBoundaryParameters(endTime, 100.0, 130.0, 90.0, 70.0);
+        FxViewUtil.applyAnchorBoundaryParameters(tags, 100.0, 130.0, 130.0, 30.0);
+        placeholder.getChildren().addAll(getRoot(), title, startTime, endTime, tags);
         this.logic = logic;
     }
 
@@ -148,18 +149,7 @@ public class TaskDetail extends UiPart<Region> {
     public void loadTaskPage(ReadOnlyTask task) {
         assert task != null;
 
-        String taggings = "";
-        title.setText(task.getTitle().toString());
-
-        startTime.setText(task.getDateTime().getStartDateTime().isPresent()
-                ? task.getDateTime().getStartDateTime().get().toString() : "");
-        endTime.setText(task.getDateTime().getEndDateTime().isPresent()
-                ? task.getDateTime().getEndDateTime().get().toString() : "");
-
-        for (Tag tag : task.getTags()) {
-            taggings += tag.toString();
-        }
-        tags.setText(taggings);
+        init(task);
 
         title.textProperty().addListener((observable, oldTitle, newTitle) -> setSaveTitle(newTitle));
         startTime.textProperty()
@@ -195,7 +185,43 @@ public class TaskDetail extends UiPart<Region> {
             } else if (keyEvent.getCode() == KeyCode.ENTER && getSaveTags().isEmpty()) {
                 saveAndShowContent(task, PREFIX_TAG, EMPTY_STRING, tags);
             }
+            keyEvent.consume();
         });
+    }
+
+    public void initPromptText() {
+        title.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Title"));
+        startTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Start Time"));
+        endTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "End Time"));
+        tags.promptTextProperty().set(MESSAGE_TAG);
+    }
+
+    public void initStyle() {
+        labelTaskTitle.setStyle("-fx-text-fill: white");
+        labelStartTime.setStyle("-fx-text-fill: white");
+        labelEndTime.setStyle("-fx-text-fill: white");
+        labelTags.setStyle("-fx-text-fill: white");
+    }
+
+    public void init(ReadOnlyTask task) {
+        String taggings = EMPTY_STRING;
+
+        title.setText(task.getTitle().toString());
+        setSaveTitle(title.getText());
+
+        startTime.setText(task.getDateTime().getStartDateTime().isPresent()
+                ? task.getDateTime().getStartDateTime().get().toString() : "");
+        setSaveStartTime(startTime.getText());
+
+        endTime.setText(task.getDateTime().getEndDateTime().isPresent()
+                ? task.getDateTime().getEndDateTime().get().toString() : "");
+        setSaveEndTime(endTime.getText());
+
+        for (Tag tag : task.getTags()) {
+            taggings += tag.toString();
+        }
+        tags.setText(taggings);
+        setSaveTags(taggings);
     }
 
     /**
