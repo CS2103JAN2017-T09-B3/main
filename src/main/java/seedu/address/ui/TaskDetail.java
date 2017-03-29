@@ -37,8 +37,6 @@ public class TaskDetail extends UiPart<Region> {
     private static final String MESSAGE_SUPPORT = "Press Enter to save %1$s!";
     private static final String MESSAGE_TAG = "Create a tag with a Prefix '#'.";
 
-    private static final String MESSAGE_NOT_EDITABLE = "";
-
     private Logic logic;
 
     private String saveTitle;
@@ -112,11 +110,6 @@ public class TaskDetail extends UiPart<Region> {
         startTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Start Time"));
         endTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "End Time"));
         tags.promptTextProperty().set(MESSAGE_TAG);
-
-        title.setText(String.format(MESSAGE_SUPPORT, "Title"));
-        startTime.setText(String.format(MESSAGE_SUPPORT, "Start Time"));
-        endTime.setText(String.format(MESSAGE_SUPPORT, "End Time"));
-        tags.setText(MESSAGE_NOT_EDITABLE);
 
         labelTaskTitle.setStyle("-fx-text-fill: white");
         labelStartTime.setStyle("-fx-text-fill: white");
