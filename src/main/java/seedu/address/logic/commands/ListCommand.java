@@ -49,18 +49,22 @@ public class ListCommand extends Command {
     public CommandResult execute() {
         if (isToday) {
             EventsCenter.getInstance().post(new SwitchToTabRequestEvent("today"));
+            model.setCurrentList("today");
             model.updateFilteredListToShowToday();
             return new CommandResult(MESSAGE_TODAY_SUCCESS);
         } else if (isCompleted) {
             EventsCenter.getInstance().post(new SwitchToTabRequestEvent("completed"));
+            model.setCurrentList("completed");
             model.updateFilteredListToShowCompleted();
             return new CommandResult(MESSAGE_COMPLETED_SUCCESS);
         } else if (isAll) {
             EventsCenter.getInstance().post(new SwitchToTabRequestEvent("all"));
+            model.setCurrentList("all");
             model.updateFilteredListToShowAll();
             return new CommandResult(MESSAGE_ALL_SUCCESS);
         } else {
             EventsCenter.getInstance().post(new SwitchToTabRequestEvent("all"));
+            model.setCurrentList("all");
             model.updateFilteredListToShowAll();
             return new CommandResult(MESSAGE_ALL_SUCCESS);
         }
