@@ -16,6 +16,7 @@ import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
+import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 public class MarkAsDoneCommand extends Command {
 
@@ -55,13 +56,15 @@ public class MarkAsDoneCommand extends Command {
                                     ? taskToMark.getDateTime().getEndDateTime().get().toString() : EMPTY_STRING),
             		new UniqueTagList(),
             		new Status(true));
-            model.updateTask(targetIndex, task);
+            model.updateTask(taskToMark, task);
             return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         } catch (IllegalValueException e) {
         	System.out.println("Exception");
-        }
+        } catch (TaskNotFoundException e) {
+			e.printStackTrace();
+		}
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
  
     }
