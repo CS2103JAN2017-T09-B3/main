@@ -1,25 +1,15 @@
 //@@author A0135753A
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.parser.CliSyntax.EMPTY_STRING;
-
 import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.tag.UniqueTagList;
-import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Status;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskDateTime;
-import seedu.address.model.task.Title;
-import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
-import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 public class MarkAsUndoneCommand extends Command {
 
