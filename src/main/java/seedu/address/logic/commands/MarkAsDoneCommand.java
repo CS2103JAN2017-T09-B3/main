@@ -15,7 +15,6 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.UniqueTaskList;
-import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 public class MarkAsDoneCommand extends Command {
@@ -68,8 +67,5 @@ public class MarkAsDoneCommand extends Command {
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
  
     }
-    public void markTask(ReadOnlyTask taskToMark) throws DuplicateTaskException {
-        taskToMark.getStatus().setStatus(true);
-//        Task task = (Task) taskToMark;
-    }
+
 }
