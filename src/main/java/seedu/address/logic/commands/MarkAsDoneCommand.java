@@ -1,10 +1,19 @@
-//@@author A0135753A
+///@@author A0135753A
 package seedu.address.logic.commands;
+
+import static seedu.address.logic.parser.CliSyntax.EMPTY_STRING;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.UnmodifiableObservableList;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Status;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskDateTime;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
@@ -38,12 +47,23 @@ public class MarkAsDoneCommand extends Command {
         ReadOnlyTask taskToMark = lastShownList.get(targetIndex - 1);
 
         try {
-            this.markTask(taskToMark);
-            model.updateTask(targetIndex, taskToMark);
+            Task task = new Task(new Title(taskToMark.getTitle().toString()), 
+            		new Content(taskToMark.getContent().isThereContent()? taskToMark.getContent().toString(): EMPTY_STRING), 
+            		new TaskDateTime(taskToMark.getDateTime().getStartDateTime().isPresent()
+                            ? taskToMark.getDateTime().getStartDateTime().get().toString() : EMPTY_STRING,
+                            		taskToMark.getDateTime().getEndDateTime().isPresent()
+                                    ? taskToMark.getDateTime().getEndDateTime().get().toString() : EMPTY_STRING),
+            		new UniqueTagList(),
+            		new Status(true));
+            model.updateTask(targetIndex, task);
+            return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        } catch (IllegalValueException e) {
+        	System.out.println("Exception");
         }
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
+ 
     }
     public void markTask(ReadOnlyTask taskToMark) throws DuplicateTaskException {
         taskToMark.getStatus().setStatus(true);
