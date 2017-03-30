@@ -47,25 +47,26 @@ public class MarkAsUndoneCommand extends Command {
         ReadOnlyTask taskToUnmark = lastShownList.get(targetIndex - 1);
 
         try {
-            Task task = new Task(new Title(taskToUnmark.getTitle().toString()), 
-            		new Content(taskToUnmark.getContent().isThereContent()? taskToUnmark.getContent().toString(): EMPTY_STRING), 
+            Task task = new Task(new Title(taskToUnmark.getTitle().toString()),
+                    new Content(
+                            taskToUnmark.getContent().isThereContent() ? taskToUnmark.getContent().toString(): EMPTY_STRING),
             		new TaskDateTime(taskToUnmark.getDateTime().getStartDateTime().isPresent()
                             ? taskToUnmark.getDateTime().getStartDateTime().get().toString() : EMPTY_STRING,
-                            		taskToUnmark.getDateTime().getEndDateTime().isPresent()
+                                    taskToUnmark.getDateTime().getEndDateTime().isPresent()
                                     ? taskToUnmark.getDateTime().getEndDateTime().get().toString() : EMPTY_STRING),
-            		new UniqueTagList(),
-            		new Status(false));
+                    new UniqueTagList(),
+                    new Status(false));
             model.updateTask(taskToUnmark, task);
             return new CommandResult(String.format(MESSAGE_UNMARK_TASK_SUCCESS, taskToUnmark));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         } catch (IllegalValueException e) {
-        	System.out.println("Exception");
+            System.out.println("Exception");
         } catch (TaskNotFoundException e) {
-			e.printStackTrace();
-		}
+            e.printStackTrace();
+        }
         return new CommandResult(String.format(MESSAGE_UNMARK_TASK_SUCCESS, taskToUnmark));
- 
+
     }
 
 }

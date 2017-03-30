@@ -47,25 +47,26 @@ public class MarkAsDoneCommand extends Command {
         ReadOnlyTask taskToMark = lastShownList.get(targetIndex - 1);
 
         try {
-            Task task = new Task(new Title(taskToMark.getTitle().toString()), 
-            		new Content(taskToMark.getContent().isThereContent()? taskToMark.getContent().toString(): EMPTY_STRING), 
-            		new TaskDateTime(taskToMark.getDateTime().getStartDateTime().isPresent()
+            Task task = new Task(new Title(taskToMark.getTitle().toString()),
+                    new Content(
+                            taskToMark.getContent().isThereContent() ? taskToMark.getContent().toString(): EMPTY_STRING), 
+                    new TaskDateTime(taskToMark.getDateTime().getStartDateTime().isPresent()
                             ? taskToMark.getDateTime().getStartDateTime().get().toString() : EMPTY_STRING,
-                            		taskToMark.getDateTime().getEndDateTime().isPresent()
+                                    taskToMark.getDateTime().getEndDateTime().isPresent()
                                     ? taskToMark.getDateTime().getEndDateTime().get().toString() : EMPTY_STRING),
-            		new UniqueTagList(),
-            		new Status(true));
+                    new UniqueTagList(),
+            	    new Status(true));
             model.updateTask(taskToMark, task);
             return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         } catch (IllegalValueException e) {
-        	System.out.println("Exception");
+            System.out.println("Exception");
         } catch (TaskNotFoundException e) {
-			e.printStackTrace();
-		}
+            e.printStackTrace();
+        }
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
- 
+
     }
 
 }
