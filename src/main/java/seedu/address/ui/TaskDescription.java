@@ -17,6 +17,7 @@ import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.CliSyntax;
 import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
 
@@ -80,7 +81,15 @@ public class TaskDescription extends UiPart<Region> {
     }
 
     public void loadTaskDescription(ReadOnlyTask task) {
-        contentTextArea.setText(task.getContent().toString());
+        if(!compareWithoutNewLine(task.getContent().toString(), contentTextArea.getText())) {
+            contentTextArea.setText(task.getContent().toString());
+        }
+    }
+
+    public boolean compareWithoutNewLine(String textOne, String textTwo) {
+        String trimmedOne = textOne.replaceAll("\\n", CliSyntax.EMPTY_STRING);
+        String trimmedTwo = textTwo.replaceAll("\\n", CliSyntax.EMPTY_STRING);
+        return trimmedOne.equals(trimmedTwo);
     }
 
     /**
