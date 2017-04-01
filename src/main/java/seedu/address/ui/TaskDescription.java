@@ -81,7 +81,7 @@ public class TaskDescription extends UiPart<Region> {
     }
 
     public void loadTaskDescription(ReadOnlyTask task) {
-        if(!compareWithoutNewLine(task.getContent().toString(), contentTextArea.getText())) {
+        if (!compareWithoutNewLine(task.getContent().toString(), contentTextArea.getText())) {
             contentTextArea.setText(task.getContent().toString());
         }
     }
