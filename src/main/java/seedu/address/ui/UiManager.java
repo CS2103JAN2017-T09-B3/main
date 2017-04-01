@@ -13,6 +13,7 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.model.ReadFirstTaskEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
@@ -134,6 +135,7 @@ public class UiManager extends ComponentManager implements Ui {
         mainWindow.switchTab(event.getTargetTab());
     }
 
+    //author A0135807A
     @Subscribe
     private void handleUpdateStatusBarFooterEvent(UpdateStatusBarFooterEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -143,7 +145,13 @@ public class UiManager extends ComponentManager implements Ui {
     @Subscribe
     private void handleUpdateUiTaskDescriptionEvent(UpdateUiTaskDescriptionEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        mainWindow.loadTaskPage(event.getEditedTask());
+        mainWindow.refreshPage(event.getTask());
+    }
+
+    @Subscribe
+    private void handleReadFirstTaskEvent(ReadFirstTaskEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        mainWindow.loadTaskPage(event.getTask());
     }
 
 }

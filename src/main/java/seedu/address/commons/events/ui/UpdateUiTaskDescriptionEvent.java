@@ -9,10 +9,10 @@ import seedu.address.model.task.ReadOnlyTask;
  */
 public class UpdateUiTaskDescriptionEvent extends BaseEvent {
 
-    private final ReadOnlyTask editedTask;
+    private final ReadOnlyTask task;
 
-    public UpdateUiTaskDescriptionEvent(ReadOnlyTask editedTask) {
-        this.editedTask = editedTask;
+    public UpdateUiTaskDescriptionEvent(ReadOnlyTask task) {
+        this.task = task;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class UpdateUiTaskDescriptionEvent extends BaseEvent {
         return this.getClass().getSimpleName();
     }
 
-    public ReadOnlyTask getEditedTask() {
-        return editedTask;
+    public ReadOnlyTask getTask() {
+        return task;
     }
 }

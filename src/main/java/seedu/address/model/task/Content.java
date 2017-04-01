@@ -11,13 +11,14 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Content {
 
     public static final String MESSAGE_CONTENT_CONSTRAINTS =
-            "Task content should only contain alphanumeric characters and spaces";
+            "Task content should only contain alphanumeric characters, spaces & punctuations "
+             + "excluding \"/#\" and empty String.";
 
     /*
      * The first character of the task must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String CONTENT_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String CONTENT_VALIDATION_REGEX = "[\\p{Alnum}!\"$%&'()*+,-.:;<=>?@^_`{|}~\\s]*";
 
     public final String fullContent;
 
