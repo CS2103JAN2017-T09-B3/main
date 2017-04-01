@@ -17,6 +17,7 @@ import guitests.guihandles.MainGuiHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.TaskCardHandle;
+import guitests.guihandles.TaskDescriptionHandle;
 import guitests.guihandles.TaskListPanelHandle;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -27,7 +28,6 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.testutil.TestUtil;
 import seedu.address.testutil.TypicalTestTasks;
-import seedu.address.ui.TaskDescription;
 
 /**
  * A GUI Test class for AddressBook.
@@ -51,7 +51,7 @@ public abstract class AddressBookGuiTest {
     protected TaskListPanelHandle taskListPanel;
     protected ResultDisplayHandle resultDisplay;
     protected CommandBoxHandle commandBox;
-    protected TaskDescription taskDescription;
+    protected TaskDescriptionHandle taskDescription;
     private Stage stage;
 
     @BeforeClass
@@ -72,6 +72,7 @@ public abstract class AddressBookGuiTest {
             taskListPanel = mainGui.getTaskListPanel();
             resultDisplay = mainGui.getResultDisplay();
             commandBox = mainGui.getCommandBox();
+            taskDescription = mainGui.getTaskDescription();
             this.stage = stage;
         });
         EventsCenter.clearSubscribers();

@@ -4,13 +4,17 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import com.google.common.eventbus.Subscribe;
+
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.events.model.ReadFirstTaskEvent;
 import seedu.address.commons.events.storage.ChangedFileLocationRequestEvent;
+import seedu.address.commons.events.ui.LoadFirstTaskEvent;
 import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
 import seedu.address.commons.events.ui.UpdateUiTaskDescriptionEvent;
 import seedu.address.commons.util.CollectionUtil;
@@ -115,9 +119,9 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
-    /** Raises event to update the Ui TaskDescription when task is edited using command line */
-    public void updateUiTaskDescription(ReadOnlyTask editedTask) {
-        raise(new UpdateUiTaskDescriptionEvent(editedTask));
+    /** Raises event to update the Ui TaskDescription when task is edited. */
+    public void updateUiTaskDescription(ReadOnlyTask editedtask) {
+        raise(new UpdateUiTaskDescriptionEvent(editedtask));
     }
     //@@author
 
@@ -142,19 +146,20 @@ public class ModelManager extends ComponentManager implements Model {
             throws UniqueTaskList.DuplicateTaskException {
         assert editedTask != null;
 
-        int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
-        taskManager.updateTask(taskIndex, editedTask);
-        updateUiTaskDescription(editedTask);
-        indicateAddressBookChanged();
+         int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
+         taskManager.updateTask(taskIndex, editedTask);
+         updateUiTaskDescription(editedTask);
+         indicateAddressBookChanged();
     }
 
     //@@author A0125221Y
     @Override
     public synchronized void updateTask(ReadOnlyTask old, Task toUpdate)
             throws TaskNotFoundException, DuplicateTaskException {
-        taskManager.updateTask(old, toUpdate);
-        updateUiTaskDescription(toUpdate);
-        indicateAddressBookChanged();
+
+         taskManager.updateTask(old, toUpdate);
+         updateUiTaskDescription(toUpdate);
+         indicateAddressBookChanged();
     }
 
     //@@author A0125221Y
@@ -241,4 +246,16 @@ public class ModelManager extends ComponentManager implements Model {
         return new UnmodifiableObservableList<>(newList);
     }
 
+    // =========== Events Handling
+    // =============================================================
+
+    //@@author A0135807A
+    @Override
+    @Subscribe
+    public void handleLoadFirstTaskEvent(LoadFirstTaskEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event, "Initializing task"));
+        if(taskManager.getTaskList().size() > 0) {
+            raise(new ReadFirstTaskEvent(taskManager.getTaskList().get(0)));
+        }
+    }
 }

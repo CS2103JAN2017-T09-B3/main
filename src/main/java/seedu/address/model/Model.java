@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.UnmodifiableObservableList;
+import seedu.address.commons.events.ui.LoadFirstTaskEvent;
 import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
@@ -78,4 +79,7 @@ public interface Model {
     void updateFilteredListToShowCompleted();
 
     UnmodifiableObservableList<ReadOnlyTask> getDoneTaskList();
+
+    /** Loads the first task from panelList */
+    void handleLoadFirstTaskEvent(LoadFirstTaskEvent event);
 }

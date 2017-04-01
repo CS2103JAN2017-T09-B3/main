@@ -4,6 +4,7 @@ package seedu.address.ui;
 import static seedu.address.logic.parser.CliSyntax.EMPTY_STRING;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_END;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE_TIME_START;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMPTY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -39,18 +40,17 @@ public class TaskDetail extends UiPart<Region> {
 
     private Logic logic;
 
+    @FXML
+    private TextField titleTextField;
 
     @FXML
-    private TextField title;
+    private TextField startTimeTextField;
 
     @FXML
-    private TextField startTime;
+    private TextField endTimeTextField;
 
     @FXML
-    private TextField endTime;
-
-    @FXML
-    private TextField tags;
+    private TextField tagsTextField;
 
     @FXML
     private Label labelTaskTitle;
@@ -74,7 +74,8 @@ public class TaskDetail extends UiPart<Region> {
         initStyle();
         initAnchorBoundary();
         stopFocusTranversable();
-        placeholder.getChildren().addAll(getRoot(), title, startTime, endTime, tags);
+        placeholder.getChildren().addAll(getRoot(), titleTextField, startTimeTextField, endTimeTextField,
+                tagsTextField);
         this.logic = logic;
     }
 
@@ -101,8 +102,9 @@ public class TaskDetail extends UiPart<Region> {
         }
     }
 
-    /** load task details from TaskCard.
-     *  SetKeyPressedEvent on enter to save details.
+    /**
+     * load Task details from TaskCard.
+     * SetKeyPressedEvent on enter to save details.
      *
      * @param task cannot be null.
      */
@@ -110,21 +112,30 @@ public class TaskDetail extends UiPart<Region> {
         assert task != null;
 
         init(task);
-        initKeyPressedEvents(task, PREFIX_TITLE, title.getText(), title);
-        initKeyPressedEvents(task, PREFIX_DATE_TIME_START, startTime.getText(), startTime);
-        initKeyPressedEvents(task, PREFIX_DATE_TIME_END, endTime.getText(), endTime);
+        initKeyPressedEvents(task, PREFIX_TITLE, titleTextField.getText(), titleTextField);
+        initKeyPressedEvents(task, PREFIX_DATE_TIME_START, startTimeTextField.getText(), startTimeTextField);
+        initKeyPressedEvents(task, PREFIX_DATE_TIME_END, endTimeTextField.getText(), endTimeTextField);
 
-        tags.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.ENTER && !tags.getText().isEmpty()) {
-                if (tags.getText().startsWith(PREFIX_TAG.toString())) {
-                    saveAndShowContent(task, PREFIX_TAG, tags.getText().substring(1), tags);
+        tagsTextField.setOnKeyPressed(keyEvent -> {
+            String tagging = "";
+            String[] tagarray = tagsTextField.getText().split(" ");
+            for (String tag : tagarray) {
+                if(tag.startsWith(PREFIX_TAG.toString())) {
+                    tagging += tag;
                 } else {
-                    saveAndShowContent(task, PREFIX_TAG, tags.getText(), tags);
+                    tagging += PREFIX_TAG + tag;
                 }
-            } else if (keyEvent.getCode() == KeyCode.ENTER && tags.getText().isEmpty()) {
-                saveAndShowContent(task, PREFIX_TAG, EMPTY_STRING, tags);
+            }
+            if (keyEvent.getCode() == KeyCode.ENTER && !tagsTextField.getText().isEmpty()) {
+                saveAndShowContent(task, PREFIX_EMPTY, tagging, tagsTextField);
+            } else if (keyEvent.getCode() == KeyCode.ENTER && tagsTextField.getText().isEmpty()) {
+                saveAndShowContent(task, PREFIX_TAG, EMPTY_STRING, tagsTextField);
             }
         });
+    }
+
+    public void loadTaskDetail(ReadOnlyTask task) {
+        init(task);
     }
 
     /**
@@ -141,15 +152,15 @@ public class TaskDetail extends UiPart<Region> {
         });
     }
 
-    /** PromptTexts to remind users how to save*/
+    /** PromptTexts to remind users how to save */
     public void initPromptText() {
-        title.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Title"));
-        startTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Start Time"));
-        endTime.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "End Time"));
-        tags.promptTextProperty().set(MESSAGE_TAG);
+        titleTextField.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Title"));
+        startTimeTextField.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "Start Time"));
+        endTimeTextField.promptTextProperty().set(String.format(MESSAGE_SUPPORT, "End Time"));
+        tagsTextField.promptTextProperty().set(MESSAGE_TAG);
     }
 
-    /** fill Label color*/
+    /** fill Label color */
     public void initStyle() {
         labelTaskTitle.setStyle("-fx-text-fill: white");
         labelStartTime.setStyle("-fx-text-fill: white");
@@ -157,13 +168,13 @@ public class TaskDetail extends UiPart<Region> {
         labelTags.setStyle("-fx-text-fill: white");
     }
 
-    /** Allocate TextFields Boundary*/
+    /** Allocate TextFields Boundary */
     public void initAnchorBoundary() {
         FxViewUtil.applyAnchorBoundaryParameters(getRoot(), 0.0, 0.0, 0.0, 0.0);
-        FxViewUtil.applyAnchorBoundaryParameters(title, 120.0, 100.0, 10.0, 150.0);
-        FxViewUtil.applyAnchorBoundaryParameters(startTime, 120.0, 100.0, 50.0, 110.0);
-        FxViewUtil.applyAnchorBoundaryParameters(endTime, 120.0, 100.0, 90.0, 70.0);
-        FxViewUtil.applyAnchorBoundaryParameters(tags, 120.0, 100.0, 130.0, 30.0);
+        FxViewUtil.applyAnchorBoundaryParameters(titleTextField, 120.0, 100.0, 10.0, 150.0);
+        FxViewUtil.applyAnchorBoundaryParameters(startTimeTextField, 120.0, 100.0, 50.0, 110.0);
+        FxViewUtil.applyAnchorBoundaryParameters(endTimeTextField, 120.0, 100.0, 90.0, 70.0);
+        FxViewUtil.applyAnchorBoundaryParameters(tagsTextField, 120.0, 100.0, 130.0, 30.0);
     }
 
     /** stop FocusTranversable in the following fields */
@@ -174,7 +185,8 @@ public class TaskDetail extends UiPart<Region> {
         labelTags.setFocusTraversable(false);
     }
 
-    /** Read Task details and displays on User Interface
+    /**
+     * Read Task details and displays on User Interface
      *
      * @param task cannot be null.
      */
@@ -182,15 +194,15 @@ public class TaskDetail extends UiPart<Region> {
         assert task != null;
 
         String taggings = EMPTY_STRING;
-        title.setText(task.getTitle().toString());
-        startTime.setText(task.getDateTime().getStartDateTime().isPresent()
+        titleTextField.setText(task.getTitle().toString());
+        startTimeTextField.setText(task.getDateTime().getStartDateTime().isPresent()
                 ? task.getDateTime().getStartDateTime().get().toString() : EMPTY_STRING);
-        endTime.setText(task.getDateTime().getEndDateTime().isPresent()
+        endTimeTextField.setText(task.getDateTime().getEndDateTime().isPresent()
                 ? task.getDateTime().getEndDateTime().get().toString() : EMPTY_STRING);
         for (Tag tag : task.getTags()) {
             taggings += tag.toString();
         }
-        tags.setText(taggings);
+        tagsTextField.setText(taggings);
     }
 
     /**
@@ -208,4 +220,3 @@ public class TaskDetail extends UiPart<Region> {
     }
 
 }
-

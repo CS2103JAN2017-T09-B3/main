@@ -8,15 +8,16 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.NewResultAvailableEvent;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
 
 /**
@@ -28,21 +29,12 @@ public class TaskDescription extends UiPart<Region> {
     private static final String MESSAGE_SUPPORT = "Content will be saved when you press ENTER.";
     private static final String FXML = "TaskDescription.fxml";
     private static final String COMMAND_EDIT = "edit %1$s %2$s";
+    public static final String ERROR_STYLE_CLASS = "error";
 
     private Logic logic;
 
-    private String newContent; // store latest Content
-
     @FXML
-    private TextArea content;
-
-    public String getNewContent() {
-        return newContent;
-    }
-
-    public void setNewContent(String newContent) {
-        this.newContent = newContent;
-    }
+    private TextArea contentTextArea;
 
     /**
      * @param placeholder
@@ -50,51 +42,59 @@ public class TaskDescription extends UiPart<Region> {
      */
     public TaskDescription(AnchorPane placeholder, Logic logic) {
         super(FXML);
-        content.promptTextProperty().set(MESSAGE_SUPPORT);
-        content.setWrapText(true);
-        FxViewUtil.applyAnchorBoundaryParameters(content, 0.0, 0.0, 0.0, 0.0);
-        placeholder.getChildren().addAll(content);
+        contentTextArea.promptTextProperty().set(MESSAGE_SUPPORT);
+        contentTextArea.setWrapText(true);
+        FxViewUtil.applyAnchorBoundaryParameters(contentTextArea, 0.0, 0.0, 0.0, 0.0);
+        placeholder.getChildren().addAll(contentTextArea);
         this.logic = logic;
     }
 
     public void saveAndShowContent(ReadOnlyTask taskToEdit, String newContent) {
         try {
+            if(!Content.isValidContent(newContent)) {
+                throw new IllegalValueException(Content.MESSAGE_CONTENT_CONSTRAINTS);
+            }
             CommandResult commandresult = logic.execute(String.format(COMMAND_EDIT,
                     logic.getFilteredTaskList().indexOf(taskToEdit) + 1, PREFIX_CONTENT + newContent));
             setStyleToIndicateCommandSuccess();
             raise(new NewResultAvailableEvent(commandresult.feedbackToUser));
         } catch (CommandException e) {
             setStyleToIndicateCommandFailure();
-            logger.info("Invalid Command: " + newContent);
+            logger.info("Cannot find Task: " + newContent);
+            raise(new NewResultAvailableEvent(e.getMessage()));
+        } catch (IllegalValueException e) {
+            setStyleToIndicateCommandFailure();
+            logger.info("Invalid Content: " + newContent);
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
     }
 
     public void loadTaskPage(ReadOnlyTask task) {
-        content.setText(task.getContent().toString());
-        setNewContent(task.getContent().toString());
+        contentTextArea.setText(task.getContent().toString());
 
-        content.textProperty().addListener((observable, oldContent, newContent) -> setNewContent(newContent));
-
-        content.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
+        contentTextArea.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
-                saveAndShowContent(task, getNewContent());
+                saveAndShowContent(task, contentTextArea.getText().trim());
             }
         });
+    }
+
+    public void loadTaskDescription(ReadOnlyTask task) {
+        contentTextArea.setText(task.getContent().toString());
     }
 
     /**
      * Sets the Task Description style to indicate a successful command.
      */
     private void setStyleToIndicateCommandSuccess() {
-        content.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
+        contentTextArea.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
     }
 
     /**
      * Sets the Task Description style to indicate a failed command.
      */
     private void setStyleToIndicateCommandFailure() {
-        content.getStyleClass().add(CommandBox.ERROR_STYLE_CLASS);
+        contentTextArea.getStyleClass().add(CommandBox.ERROR_STYLE_CLASS);
     }
 
 }
