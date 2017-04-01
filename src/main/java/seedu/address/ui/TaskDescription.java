@@ -51,7 +51,7 @@ public class TaskDescription extends UiPart<Region> {
 
     public void saveAndShowContent(ReadOnlyTask taskToEdit, String newContent) {
         try {
-            if(!Content.isValidContent(newContent)) {
+            if (!Content.isValidContent(newContent)) {
                 throw new IllegalValueException(Content.MESSAGE_CONTENT_CONSTRAINTS);
             }
             CommandResult commandresult = logic.execute(String.format(COMMAND_EDIT,

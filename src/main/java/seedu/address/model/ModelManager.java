@@ -146,10 +146,10 @@ public class ModelManager extends ComponentManager implements Model {
             throws UniqueTaskList.DuplicateTaskException {
         assert editedTask != null;
 
-         int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
-         taskManager.updateTask(taskIndex, editedTask);
-         updateUiTaskDescription(editedTask);
-         indicateAddressBookChanged();
+        int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
+        taskManager.updateTask(taskIndex, editedTask);
+        updateUiTaskDescription(editedTask);
+        indicateAddressBookChanged();
     }
 
     //@@author A0125221Y
@@ -157,9 +157,9 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void updateTask(ReadOnlyTask old, Task toUpdate)
             throws TaskNotFoundException, DuplicateTaskException {
 
-         taskManager.updateTask(old, toUpdate);
-         updateUiTaskDescription(toUpdate);
-         indicateAddressBookChanged();
+        taskManager.updateTask(old, toUpdate);
+        updateUiTaskDescription(toUpdate);
+        indicateAddressBookChanged();
     }
 
     //@@author A0125221Y
@@ -254,7 +254,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Subscribe
     public void handleLoadFirstTaskEvent(LoadFirstTaskEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "Initializing task"));
-        if(taskManager.getTaskList().size() > 0) {
+        if (taskManager.getTaskList().size() > 0) {
             raise(new ReadFirstTaskEvent(taskManager.getTaskList().get(0)));
         }
     }

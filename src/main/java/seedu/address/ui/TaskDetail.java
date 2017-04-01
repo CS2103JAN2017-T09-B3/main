@@ -120,7 +120,7 @@ public class TaskDetail extends UiPart<Region> {
             String tagging = "";
             String[] tagarray = tagsTextField.getText().split(" ");
             for (String tag : tagarray) {
-                if(tag.startsWith(PREFIX_TAG.toString())) {
+                if (tag.startsWith(PREFIX_TAG.toString())) {
                     tagging += tag;
                 } else {
                     tagging += PREFIX_TAG + tag;
