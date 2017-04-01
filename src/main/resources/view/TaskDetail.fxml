@@ -1,6 +1,6 @@
-<!-- @@author A0135807A -->
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- @@author A0135807A -->
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
