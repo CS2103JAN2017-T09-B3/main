@@ -9,16 +9,16 @@ import org.junit.Test;
 import seedu.address.testutil.TestTask;
 
 public class MarkAsUndoneCommandTest extends AddressBookGuiTest {
-	
-	@Test
+
+    @Test
     public void unmark() {
 
-	
-	//mark the first task as done
-	TestTask[] currentList = td.getTypicalTasks();
+
+    //mark the first task as done
+    TestTask[] currentList = td.getTypicalTasks();
     int targetIndex = 1;
     assertUnmarkSuccess(targetIndex, currentList);
-    
+
     //mark the last task as done
     targetIndex = currentList.length;
     assertUnmarkSuccess(targetIndex, currentList);
@@ -31,8 +31,8 @@ public class MarkAsUndoneCommandTest extends AddressBookGuiTest {
     commandBox.runCommand("markasdone " + currentList.length + 1);
     assertResultMessage("The task index provided is invalid");
 
-	}
-	/**
+    }
+    /**
      * Runs the mark as undone command to unmark the task at specified index and confirms the result is correct.
      * @param targetIndexOneIndexed e.g. index 1 to mark the first task in the list,
      * @param currentList A copy of the current list of tasks (before unmark).

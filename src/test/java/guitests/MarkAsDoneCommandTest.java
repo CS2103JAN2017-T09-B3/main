@@ -9,16 +9,15 @@ import org.junit.Test;
 import seedu.address.testutil.TestTask;
 
 public class MarkAsDoneCommandTest extends AddressBookGuiTest {
-	
-	@Test
+
+    @Test
     public void mark() {
 
-	
-	//mark the first task as done
-	TestTask[] currentList = td.getTypicalTasks();
+    //mark the first task as done
+    TestTask[] currentList = td.getTypicalTasks();
     int targetIndex = 1;
     assertMarkSuccess(targetIndex, currentList);
-    
+
     //mark the last task as done
     targetIndex = currentList.length;
     assertMarkSuccess(targetIndex, currentList);
@@ -31,8 +30,8 @@ public class MarkAsDoneCommandTest extends AddressBookGuiTest {
     commandBox.runCommand("markasdone " + currentList.length + 1);
     assertResultMessage("The task index provided is invalid");
 
-	}
-	/**
+    }
+    /**
      * Runs the mark as done command to mark the task at specified index and confirms the result is correct.
      * @param targetIndexOneIndexed e.g. index 1 to mark the first task in the list,
      * @param currentList A copy of the current list of tasks (before mark).
