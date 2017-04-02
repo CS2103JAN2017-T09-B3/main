@@ -28,7 +28,7 @@ public class MarkAsUndoneCommandTest extends AddressBookGuiTest {
         assertUnmarkSuccess(targetIndex, currentList);
 
         //invalid index
-        commandBox.runCommand("markasdone " + currentList.length + 1);
+        commandBox.runCommand("markasundone " + currentList.length + 1);
         assertResultMessage("The task index provided is invalid");
 
     }
