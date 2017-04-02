@@ -13,22 +13,22 @@ public class MarkAsDoneCommandTest extends AddressBookGuiTest {
     @Test
     public void mark() {
 
-    //mark the first task as done
-    TestTask[] currentList = td.getTypicalTasks();
-    int targetIndex = 1;
-    assertMarkSuccess(targetIndex, currentList);
+        //mark the first task as done
+        TestTask[] currentList = td.getTypicalTasks();
+        int targetIndex = 1;
+        assertMarkSuccess(targetIndex, currentList);
 
-    //mark the last task as done
-    targetIndex = currentList.length;
-    assertMarkSuccess(targetIndex, currentList);
+        //mark the last task as done
+        targetIndex = currentList.length;
+        assertMarkSuccess(targetIndex, currentList);
 
-    //mark the middle task of the list as done
-    targetIndex = currentList.length / 2;
-    assertMarkSuccess(targetIndex, currentList);
+        //mark the middle task of the list as done
+        targetIndex = currentList.length / 2;
+        assertMarkSuccess(targetIndex, currentList);
 
-    //invalid index
-    commandBox.runCommand("markasdone " + currentList.length + 1);
-    assertResultMessage("The task index provided is invalid");
+        //invalid index
+        commandBox.runCommand("markasdone " + currentList.length + 1);
+        assertResultMessage("The task index provided is invalid");
 
     }
     /**
