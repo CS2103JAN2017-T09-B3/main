@@ -123,6 +123,7 @@ public class EditCommand extends Command {
             this.content = toCopy.getContent();
             this.dateTime = toCopy.getDateTime();
             this.tags = toCopy.getTags();
+            this.status = toCopy.getStatus();
         }
 
         /**
