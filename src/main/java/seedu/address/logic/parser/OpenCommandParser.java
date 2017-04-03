@@ -10,7 +10,7 @@ import seedu.address.logic.commands.OpenCommand;
  */
 public class OpenCommandParser {
     /**
-     * Parses the given {@code String} of arguments in the context of the OpenCommand
+     * Parses the given {@code String args} of arguments in the context of the OpenCommand
      * and returns an OpenCommand object for execution.
      */
     public Command parse(String args) {
