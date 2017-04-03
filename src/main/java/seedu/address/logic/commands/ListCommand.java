@@ -18,9 +18,9 @@ public class ListCommand extends Command {
 
     public static final String MESSAGE_COMPLETED_SUCCESS = "Listed all completed tasks";
 
-    private static final String MESSAGE_NO_LIST = "One list should be requested";
+    public static final String MESSAGE_NO_LIST = "One list should be requested";
 
-    private static final String MESSAGE_MULTIPLE_LIST = "Only one list should be requested";
+    public static final String MESSAGE_MULTIPLE_LIST = "Only one list should be requested";
 
     private boolean isAll;
     private boolean isToday;

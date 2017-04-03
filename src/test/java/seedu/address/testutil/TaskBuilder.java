@@ -4,6 +4,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
 
@@ -57,6 +58,11 @@ public class TaskBuilder {
         for (String tag: tags) {
             task.getTags().add(new Tag(tag));
         }
+        return this;
+    }
+
+    public TaskBuilder withStatus(boolean status) {
+        this.task.setStatus(new Status(status));
         return this;
     }
 
