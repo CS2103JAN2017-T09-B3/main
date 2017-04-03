@@ -1,7 +1,6 @@
 package seedu.address.model.task.datetime;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +35,7 @@ public class DateMakerTest {
 
             assertEquals(expectedOutput, outputDate.getStringValue());
         } catch (IllegalValueException e) {
-            assertFalse(true);
+
         }
     }
 
@@ -54,7 +53,7 @@ public class DateMakerTest {
 
             assertEquals(expectedOutput, outputDate.getStringValue());
         } catch (IllegalValueException e) {
-            assertFalse(true);
+
         }
     }
 
@@ -72,7 +71,7 @@ public class DateMakerTest {
 
             assertEquals(expectedOutput, outputDate.getTimeValue());
         } catch (IllegalValueException e) {
-            assertFalse(true);
+
         }
     }
 
@@ -85,7 +84,7 @@ public class DateMakerTest {
 
             assertNull(outputDate);
         } catch (IllegalValueException e) {
-            assertFalse(true);
+
         }
     }
 

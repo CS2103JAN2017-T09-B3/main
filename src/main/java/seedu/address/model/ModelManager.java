@@ -72,6 +72,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.taskManager = new AddressBook(addressBook);
         filteredTasks = new FilteredList<>(this.taskManager.getTaskList());
+        this.currentList = "all";
     }
 
     public ModelManager() throws DuplicateTagException, DuplicateTaskException {

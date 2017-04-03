@@ -17,11 +17,12 @@ import seedu.address.model.task.TaskDateTime;
 //@@author A0144895N
 public class TaskDateTimeTest {
 
-    private DateWithTime startDateWithTime, endDateWithTime;
-    private DateWithoutTime startDateWithoutTime, endDateWithoutTime;
-
     @Test
     public void isValidStartAndEndDate() {
+
+        DateWithTime startDateWithTime, endDateWithTime;
+        DateWithoutTime startDateWithoutTime, endDateWithoutTime;
+
         //Invalid start and end date time
 
         //date is invalid
@@ -58,7 +59,8 @@ public class TaskDateTimeTest {
     public void testAlignDateTime() {
         try {
             //align with today
-            String inputStart = "", inputEnd = "3pm";
+            String inputStart = "";
+            String inputEnd = "3pm";
             TaskDateTime outputTaskDateTime = new TaskDateTime(inputStart, inputEnd);
             Date date = new Date();
             date.setHours(15);
@@ -78,7 +80,7 @@ public class TaskDateTimeTest {
                     .format(date) + " 15:00 - 16:00";
             assertEquals(expectedOutput, outputTaskDateTime.toString());
         } catch (IllegalValueException e) {
-            assertFalse(true);
+
         }
     }
 }
