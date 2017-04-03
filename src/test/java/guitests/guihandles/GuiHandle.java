@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import guitests.GuiRobot;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
@@ -66,8 +67,22 @@ public class GuiHandle {
         guiRobot.sleep(500); // so that the texts stays visible on the GUI for a short period
     }
 
+  //@@author A0135807A
+    protected String getTextAreaText(String content) {
+        TextArea textArea = getNode(content);
+        return textArea.getText();
+    }
+
+    protected void setTextArea(String textAreaId, String newContent) {
+        guiRobot.clickOn(textAreaId);
+        TextArea textArea = getNode(textAreaId);
+        textArea.setText(newContent);
+        guiRobot.sleep(500); //so that the texts stays visible on the GUI for a short period
+    }
+    //@@ author
+
     public void pressEnter() {
-        guiRobot.type(KeyCode.ENTER).sleep(500);
+        guiRobot.push(KeyCode.ENTER).sleep(500);
     }
 
     protected String getTextFromLabel(String fieldId, Node parentNode) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- @@author A0135807A -->
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,10 +26,10 @@
             <Label fx:id="labelStartTime" prefHeight="17.0" prefWidth="150.0" text="Start Date/Time" textFill="WHITE" GridPane.rowIndex="1" />
             <Label fx:id="labelEndTime" prefHeight="17.0" prefWidth="150.0" text="End Date/Time" textFill="WHITE" GridPane.rowIndex="2" />
             <Label fx:id="labelTags" prefHeight="17.0" prefWidth="131.0" text="Tags" textFill="WHITE" GridPane.rowIndex="3" />
-            <TextField fx:id="title" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <TextField fx:id="startTime" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="endTime" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="tags" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="titleTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <TextField fx:id="startTimeTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="endTimeTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tagsTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

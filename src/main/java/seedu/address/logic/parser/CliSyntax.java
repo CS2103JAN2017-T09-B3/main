@@ -12,6 +12,7 @@ public class CliSyntax {
     public static final String EMPTY_STRING = "";
 
     /* Prefix definitions */
+    public static final Prefix PREFIX_EMPTY = new Prefix("");
     public static final Prefix PREFIX_TITLE = new Prefix("");
     public static final Prefix PREFIX_DATE_TIME_START = new Prefix("start/");
     public static final Prefix PREFIX_DATE_TIME_END = new Prefix("end/");
