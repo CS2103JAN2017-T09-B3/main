@@ -10,12 +10,14 @@ import java.util.Date;
 */
 public class DateWithoutTime extends DateValue {
 
+    public static final String DATE_WITHOUT_TIME_FORMAT = "dd.MM.yy";
+
     private String value;
     private final Date date;
 
     public DateWithoutTime(Date date) {
         this.date = date;
-        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yy");
+        SimpleDateFormat df = new SimpleDateFormat(DATE_WITHOUT_TIME_FORMAT);
         this.value = df.format(date);
     }
 
@@ -108,7 +110,7 @@ public class DateWithoutTime extends DateValue {
      * updates string representing date when changing date and time value
      */
     private void updateStringValue() {
-        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yy");
+        SimpleDateFormat df = new SimpleDateFormat(DATE_WITHOUT_TIME_FORMAT);
         this.value = df.format(date);
     }
 

@@ -38,7 +38,7 @@ public class TaskDateTime {
 
         alignStartDateTime();
 
-        if (!isValidStartAndEndDateTime()) {
+        if (!isValidStartAndEndDateTime(this.startDateTime, this.endDateTime)) {
             throw new IllegalValueException(MESSAGE_START_END_INVALID);
         }
     }
@@ -51,11 +51,14 @@ public class TaskDateTime {
     /*
      * Returns true if start date comes before end date or there is no either start date or end date
      */
-    private boolean isValidStartAndEndDateTime() {
-        return ((!isThereStartDateTime() || (!isThereEndDateTime())
-                || isThereStartDateTime() && isThereEndDateTime()
-                && (this.startDateTime.getFullDate().before(this.endDateTime.getFullDate())
-                        || this.startDateTime.getFullDate().equals(this.endDateTime.getFullDate()))));
+    public static boolean isValidStartAndEndDateTime(DateValue startDateTime, DateValue endDateTime) {
+        if (startDateTime != null && endDateTime != null) {    //if there are both start and end date time
+            //start date time should be before or at least the same as end date time
+            return startDateTime.getFullDate().before(endDateTime.getFullDate())
+                    || startDateTime.getFullDate().equals(endDateTime.getFullDate());
+        } else {
+            return true;
+        }
     }
 
     /*

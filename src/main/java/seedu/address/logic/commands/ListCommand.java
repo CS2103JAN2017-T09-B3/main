@@ -18,9 +18,9 @@ public class ListCommand extends Command {
 
     public static final String MESSAGE_COMPLETED_SUCCESS = "Listed all completed tasks";
 
-    private static final String NO_LIST_MESSAGE = "One list should be requested";
+    private static final String MESSAGE_NO_LIST = "One list should be requested";
 
-    private static final String MULTIPLE_LIST_MESSAGE = "Only one list should be requested";
+    private static final String MESSAGE_MULTIPLE_LIST = "Only one list should be requested";
 
     private boolean isAll;
     private boolean isToday;
@@ -37,11 +37,11 @@ public class ListCommand extends Command {
 
     public void checkValidList(boolean isAll, boolean isToday, boolean isCompleted) throws IllegalValueException {
         if ((!isAll && !isToday && !isCompleted)) {
-            throw new IllegalValueException(NO_LIST_MESSAGE);
+            throw new IllegalValueException(MESSAGE_NO_LIST);
         }
 
         if ((isAll && isToday) || (isAll && isCompleted) || (isToday && isCompleted)) {
-            throw new IllegalValueException(MULTIPLE_LIST_MESSAGE);
+            throw new IllegalValueException(MESSAGE_MULTIPLE_LIST);
         }
     }
 
