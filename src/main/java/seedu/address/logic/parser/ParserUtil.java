@@ -16,7 +16,6 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
-import seedu.address.model.task.TaskDateTime;
 import seedu.address.model.task.Title;
 
 /**
@@ -89,18 +88,25 @@ public class ParserUtil {
 
     //@@author A0144895N
     /**
-     * Parses a {@code Optional<String> dateTime} into an {@code Optional
-     * <TaskDateTime>} if {@code dateTime} is present.
+     * Parses a {@code Optional<String> startDateTime} into an {@code Optional
+     * <String>} if {@code startDateTime} is present.
      */
-    public static Optional<TaskDateTime> parseDateTime(Optional<String> startDateTime, Optional<String> endDateTime)
+    public static Optional<String> parseStartDateTime(Optional<String> startDateTime)
             throws IllegalValueException {
         assert startDateTime != null;
-        assert endDateTime != null;
-        String start = startDateTime.orElse("");
-        String end = endDateTime.orElse("");
-        return (startDateTime.isPresent() || endDateTime.isPresent())
-                ? Optional.of(new TaskDateTime(start, end)) : Optional.empty();
+        return startDateTime.isPresent() ? Optional.of(startDateTime.get()) : Optional.empty();
     }
+
+    /**
+     * Parses a {@code Optional<String> endDateTime} into an {@code Optional
+     * <String>} if {@code endDateTime} is present.
+     */
+    public static Optional<String> parseEndDateTime(Optional<String> endDateTime)
+            throws IllegalValueException {
+        assert endDateTime != null;
+        return endDateTime.isPresent() ? Optional.of(endDateTime.get()) : Optional.empty();
+    }
+
   //@@author A0135807A
     /**
      * @param command

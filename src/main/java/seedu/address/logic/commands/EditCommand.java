@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.UniqueTagList;
 import seedu.address.model.task.Content;
-import seedu.address.model.task.DateValue;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Status;
 import seedu.address.model.task.Task;
@@ -88,15 +88,20 @@ public class EditCommand extends Command {
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
         Content updatedContent = editTaskDescriptor.getContent().orElseGet(taskToEdit::getContent);
 
-        DateValue updatedStartDateTime = editTaskDescriptor.getDateTime().isPresent()
-                ? editTaskDescriptor.getDateTime().get().getStartDateTime()
-                        .orElse(taskToEdit.getDateTime().getStartDateTime().orElse(null))
-                : taskToEdit.getDateTime().getStartDateTime().orElse(null);
-        DateValue updatedEndDateTime = editTaskDescriptor.getDateTime().isPresent()
-                ? editTaskDescriptor.getDateTime().get().getEndDateTime()
-                        .orElse(taskToEdit.getDateTime().getEndDateTime().orElse(null))
-                : taskToEdit.getDateTime().getEndDateTime().orElse(null);
-        TaskDateTime updatedDateTime = new TaskDateTime(updatedStartDateTime, updatedEndDateTime);
+        String updatedStartDateTime = editTaskDescriptor.getStartDateTime()
+                .orElse(taskToEdit.getDateTime().getStartDateTimeString());
+        String updatedEndDateTime = editTaskDescriptor.getEndDateTime()
+                .orElse(taskToEdit.getDateTime().getEndDateTimeString());
+        TaskDateTime updatedDateTime = null;
+        if (editTaskDescriptor.getDateTime().isPresent()) {
+            updatedDateTime = editTaskDescriptor.getDateTime().get();
+        } else {
+            try {
+                updatedDateTime = new TaskDateTime(updatedStartDateTime, updatedEndDateTime);
+            } catch (IllegalValueException ive) {
+
+            }
+        }
 
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
         Status status = editTaskDescriptor.getStatus().orElseGet(taskToEdit::getStatus);
@@ -111,6 +116,8 @@ public class EditCommand extends Command {
     public static class EditTaskDescriptor {
         private Optional<Title> title = Optional.empty();
         private Optional<Content> content = Optional.empty();
+        private Optional<String> startDateTime = Optional.empty();
+        private Optional<String> endDateTime = Optional.empty();
         private Optional<TaskDateTime> dateTime = Optional.empty();
         private Optional<UniqueTagList> tags = Optional.empty();
         private Optional<Status> status = Optional.empty();
@@ -121,7 +128,8 @@ public class EditCommand extends Command {
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             this.title = toCopy.getTitle();
             this.content = toCopy.getContent();
-            this.dateTime = toCopy.getDateTime();
+            this.startDateTime = toCopy.getStartDateTime();
+            this.endDateTime = toCopy.getEndDateTime();
             this.tags = toCopy.getTags();
         }
 
@@ -129,7 +137,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyPresent(this.title, this.content, this.dateTime, this.tags);
+            return CollectionUtil.isAnyPresent(this.title, this.content,
+                    this.startDateTime, this.endDateTime, this.tags);
         }
 
         public void setTitle(Optional<Title> title) {
@@ -151,11 +160,28 @@ public class EditCommand extends Command {
         }
 
         public void setDateTime(Optional<TaskDateTime> dateTime) {
+            assert dateTime != null;
             this.dateTime = dateTime;
         }
 
         public Optional<TaskDateTime> getDateTime() {
             return dateTime;
+        }
+
+        public void setStartDateTime(Optional<String> startDateTime) {
+            this.startDateTime = startDateTime;
+        }
+
+        public void setEndDateTime(Optional<String> endDateTime) {
+            this.endDateTime = endDateTime;
+        }
+
+        public Optional<String> getStartDateTime() {
+            return startDateTime;
+        }
+
+        public Optional<String> getEndDateTime() {
+            return endDateTime;
         }
 
         public void setTags(Optional<UniqueTagList> tags) {
