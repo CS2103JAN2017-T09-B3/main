@@ -29,10 +29,13 @@ public class TaskCard extends UiPart<Region> {
         title.setText(task.getTitle().fullTitle + " ");
         id.setText(displayedIndex + ".");
         dateTime.setText(task.getDateTime().toString());
-        if (task.getStatus().getStatus()) {
-            dateTime.setStyle("-fx-text-fill: green");
-        }
         content.setText(task.getContent().fullContent);
+        if (task.getStatus().getStatus()) {
+            title.setStyle("-fx-text-fill: green");
+            id.setStyle("-fx-text-fill: green");
+            dateTime.setStyle("-fx-text-fill: green");
+            content.setStyle("-fx-text-fill: green");
+        }
         initTags(task);
     }
 

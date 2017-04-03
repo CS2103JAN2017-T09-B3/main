@@ -3,8 +3,12 @@
 
 package seedu.address.testutil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.task.DateWithTime;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 
@@ -26,10 +30,12 @@ public class TypicalTestTasks {
                     .withTaskDateTime("2-3-2014 3am", "15/3/2014 10:00")
                     .withTags("owesMoney", "friends").build();
             carl = new TaskBuilder().withTitle("Carl Kurz")
-                    .withTaskDateTime("3pm 1-2-2015", "").build();
-            daniel = new TaskBuilder().withTitle("Daniel Meier").build();
+                    .withTaskDateTime("3pm 1-2-2015", "")
+                    .withStatus(true).build();
+            daniel = new TaskBuilder().withTitle("Daniel Meier")
+                    .withStatus(true).build();
             elle = new TaskBuilder().withTitle("Elle Meyer")
-                    .withTaskDateTime("", "3/4/2015 1:00").build();
+                    .withTaskDateTime("", getTodayTime()).build();
             fiona = new TaskBuilder().withTitle("Fiona Kunz")
                     .withContent("Fiona Kunz content").build();
             //george = new TaskBuilder().withTitle("George Best").build();
@@ -62,5 +68,13 @@ public class TypicalTestTasks {
         AddressBook ab = new AddressBook();
         loadAddressBookWithSampleData(ab);
         return ab;
+    }
+
+    private String getTodayTime() {
+        Date date = new Date();
+        date.setHours(15);
+        date.setMinutes(15);
+        return new SimpleDateFormat(DateWithTime.DATE_WITH_TIME_FORMAT)
+                .format(date);
     }
 }

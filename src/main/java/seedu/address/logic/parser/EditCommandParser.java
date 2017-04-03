@@ -17,6 +17,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
 import seedu.address.logic.commands.IncorrectCommand;
 import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.task.TaskDateTime;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -39,22 +40,33 @@ public class EditCommandParser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
 
-        EditTaskDescriptor editPersonDescriptor = new EditTaskDescriptor();
+        EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         try {
-            editPersonDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
-            editPersonDescriptor.setContent(ParserUtil.parseContent(argsTokenizer.getValue(PREFIX_CONTENT)));
-            editPersonDescriptor.setDateTime(ParserUtil.parseDateTime(argsTokenizer.getValue(PREFIX_DATE_TIME_START),
-                    argsTokenizer.getValue(PREFIX_DATE_TIME_END)));
-            editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_TAG))));
+            editTaskDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
+            editTaskDescriptor.setContent(ParserUtil.parseContent(argsTokenizer.getValue(PREFIX_CONTENT)));
+
+            Optional<String> parsedStartDateTime = ParserUtil.parseStartDateTime(
+                    argsTokenizer.getValue(PREFIX_DATE_TIME_START));
+            Optional<String> parsedEndDateTime = ParserUtil.parseEndDateTime(
+                    argsTokenizer.getValue(PREFIX_DATE_TIME_END));
+            editTaskDescriptor.setStartDateTime(parsedStartDateTime);
+            editTaskDescriptor.setEndDateTime(parsedEndDateTime);
+            if (parsedStartDateTime.isPresent() && !parsedStartDateTime.get().equals("")
+                    && parsedEndDateTime.isPresent() && !parsedEndDateTime.get().equals("")) {
+                editTaskDescriptor.setDateTime(Optional.of(
+                        new TaskDateTime(parsedStartDateTime.get(), parsedEndDateTime.get())));
+            }
+
+            editTaskDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_TAG))));
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
 
-        if (!editPersonDescriptor.isAnyFieldEdited()) {
+        if (!editTaskDescriptor.isAnyFieldEdited()) {
             return new IncorrectCommand(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditCommand(index.get(), editPersonDescriptor);
+        return new EditCommand(index.get(), editTaskDescriptor);
     }
 
     /**

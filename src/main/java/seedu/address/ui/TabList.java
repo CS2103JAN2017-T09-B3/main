@@ -41,6 +41,10 @@ public class TabList extends UiPart<Region> {
         tabList.getSelectionModel().select(tabIndex);
     }
 
+    public String getCurrentTab() {
+        return tabList.getSelectionModel().getSelectedItem().textProperty().toString();
+    }
+
     private void initTabs() {
         for (String s : TAB_LIST) {
             tabs.add(new Tab(s));

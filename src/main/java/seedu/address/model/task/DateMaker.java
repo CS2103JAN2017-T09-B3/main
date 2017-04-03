@@ -18,7 +18,7 @@ public class DateMaker {
     private static final String[] DATE_FORMATS = { "dd/MM/yyyy", "dd/MM/yy", "dd/MM", "dd-MM-yyyy", "dd-MM-yy", "dd-MM",
         "dd MMM", "dd MMM yyyy", "dd MMM yy", "EEE, dd MMM yyyy", "dd.MM.yy" };
 
-    private static final String[] TIME_FORMATS = { "HH:mm", "hhaa", "hh:mmaa" };
+    private static final String[] TIME_FORMATS = { "hh:mmaa", "HH:mm", "hhaa" };
 
     public static final String MESSAGE_DATE_TIME_CONSTRAINTS = "Invalid date and time format";
 

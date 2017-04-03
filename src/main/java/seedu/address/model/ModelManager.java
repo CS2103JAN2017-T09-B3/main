@@ -35,6 +35,9 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook taskManager;
     private final FilteredList<ReadOnlyTask> filteredTasks;
+
+    private String currentList;
+
     private final Stack<String> stackOfUndo;
     private final Stack<ReadOnlyTask> stackOfDeletedTasksAdd;
     private final Stack<ReadOnlyTask> stackOfDeletedTasks;
@@ -73,6 +76,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.taskManager = new AddressBook(addressBook);
         filteredTasks = new FilteredList<>(this.taskManager.getTaskList());
+        this.currentList = "all";
     }
 
     public ModelManager() throws DuplicateTagException, DuplicateTaskException {
@@ -137,7 +141,13 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         taskManager.addTask(task);
-        updateFilteredListToShowAll();
+        if (currentList.equalsIgnoreCase("today")) {
+            updateFilteredListToShowToday();
+        } else if (currentList.equalsIgnoreCase("completed")) {
+            updateFilteredListToShowCompleted();
+        } else {
+            updateFilteredListToShowAll();
+        }
         indicateAddressBookChanged();
     }
 
@@ -203,6 +213,11 @@ public class ModelManager extends ComponentManager implements Model {
         return stackOfNewNextTask;
     }
     //@@author
+
+    @Override
+    public void setCurrentList(String currentList) {
+        this.currentList = currentList;
+    }
 
     // =========== Filtered Person List Accessors
     // =============================================================

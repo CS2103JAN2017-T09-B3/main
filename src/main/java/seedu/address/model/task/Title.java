@@ -10,13 +10,14 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Title {
 
     public static final String MESSAGE_TITLE_CONSTRAINTS =
-            "Task title should only contain alphanumeric characters and spaces, and it should not be blank";
+            "Task title should only contain alphanumeric characters, spaces, dot, comma and hyphen,"
+            + " and it should not be blank";
 
     /*
      * The first character of the task title must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String CONTENT_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String CONTENT_VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ][-\\p{Alnum}.,/ ]*";
 
     public final String fullTitle;
 
