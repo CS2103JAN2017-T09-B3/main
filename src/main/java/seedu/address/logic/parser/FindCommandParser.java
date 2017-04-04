@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FIND_CONTENT;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 
@@ -24,7 +25,19 @@ public class FindCommandParser {
      * and returns an FindCommand object for execution.
      */
     public Command parse(String args) {
-        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
+        boolean isInContent = false;
+        ArgumentTokenizer argsTokenizer = new ArgumentTokenizer(PREFIX_FIND_CONTENT);
+        argsTokenizer.tokenize(args);
+
+        Optional<String> preamble = argsTokenizer.getPreamble();
+        Optional<String> content = argsTokenizer.getValue(PREFIX_FIND_CONTENT);
+
+        if (content.isPresent()) {
+            isInContent = true;
+        }
+
+        String keywordsString = isInContent ? content.get() : preamble.get();
+        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(keywordsString.trim());
         if (!matcher.matches()) {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
@@ -33,11 +46,7 @@ public class FindCommandParser {
         // keywords delimited by whitespace
         final String[] keywords = matcher.group("keywords").split("\\s+");
         final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
-        boolean isInContent = false;
-        if (keywordSet.contains(PREFIX_FIND_CONTENT.getPrefix())) {
-            isInContent = true;
-            keywordSet.remove(PREFIX_FIND_CONTENT.getPrefix());
-        }
+
         return new FindCommand(isInContent, keywordSet);
     }
 

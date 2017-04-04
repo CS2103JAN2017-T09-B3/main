@@ -13,7 +13,7 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 public class MarkAsUndoneCommand extends Command {
 
-    public static final String COMMAND_WORD = "markasundone";
+    public static final String COMMAND_WORD = "unmark";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Marks the task identified by the index number used in the last task listing as done.\n"
