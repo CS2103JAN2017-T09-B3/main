@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
+import seedu.address.commons.events.ui.LoadFirstTaskEvent;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
@@ -137,6 +138,7 @@ public class MainWindow extends UiPart<Region> {
         new ResultDisplay(getResultDisplayPlaceholder());
         new StatusBarFooter(getStatusbarPlaceholder(), config.getAddressBookFilePath());
         new CommandBox(getCommandBoxPlaceholder(), logic);
+        raise(new LoadFirstTaskEvent());
     }
 
     private AnchorPane getCommandBoxPlaceholder() {
@@ -268,10 +270,13 @@ public class MainWindow extends UiPart<Region> {
 
     //@@author A0135807A
     public void loadTaskPage(ReadOnlyTask task) {
-        taskDescription = new TaskDescription(getTaskDescriptionPlaceholder(), logic);
-        taskDetail = new TaskDetail(getTaskDetailsPlaceholder(), logic);
         taskDescription.loadTaskPage(task);
         taskDetail.loadTaskPage(task);
+    }
+
+    public void refreshPage(ReadOnlyTask editedTask) {
+        taskDescription.loadTaskDescription(editedTask);
+        taskDetail.loadTaskDetail(editedTask);
     }
 
     public void switchTab(String tab) {

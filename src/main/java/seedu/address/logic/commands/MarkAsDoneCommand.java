@@ -1,11 +1,14 @@
 //@@author A0135753A
 package seedu.address.logic.commands;
 
+import java.util.Optional;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.UnmodifiableObservableList;
+import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.Status;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 public class MarkAsDoneCommand extends Command {
@@ -36,17 +39,17 @@ public class MarkAsDoneCommand extends Command {
         }
 
         ReadOnlyTask taskToMark = lastShownList.get(targetIndex - 1);
+        Optional<Status> status = Optional.of(new Status(true));
+        EditTaskDescriptor task = new EditTaskDescriptor();
+        task.setStatus(status);
+        EditCommand taskToEdit = new EditCommand(targetIndex, task);
+        taskToEdit.setData(model);
+        taskToEdit.execute();
 
-        try {
-            this.markTask(taskToMark);
-            model.updateTask(targetIndex, taskToMark);
-        } catch (UniqueTaskList.DuplicateTaskException e) {
-            throw new CommandException(MESSAGE_DUPLICATE_TASK);
-        }
         return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, taskToMark));
     }
     public void markTask(ReadOnlyTask taskToMark) throws DuplicateTaskException {
         taskToMark.getStatus().setStatus(true);
-//        Task task = (Task) taskToMark;
     }
+
 }

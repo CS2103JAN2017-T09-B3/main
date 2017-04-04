@@ -131,6 +131,7 @@ public class EditCommand extends Command {
             this.startDateTime = toCopy.getStartDateTime();
             this.endDateTime = toCopy.getEndDateTime();
             this.tags = toCopy.getTags();
+            this.status = toCopy.getStatus();
         }
 
         /**

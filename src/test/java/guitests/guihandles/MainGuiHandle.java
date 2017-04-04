@@ -13,6 +13,12 @@ public class MainGuiHandle extends GuiHandle {
         super(guiRobot, primaryStage, TestApp.APP_TITLE);
     }
 
+    //@@author A0135807A
+    public TaskDescriptionHandle getTaskDescription() {
+        return new TaskDescriptionHandle(guiRobot, primaryStage, TestApp.APP_TITLE);
+    }
+    //@@author
+
     public TaskListPanelHandle getTaskListPanel() {
         return new TaskListPanelHandle(guiRobot, primaryStage);
     }
