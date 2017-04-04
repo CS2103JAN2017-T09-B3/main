@@ -48,6 +48,10 @@ public interface Model {
     /** Adds the given task */
     void addTask(Task task) throws UniqueTaskList.DuplicateTaskException;
 
+    // @@author A0125221Y
+    // Add task to the specific Index in the list
+    void addTaskIdx(Task task, int idx) throws DuplicateTaskException;
+
     void revertData();
 
     /**
