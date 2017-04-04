@@ -109,6 +109,14 @@ public class UniqueTaskList implements Iterable<Task> {
         return internalList;
     }
 
+    public void addToIndex(Task toAdd, int idx) throws DuplicateTaskException {
+        assert toAdd != null;
+        if (contains(toAdd)) {
+            throw new DuplicateTaskException();
+        }
+        internalList.add(idx, toAdd);
+    }
+
     @Override
     public Iterator<Task> iterator() {
         return internalList.iterator();
