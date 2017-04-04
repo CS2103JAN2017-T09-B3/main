@@ -20,8 +20,10 @@ public class TaskDateTimeTest {
     @Test
     public void isValidStartAndEndDate() {
 
-        DateWithTime startDateWithTime, endDateWithTime;
-        DateWithoutTime startDateWithoutTime, endDateWithoutTime;
+        DateWithTime startDateWithTime;
+        DateWithTime endDateWithTime;
+        DateWithoutTime startDateWithoutTime;
+        DateWithoutTime endDateWithoutTime;
 
         //Invalid start and end date time
 
