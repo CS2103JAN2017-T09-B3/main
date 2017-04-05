@@ -28,7 +28,7 @@ public class MarkAsUndoneCommandTest extends AddressBookGuiTest {
         assertUnmarkSuccess(targetIndex, currentList);
 
         //invalid index
-        commandBox.runCommand("markasundone " + currentList.length + 1);
+        commandBox.runCommand("unmark " + currentList.length + 1);
         assertResultMessage("The task index provided is invalid");
 
     }
@@ -42,7 +42,7 @@ public class MarkAsUndoneCommandTest extends AddressBookGuiTest {
         boolean expectedStatus = false;
         taskToUnmark.getStatus().setStatus(false);
 
-        commandBox.runCommand("markasundone " + targetIndexOneIndexed);
+        commandBox.runCommand("unmark " + targetIndexOneIndexed);
 
         //confirm the list now contains all previous tasks except the deleted task
         assertTrue(taskToUnmark.getStatus().getStatus() == expectedStatus);
