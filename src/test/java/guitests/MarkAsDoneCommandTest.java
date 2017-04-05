@@ -27,7 +27,7 @@ public class MarkAsDoneCommandTest extends AddressBookGuiTest {
         assertMarkSuccess(targetIndex, currentList);
 
         //invalid index
-        commandBox.runCommand("markasdone " + currentList.length + 1);
+        commandBox.runCommand("mark " + currentList.length + 1);
         assertResultMessage("The task index provided is invalid");
 
     }
@@ -41,7 +41,7 @@ public class MarkAsDoneCommandTest extends AddressBookGuiTest {
         boolean expectedStatus = true;
         taskToMark.getStatus().setStatus(true);
 
-        commandBox.runCommand("markasdone " + targetIndexOneIndexed);
+        commandBox.runCommand("mark " + targetIndexOneIndexed);
 
         //confirm the list now contains all previous tasks except the deleted task
         assertTrue(taskToMark.getStatus().getStatus() == expectedStatus);

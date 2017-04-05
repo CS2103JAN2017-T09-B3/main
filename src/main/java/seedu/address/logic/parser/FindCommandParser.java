@@ -36,7 +36,7 @@ public class FindCommandParser {
             isInContent = true;
         }
 
-        String keywordsString = isInContent ? content.get() : preamble.get();
+        String keywordsString = isInContent ? content.get() : (preamble.isPresent() ? preamble.get() : "");
         final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(keywordsString.trim());
         if (!matcher.matches()) {
             return new IncorrectCommand(
