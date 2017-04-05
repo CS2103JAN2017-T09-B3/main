@@ -131,8 +131,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     //This will add the task to the specific index of the list
     public void addTaskToIndex(Task toAdd, int idx) throws DuplicateTaskException {
 
-    	syncMasterTagListWith(toAdd);
-    	tasks.addToIndex(toAdd, idx);
+        syncMasterTagListWith(toAdd);
+        tasks.addToIndex(toAdd, idx);
 
     }
 

@@ -80,7 +80,7 @@ public class UndoCommand extends Command {
         int targetIndex = model.getDeletedStackOfTasksIndex().pop();
 
         try {
-        	model.addTaskIdx((Task) taskToReAdd, targetIndex);
+            model.addTaskIdx((Task) taskToReAdd, targetIndex);
         } catch (DuplicateTaskException e) {
             return new CommandResult("Unable to undo");
         }
