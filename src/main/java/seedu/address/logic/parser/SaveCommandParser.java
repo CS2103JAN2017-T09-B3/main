@@ -12,7 +12,7 @@ import seedu.address.logic.commands.SaveCommand;
 public class SaveCommandParser {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the SaveCommand
+     * Parses the given {@code String args} of arguments in the context of the SaveCommand
      * and returns an SaveCommand object for execution.
      */
     public Command parse(String args) {

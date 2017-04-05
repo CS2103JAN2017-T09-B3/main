@@ -1,5 +1,6 @@
 package guitests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -20,6 +21,7 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
     public static final String FILE_NAME = "src/test/data/sandbox/taskmanager";
     public static final String FILE_ALTERNATE_NAME = "src/test/data/sandbox/myPotato";
     public static final String FILE_XML_EXTENSION = ".xml";
+    public static final String INVALID_FILE = "data/?*&^";
 
     public static final String COMMAND_SAVE = "save ";
     public static final String COMMAND_OPEN = "open ";
@@ -28,6 +30,15 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
 
     public final int index = 1;
     public TestTask[] testTask = td.getTypicalTasks();
+
+    /** Test for Valid and Invalid fileNames */
+    @Test
+    public void isValidFile() {
+        assertTrue(SaveCommand.isValidFile(new File(FILE_DIR)));
+        assertTrue(SaveCommand.isValidFile(new File(FILE_NAME + FILE_XML_EXTENSION)));
+
+        assertFalse(SaveCommand.isValidFile(new File(INVALID_FILE)));
+    }
 
     /** Open and save files functionality. */
     @Test
