@@ -14,7 +14,7 @@ import seedu.address.testutil.TestTask;
 public class UndoCommandTest extends AddressBookGuiTest {
 
     @Test
-    public void undoWithOneModification_Success() {
+    public void undoWithOneModificationSuccess() {
 
         TestTask[] currentList = td.getTypicalTasks();
 
@@ -43,7 +43,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
     }
 
     @Test
-    public void undo_clear_success() {
+    public void undoClearSuccess() {
         TestTask[] allTaskList = td.getTypicalTasks();
 
         //clear all tasks
@@ -56,7 +56,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
     }
 
     @Test
-    public void undo_edit_success() throws IllegalValueException {
+    public void undoEditSuccess() throws IllegalValueException {
         TestTask[] oldTaskList = td.getTypicalTasks();
 
         //edit a task
