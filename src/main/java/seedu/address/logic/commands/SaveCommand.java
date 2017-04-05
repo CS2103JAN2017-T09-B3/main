@@ -70,7 +70,7 @@ public class SaveCommand extends Command {
     }
 
     public static boolean isValidFile(File file) {
-        if(file.getAbsolutePath().matches(FILE_VALIDATION_REGEX)) {
+        if (file.getAbsolutePath().matches(FILE_VALIDATION_REGEX)) {
             return true;
         }
         return false;
