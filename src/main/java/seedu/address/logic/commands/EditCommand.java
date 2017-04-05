@@ -79,6 +79,7 @@ public class EditCommand extends Command {
         return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
     }
 
+    //@@author A0144895N
     /**
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
      * edited with {@code editTaskDescriptor}.
@@ -108,6 +109,7 @@ public class EditCommand extends Command {
 
         return new Task(updatedTitle, updatedContent, updatedDateTime, updatedTags, status);
     }
+    //@@author
 
     /**
      * Stores the details to edit the task with. Each non-empty field value will
