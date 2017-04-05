@@ -31,8 +31,8 @@ import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
  * model should be synchronized.
  */
 public class ModelManager extends ComponentManager implements Model {
-    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
+    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
     private final AddressBook taskManager;
     private final FilteredList<ReadOnlyTask> filteredTasks;
 
@@ -169,6 +169,13 @@ public class ModelManager extends ComponentManager implements Model {
 
         taskManager.updateTask(old, toUpdate);
         updateUiTaskDescription(toUpdate);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public synchronized void addTaskIdx(Task task, int idx) throws UniqueTaskList.DuplicateTaskException {
+        taskManager.addTaskToIndex(task, idx);
+        updateFilteredListToShowAll();
         indicateAddressBookChanged();
     }
 
