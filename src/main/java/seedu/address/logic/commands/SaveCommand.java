@@ -29,7 +29,7 @@ public class SaveCommand extends Command {
     public static final String MESSAGE_INVALID_PATH = "Invalid Path";
     public static final String MESSAGE_WRITE_ACCESS_DENIED = "File Write Access Denied";
     public static final String DEFAULT_FILE = "/taskmanager.xml";
-    public static final String FILE_VALIDATION_REGEX = "[\\p{Alnum}/.-_:]*";
+    public static final String FILE_VALIDATION_REGEX = "^[\\w-:/\\\\._]+$";
 
     private File file;
 
@@ -70,10 +70,7 @@ public class SaveCommand extends Command {
     }
 
     public static boolean isValidFile(File file) {
-        if (file.getAbsolutePath().matches(FILE_VALIDATION_REGEX)) {
-            return true;
-        }
-        return false;
+        return file.getAbsolutePath().matches(FILE_VALIDATION_REGEX);
     }
 
 }
