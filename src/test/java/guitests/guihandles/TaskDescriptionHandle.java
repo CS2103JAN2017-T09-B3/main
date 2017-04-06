@@ -4,16 +4,17 @@ import guitests.GuiRobot;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
+import seedu.address.TestApp;
 
 /**
- * A handle to the Content TextField in the GUI.
+ * A handle to the Content TextArea in the GUI.
  */
 public class TaskDescriptionHandle extends GuiHandle {
 
     private static final String CONTENT_INPUT_FIELD_ID = "#contentTextArea";
 
-    public TaskDescriptionHandle(GuiRobot guiRobot, Stage primaryStage, String stageTitle) {
-        super(guiRobot, primaryStage, stageTitle);
+    public TaskDescriptionHandle(GuiRobot guiRobot, Stage primaryStage) {
+        super(guiRobot, primaryStage, TestApp.APP_TITLE);
     }
 
     /**
@@ -36,7 +37,6 @@ public class TaskDescriptionHandle extends GuiHandle {
      */
     public void runContent(String content) {
         enterContent(content);
-        //guiRobot.clickOn(new Point2D(500.0, 450.0), MouseButton.PRIMARY);
         guiRobot.clickOn(content, MouseButton.PRIMARY);
         pressEnter();
         guiRobot.sleep(200); //Give time for the content to be saved

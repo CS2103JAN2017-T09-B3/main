@@ -98,7 +98,7 @@ public class TaskDescription extends UiPart<Region> {
 
     /**
      * @param ReadOnlyTask task
-     * task cannot be null.
+     * task cannot be null, load task on UI after editing.
      */
     public void loadTaskDescription(ReadOnlyTask task) {
         if (!compareWithoutNewLine(task.getContent().toString(), contentTextArea.getText())) {
