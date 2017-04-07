@@ -79,7 +79,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
         assertTrue(taskListPanel.isListMatching(oldTaskList));
 
         //edit a task
-        String newTags = "#friend #lol";  
+        String newTags = "#friend #lol";
 
         TestTask taskToBeEdit = oldTaskList[addressBookIndex - 1];
         TestTask nextEditedTask = new TaskBuilder(taskToBeEdit).withTags("friend", "lol").build();
@@ -129,7 +129,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
         //undo edit
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(oldTaskList));
-       
+     
     }
 
     private void assertEditSuccess(int filteredTaskListIndex, int addressBookIndex,
