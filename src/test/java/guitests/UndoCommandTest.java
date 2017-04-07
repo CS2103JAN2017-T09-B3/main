@@ -27,8 +27,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("undo");
         assertListSize(currentList.length);
         assertTrue(taskListPanel.isListMatching(currentList));
-
-        /*
+        
         //Now test deletion of one single task
         commandBox.runCommand("delete 1");
         assertListSize(currentList.length - 1);
@@ -38,8 +37,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("undo");
         currentList = TestUtil.addTasksToListAtIndex(currentList, 0, td.alice);
         assertListSize(currentList.length);
-        assertTrue(taskListPanel.isListMatching(currentList));
-        */
+        assertTrue(taskListPanel.isListMatching(currentList));        
     }
 
     @Test
