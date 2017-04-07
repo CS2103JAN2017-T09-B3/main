@@ -10,11 +10,12 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TestTask;
+import seedu.address.testutil.TestUtil;
 
 public class UndoCommandTest extends AddressBookGuiTest {
 
     @Test
-    public void undoWithOneModificationSuccess() {
+    public void undoAddSuccess() {
 
         TestTask[] currentList = td.getTypicalTasks();
 
@@ -28,7 +29,13 @@ public class UndoCommandTest extends AddressBookGuiTest {
         assertListSize(currentList.length);
         assertTrue(taskListPanel.isListMatching(currentList));
 
-        /*
+    }
+
+    @Test
+    public void undoDeleteSuccess() {
+
+        TestTask[] currentList = td.getTypicalTasks();
+
         //Now test deletion of one single task
         commandBox.runCommand("delete 1");
         assertListSize(currentList.length - 1);
@@ -39,7 +46,6 @@ public class UndoCommandTest extends AddressBookGuiTest {
         currentList = TestUtil.addTasksToListAtIndex(currentList, 0, td.alice);
         assertListSize(currentList.length);
         assertTrue(taskListPanel.isListMatching(currentList));
-        */
     }
 
     @Test
@@ -72,6 +78,56 @@ public class UndoCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(oldTaskList));
 
+        //edit a task
+        String newTags = "#friend #lol";
+
+        TestTask taskToBeEdit = oldTaskList[addressBookIndex - 1];
+        TestTask nextEditedTask = new TaskBuilder(taskToBeEdit).withTags("friend", "lol").build();
+
+        assertEditSuccess(addressBookIndex, addressBookIndex, newTags, nextEditedTask);
+
+        //undo
+        commandBox.runCommand("undo");
+        assertTrue(taskListPanel.isListMatching(oldTaskList));
+
+        //edit another task
+        String detailsToEdit2 = "#";
+
+        TestTask taskToEdit2 = oldTaskList[addressBookIndex - 1];
+        TestTask editedTask2 = new TaskBuilder(taskToEdit2).withTags().build();
+
+        assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit2, editedTask2);
+
+        //undo
+        commandBox.runCommand("undo");
+        assertTrue(taskListPanel.isListMatching(oldTaskList));
+    }
+
+    @Test
+    public void undoMultipleSuccess() throws IllegalValueException {
+        TestTask[] allTaskList = td.getTypicalTasks();
+        TestTask[] oldTaskList = td.getTypicalTasks();
+
+        //edit a task
+        String detailsToEdit = "start/9 Nov 2010 12pm";
+        int addressBookIndex = 2;
+
+        TestTask taskToEdit = oldTaskList[addressBookIndex - 1];
+        TestTask editedTask = new TaskBuilder(taskToEdit).withStartDateTime("9 Nov 2010 12pm").build();
+
+        assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedTask);
+
+        //clear all tasks
+        commandBox.runCommand("clear");
+        assertListSize(0);
+
+        //undo clear
+        commandBox.runCommand("undo");
+        assertTrue(taskListPanel.isListMatching(allTaskList));
+
+        //undo edit
+        commandBox.runCommand("undo");
+        assertTrue(taskListPanel.isListMatching(oldTaskList));
     }
 
     private void assertEditSuccess(int filteredTaskListIndex, int addressBookIndex,
