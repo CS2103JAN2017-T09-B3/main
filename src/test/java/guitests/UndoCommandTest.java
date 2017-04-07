@@ -70,6 +70,18 @@ public class UndoCommandTest extends AddressBookGuiTest {
         //undo
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(oldTaskList));
+        
+        //edit a task
+        String newTags = "#friend #lol";      
+
+        TestTask taskToBeEdit = oldTaskList[addressBookIndex - 1];
+        TestTask nextEditedTask = new TaskBuilder(taskToBeEdit).withTags("friend", "lol").build();
+
+        assertEditSuccess(addressBookIndex, addressBookIndex, newTags, nextEditedTask);
+        
+        //undo
+        commandBox.runCommand("undo");
+        assertTrue(taskListPanel.isListMatching(oldTaskList));  
 
     }
 
