@@ -21,7 +21,6 @@ import seedu.address.logic.commands.MarkAsUndoneCommand;
 import seedu.address.logic.commands.OpenCommand;
 import seedu.address.logic.commands.SaveCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.commands.ShowDoneCommand;
 import seedu.address.logic.commands.UndoCommand;
 
 /**
@@ -90,8 +89,6 @@ public class Parser {
             return new MarkAsDoneCommandParser().parse(arguments);
         case MarkAsUndoneCommand.COMMAND_WORD:
             return new MarkAsUndoneCommandParser().parse(arguments);
-        case ShowDoneCommand.COMMAND_WORD:
-            return new ShowDoneCommand();
         //@@author
 
         default:

@@ -56,6 +56,7 @@ public class EditCommandTest extends AddressBookGuiTest {
 
         assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedTask);
     }
+    //@@author
 
     @Test
     public void edit_notAllFieldsSpecified_success() throws Exception {
