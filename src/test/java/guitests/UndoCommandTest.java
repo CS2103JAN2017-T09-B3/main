@@ -32,9 +32,9 @@ public class UndoCommandTest extends AddressBookGuiTest {
     }
 
     @Test
-    public void undoDeleteSuccess(){
-
-    	TestTask[] currentList = td.getTypicalTasks();
+    public void undoDeleteSuccess() {
+        
+        TestTask[] currentList = td.getTypicalTasks();
 
         //Now test deletion of one single task
         commandBox.runCommand("delete 1");
@@ -101,11 +101,10 @@ public class UndoCommandTest extends AddressBookGuiTest {
         //undo
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(oldTaskList));
-
     }
 
     @Test
-    public void undoMultipleSuccess() throws IllegalValueException{
+    public void undoMultipleSuccess() throws IllegalValueException {
     	TestTask[] allTaskList = td.getTypicalTasks();
     	TestTask[] oldTaskList = td.getTypicalTasks();
 
