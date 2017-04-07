@@ -33,7 +33,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
 
     @Test
     public void undoDeleteSuccess() {
- 
+
         TestTask[] currentList = td.getTypicalTasks();
 
         //Now test deletion of one single task
