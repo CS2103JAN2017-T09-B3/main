@@ -18,6 +18,7 @@ import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.TaskCardHandle;
 import guitests.guihandles.TaskDescriptionHandle;
+import guitests.guihandles.TaskDetailHandle;
 import guitests.guihandles.TaskListPanelHandle;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -52,6 +53,7 @@ public abstract class AddressBookGuiTest {
     protected ResultDisplayHandle resultDisplay;
     protected CommandBoxHandle commandBox;
     protected TaskDescriptionHandle taskDescription;
+    protected TaskDetailHandle taskDetail;
     private Stage stage;
 
     @BeforeClass
@@ -73,6 +75,7 @@ public abstract class AddressBookGuiTest {
             resultDisplay = mainGui.getResultDisplay();
             commandBox = mainGui.getCommandBox();
             taskDescription = mainGui.getTaskDescription();
+            taskDetail = mainGui.getTaskDetail();
             this.stage = stage;
         });
         EventsCenter.clearSubscribers();

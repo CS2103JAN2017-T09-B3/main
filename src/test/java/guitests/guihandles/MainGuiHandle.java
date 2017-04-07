@@ -15,7 +15,11 @@ public class MainGuiHandle extends GuiHandle {
 
     //@@author A0135807A
     public TaskDescriptionHandle getTaskDescription() {
-        return new TaskDescriptionHandle(guiRobot, primaryStage, TestApp.APP_TITLE);
+        return new TaskDescriptionHandle(guiRobot, primaryStage);
+    }
+
+    public TaskDetailHandle getTaskDetail() {
+        return new TaskDetailHandle(guiRobot, primaryStage);
     }
     //@@author
 
