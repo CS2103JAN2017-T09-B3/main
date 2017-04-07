@@ -29,7 +29,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
         assertListSize(currentList.length);
         assertTrue(taskListPanel.isListMatching(currentList));
         
-        //Now test deletion of one single task
+        //Test deletion of one single task
         commandBox.runCommand("delete 1");
         assertListSize(currentList.length - 1);
         currentList = TestUtil.removeTaskFromList(currentList, 1);
