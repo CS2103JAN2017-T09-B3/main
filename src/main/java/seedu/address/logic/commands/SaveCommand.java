@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
@@ -26,8 +27,10 @@ public class SaveCommand extends Command {
             + " data/taskmanager.xml";
 
     public static final String MESSAGE_SUCCESS = "Tasks saved to %1$s";
+    public static final String MESSAGE_CONVERT_SUCCESS = "Convert Success!";
     public static final String MESSAGE_INVALID_PATH = "Invalid Path";
-    public static final String MESSAGE_WRITE_ACCESS_DENIED = "File Write Access Denied";
+    public static final String MESSAGE_UNMARSHALLING_ERROR = "Unmarshalling error!";
+    public static final String MESSAGE_FILE_NOT_FOUND = "File not Found!";
     public static final String DEFAULT_FILE = "/taskmanager.xml";
     public static final String FILE_VALIDATION_REGEX = "^[\\w-:/\\\\._]+$";
 
@@ -54,19 +57,29 @@ public class SaveCommand extends Command {
                     file = new File(file.getPath() + ".xml");
                 }
                 FileUtil.createIfMissing(file);
-                XmlUtil.saveDataToFile(file, new XmlSerializableAddressBook(model.getAddressBook()));
+                saveDataToFile(file, new XmlSerializableAddressBook(model.getAddressBook()));
                 model.getConfig().setAddressBookFilePath(file.getCanonicalPath());
                 ConfigUtil.saveConfig(model.getConfig(), Config.DEFAULT_CONFIG_FILE);
                 model.updateFileLocation();
             } else {
-                return new CommandResult(MESSAGE_INVALID_PATH);
+                throw new IOException(MESSAGE_INVALID_PATH);
             }
         } catch (IOException io) {
-            return new CommandResult(MESSAGE_INVALID_PATH);
-        } catch (JAXBException Exception) {
-            return new CommandResult(MESSAGE_WRITE_ACCESS_DENIED);
+            return new CommandResult(io.getMessage());
+        } catch (JAXBException e) {
+            return new CommandResult(MESSAGE_UNMARSHALLING_ERROR);
         }
         return new CommandResult(String.format(MESSAGE_SUCCESS, file.getPath()));
+    }
+
+    public static <T> void saveDataToFile(File file, T convertToXml) throws JAXBException, IOException {
+        try {
+            XmlUtil.saveDataToFile(file, convertToXml);
+        } catch (JAXBException e) {
+            throw new JAXBException(MESSAGE_UNMARSHALLING_ERROR);
+        } catch (FileNotFoundException e) {
+            throw new IOException(MESSAGE_FILE_NOT_FOUND);
+        }
     }
 
     public static boolean isValidFile(File file) {
