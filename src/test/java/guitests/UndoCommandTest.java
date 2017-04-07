@@ -129,7 +129,6 @@ public class UndoCommandTest extends AddressBookGuiTest {
         //undo edit
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(oldTaskList));
-     
     }
 
     private void assertEditSuccess(int filteredTaskListIndex, int addressBookIndex,
