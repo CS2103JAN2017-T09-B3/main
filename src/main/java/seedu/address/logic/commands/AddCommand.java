@@ -71,7 +71,7 @@ public class AddCommand extends Command {
             }
 
             model.getUndoStack().push(COMMAND_WORD);
-            model.getDeletedStackOfTasksAdd().push(toAdd);
+            model.getAddedStackOfTasks().push(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
