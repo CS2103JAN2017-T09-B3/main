@@ -15,7 +15,7 @@ import seedu.address.testutil.TestUtil;
 public class UndoCommandTest extends AddressBookGuiTest {
 
     @Test
-    public void undoWithOneModificationSuccess() {
+    public void undoAddSuccess() {
 
         TestTask[] currentList = td.getTypicalTasks();
 
@@ -28,8 +28,15 @@ public class UndoCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("undo");
         assertListSize(currentList.length);
         assertTrue(taskListPanel.isListMatching(currentList));
-        
-        //Test deletion of one single task
+             
+    }
+    
+    @Test 
+    public void undoDeleteSuccess(){
+    	
+    	TestTask[] currentList = td.getTypicalTasks();
+    	
+        //Now test deletion of one single task
         commandBox.runCommand("delete 1");
         assertListSize(currentList.length - 1);
         currentList = TestUtil.removeTaskFromList(currentList, 1);
@@ -38,9 +45,9 @@ public class UndoCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("undo");
         currentList = TestUtil.addTasksToListAtIndex(currentList, 0, td.alice);
         assertListSize(currentList.length);
-        assertTrue(taskListPanel.isListMatching(currentList));        
+        assertTrue(taskListPanel.isListMatching(currentList));  
     }
-
+    
     @Test
     public void undoClearSuccess() {
         TestTask[] allTaskList = td.getTypicalTasks();
@@ -81,7 +88,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
         
         //undo
         commandBox.runCommand("undo");
-        assertTrue(taskListPanel.isListMatching(oldTaskList));  
+        assertTrue(taskListPanel.isListMatching(oldTaskList));   
 
     }
 
