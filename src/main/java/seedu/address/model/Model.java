@@ -20,7 +20,7 @@ public interface Model {
 
     //@@author A0125221Y
     Stack<String> getUndoStack();
-    Stack<ReadOnlyTask> getDeletedStackOfTasksAdd();
+    Stack<ReadOnlyTask> getAddedStackOfTasks();
     Stack<ReadOnlyTask> getDeletedStackOfTasks();
     Stack<Integer> getDeletedStackOfTasksIndex();
     Stack<ReadOnlyTask> getOldNextTask();
