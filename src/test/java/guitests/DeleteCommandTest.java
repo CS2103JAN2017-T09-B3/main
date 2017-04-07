@@ -1,5 +1,6 @@
 package guitests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
 
@@ -32,6 +33,11 @@ public class DeleteCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("delete " + currentList.length + 1);
         assertResultMessage("The task index provided is invalid");
 
+      //delete Task 1 deadline, taskListPanel zero indexing
+        assertFalse(taskListPanel.getTask(0).getDateTime().getEndDateTimeString().isEmpty());
+        commandBox.runCommand("delete " + 1 + " deadline");
+        assertTrue(taskListPanel.getTask(0).getDateTime().getStartDateTimeString().isEmpty());
+        assertTrue(taskListPanel.getTask(0).getDateTime().getEndDateTimeString().isEmpty());
     }
 
     /**
