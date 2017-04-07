@@ -10,6 +10,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TestTask;
+import seedu.address.testutil.TestUtil;
 
 public class UndoCommandTest extends AddressBookGuiTest {
 
