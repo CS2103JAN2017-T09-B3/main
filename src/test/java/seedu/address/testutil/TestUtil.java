@@ -324,7 +324,7 @@ public class TestUtil {
         listOfPersons.addAll(asList(personsToAdd));
         return listOfPersons.toArray(new TestTask[listOfPersons.size()]);
     }
-    
+
     //@@author A0125221Y
     public static TestTask[] addTasksToListAtIndex(final TestTask[] persons,int index, TestTask... personsToAdd) {
         List<TestTask> listOfTasks = asList(persons);
