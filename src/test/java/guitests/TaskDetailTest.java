@@ -11,6 +11,7 @@ import org.junit.Test;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.ui.TaskDetail;
 
+//@@author A0135807A
 public class TaskDetailTest extends AddressBookGuiTest {
 
     private static final String TAGS_THAT_SUCCEEDS = "#JUnit";

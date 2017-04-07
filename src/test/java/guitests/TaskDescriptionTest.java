@@ -11,10 +11,12 @@ import org.junit.Test;
 import seedu.address.logic.parser.CliSyntax;
 import seedu.address.ui.TaskDescription;
 
+//@@author A0135807A
 public class TaskDescriptionTest extends AddressBookGuiTest {
 
     private static final String CONTENT_THAT_SUCCEEDS = "Amazon Buy 1 Get 1 Free";
     private static final String CONTENT_THAT_FAILS = "invalid command./";
+    private static final String NEW_LINE = "\n";
 
     private ArrayList<String> defaultStyleOfTaskDecription;
     private ArrayList<String> errorStyleOfTaskDescription;
@@ -43,7 +45,7 @@ public class TaskDescriptionTest extends AddressBookGuiTest {
 
         commandBox.clickOnTextField();
         taskDescription.runContent(CONTENT_THAT_FAILS);
-        assertEquals(CONTENT_THAT_FAILS + "\n", taskDescription.getContentInput());
+        assertEquals(CONTENT_THAT_FAILS + NEW_LINE, taskDescription.getContentInput());
         assertEquals(errorStyleOfTaskDescription, taskDescription.getStyleClass());
     }
 
@@ -54,7 +56,7 @@ public class TaskDescriptionTest extends AddressBookGuiTest {
 
         taskDescription.runContent(CONTENT_THAT_SUCCEEDS);
 
-        assertEquals(CONTENT_THAT_SUCCEEDS + "\n", taskDescription.getContentInput());
+        assertEquals(CONTENT_THAT_SUCCEEDS + NEW_LINE, taskDescription.getContentInput());
         assertEquals(defaultStyleOfTaskDecription, taskDescription.getStyleClass());
     }
 

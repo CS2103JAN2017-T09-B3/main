@@ -33,11 +33,13 @@ public class DeleteCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("delete " + currentList.length + 1);
         assertResultMessage("The task index provided is invalid");
 
-      //delete Task 1 deadline, taskListPanel zero indexing
+        //@@author A0135807A
+        //delete Task 1 endDateTime, taskListPanel zero indexing
         assertFalse(taskListPanel.getTask(0).getDateTime().getEndDateTimeString().isEmpty());
         commandBox.runCommand("delete " + 1 + " deadline");
         assertTrue(taskListPanel.getTask(0).getDateTime().getStartDateTimeString().isEmpty());
         assertTrue(taskListPanel.getTask(0).getDateTime().getEndDateTimeString().isEmpty());
+        //author
     }
 
     /**

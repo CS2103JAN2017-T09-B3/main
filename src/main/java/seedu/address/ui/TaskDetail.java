@@ -1,4 +1,3 @@
-//@@author A0135807A
 package seedu.address.ui;
 
 import static seedu.address.logic.parser.CliSyntax.EMPTY_STRING;
@@ -25,7 +24,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.ArgumentTokenizer.Prefix;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.ReadOnlyTask;
-
+//@@author A0135807A
 /**
  * Displays the task details and content.
  */
