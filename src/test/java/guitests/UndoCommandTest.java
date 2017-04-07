@@ -103,6 +103,34 @@ public class UndoCommandTest extends AddressBookGuiTest {
         assertTrue(taskListPanel.isListMatching(oldTaskList)); 
 
     }
+    
+    @Test 
+    public void undoMultipleSuccess() throws IllegalValueException{
+    	TestTask[] allTaskList = td.getTypicalTasks();
+    	TestTask[] oldTaskList = td.getTypicalTasks();
+
+        //edit a task
+        String detailsToEdit = "start/9 Nov 2010 12pm";
+        int addressBookIndex = 2;
+
+        TestTask taskToEdit = oldTaskList[addressBookIndex - 1];
+        TestTask editedTask = new TaskBuilder(taskToEdit).withStartDateTime("9 Nov 2010 12pm").build();
+
+        assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedTask);
+        
+        //clear all tasks
+        commandBox.runCommand("clear");
+        assertListSize(0);
+        
+        //undo clear
+        commandBox.runCommand("undo");
+        assertTrue(taskListPanel.isListMatching(allTaskList));
+        
+        //undo edit
+        commandBox.runCommand("undo");
+        assertTrue(taskListPanel.isListMatching(oldTaskList));
+                    
+    }
 
     private void assertEditSuccess(int filteredTaskListIndex, int addressBookIndex,
                 String detailsToEdit, TestTask editedTask) {
