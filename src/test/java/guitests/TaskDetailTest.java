@@ -14,7 +14,7 @@ import seedu.address.ui.TaskDetail;
 public class TaskDetailTest extends AddressBookGuiTest {
 
     private static final String TAGS_THAT_SUCCEEDS = "#JUnit";
-    private static final String TAGS_THAT_FAILS = "#JUnit.";
+    private static final String TAGS_THAT_FAILS = "#JUnit*#@";
 
     private ArrayList<String> defaultStyleOfTaskDetail;
     private ArrayList<String> errorStyleOfTaskDetail;
