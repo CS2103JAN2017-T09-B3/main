@@ -106,7 +106,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
     @Test
     public void undoMultipleSuccess() throws IllegalValueException {
         TestTask[] allTaskList = td.getTypicalTasks();
-    	TestTask[] oldTaskList = td.getTypicalTasks();
+        TestTask[] oldTaskList = td.getTypicalTasks();
 
         //edit a task
         String detailsToEdit = "start/9 Nov 2010 12pm";
