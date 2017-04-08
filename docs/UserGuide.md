@@ -115,7 +115,7 @@ You can add a task using the following format. Upon adding a task, details of th
       >*Event*
 
 
-#### List Tasks : `list`
+### List Tasks : `list`
 
 After adding the tasks you need, you can track them using the list command.<br>
 
@@ -130,7 +130,7 @@ After adding the tasks you need, you can track them using the list command.<br>
    * list completed
       >*list all completed tasks*
 
-#### Select Task : `select`
+### Select Task : `select`
 
 When you need the content to a specific task, you can use the select command to select the task from the list.<br>
 
@@ -145,7 +145,7 @@ When you need the content to a specific task, you can use the select command to 
    * select 2
       >*select the second task in the current list*
     
-#### Edit Task : `edit`
+### Edit Task : `edit`
 
 You can update any part of a task using edit command. The formats of DATE and TIME are the same as add command.<br>
 
@@ -153,6 +153,7 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
 * Edit the task at the specified INDEX
 * The index refers to the index number shown in the last task listing
+* After editing, edited task is automatically highlighted
 * Existing values will be updated to the new input values
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative
 * You can remove all the task's tags by typing # without specifying any tags after it
@@ -170,11 +171,11 @@ You can update any part of a task using edit command. The formats of DATE and TI
     * edit 3 end/6:30pm 4 apr #mrt
       >*edits the end date time of task number 2 to 6:30pm of 4 April and add a tag mrt*
 
-#### Mark Task As Done : `mark`
+### Mark Task As Done : `mark`
 
-#### Mark Task As Undone : `unmark`
+### Mark Task As Undone : `unmark`
 
-#### Find Tasks : `find`
+### Find Tasks : `find`
 
 In addition, you can simply find tasks by entering the `find` command accompanied with keywords or numbers in their title, description and dates.
 
@@ -199,7 +200,7 @@ In addition, you can simply find tasks by entering the `find` command accompanie
    * find Meeting
       >*returns Project Meeting*
 
-#### Delete Task : `delete`
+### Delete Task : `delete`
 
 If you have completed the task or need to delete unwanted task, simply input the `delete` command.
 
@@ -216,7 +217,7 @@ If you have completed the task or need to delete unwanted task, simply input the
    * delete 1 deadline
       >*deletes only the deadline of task number 1*
 
-#### Clear Tasks : `clear`
+### Clear Tasks : `clear`
 
 Need an efficient way to remove all tasks? Simply enter `clear` to remove the entire list of tasks.
 
@@ -224,7 +225,7 @@ Need an efficient way to remove all tasks? Simply enter `clear` to remove the en
 
 * This command allows you to clear your tasks when you do not need them anymore.
 
-#### Undo : `undo`
+### Undo : `undo`
 
 Accidentally removed your task? Fret not, simply enter the `undo` command to revert your changes.
 
@@ -233,7 +234,7 @@ Accidentally removed your task? Fret not, simply enter the `undo` command to rev
 * This command will undo the previous add/delete command which you had entered.
 * Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.
 
-#### Save TaskList : `save`
+### Save TaskList : `save`
 
 Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently. Upon successful command execution, `Tasks saved to FILELOCATION` message will be displayed.<br>
 
@@ -248,7 +249,7 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
     * save C:\CS2103\Project\myPotato
     * save C:\CS2103\Project\myPotato.xml
 
-#### Open TaskList : `open`
+### Open TaskList : `open`
 
 Specify a valid xml file to load into myPotato. Upon successful command execution, `Loaded FILENAME` message will be displayed.
 
@@ -258,7 +259,7 @@ Specify a valid xml file to load into myPotato. Upon successful command executio
 
    * open C:\CS2103\Project\taskmanager.xml
 
-#### Exit program : `exit`
+### Exit program : `exit`
 
 To exit the program, simply type `exit`.
 
