@@ -23,7 +23,7 @@
     </tasks>
     <tasks>
         <title>buy milk</title>
-        <content></content>
+        <content>high calcium</content>
         <startDateTime></startDateTime>
         <endDateTime></endDateTime>
         <status>false</status>
@@ -46,8 +46,8 @@
     <tasks>
         <title>CG2270</title>
         <content>lab 6</content>
-        <startDateTime></startDateTime>
-        <endDateTime>05.04.17</endDateTime>
+        <startDateTime>05.04.17 14:00</startDateTime>
+        <endDateTime>05.04.17 16:00</endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
@@ -144,15 +144,15 @@
     <tasks>
         <title>midterm</title>
         <content>CS3230</content>
-        <startDateTime></startDateTime>
+        <startDateTime>24.03.17 10:00</startDateTime>
         <endDateTime>24.03.17 12:00</endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
         <title>exercise</title>
         <content>Pokemon go hatch egg</content>
-        <startDateTime>01.01.17 18:00</startDateTime>
-        <endDateTime>01.01.17 19:00</endDateTime>
+        <startDateTime>25.03.17 18:00</startDateTime>
+        <endDateTime>25.03.17 19:00</endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
@@ -182,7 +182,7 @@
     </tasks>
     <tasks>
         <title>ST lecture</title>
-        <content>attent lecture</content>
+        <content>attend lecture</content>
         <startDateTime>10.04.17 16:00</startDateTime>
         <endDateTime>10.04.17 18:00</endDateTime>
         <status>false</status>
@@ -219,23 +219,23 @@
     </tasks>
     <tasks>
         <title>Study</title>
-        <content>never study</content>
-        <startDateTime></startDateTime>
-        <endDateTime>17.04.17</endDateTime>
+        <content>study for final</content>
+        <startDateTime>10.04.17</startDateTime>
+        <endDateTime>15.04.17</endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
-        <title>drop school</title>
+        <title>holiday</title>
+        <content>relax for 3 months</content>
+        <startDateTime>05.04.17</startDateTime>
+        <endDateTime>15.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>revision for final</title>
         <content></content>
-        <startDateTime></startDateTime>
-        <endDateTime></endDateTime>
-        <status>false</status>
-    </tasks>
-    <tasks>
-        <title>never code anymore</title>
-        <content>stop coding</content>
         <startDateTime>17.04.17</startDateTime>
-        <endDateTime></endDateTime>
+        <endDateTime>20.04.17</endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
@@ -312,21 +312,21 @@
         <status>false</status>
     </tasks>
     <tasks>
-        <title>La Liga</title>
+        <title>La Liga highlights</title>
         <content>why barcelona can win back a game that they were losing 0:4.This seems too fake to me, I just dont feel this was real. PSG can do better, its just that they screw up. Anyway, good luck to Bayern, lets beat Real Madrid and enter into the semi-final</content>
         <startDateTime></startDateTime>
         <endDateTime></endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
-        <title>ManUnited vs Bayern</title>
+        <title>ManUnited premier league</title>
         <content>I think they cannot make it</content>
         <startDateTime>08.04.17</startDateTime>
         <endDateTime></endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
-        <title>chelsea vs mancity</title>
+        <title>chelsea premier league</title>
         <content>you think change coach useful meh?</content>
         <startDateTime></startDateTime>
         <endDateTime></endDateTime>
@@ -342,17 +342,17 @@
     </tasks>
     <tasks>
         <title>dortmund vs lipzig RB</title>
-        <content>not doing well this season</content>
+        <content>dortmund not doing well this season, they may not win this game</content>
         <startDateTime></startDateTime>
         <endDateTime></endDateTime>
         <status>false</status>
         <tagged>tryharder</tagged>
     </tasks>
     <tasks>
-        <title>wolvesburg vs gladbach</title>
-        <content>hope you can survive</content>
-        <startDateTime></startDateTime>
-        <endDateTime>10.07.17</endDateTime>
+        <title>wolvesburg vs Monchengladbach</title>
+        <content>hope wolvesburg can survive</content>
+        <startDateTime>19.04.17 21:30</startDateTime>
+        <endDateTime>19.04.17 23:30</endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
@@ -365,13 +365,13 @@
     </tasks>
     <tasks>
         <title>Roma vs Inter</title>
-        <content>bandrupt</content>
-        <startDateTime>04.03.17</startDateTime>
-        <endDateTime>07.05.17</endDateTime>
+        <content>Roma was bankruptted,maybe will lose</content>
+        <startDateTime>15.04.17</startDateTime>
+        <endDateTime>20.04.17</endDateTime>
         <status>false</status>
     </tasks>
     <tasks>
-        <title>PSG vs FCB</title>
+        <title>PSG liga 1</title>
         <content>look at your champion league result man, you are doomed</content>
         <startDateTime></startDateTime>
         <endDateTime></endDateTime>
@@ -396,4 +396,5 @@
     <tags>fail</tags>
     <tags>tryharder</tags>
     <tags>SerieA</tags>
+    <tags>CS2101</tags>
 </addressbook>
