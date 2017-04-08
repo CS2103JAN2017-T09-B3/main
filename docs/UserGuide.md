@@ -257,12 +257,14 @@ Accidentally removed your task? Fret not, simply enter the `undo` command to rev
 
     Format:  undo
 
-* This command will undo the previous add/delete command which you had entered.
+* This command will undo the previous add/delete or edit command which you had entered.
 * Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.
+* If the undo command is successful, the result display should shows "Previous command has been undo".
+* If the undo command is unsuccessful, the result display will show "No previous command found" instead. 
 
 ### Save TaskList : `save`
 
-Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently. Upon successful command execution, `Tasks saved to FILELOCATION` message will be displayed.<br>
+Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently. Upon successful command execution, `Tasks saved to FILELOCATION` message will be shown on the result display.<br>
 
     Format: save FILEPATH
 
@@ -270,14 +272,13 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
 * myPotato will load the most recent saved FILELOCATION on start-up.
     
  **Examples:**
- 
     * save C:\CS2103\Project
     * save C:\CS2103\Project\myPotato
     * save C:\CS2103\Project\myPotato.xml
 
 ### Open TaskList : `open`
 
-Specify a valid xml file to load into myPotato. Upon successful command execution, `Loaded FILENAME` message will be displayed.
+Specify a valid xml file to load into myPotato. Upon successful command execution, `Loaded FILENAME` message will be shown on the result display.
 
     Format: open FILEPATH
 
@@ -299,6 +300,9 @@ To exit the program, simply type `exit`.
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
        the file that contains the data of your previous myPotato folder.
+**Q**: How do I know the commands if the user guide is not with me?<br>
+**A**: Don't worry, just type in the help command and it will show you all the possble input commands.
+**Q**: 
 
 
 ## 4. Command Summary
