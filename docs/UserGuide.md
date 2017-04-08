@@ -170,7 +170,7 @@ You can update any part of a task using edit command. The formats of DATE and TI
     * edit 2 start/3 apr 4pm
       >*edits the start date time of task number 2 to 4pm of 3 April*
     
-    * edit 3 end/6:30pm 4 apr #mrt
+    * edit 3 end/4 apr 6:30 #mrt
       >*edits the end date time of task number 2 to 6:30pm of 4 April and add a tag <kbd>mrt<kbd>*
 
 ### Mark Task As Done : `mark`
