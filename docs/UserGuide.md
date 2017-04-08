@@ -171,7 +171,7 @@ You can update any part of a task using edit command. The formats of DATE and TI
       >*edits the start date time of task number 2 to 4pm of 3 April*
     
     * edit 3 end/6:30pm 4 apr #mrt
-      >*edits the end date time of task number 2 to 6:30pm of 4 April and add a tag mrt*
+      >*edits the end date time of task number 2 to 6:30pm of 4 April and add a tag <kbd>mrt<kbd>*
 
 ### Mark Task As Done : `mark`
 
@@ -189,7 +189,7 @@ In addition, you can simply find tasks by entering the `find` command accompanie
 * The order of the keywords does not matter. <br>
    > e.g. `Meeting Project` will match `Project Meeting`<br>
 
-* By default, finding is in title of task. With specifier "content/", finding is in both title and content of task<br>
+* By default, finding is in title of task. With specifier *content/*, finding is in both title and content of task<br>
 
 * Partial word can be found<br>
    > e.g. `ject` will also match `Projects`<br>
