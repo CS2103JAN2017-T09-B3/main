@@ -24,13 +24,13 @@ We are a team based in the [School of Computing, National University of Singapor
 **Role**: Code quality <br>
 **Responsibilities**: Documentation, Model
 * Features implemented:
-    * [Undo AddCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo
+    * [Undo AddCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
     * [Undo DeleteCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
     * [Undo EditCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
     * [Undo ClearCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
  * Code written:
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0125221Y.md)
-    * [test code}(https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0125221Y.md)
+    * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0125221Y.md)
  * Other major contributions:
    * Aministrative tasks
    * Help fix minor bugs
