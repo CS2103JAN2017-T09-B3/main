@@ -2,11 +2,11 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.MarkAsDoneCommand.MESSAGE_MARK_TASK_SUCCESS;
+import static seedu.myPotato.logic.commands.MarkAsDoneCommand.MESSAGE_MARK_TASK_SUCCESS;
 
 import org.junit.Test;
 
-import seedu.address.testutil.TestTask;
+import seedu.myPotato.testutil.TestTask;
 
 public class MarkAsDoneCommandTest extends AddressBookGuiTest {
 

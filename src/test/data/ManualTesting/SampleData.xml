@@ -373,6 +373,34 @@
     <tasks>
         <title>PSG liga 1</title>
         <content>look at your champion league result man, you are doomed</content>
+        <startDateTime>03.04.17 16:00</startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Buy dinner</title>
+        <content>new content</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>true</status>
+    </tasks>
+    <tasks>
+        <title>software engineering</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>visit grandpa</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>event meeting</title>
+        <content></content>
         <startDateTime></startDateTime>
         <endDateTime></endDateTime>
         <status>false</status>
@@ -397,4 +425,5 @@
     <tags>tryharder</tags>
     <tags>SerieA</tags>
     <tags>CS2101</tags>
+    <tags>mrt</tags>
 </addressbook>

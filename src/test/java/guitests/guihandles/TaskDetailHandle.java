@@ -3,7 +3,7 @@ package guitests.guihandles;
 import guitests.GuiRobot;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
+import seedu.myPotato.TestApp;
 
 //@@author A0135807A
 /**
