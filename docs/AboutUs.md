@@ -44,7 +44,7 @@ We are a team based in the [School of Computing, National University of Singapor
 * Features Implemented:
     * [Save Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#save-tasklist--save)
     * [Open Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#open-tasklist--open)
-    * Graphical User Interface
+    * Graphical User Interface: Right Panel of myPotato
 * Code written:
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135807A.md)
     * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0135807A.md)
