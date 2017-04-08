@@ -37,6 +37,6 @@ We are a team based in the [School of Computing, National University of Singapor
 We welcome contributions. See [Contact Us](ContactUs.md) page for more info.
 
 * [Tang Di Feng](https://github.com/e0011840)
-* [My DuyHoang Long](https://github.com/myduyhoanglong)
+* [My Duy Hoang Long](https://github.com/myduyhoanglong)
 * [Ivan Koh](https://github.com/ivankws)
 * [Zhang Yan Hao](https://github.com/vane1992)
