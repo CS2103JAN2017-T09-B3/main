@@ -175,8 +175,32 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
 ### Mark Task As Done : `mark`
 
-### Mark Task As Undone : `unmark`
+You can mark a task as completed once you finished that task.<br>
+    
+    Format: MARK INDEX
+    
+ * mark the chosen task as done
+ * once the task is marked, the task color change from black to green
+ * once the task is marked, the task will be added to completed list automatically
 
+**Examples:**
+
+   * mark 2
+      >*mark the second task in the current list as done*
+    
+### Mark Task As Undone : `unmark`
+    
+    Format: UNMARK INDEX
+ 
+ * mark the chosen task as undone
+ * once the task is unmarked, the task color change from green to black
+ * once the task is unmarked, the task will be removed from completed task automatically
+
+**Examples:**
+
+   * unmark 2
+      >*mark the second task in the current list as uncompleted*
+    
 ### Find Tasks : `find`
 
 In addition, you can simply find tasks by entering the `find` command accompanied with keywords or numbers in their title, description and dates.
