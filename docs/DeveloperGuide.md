@@ -193,7 +193,7 @@ _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Comma
 
 ### 3.4. Model component
 
-Author: Yan Hao
+Author: Ivan Koh
 
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
@@ -208,6 +208,20 @@ The `Model`:
    e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
+
+#### Handling undo commands
+
+The model component contains 7 stacks specially designed to keep track of both previous commands and tasks. These stacks will be implemented by the undo command in the logic component to undo the most recent command input by the user.
+
+* getUndoStack() stores all the previous commands from the user input.
+* getAddedStackOfTasks() stores all the tasks which was previously added by the users.
+* getDeletedStackOfTasks() stores all the tasks which was previously added by the users.
+* getDeletedStackOfTasksIndex() stores the index of the task which was deleted by the users.
+* stackOfOldTask() stores the previous unedited task.
+* getCurrentTask() stores the new edited task
+* stackOfTasks() stores the previous list of tasks which had been cleared.
+
+Based on the previous command popped from the getUndoStack(), the undo command will call one of the following commandResult undoAdd(), undoDelete(), or undoClear() in the undoCommand class which will then restore the current task list to the previous state before the most recent command.
 
 ### 3.5. Storage component
 
