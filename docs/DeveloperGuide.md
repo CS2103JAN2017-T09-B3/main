@@ -154,7 +154,7 @@ The sections below provide more details of each component.
 
 ### 3.2. UI component
 
-Author: Long & Ivan
+Author: Long & Di Feng
 
 <img src="images/UiClassDiagram.png" width="800"><br>
 _Figure 3.2.1 : Structure of the UI Component_
@@ -200,7 +200,7 @@ _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Comma
 
 ### 3.4. Model component
 
-Author: Ivan Koh
+Author: Ivan Koh, Yan Hao
 
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
