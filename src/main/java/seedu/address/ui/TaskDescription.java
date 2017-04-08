@@ -22,7 +22,7 @@ import seedu.address.model.task.Content;
 import seedu.address.model.task.ReadOnlyTask;
 
 /**
- * The Task Description of the App.
+ * The Task Description of myPotato.
  */
 public class TaskDescription extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(TaskDescription.class);
@@ -30,6 +30,8 @@ public class TaskDescription extends UiPart<Region> {
     private static final String MESSAGE_SUPPORT = "Content will be saved when you press ENTER.";
     private static final String FXML = "TaskDescription.fxml";
     private static final String COMMAND_EDIT = "edit %1$s %2$s";
+    private static final int INDEX = 1;
+
     public static final String ERROR_STYLE_CLASS = "error";
 
     private Logic logic;
@@ -38,8 +40,10 @@ public class TaskDescription extends UiPart<Region> {
     private TextArea contentTextArea;
 
     /**
-     * @param placeholder
-     * The AnchorPane where the TaskDescription must be inserted
+     * @param AnchorPane placeholder
+     * The AnchorPane where the TaskDescription must be inserted.
+     * @param Logic logic
+     * Retrieve logic component to execute command.
      */
     public TaskDescription(AnchorPane placeholder, Logic logic) {
         super(FXML);
@@ -50,13 +54,19 @@ public class TaskDescription extends UiPart<Region> {
         this.logic = logic;
     }
 
+    /**
+     * @param ReadOnlyTask taskToEdit
+     * The task to be updated.
+     * @param String newContent
+     * The Content to be updated in taskToEdit.
+     */
     public void saveAndShowContent(ReadOnlyTask taskToEdit, String newContent) {
         try {
             if (!Content.isValidContent(newContent)) {
                 throw new IllegalValueException(Content.MESSAGE_CONTENT_CONSTRAINTS);
             }
             CommandResult commandresult = logic.execute(String.format(COMMAND_EDIT,
-                    logic.getFilteredTaskList().indexOf(taskToEdit) + 1, PREFIX_CONTENT + newContent));
+                    logic.getFilteredTaskList().indexOf(taskToEdit) + INDEX, PREFIX_CONTENT + newContent));
             setStyleToIndicateCommandSuccess();
             raise(new NewResultAvailableEvent(commandresult.feedbackToUser));
         } catch (CommandException e) {
@@ -70,7 +80,13 @@ public class TaskDescription extends UiPart<Region> {
         }
     }
 
+    /**
+     * @param ReadOnlyTask task
+     * task cannot be null.
+     */
     public void loadTaskPage(ReadOnlyTask task) {
+        assert task != null;
+
         contentTextArea.setText(task.getContent().toString());
 
         contentTextArea.setOnKeyPressed(keyEvent -> {
@@ -80,12 +96,21 @@ public class TaskDescription extends UiPart<Region> {
         });
     }
 
+    /**
+     * @param ReadOnlyTask task
+     * task cannot be null, load task on UI after editing.
+     */
     public void loadTaskDescription(ReadOnlyTask task) {
         if (!compareWithoutNewLine(task.getContent().toString(), contentTextArea.getText())) {
             contentTextArea.setText(task.getContent().toString());
         }
     }
 
+    /**
+     * @param String textOne to be compared with textTwo.
+     * @param String textTwo to be compared with textOne.
+     * @return true if textOne w/o newline equals to textTwo w/o newline else return false.
+     */
     public boolean compareWithoutNewLine(String textOne, String textTwo) {
         String trimmedOne = textOne.replaceAll("\\n", CliSyntax.EMPTY_STRING);
         String trimmedTwo = textTwo.replaceAll("\\n", CliSyntax.EMPTY_STRING);

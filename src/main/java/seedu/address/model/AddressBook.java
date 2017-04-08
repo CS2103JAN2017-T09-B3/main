@@ -1,4 +1,3 @@
-
 package seedu.address.model;
 
 import java.util.Collection;
@@ -128,6 +127,15 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.add(t);
     }
 
+    // @@author A0125221Y
+    //This will add the task to the specific index of the list
+    public void addTaskToIndex(Task toAdd, int idx) throws DuplicateTaskException {
+
+        syncMasterTagListWith(toAdd);
+        tasks.addToIndex(toAdd, idx);
+
+    }
+
     /**
      * Updates the person in the list at position {@code index} with
      * {@code editedReadOnlyPerson}. {@code AddressBook}'s tag list will be
@@ -202,6 +210,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             throw new UniqueTaskList.TaskNotFoundException();
         }
     }
+
 
     //// tag-level operations
 

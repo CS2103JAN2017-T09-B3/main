@@ -56,11 +56,11 @@ public class UndoCommand extends Command {
 
     private CommandResult undoAdd() {
         assert model != null;
-        if (model.getDeletedStackOfTasksAdd().isEmpty()) {
+        if (model.getAddedStackOfTasks().isEmpty()) {
             return new CommandResult(String.format("Unable to undo"));
         } else {
             try {
-                ReadOnlyTask reqTask = model.getDeletedStackOfTasksAdd().pop();
+                ReadOnlyTask reqTask = model.getAddedStackOfTasks().pop();
                 model.deleteTask(reqTask);
             } catch (TaskNotFoundException tnfe) {
                 return new CommandResult(String.format("Unable to undo"));
@@ -77,8 +77,10 @@ public class UndoCommand extends Command {
         ReadOnlyTask taskToReAdd = model.getDeletedStackOfTasks()
                 .pop(); /** Gets the required task to reAdd */
 
+        int targetIndex = model.getDeletedStackOfTasksIndex().pop();
+
         try {
-            model.addTask((Task) taskToReAdd);
+            model.addTaskIdx((Task) taskToReAdd, targetIndex);
         } catch (DuplicateTaskException e) {
             return new CommandResult("Unable to undo");
         }
@@ -97,11 +99,11 @@ public class UndoCommand extends Command {
             return new CommandResult(String.format(UndoCommand.MESSAGE_FAIL));
         } else {
             try {
-                Task toChangeInto = (Task) model.getOldTask().pop();
-                Task theOriginal = (Task) model.getCurrentTask().pop();
-                model.updateTask(theOriginal, toChangeInto);
-                model.getOldNextTask().push(theOriginal);
-                model.getNewNextTask().push(toChangeInto);
+                Task updated = (Task) model.getOldTask().pop();
+                Task original = (Task) model.getCurrentTask().pop();
+                model.updateTask(original, updated);
+                model.getOldNextTask().push(original);
+                model.getNewNextTask().push(updated);
             } catch (UniqueTaskList.DuplicateTaskException utle) {
                 return new CommandResult(UndoCommand.MESSAGE_DUPLICATE_TASK);
             }

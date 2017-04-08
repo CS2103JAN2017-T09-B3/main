@@ -34,7 +34,8 @@ public class EditCommand extends Command {
             + COMMAND_WORD + " 1 Pay c/bill end/10am 15 Jul #overspeed";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided "
+                                                        + "& Task Title cannot be empty.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in myPotato.";
 
     private final int filteredTaskListIndex;

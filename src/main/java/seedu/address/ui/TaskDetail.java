@@ -36,7 +36,9 @@ public class TaskDetail extends UiPart<Region> {
     private static final String COMMAND_EDIT = "edit %1$s %2$s";
 
     private static final String MESSAGE_SUPPORT = "Press Enter to save %1$s!";
-    private static final String MESSAGE_TAG = "Create a tag with a Prefix '#'.";
+    private static final String MESSAGE_TAG = "Leave a whitespace between tags and press ENTER to save!";
+    public static final String ERROR_STYLE_CLASS = "error";
+    private static final int INDEX = 1; //filteredTaskList index starts from 0.
 
     private Logic logic;
 
@@ -65,7 +67,7 @@ public class TaskDetail extends UiPart<Region> {
     private Label labelTags;
 
     /**
-     * @param placeholder
+     * @param AnchorPane placeholder
      * The AnchorPane where the TaskDetail must be inserted.
      */
     public TaskDetail(AnchorPane placeholder, Logic logic) {
@@ -82,18 +84,18 @@ public class TaskDetail extends UiPart<Region> {
     /**
      * Update the task with the newDetail.
      *
-     * @param taskToEdit selected task.
-     * @param prefix format to differentiate parameters.
-     * @param newDetail to be updated to the right task.
-     * @param field text field to obtain user input.
+     * @param ReadOnlyTask taskToEdit cannot be null.
+     * @param Prefix prefix format to differentiate parameters.
+     * @param String newDetail to be updated to the right task.
+     * @param TextField field to read user input.
      */
     public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix, String newDetail, TextField field) {
         assert logic != null;
 
         try {
             CommandResult commandResult = logic.execute(String.format(COMMAND_EDIT,
-                    logic.getFilteredTaskList().indexOf(taskToEdit) + 1, prefix.toString() + newDetail));
-            setStyleToIndicateCommandSuccess(field);
+                    logic.getFilteredTaskList().indexOf(taskToEdit) + INDEX, prefix.toString() + newDetail));
+            setStyleToIndicateCommandSuccess();
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
         } catch (CommandException e) {
             setStyleToIndicateCommandFailure(field);
@@ -106,7 +108,7 @@ public class TaskDetail extends UiPart<Region> {
      * load Task details from TaskCard.
      * SetKeyPressedEvent on enter to save details.
      *
-     * @param task cannot be null.
+     * @param ReadOnlyTask task cannot be null.
      */
     public void loadTaskPage(ReadOnlyTask task) {
         assert task != null;
@@ -139,10 +141,10 @@ public class TaskDetail extends UiPart<Region> {
     }
 
     /**
-     * @param task cannot be null.
-     * @param prefix to differentiate command.
-     * @param updatedText to read from User Interface.
-     * @param field must be a valid TextField.
+     * @param ReadOnlyTask task cannot be null.
+     * @param Prefix prefix to differentiate command.
+     * @param String updatedText to read from User Interface.
+     * @param TextField field must be a valid TextField.
      */
     public void initKeyPressedEvents(ReadOnlyTask task, Prefix prefix, String updatedText, TextField field) {
         field.setOnKeyPressed(keyEvent -> {
@@ -188,7 +190,7 @@ public class TaskDetail extends UiPart<Region> {
     /**
      * Read Task details and displays on User Interface
      *
-     * @param task cannot be null.
+     * @param ReadOnlyTask task cannot be null.
      */
     public void init(ReadOnlyTask task) {
         assert task != null;
@@ -207,9 +209,13 @@ public class TaskDetail extends UiPart<Region> {
 
     /**
      * Sets the Task Details style to indicate a successful command.
+     * Removes old error styles.
      */
-    private void setStyleToIndicateCommandSuccess(TextField textField) {
-        textField.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
+    private void setStyleToIndicateCommandSuccess() {
+        titleTextField.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
+        startTimeTextField.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
+        endTimeTextField.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
+        tagsTextField.getStyleClass().remove(CommandBox.ERROR_STYLE_CLASS);
     }
 
     /**
