@@ -7,14 +7,14 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [MY DUYHOANG LONG](https://github.com/myduyhoanglong) <br>
 <img src="images/myduyhoanglong.png" width="150"><br>
 **Role**: Testing, Team Lead <br>
-**Responsibilities**: UI
+**Responsibilities**: UI, Model
 
 -----
 
 #### [IVAN KOH](https://github.com/ivankws)
 <img src="images/Ivan_Koh_1.JPG" width="150"><br>
 **Role**: Code quality <br>
-**Responsibilities**: Documentation
+**Responsibilities**: Documentation, Logic
 
 -----
 
