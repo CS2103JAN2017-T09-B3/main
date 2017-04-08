@@ -21,7 +21,18 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [TANG DI FENG](https://github.com/e0011840)
 <img src="images/e0011840.png" width="150"><br>
 **Role**: Integration <br>
-**Responsibilities**: Storage
+**Responsibilities**: [Storage](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/DeveloperGuide.md#35-storage)
+* Features Implemented:
+    * [Save Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#save-tasklist--save)
+    * [Open Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#open-tasklist--open)
+    * Graphical User Interface
+* Code written: 
+    * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135807A.md)
+    * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0135807A.md)
+* Other major contributions: 
+    * Administrative tasks(e.g. collate, releases, schedule meetings)
+    * Did initial refactoring from persons to tasks
+    * Set up Travis, Appveyor, Codacy, Coveralls
 
 -----
 
