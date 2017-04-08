@@ -32,7 +32,7 @@ We are a team based in the [School of Computing, National University of Singapor
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0125221Y.md)
     * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0125221Y.md)
  * Other major contributions:
-   * Aministrative tasks
+   * Administrative tasks
    * Help fix minor bugs
 
 -----
