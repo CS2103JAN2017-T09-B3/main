@@ -18,7 +18,7 @@ public class Content {
      * The first character of the task must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String CONTENT_VALIDATION_REGEX = "[\\p{Alnum}!\"$%&'()*+,-.:;<=>?@^_`{|}~\\s]*";
+    public static final String CONTENT_VALIDATION_REGEX = "[\\p{Alnum}!\"$%&\'()*+,-.:;<=>?@^_`{|}~\\s]*";
 
     public final String fullContent;
 
