@@ -22,7 +22,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 
 MyPotato is a task manager which provides a platform for users to organize their tasks efficiently. Our objective is to create a user interface that allows the user to manage their tasks conveniently with minimal use of a mouse.
 
-The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to responding with a constructive feedback.
+The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to responding with a feedback message informing the user whether the command is executed successfully.
 
 ## 2. Setting up
 
@@ -86,12 +86,14 @@ _Figure 2.2.1 : Architecture Diagram_
 <img src="images/Architecture.png" width="600"><br>
 _Figure 3.1.1 : Architecture Diagram_
 
+The Architecture Diagram is the center of the design of a product. Once this is settled, we should not be changing this design anymore.
+
 The **_Architecture Diagram_** given above explains the high-level design of myPotato.
 Given below is a quick overview of each component.
 
-> Tip:
-> The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
-> To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
+Tip:
+The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
+To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
 `Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
 
@@ -132,8 +134,8 @@ command `delete 1`.
 <img src="images/SDforDeletePerson.png" width="800"><br>
 _Figure 3.1.3a : Component interactions for `delete 1` command (part 1)_
 
-> Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data is changed,
- instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data is changed,
+instead of asking the `Storage` to save the updates to the hard disk.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
 being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time. <br>
@@ -141,9 +143,9 @@ being saved to the hard disk and the status bar of the UI being updated to refle
 <img src="images/SDforDeletePersonEventHandling.png" width="800"><br>
 _Figure 3.1.3b : Component interactions for `delete 1` command (part 2)_
 
-> Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
-  to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct
-  coupling between components.
+Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
+to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct
+coupling between components.
 
 The sections below provide more details of each component.
 
@@ -177,6 +179,8 @@ Author: Long, Ivan, Di Feng, Yan Hao
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.3.1 : Structure of the Logic Component_
 
+Logic component is the place where we implement our features. It contains most of the basic functionality of myPotato. For the design pattern of logic component, my group follows command pattern. We separate duties according to commands we are going to use. The Command.java and its sub classes implement the Command Pattern.
+
 [**API**](#api) : [`Logic.java`](../src/main/java/seedu/myPotato/logic/Logic.java) in `src/main/java/seedu/myPotato/logic`
 
 1. `Logic` uses the `Parser` class to parse the user command.
@@ -199,6 +203,8 @@ Author: Ivan Koh
 _Figure 3.4.1 : Structure of the Model Component_
 
 [**API**](#api) : [`Model.java`](../src/main/java/seedu/myPotato/model/Model.java) in `src/main/java/seedu/myPotato/model`
+
+Model component contains task class and tag class, and it ensures that myPotato can give the correct output according to the user input. 
 
 The `Model`:
 
@@ -338,7 +344,7 @@ Here are the steps to create a new release.
 
  1. Generate a JAR file [using Gradle](UsingGradle.md#creating-the-jar-file).
  2. Tag the repo with the version number. e.g. `v0.1`
- 2. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
+ 3. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
     and upload the JAR file you created.
 
 ### 6.5. Converting Documentation to PDF format
@@ -349,11 +355,11 @@ as Chrome's PDF engine preserves hyperlinks used in webpages.
 Here are the steps to convert the project documentation files to PDF format.
 
  1. Make sure you have set up GitHub Pages as described in [UsingGithubPages.md](UsingGithubPages.md#setting-up).
- 1. Using Chrome, go to the [GitHub Pages version](UsingGithubPages.md#viewing-the-project-site) of the
+ 2. Using Chrome, go to the [GitHub Pages version](UsingGithubPages.md#viewing-the-project-site) of the
     documentation file. <br>
     e.g. For [UserGuide.md](UserGuide.md), the URL will be `https://<your-username-or-organization-name>.github.io/myPotato-level4/docs/UserGuide.html`.
- 1. Click on the `Print` option in Chrome's menu.
- 1. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format. <br>
+ 3. Click on the `Print` option in Chrome's menu.
+ 4. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format. <br>
     For best results, use the settings indicated in the screenshot below. <br>
     <img src="images/chrome_save_as_pdf.png" width="300"><br>
     _Figure 5.4.1 : Saving documentation as PDF files in Chrome_
