@@ -12,10 +12,10 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import seedu.myPotato.TestApp;
-import seedu.myPotato.model.task.ReadOnlyTask;
-import seedu.myPotato.model.task.Task;
-import seedu.myPotato.testutil.TestUtil;
+import seedu.mypotato.TestApp;
+import seedu.mypotato.model.task.ReadOnlyTask;
+import seedu.mypotato.model.task.Task;
+import seedu.mypotato.testutil.TestUtil;
 
 /**
  * Provides a handle for the panel containing the task list.

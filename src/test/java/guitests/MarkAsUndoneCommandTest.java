@@ -2,11 +2,11 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
-import static seedu.myPotato.logic.commands.MarkAsUndoneCommand.MESSAGE_UNMARK_TASK_SUCCESS;
+import static seedu.mypotato.logic.commands.MarkAsUndoneCommand.MESSAGE_UNMARK_TASK_SUCCESS;
 
 import org.junit.Test;
 
-import seedu.myPotato.testutil.TestTask;
+import seedu.mypotato.testutil.TestTask;
 
 public class MarkAsUndoneCommandTest extends AddressBookGuiTest {
 

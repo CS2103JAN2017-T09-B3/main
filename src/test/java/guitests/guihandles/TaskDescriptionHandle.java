@@ -4,7 +4,7 @@ import guitests.GuiRobot;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import seedu.myPotato.TestApp;
+import seedu.mypotato.TestApp;
 
 //@@author A0135807A
 /**

@@ -22,13 +22,13 @@ import guitests.guihandles.TaskDetailHandle;
 import guitests.guihandles.TaskListPanelHandle;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import seedu.myPotato.TestApp;
-import seedu.myPotato.commons.core.EventsCenter;
-import seedu.myPotato.commons.events.BaseEvent;
-import seedu.myPotato.model.AddressBook;
-import seedu.myPotato.model.task.ReadOnlyTask;
-import seedu.myPotato.testutil.TestUtil;
-import seedu.myPotato.testutil.TypicalTestTasks;
+import seedu.mypotato.TestApp;
+import seedu.mypotato.commons.core.EventsCenter;
+import seedu.mypotato.commons.events.BaseEvent;
+import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.task.ReadOnlyTask;
+import seedu.mypotato.testutil.TestUtil;
+import seedu.mypotato.testutil.TypicalTestTasks;
 
 /**
  * A GUI Test class for AddressBook.

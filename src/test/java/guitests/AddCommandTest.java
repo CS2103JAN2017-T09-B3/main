@@ -5,10 +5,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.myPotato.commons.core.Messages;
-import seedu.myPotato.logic.commands.AddCommand;
-import seedu.myPotato.testutil.TestTask;
-import seedu.myPotato.testutil.TestUtil;
+import seedu.mypotato.commons.core.Messages;
+import seedu.mypotato.logic.commands.AddCommand;
+import seedu.mypotato.testutil.TestTask;
+import seedu.mypotato.testutil.TestUtil;
 
 public class AddCommandTest extends AddressBookGuiTest {
 

@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import seedu.myPotato.commons.core.Messages;
-import seedu.myPotato.testutil.TestTask;
+import seedu.mypotato.commons.core.Messages;
+import seedu.mypotato.testutil.TestTask;
 
 public class FindCommandTest extends AddressBookGuiTest {
 

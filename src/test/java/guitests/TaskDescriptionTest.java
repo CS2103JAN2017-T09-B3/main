@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.myPotato.logic.parser.CliSyntax;
-import seedu.myPotato.ui.TaskDescription;
+import seedu.mypotato.logic.parser.CliSyntax;
+import seedu.mypotato.ui.TaskDescription;
 
 //@@author A0135807A
 public class TaskDescriptionTest extends AddressBookGuiTest {

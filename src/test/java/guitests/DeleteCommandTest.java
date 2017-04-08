@@ -2,12 +2,12 @@ package guitests;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.myPotato.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
+import static seedu.mypotato.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
 
 import org.junit.Test;
 
-import seedu.myPotato.testutil.TestTask;
-import seedu.myPotato.testutil.TestUtil;
+import seedu.mypotato.testutil.TestTask;
+import seedu.mypotato.testutil.TestUtil;
 
 public class DeleteCommandTest extends AddressBookGuiTest {
 

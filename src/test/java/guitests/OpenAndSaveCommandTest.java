@@ -12,13 +12,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.myPotato.commons.core.Messages;
-import seedu.myPotato.commons.util.FileUtil;
-import seedu.myPotato.logic.commands.OpenCommand;
-import seedu.myPotato.logic.commands.SaveCommand;
-import seedu.myPotato.model.AddressBook;
-import seedu.myPotato.testutil.TestTask;
-import seedu.myPotato.testutil.TestUtil;
+import seedu.mypotato.commons.core.Messages;
+import seedu.mypotato.commons.util.FileUtil;
+import seedu.mypotato.logic.commands.OpenCommand;
+import seedu.mypotato.logic.commands.SaveCommand;
+import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.testutil.TestTask;
+import seedu.mypotato.testutil.TestUtil;
 
 //@@author A0135807A
 /** files are automatically written to the saved location. */

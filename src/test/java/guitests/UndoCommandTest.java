@@ -6,11 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import guitests.guihandles.TaskCardHandle;
-import seedu.myPotato.commons.exceptions.IllegalValueException;
-import seedu.myPotato.logic.commands.EditCommand;
-import seedu.myPotato.testutil.TaskBuilder;
-import seedu.myPotato.testutil.TestTask;
-import seedu.myPotato.testutil.TestUtil;
+import seedu.mypotato.commons.exceptions.IllegalValueException;
+import seedu.mypotato.logic.commands.EditCommand;
+import seedu.mypotato.testutil.TaskBuilder;
+import seedu.mypotato.testutil.TestTask;
+import seedu.mypotato.testutil.TestUtil;
 
 public class UndoCommandTest extends AddressBookGuiTest {
 
