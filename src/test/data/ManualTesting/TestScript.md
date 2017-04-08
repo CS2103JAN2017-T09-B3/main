@@ -1,3 +1,5 @@
+# Test Script for myPotato
+
 **Command:**<br>
 (Pre-condition: src\test\data\ManualTesting\SampleData.xml exists)
 
