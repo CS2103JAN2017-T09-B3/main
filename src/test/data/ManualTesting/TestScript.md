@@ -1,4 +1,4 @@
-**Command:** 
+**Command:**<br>
 (Pre-condition: src\test\data\ManualTesting\SampleData.xml exists)
 
     open src\test\data\ManualTesting\SampleData.xml
@@ -110,7 +110,7 @@
 
 * Task 52 under the current list will be deleted
 
-**Command:**
+**Command:**<br>
 (Pre-condition: task number 55 is created with a date)
 
     delete 55 deadline
