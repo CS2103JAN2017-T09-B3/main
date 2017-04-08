@@ -8,7 +8,15 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/myduyhoanglong.png" width="150"><br>
 **Role**: Testing, Team Lead <br>
 **Responsibilities**: UI, Model
-
+* Feature implemented:
+   * [Add Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#add-task--add): support floating task, deadline task, planning task, event
+   * [List Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#list-tasks--list)
+* Code written:
+   * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0144895N.md)
+   * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0144895N.md)
+* Other major contributions:
+   * GUI: include tab list to show all tasks, today tasks and completed tasks.
+   * Help other team member fix bugs
 -----
 
 #### [IVAN KOH](https://github.com/ivankws)
