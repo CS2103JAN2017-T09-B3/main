@@ -3,7 +3,10 @@ package seedu.address.logic.commands;
 import java.util.List;
 import java.util.Optional;
 
+import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.Messages;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.commons.events.ui.SwitchToTabRequestEvent;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -70,16 +73,28 @@ public class EditCommand extends Command {
             model.getUndoStack().push(COMMAND_WORD);
             model.getOldTask().push(new Task(taskToEdit));
             model.getCurrentTask().push(new Task(editedTask));
+
             model.updateTask(filteredTaskListIndex, editedTask);
-            // model.getOldTask().push(taskToEdit);
-            // model.getCurrentTask().push(editedTask);
+
+            //jump to edited task
+            lastShownList = model.getFilteredTaskList();
+            int indexToEdit = lastShownList.indexOf(editedTask);
+            if (indexToEdit == -1) {
+                EventsCenter.getInstance().post(new SwitchToTabRequestEvent("all"));
+                model.setCurrentList("all");
+                model.updateFilteredListToShowAll();
+                indexToEdit = model.getFilteredTaskList().indexOf(editedTask);
+                EventsCenter.getInstance().post(new JumpToListRequestEvent(indexToEdit));
+            } else {
+                EventsCenter.getInstance().post(new JumpToListRequestEvent(indexToEdit));
+            }
+            return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
-        model.updateFilteredListToShowAll();
-        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
     }
 
+    //@@author A0144895N
     /**
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
      * edited with {@code editTaskDescriptor}.
@@ -109,6 +124,7 @@ public class EditCommand extends Command {
 
         return new Task(updatedTitle, updatedContent, updatedDateTime, updatedTags, status);
     }
+    //@@author
 
     /**
      * Stores the details to edit the task with. Each non-empty field value will

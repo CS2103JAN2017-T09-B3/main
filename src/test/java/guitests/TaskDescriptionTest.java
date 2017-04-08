@@ -53,9 +53,7 @@ public class TaskDescriptionTest extends AddressBookGuiTest {
     public void taskDescription_commandSucceedsAfterFailedCommand_textClearedAndErrorStyleClassRemoved() {
         // add error style to simulate a failed command
         taskDescription.getStyleClass().add(TaskDescription.ERROR_STYLE_CLASS);
-
         taskDescription.runContent(CONTENT_THAT_SUCCEEDS);
-
         assertEquals(CONTENT_THAT_SUCCEEDS + NEW_LINE, taskDescription.getContentInput());
         assertEquals(defaultStyleOfTaskDecription, taskDescription.getStyleClass());
     }

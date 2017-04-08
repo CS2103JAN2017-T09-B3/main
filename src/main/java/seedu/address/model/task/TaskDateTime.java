@@ -43,9 +43,15 @@ public class TaskDateTime {
         }
     }
 
-    public TaskDateTime(DateValue startDateTime, DateValue endDateTime) {
+    public TaskDateTime(DateValue startDateTime, DateValue endDateTime) throws IllegalValueException {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
+
+        alignStartDateTime();
+
+        if (!isValidStartAndEndDateTime(this.startDateTime, this.endDateTime)) {
+            throw new IllegalValueException(MESSAGE_START_END_INVALID);
+        }
     }
 
     /*
@@ -120,16 +126,18 @@ public class TaskDateTime {
         if (!isThereStartDateTime() && !isThereEndDateTime()) {
             return "";
         } else if (!isThereStartDateTime()) {
-            return this.endDateTime.getStringValue();
+            return "End: " + this.endDateTime.getStringValue();
         } else if (!isThereEndDateTime()) {
-            return this.startDateTime.getStringValue();
+            return "Start: " + this.startDateTime.getStringValue();
         } else {
-            if (this.startDateTime.getDateValue().equals(this.endDateTime.getDateValue())) {
-                return this.startDateTime.getDateValue() + " "
-                        + this.startDateTime.getTimeValue() + " - " + this.endDateTime.getTimeValue();
-            } else {
-                return this.startDateTime.getStringValue() + " - " + this.endDateTime.getStringValue();
-            }
+//            if (this.startDateTime.getDateValue().equals(this.endDateTime.getDateValue())) {
+//                return this.startDateTime.getDateValue() + " "
+//                        + this.startDateTime.getTimeValue() + " - " + this.endDateTime.getTimeValue();
+//            } else {
+//                return this.startDateTime.getStringValue() + " - " + this.endDateTime.getStringValue();
+//            }
+            return "Start: " + this.startDateTime.getStringValue()
+                + "\n" + "End: " + this.endDateTime.getStringValue();
         }
     }
 

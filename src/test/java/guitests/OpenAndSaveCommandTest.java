@@ -4,13 +4,19 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.IOException;
 
+import javax.xml.bind.JAXBException;
+
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.logic.commands.OpenCommand;
 import seedu.address.logic.commands.SaveCommand;
+import seedu.address.model.AddressBook;
 import seedu.address.testutil.TestTask;
 import seedu.address.testutil.TestUtil;
 
@@ -21,7 +27,9 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
     public static final String FILE_NAME = "src/test/data/sandbox/taskmanager";
     public static final String FILE_ALTERNATE_NAME = "src/test/data/sandbox/myPotato";
     public static final String FILE_XML_EXTENSION = ".xml";
-    public static final String INVALID_FILE = "data/?*&^";
+    public static final String INVALID_FILENAME = "data/?*&^";
+    private static final File VALID_FILE = new File(FILE_DIR + "validTaskManager.xml");
+    private static final File MISSING_FILE = new File(FILE_DIR + "missing.xml");
 
     public static final String COMMAND_SAVE = "save ";
     public static final String COMMAND_OPEN = "open ";
@@ -31,13 +39,30 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
     public final int index = 1;
     public TestTask[] testTask = td.getTypicalTasks();
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     /** Test for Valid and Invalid fileNames */
     @Test
     public void isValidFile() {
         assertTrue(SaveCommand.isValidFile(new File(FILE_DIR)));
         assertTrue(SaveCommand.isValidFile(new File(FILE_NAME + FILE_XML_EXTENSION)));
 
-        assertFalse(SaveCommand.isValidFile(new File(INVALID_FILE)));
+        assertFalse(SaveCommand.isValidFile(new File(INVALID_FILENAME)));
+    }
+
+    /** Test for Exception catch */
+    @Test
+    public void saveDataToFile_StringClass_JAXBException() throws Exception {
+        thrown.expect(JAXBException.class);
+        VALID_FILE.createNewFile();
+        SaveCommand.saveDataToFile(VALID_FILE, new String());
+    }
+
+    @Test
+    public void saveDataToFile_missingFile_IOException() throws Exception {
+        thrown.expect(IOException.class);
+        SaveCommand.saveDataToFile(MISSING_FILE, new AddressBook());
     }
 
     /** Open and save files functionality. */
@@ -81,6 +106,8 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
         assertResultMessage(SaveCommand.MESSAGE_INVALID_PATH);
         commandBox.runCommand(COMMAND_OPEN + EMPTY);
         assertResultMessage(OpenCommand.MESSAGE_INVALID_PATH);
+        commandBox.runCommand(COMMAND_SAVE + INVALID_FILENAME);
+        assertResultMessage(SaveCommand.MESSAGE_INVALID_PATH);
     }
 
     /** Ensure save functions properly. */

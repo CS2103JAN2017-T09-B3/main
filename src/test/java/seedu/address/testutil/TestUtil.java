@@ -325,6 +325,13 @@ public class TestUtil {
         return listOfPersons.toArray(new TestTask[listOfPersons.size()]);
     }
 
+    //@@author A0125221Y
+    public static TestTask[] addTasksToListAtIndex(final TestTask[] persons, int index, TestTask... personsToAdd) {
+        List<TestTask> listOfTasks = asList(persons);
+        listOfTasks.addAll(index, asList(personsToAdd));
+        return listOfTasks.toArray(new TestTask[listOfTasks.size()]);
+    }
+
     private static <T> List<T> asList(T[] objs) {
         List<T> list = new ArrayList<>();
         for (T obj : objs) {

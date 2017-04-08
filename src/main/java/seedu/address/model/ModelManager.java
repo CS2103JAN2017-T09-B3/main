@@ -19,7 +19,6 @@ import seedu.address.commons.events.ui.UpdateStatusBarFooterEvent;
 import seedu.address.commons.events.ui.UpdateUiTaskDescriptionEvent;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.tag.UniqueTagList.DuplicateTagException;
-import seedu.address.model.task.DateMaker;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
@@ -141,13 +140,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         taskManager.addTask(task);
-        if (currentList.equalsIgnoreCase("today")) {
-            updateFilteredListToShowToday();
-        } else if (currentList.equalsIgnoreCase("completed")) {
-            updateFilteredListToShowCompleted();
-        } else {
-            updateFilteredListToShowAll();
-        }
+        updateFilteredListBasedOnTab();
         indicateAddressBookChanged();
     }
 
@@ -159,6 +152,7 @@ public class ModelManager extends ComponentManager implements Model {
         int taskIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
         taskManager.updateTask(taskIndex, editedTask);
         updateUiTaskDescription(editedTask);
+        updateFilteredListBasedOnTab();
         indicateAddressBookChanged();
     }
 
@@ -186,7 +180,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public Stack<ReadOnlyTask> getDeletedStackOfTasksAdd() {
+    public Stack<ReadOnlyTask> getAddedStackOfTasks() {
         return stackOfDeletedTasksAdd;
     }
 
@@ -237,13 +231,24 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public void updateFilteredListBasedOnTab() {
+        if (currentList.equalsIgnoreCase("today")) {
+            updateFilteredListToShowToday();
+        } else if (currentList.equalsIgnoreCase("completed")) {
+            updateFilteredListToShowCompleted();
+        } else {
+            updateFilteredListToShowAll();
+        }
+    }
+
+    @Override
     public void updateFilteredListToShowAll() {
         ListFilter.filterAll(filteredTasks);
     }
 
     @Override
     public void updateFilteredListToShowToday() {
-        ListFilter.filterEndDate(filteredTasks, DateMaker.getCurrentDate());
+        ListFilter.filterToday(filteredTasks);
     }
 
     @Override
