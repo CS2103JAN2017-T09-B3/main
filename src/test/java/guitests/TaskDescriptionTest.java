@@ -54,7 +54,7 @@ public class TaskDescriptionTest extends AddressBookGuiTest {
 
         taskDescription.runContent(CONTENT_THAT_SUCCEEDS);
 
-        assertEquals(CONTENT_THAT_SUCCEEDS + "\n", taskDescription.getContentInput());
+        assertEquals(CONTENT_THAT_SUCCEEDS, taskDescription.getContentInput());
         assertEquals(defaultStyleOfTaskDecription, taskDescription.getStyleClass());
     }
 

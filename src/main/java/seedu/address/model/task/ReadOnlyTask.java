@@ -35,7 +35,8 @@ public interface ReadOnlyTask {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle() + "\n")
                .append("Content: " + getContent() + "\n")
-               .append("Deadline: " + getDateTime().toString() + "\n")
+               .append("Start: " + getDateTime().getStartDateTimeString() + "\n")
+               .append("End: " + getDateTime().getEndDateTimeString() + "\n")
                .append("Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

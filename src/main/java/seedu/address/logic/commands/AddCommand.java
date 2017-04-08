@@ -58,6 +58,7 @@ public class AddCommand extends Command {
         try {
             model.addTask(toAdd);
 
+            //jump to added task
             UnmodifiableObservableList<ReadOnlyTask> lastShownList = model.getFilteredTaskList();
             int indexToAdd = lastShownList.indexOf(toAdd);
             if (indexToAdd == -1) {

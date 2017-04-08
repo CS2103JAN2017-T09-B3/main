@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.model.task.DateMaker;
 import seedu.address.model.task.DateValue;
 import seedu.address.model.task.DateWithTime;
 import seedu.address.model.task.ReadOnlyTask;
@@ -36,6 +37,41 @@ public class ListFilter {
                 t -> t.getDateTime().getEndDateTime().orElse(new DateWithTime())
                     .getDateValue().equals(dateValue.getDateValue()));
         }
+    }
+
+    public static void filterStartDate(FilteredList<ReadOnlyTask> filteredList, DateValue dateValue) {
+        assert dateValue != null;
+        if (dateValue.isWithTime()) {
+            filteredList.setPredicate(
+                t -> t.getDateTime().getStartDateTime().orElse(new DateWithTime())
+                    .getStringValue().equals(dateValue.getStringValue()));
+        } else {
+            filteredList.setPredicate(
+                t -> t.getDateTime().getStartDateTime().orElse(new DateWithTime())
+                    .getDateValue().equals(dateValue.getDateValue()));
+        }
+    }
+
+    public static void filterStartAndEndDate(FilteredList<ReadOnlyTask> filteredList, DateValue dateValue) {
+        assert dateValue != null;
+        if (dateValue.isWithTime()) {
+            filteredList.setPredicate(
+                t -> (t.getDateTime().getStartDateTime().orElse(new DateWithTime())
+                    .getStringValue().equals(dateValue.getStringValue())
+                    || t.getDateTime().getEndDateTime().orElse(new DateWithTime())
+                    .getStringValue().equals(dateValue.getStringValue())));
+        } else {
+            filteredList.setPredicate(
+                t -> (t.getDateTime().getStartDateTime().orElse(new DateWithTime())
+                    .getDateValue().equals(dateValue.getDateValue())
+                    || t.getDateTime().getEndDateTime().orElse(new DateWithTime())
+                    .getDateValue().equals(dateValue.getDateValue())));
+        }
+    }
+
+    public static void filterToday(FilteredList<ReadOnlyTask> filteredList) {
+        DateValue todayDate = DateMaker.getCurrentDate();
+        ListFilter.filterStartAndEndDate(filteredList, todayDate);
     }
 
     public static void filterCompleted (FilteredList<ReadOnlyTask> filteredList) {

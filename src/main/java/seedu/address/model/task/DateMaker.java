@@ -37,14 +37,14 @@ public class DateMaker {
     public void makeDate(String dateString) throws IllegalValueException {
         assert dateString != null;
         resetMaker();
-        dateString = dateString.trim();
-        if (dateString.equals("")) {
+        String trimmedDateString = dateString.trim();
+        if (trimmedDateString.equals("")) {
             date = null;
             return;
         }
 
         Optional<DateWithTime> dateWithTime;
-        dateWithTime = makeAsDateWithTime(dateString);
+        dateWithTime = makeAsDateWithTime(trimmedDateString);
         if (dateWithTime.isPresent()) {
             date = dateWithTime.get();
             refineYear();
@@ -52,7 +52,7 @@ public class DateMaker {
         }
 
         Optional<DateWithoutTime> dateWithoutTime;
-        dateWithoutTime = makeAsDateWithoutTime(dateString);
+        dateWithoutTime = makeAsDateWithoutTime(trimmedDateString);
         if (dateWithoutTime.isPresent()) {
             date = dateWithoutTime.get();
             refineYear();
@@ -60,7 +60,7 @@ public class DateMaker {
         }
 
         Optional<DateWithTime> timeOnly;
-        timeOnly = makeAsTimeOnly(dateString);
+        timeOnly = makeAsTimeOnly(trimmedDateString);
         if (timeOnly.isPresent()) {
             date = timeOnly.get();
             return;
