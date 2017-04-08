@@ -1,123 +1,164 @@
-Command: (Pre-condition: src\test\data\ManualTesting\SampleData.xml exists)
-open src\test\data\ManualTesting\SampleData.xml
+**Command:** 
+(Pre-condition: src\test\data\ManualTesting\SampleData.xml exists)
 
-Expected Result:
-¡°Loaded src\test\data\ManualTesting\SampleData.xml¡± will be displayed on the ResultDisplayBar.
-Load tasks from SampleData.xml to myPotato.
+    open src\test\data\ManualTesting\SampleData.xml
 
-Command:
-help
+**Expected Result:**
 
-Expected Result:
-MyPotato user guide will be shown
+* Loaded src\test\data\ManualTesting\SampleData.xml will be displayed on the ResultDisplayBar.
+* Load tasks from SampleData.xml to myPotato.
 
-Command:
-add Buy dinner
-add Software engineering project submit end/11:59 10 apr
-add Visit grandpa start/15 apr
-add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
+**Command:**
 
-Expected result:
-Floating task buy dinner will be added at the back of the list
-Deadline task software engineering will be added after buy dinner
-Planning task visit grandpa will be added after software engineering
-Event meeting will be added after visit grandpa
+    help
 
-Command:
-mark 52
+**Expected Result:**
 
-Expected result:
-Task number 52 in the current list will change color from black to green and the task will be added into the completed list
+* A new window displaying User Guide will be displayed.
 
-Command:
-list all
-list today
-list completed
+**Command:**
 
-Expected result:
-The list containing all the completed tasks and uncompleted tasks is shown
-The list containing today¡¯s date tasks will be shown
-The list containing completed tasks will be shown
+    add Buy dinner
+    add Software engineering project submit end/11:59 10 apr
+    add Visit grandpa start/15 apr
+    add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
-Command:
-select 52
+**Expected result:**
 
-Expected result:
-Select the second task in the current list
+* Floating task buy dinner will be added at the back of the list.
+* Deadline task software engineering will be added after buy dinner.
+* Planning task visit grandpa will be added after software engineering.
+* Event meeting will be added after visit grandpa.
 
-Command: 
-edit 52 c/new content
-edit 53 start/3 apr 4pm
-edit 54 end/4 apr 6:30pm #mrt
+**Command:**
 
-Expected result:
-edits the content of task number 52 to "new content"
-edits the start date time of task number 53 to 4pm of 3 April
-edits the end date time of task number 54 to 6:30pm of 4 April and add a tag
+    mark 52
 
-Command:
-Undo
+**Expected result:**
 
-Expected result:
-The previous edit should be undone and the result display should shows a   "Previous command has been undo" message.
+* Task number 52 in the current list will change from black to green to indicate task as completed and the task will be added into the completed list.
 
-Command:
-unmark 52
+**Command:**
 
-Expected result:
-Task number 52 in the current list(all list) will change color from green to black and the task will be removed from completed task.
+    list all
+    list today
+    list completed
 
-Command:
-find meeting
+**Expected result:**
 
-Expected result:
-Task Meeting will be shown in the list
+* The list containing all the completed tasks and uncompleted tasks are shown.
+* The list containing today's date tasks will be shown.
+* The list containing completed tasks will be shown.
 
-Command:
-find content/new
+**Command:**
 
-Expected result:
-Task buy dinner will be shown
+    select 52
 
-Command:
-delete 52
+**Expected result:**
 
-Expected result:
-Task 52 under the current list will be deleted
+* Select the task number 52 in the current list.
 
-Command: (Pre-condition: task number 55 is created)
-delete 55 deadline
+**Command:**
 
-Expected result:
-Task 55 deadline will be deleted
+    edit 52 c/new content
+    edit 53 start/3 apr 4pm
+    edit 54 end/4 apr 6:30pm #mrt
 
-Command: Undo
+**Expected result:**
 
-Expected result:
-The deadline for task 55 which be restored and the result display should  shows a   "Previous command has been undo" message
+* edits the content of task number 52 to "new content".
+* edits the start date time of task number 53 to 4pm of 3 April.
+* edits the end date time of task number 54 to 6:30pm of 4 April and add a tag, mrt.
 
-Command:
- add Set alarm
- Undo
+**Command:**
 
-Expected result:
-The floating task Set alarm which was added to the end of the list should now  be deleted after the undo command and the result display should shows a "Previous command has been undo" message
+    undo
 
-Command: Clear
+**Expected result:**
 
-Expected result: 
-The task list should now be emptied 
+* The previous edit should be undone and the result display should shows a "Previous command has been undo" message.
 
-Command: Undo
+**Command:**
 
-Expected result:
-The previous task list should now be restored and the result display should     shows a   "Previous command has been undo" message
+    unmark 52
 
-Command: 
-save data/SampleData
-save data/SampleData.xml
+**Expected result:**
 
-Expected Result: 
-A file will be created in the specified path.
-¡°Tasks saved to src\test\data\ManualTesting\SampleData.xml¡± will be displayed on the ResultDisplayBar.
-StatusBarFooter displays the path it is saved to.
+* Task number 52 in the current list(all list) will change color from green to black to indicate task as uncompleted and the task will be removed from completed task.
+
+**Command:**
+
+    find meeting
+
+**Expected result:**
+
+* Task Meeting will be shown in the left panel list.
+
+**Command:**
+
+    find content/new
+
+**Expected result:**
+
+* Task buy dinner will be shown in the left panel list.
+
+**Command:**
+
+    delete 52
+
+**Expected result:**
+
+* Task 52 under the current list will be deleted
+
+**Command:**
+(Pre-condition: task number 55 is created with a date)
+
+    delete 55 deadline
+
+**Expected result:**
+
+* Task 55 deadline will be deleted
+
+**Command:**
+
+    undo
+
+**Expected result:**
+
+* The deadline for task 55 will be restored and the result display should shows a "Previous command has been undo" message
+
+**Command:**
+
+    add Set alarm
+    undo
+
+**Expected result:**
+
+* The floating task Set alarm which was added to the end of the list should now be deleted after the undo command and the result           display should shows a "Previous command has been undo" message
+
+**Command:**
+
+    clear
+
+**Expected result:**
+
+* The task list should now be emptied.
+
+**Command:**
+
+    undo
+
+**Expected result:**
+
+* The previous task list should now be restored and the result display should shows a "Previous command has been undo" message
+
+**Command:**
+
+    save data/SampleData
+    save data/SampleData.xml
+
+**Expected Result:**
+
+* A file will be created in the specified path.
+* Tasks saved to src\test\data\ManualTesting\SampleData.xmlÂ¡Â± will be displayed on the ResultDisplayBar.
+* StatusBarFooter displays the path it is saved to.
