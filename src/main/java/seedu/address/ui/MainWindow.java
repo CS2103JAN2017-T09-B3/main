@@ -17,9 +17,9 @@ import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.LoadFirstTaskEvent;
+import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.task.ReadOnlyTask;
@@ -29,7 +29,7 @@ import seedu.address.model.task.ReadOnlyTask;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Region> {
-    private static final String MESSAGE_SUCCESS_SAVE = "File location saved at";
+    private static final String MESSAGE_SUCCESS_SAVE = "File location saved at ";
     private static final String MESSAGE_SUCCESS_OPEN = " sucessfully loaded!";
     private static final String COMMAND_OPEN = "open ";
     private static final String COMMAND_SAVE = "save ";
@@ -224,7 +224,7 @@ public class MainWindow extends UiPart<Region> {
      * Allows the user to select/create a file to save to.
      */
     @FXML
-    public CommandResult handleSaveAs() throws CommandException {
+    public void handleSaveAs() throws CommandException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                                                         "XML files (*.xml)", "*.xml");
@@ -234,11 +234,11 @@ public class MainWindow extends UiPart<Region> {
 
         logic.execute(COMMAND_SAVE + file.getAbsolutePath());
         updateStatusBarFooter();
-        return new CommandResult(MESSAGE_SUCCESS_SAVE + file.getName());
+        raise(new NewResultAvailableEvent(MESSAGE_SUCCESS_SAVE + file.getName()));
     }
 
     @FXML
-    public CommandResult handleOpen() throws CommandException {
+    public void handleOpen() throws CommandException {
         FileChooser fileChooser = new FileChooser();
 
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
@@ -248,7 +248,7 @@ public class MainWindow extends UiPart<Region> {
         File file = fileChooser.showOpenDialog(primaryStage);
         logic.execute(COMMAND_OPEN + file.getAbsolutePath());
         updateStatusBarFooter();
-        return new CommandResult(file.getName() + MESSAGE_SUCCESS_OPEN);
+        raise(new NewResultAvailableEvent(file.getName() + MESSAGE_SUCCESS_OPEN));
     }
 
     public void updateStatusBarFooter() {
