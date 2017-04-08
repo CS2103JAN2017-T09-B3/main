@@ -202,7 +202,7 @@ _Figure 3.4.1 : Structure of the Model Component_
 
 [**API**](#api) : [`Model.java`](../src/main/java/seedu/myPotato/model/Model.java) in `src/main/java/seedu/myPotato/model`
 
-Model component contains task class and tag class, and it ensures that myPotato can give the correct output according to the user input. 
+Model component contains task class and tag class, and it ensures that myPotato can give the correct output according to the user input.
 
 The `Model`:
 

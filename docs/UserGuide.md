@@ -96,17 +96,17 @@ You can add a task using the following format. Upon adding a task, details of th
       hh:mm (e.g 12:15)
       hh :mm am/pm (e.g 9:15pm)
       hh am/pm (e.g 10am)
-      
+
 * If only time is given in ending date time, date is automatically specified as today.
-* If only time is given in starting date time, starting date is automatically specified as ending date. If there is ending date, starting date is automatically specified as today 
+* If only time is given in starting date time,starting date is automatically specified as ending date. If there is ending date, starting date is automatically specified as today 
 * After adding, the task is automatically highlighted
 * Supported types of task:
-      
+
       Floating task: a task without date time
       Deadline task: a task with an ending date time
       Planning task: a task with an starting date time
       Event: a task with starting and ending date time
-      
+
 **Examples:**
 
    * add Buy dinner
@@ -140,7 +140,7 @@ When you need the content to a specific task, you can use the select command to 
 
     Format: select INDEX
 
-* Alternative: click to the task in the showing list 
+* Alternative: click to the task in the showing list
 * Select the task and display all details at the specified `INDEX`
 * The INDEX refers to the index number shown in the most recent listing
 
@@ -148,7 +148,7 @@ When you need the content to a specific task, you can use the select command to 
 
    * select 2
       >*select the second task in the current list*
-    
+
 ### Edit Task : `edit`
 
 You can update any part of a task using edit command. The formats of DATE and TIME are the same as add command.<br>
@@ -171,16 +171,16 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
     * edit 2 start/3 apr 4pm
       >*edits the start date time of task at index 2 to 4pm of 3 April*
-    
+
     * edit 3 end/4 apr 6:30 #mrt
       >*edits the end date time of task at index 3 to 6:30pm of 4 April and add a tag <kbd>mrt<kbd>*
 
 ### Mark Task As Done : `mark`
 
 You can mark a task as completed once you finished that task.<br>
-    
+
     Format: MARK INDEX
-    
+
  * mark the chosen task as done
  * once the task is marked, the task color change from black to green
  * once the task is marked, the task will be added to completed list automatically
@@ -189,11 +189,11 @@ You can mark a task as completed once you finished that task.<br>
 
    * mark 2
       >*mark task at index 2 of the task list as done*
-    
+
 ### Mark Task As Undone : `unmark`
-    
+
     Format: UNMARK INDEX
- 
+
  * mark the chosen task as undone
  * once the task is unmarked, the task color change from green to black
  * once the task is unmarked, the task will be removed from completed task automatically
@@ -202,7 +202,7 @@ You can mark a task as completed once you finished that task.<br>
 
    * unmark 2
       >*mark task at index 2 of the task list as uncompleted*
-    
+
 ### Find Tasks : `find`
 
 In addition, you can simply find tasks by entering the `find` command accompanied with keywords or numbers in their title, description and dates.
@@ -236,7 +236,7 @@ If you have completed the task or need to delete unwanted task, simply input the
 
 * Task index can be found in the list on the left side of myPotato /**put a screenshot here**/<br>
 * Input the corresponding index number to delete the targeted task.<br>
-* TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline". 
+* TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline".
 
 **Examples:**
 
@@ -262,7 +262,7 @@ Accidentally removed your task? Fret not, simply enter the `undo` command to rev
 * This command will undo the previous add/delete or edit command which you had entered.
 * Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.
 * If the undo command is successful, the result display should shows "Previous command has been undo".
-* If the undo command is unsuccessful, the result display will show "No previous command found" instead. 
+* If the undo command is unsuccessful, the result display will show "No previous command found" instead.
 
 ### Save TaskList : `save`
 
@@ -272,7 +272,7 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
 
 * Future changes will be automatically saved to your specified FILELOCATION.<br>
 * myPotato will load the most recent saved FILELOCATION on start-up.
-    
+
  **Examples:**
  * save C:\CS2103\Project
  * save C:\CS2103\Project\myPotato

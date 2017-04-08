@@ -39,10 +39,10 @@ We are a team based in the [School of Computing, National University of Singapor
     * [Save Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#save-tasklist--save)
     * [Open Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#open-tasklist--open)
     * Graphical User Interface
-* Code written: 
+* Code written:
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135807A.md)
     * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0135807A.md)
-* Other major contributions: 
+* Other major contributions:
     * Administrative tasks(e.g. collate, releases, schedule meetings)
     * Did initial refactoring from persons to tasks
     * Set up Travis, Appveyor, Codacy, Coveralls
@@ -56,10 +56,10 @@ We are a team based in the [School of Computing, National University of Singapor
 * Features implemented:
     * [mark](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#mark-task-as-done--mark): mark a task as completed
     * [unmark](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#mark-task-as-undone--unmark): mark a task as uncompleted
-* Code written: 
+* Code written:
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135753A.md)
     * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0135753A.md)
-* Other major contributions: 
+* Other major contributions:
     * Added in SampleData
 
 -----
