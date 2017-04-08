@@ -7,7 +7,7 @@
 
 
 <img src="docs/images/MyPotato-1.PNG" width="600"><br>
-* This is a desktop Address Book application. It has a GUI but most of the user interactions happen using
+* This is a desktop Task Manager application. It has a GUI but most of the user interactions happen using
   a CLI (Command Line Interface).
 * It is a Java application intended for people to organize their tasks.
 * Find out how to install and use myPotato by reading the UserGuide file, docs/UserGuide.md.
