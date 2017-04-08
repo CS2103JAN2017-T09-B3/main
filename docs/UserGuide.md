@@ -242,7 +242,7 @@ If you want to delete deadline of the task without deleting the task, simply inp
 
     Format: delete INDEX [TASK_DETAIL]
 
-* Task index can be found in the list on the left side of myPotato <br> 
+* Task index can be found in the list on the left panel of myPotato <br> 
 > <img src="images/Index.PNG" width="600">
 * Input the corresponding index number to delete the targeted task.<br>
 * TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline".
