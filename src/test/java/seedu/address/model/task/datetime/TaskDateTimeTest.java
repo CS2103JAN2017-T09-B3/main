@@ -68,7 +68,7 @@ public class TaskDateTimeTest {
             Date date = new Date();
             date.setHours(15);
             date.setMinutes(0);
-            String expectedOutput = new SimpleDateFormat(DateWithTime.DATE_WITH_TIME_FORMAT).format(date);
+            String expectedOutput = "End: " + new SimpleDateFormat(DateWithTime.DATE_WITH_TIME_FORMAT).format(date);
             assertEquals(expectedOutput, outputTaskDateTime.toString());
 
             // align with today without end time
@@ -78,7 +78,7 @@ public class TaskDateTimeTest {
             date = new Date();
             date.setHours(14);
             date.setMinutes(0);
-            expectedOutput = new SimpleDateFormat(DateWithTime.DATE_WITH_TIME_FORMAT).format(date);
+            expectedOutput = "Start: " + new SimpleDateFormat(DateWithTime.DATE_WITH_TIME_FORMAT).format(date);
             assertEquals(expectedOutput, outputTaskDateTime.toString());
 
             // align with end time
@@ -88,8 +88,10 @@ public class TaskDateTimeTest {
             date = new Date();
             date.setDate(25);
             date.setMonth(2);
-            expectedOutput = new SimpleDateFormat(DateWithoutTime.DATE_WITHOUT_TIME_FORMAT).format(date)
-                    + " 15:00 - 16:00";
+            expectedOutput = "Start: " + new SimpleDateFormat(DateWithoutTime.DATE_WITHOUT_TIME_FORMAT).format(date)
+                    + " 15:00"
+                    + "\n" + "End: " + new SimpleDateFormat(DateWithoutTime.DATE_WITHOUT_TIME_FORMAT).format(date)
+                    + " 16:00";
             assertEquals(expectedOutput, outputTaskDateTime.toString());
         } catch (IllegalValueException e) {
 

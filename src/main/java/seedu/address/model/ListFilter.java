@@ -52,10 +52,26 @@ public class ListFilter {
         }
     }
 
+    public static void filterStartAndEndDate(FilteredList<ReadOnlyTask> filteredList, DateValue dateValue) {
+        assert dateValue != null;
+        if (dateValue.isWithTime()) {
+            filteredList.setPredicate(
+                t -> (t.getDateTime().getStartDateTime().orElse(new DateWithTime())
+                    .getStringValue().equals(dateValue.getStringValue())
+                    || t.getDateTime().getEndDateTime().orElse(new DateWithTime())
+                    .getStringValue().equals(dateValue.getStringValue())));
+        } else {
+            filteredList.setPredicate(
+                t -> (t.getDateTime().getStartDateTime().orElse(new DateWithTime())
+                    .getDateValue().equals(dateValue.getDateValue())
+                    || t.getDateTime().getEndDateTime().orElse(new DateWithTime())
+                    .getDateValue().equals(dateValue.getDateValue())));
+        }
+    }
+
     public static void filterToday(FilteredList<ReadOnlyTask> filteredList) {
         DateValue todayDate = DateMaker.getCurrentDate();
-        ListFilter.filterEndDate(filteredList, todayDate);
-        ListFilter.filterStartDate(filteredList, todayDate);
+        ListFilter.filterStartAndEndDate(filteredList, todayDate);
     }
 
     public static void filterCompleted (FilteredList<ReadOnlyTask> filteredList) {
