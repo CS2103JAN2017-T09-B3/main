@@ -61,10 +61,10 @@ _Figure 2.2.1 : Architecture Diagram_
 7. Click OK twice. Rebuild project if prompted
 
 
-> Note:<br>
-> In step 6, click on `files from packages` in order to enable the `Change...` button<br>
-> Right click on the project (in Eclipse package explorer) to activate Checkstyle,
-> choose Checkstyle > Activate Checkstyle
+Note:<br>
+In step 6, click on `files from packages` in order to enable the `Change...` button<br>
+Right click on the project (in Eclipse package explorer) to activate Checkstyle,<br>
+choose Checkstyle > Activate Checkstyle
 
 ### 2.4. Troubleshooting project setup
 
@@ -86,19 +86,17 @@ _Figure 2.2.1 : Architecture Diagram_
 <img src="images/Architecture.png" width="600"><br>
 _Figure 3.1.1 : Architecture Diagram_
 
-The Architecture Diagram is the center of the design of a product. Once this is settled, we should not be changing this design anymore.
-
 The **_Architecture Diagram_** given above explains the high-level design of myPotato.
 Given below is a quick overview of each component.
 
-Tip:
+Tip:<br>
 The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
 To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
+`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for
 
-* At launch: Initializes the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup method where necessary.
+* Initializing the components in the correct sequence, and connects them up with each other at launch.
+* Shutting down the components and invokes cleanup method where necessary.
 
 [**`Commons`**](#36-common-classes) represents a collection of classes used by multiple other components.
 Two of those classes play important roles at the architecture level.
@@ -109,10 +107,10 @@ Two of those classes play important roles at the architecture level.
 
 Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 
-* The [**`UI`**](#32-ui-component) represents a collection of classes that provides support for the user to interact with our application.
-* The [**`Logic`**](#33-logic-component) represents a collection of classes that parses the user input to execute the right command before returning an appropriate feedback.
-* The [**`Model`**](#34-model-component) represents a collection of classes that are independent from the 3 other main components and manages the in-memory data.
-* The [**`Storage`**](#35-storage-component) represents a collection of classes that writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
+* The [**`UI`**](#32-ui-component) provides support for the user to interact with our application.
+* The [**`Logic`**](#33-logic-component) parses the user input to execute the right command before returning a success message.
+* The [**`Model`**](#34-model-component)  manages the in-memory data and is independent from the 3 other main components.
+* The [**`Storage`**](#35-storage-component) writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
 
 Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 For each of the main component:
