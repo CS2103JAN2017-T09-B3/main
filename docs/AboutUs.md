@@ -22,12 +22,18 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [IVAN KOH](https://github.com/ivankws)
 <img src="images/Ivan_Koh_1.JPG" width="150"><br>
 **Role**: Code quality <br>
-**Responsibilities**: Documentation, Logic, Model
+**Responsibilities**: Documentation, Model
 * Features implemented:
-    * [Undo AddCommand]
-    * [Undo DeleteCommand]
-    * [Undo EditCommand]
-    * [Undo ClearCommand]
+    * [Undo AddCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
+    * [Undo DeleteCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
+    * [Undo EditCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
+    * [Undo ClearCommand](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#undo--undo)
+ * Code written:
+    * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0125221Y.md)
+    * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0125221Y.md)
+ * Other major contributions:
+   * Administrative tasks
+   * Help fix minor bugs
 
 -----
 
@@ -35,10 +41,12 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/e0011840.png" width="150"><br>
 **Role**: Integration <br>
 **Responsibilities**: [Storage](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/DeveloperGuide.md#35-storage)
+, GUI
 * Features Implemented:
     * [Save Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#save-tasklist--save)
     * [Open Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#open-tasklist--open)
-    * Graphical User Interface
+    * [Delete Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#delete-task--delete): delete deadline
+    * Graphical User Interface: Right Panel of myPotato
 * Code written:
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135807A.md)
     * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0135807A.md)

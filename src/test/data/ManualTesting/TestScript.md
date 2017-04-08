@@ -1,3 +1,5 @@
+# Test Script for myPotato
+
 **Command:**<br>
 (Pre-condition: src\test\data\ManualTesting\SampleData.xml exists)
 
@@ -5,7 +7,7 @@
 
 **Expected Result:**
 
-* Loaded src\test\data\ManualTesting\SampleData.xml will be displayed on the ResultDisplayBar.
+* `Loaded SampleData.xml` will be displayed on the ResultDisplayBar.
 * Load tasks from SampleData.xml to myPotato.
 
 **Command:**
@@ -15,6 +17,7 @@
 **Expected Result:**
 
 * A new window displaying User Guide will be displayed.
+* A message "Opened hep window" will also be shown on the result display.
 
 **Command:**
 
@@ -26,9 +29,10 @@
 **Expected result:**
 
 * Floating task buy dinner will be added at the back of the list.
-* Deadline task software engineering will be added after buy dinner.
-* Planning task visit grandpa will be added after software engineering.
-* Event meeting will be added after visit grandpa.
+* Deadline task software engineering will be added after Floating task buy dinner.
+* Planning task visit grandpa will be added after Deadline task software engineering.
+* Event meeting will be added after Planning task visit grandpa.
+* Tasks details will be reflected on the right panel after a task is added.
 
 **Command:**
 
@@ -37,6 +41,7 @@
 **Expected result:**
 
 * Task number 52 in the current list will change from black to green to indicate task as completed and the task will be added into the completed list.
+* Task details will be shown on the right panel.
 
 **Command:**
 
@@ -46,17 +51,19 @@
 
 **Expected result:**
 
-* The list containing all the completed tasks and uncompleted tasks are shown.
-* The list containing today's date tasks will be shown.
-* The list containing completed tasks will be shown.
+* The list containing all the completed tasks and uncompleted tasks are shown on the left panel. "Listed all tasks" message will also be shown on the result display.
+* The list containing today's date tasks will be shown on the left panel. "Listed all today tasks" message will also be shown on the result display.
+* The list containing completed tasks will be shown on the left panel. "Listed all completed tasks" message will also be shown on the result display.
 
 **Command:**
 
+    list all
     select 52
 
 **Expected result:**
 
-* Select the task number 52 in the current list.
+* Auto scroll to the task number 52 in the current list. The task details and content will be displayed on the right panel.
+* A message "Selected Task:52" will be shown on the result display.
 
 **Command:**
 
@@ -69,6 +76,7 @@
 * edits the content of task number 52 to "new content".
 * edits the start date time of task number 53 to 4pm of 3 April.
 * edits the end date time of task number 54 to 6:30pm of 4 April and add a tag, mrt.
+* After editing a task, the right panel should also reflect the changes.
 
 **Command:**
 
@@ -93,6 +101,7 @@
 **Expected result:**
 
 * Task Meeting will be shown in the left panel list.
+* A message "1 tasks listed" should be shown on the result display.
 
 **Command:**
 
@@ -101,9 +110,11 @@
 **Expected result:**
 
 * Task buy dinner will be shown in the left panel list.
+* A message "1 tasks listed" should be shown on the result display.
 
 **Command:**
 
+    list all
     delete 52
 
 **Expected result:**
@@ -111,13 +122,14 @@
 * Task 52 under the current list will be deleted
 
 **Command:**<br>
-(Pre-condition: task number 55 is created with a date)
+(Pre-condition: task number 54, event meeting is created with a date and at index 54)
 
-    delete 55 deadline
+    delete 54 deadline
 
 **Expected result:**
 
-* Task 55 deadline will be deleted
+* Task 54 deadline will be deleted.
+* A message "Deadline deleted for Meeting!" will be shown on the result display.
 
 **Command:**
 
@@ -125,7 +137,7 @@
 
 **Expected result:**
 
-* The deadline for task 55 will be restored and the result display should shows a "Previous command has been undo" message
+* The deadline for task 54 will be restored and the result display should shows a "Previous command has been undo" message.
 
 **Command:**
 
@@ -134,7 +146,7 @@
 
 **Expected result:**
 
-* The floating task Set alarm which was added to the end of the list should now be deleted after the undo command and the result           display should shows a "Previous command has been undo" message
+* The floating task Set alarm which was added to the end of the list should now be deleted after the undo command and the result           display should shows a "Previous command has been undo" message.
 
 **Command:**
 
@@ -143,6 +155,7 @@
 **Expected result:**
 
 * The task list should now be emptied.
+* "myPotato has been cleared!" message should be shown on the result display.
 
 **Command:**
 
@@ -160,5 +173,5 @@
 **Expected Result:**
 
 * A file will be created in the specified path.
-* Tasks saved to src\test\data\ManualTesting\SampleData.xml¡± will be displayed on the ResultDisplayBar.
+* Tasks saved to `src\test\data\ManualTesting\SampleData.xml` will be displayed on the ResultDisplayBar.
 * StatusBarFooter displays the path it is saved to.
