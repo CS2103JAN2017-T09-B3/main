@@ -45,7 +45,7 @@ We are a team based in the [School of Computing, National University of Singapor
 * Features Implemented:
     * [Save Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#save-tasklist--save)
     * [Open Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#open-tasklist--open)
-    * [Delete Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#delete-task--delete):delete deadline
+    * [Delete Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#delete-task--delete): delete deadline
     * Graphical User Interface: Right Panel of myPotato
 * Code written:
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135807A.md)
