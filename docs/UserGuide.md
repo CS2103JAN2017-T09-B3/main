@@ -37,23 +37,25 @@ In this guide, we will guide you through all the features by the following list.
 | ---------- |
 | 1. [Help](#help--help) |
 | 2. [Add Task](#add-task--add) |
-| 3. [List all Tasks](#list-all-tasks--list) |
+| 3. [List Tasks](#list-all-tasks--list) |
 | 4. [Select Task](#select-task--select) |
 | 5. [Edit Task](#edit-task--edit) |
+| 5. [Mark Task As Done]() |
+| 5. [Mark Task As UnDone]() |
 | 6. [Find Tasks](#find-tasks--find) |
 | 7. [Delete Task](#delete-task--delete) |
-| 8. [Clear all Tasks](#clear-all-tasks--clear) |
-| 9. [Undo a Previous Command](#undo-a-previous-command--undo) |
+| 8. [Clear Tasks](#clear-all-tasks--clear) |
+| 9. [Undo](#undo-a-previous-command--undo) |
 | 10. [Save TaskList](#save-tasklist--save) |
 | 11. [Open TaskList](#open-tasklist--open) |
 | 12. [Exit Program](#exit-program--exit) |
 
 ### Launch
 
-You can start the day by opening myPotato to view the tasks to be completed for the current day.<br>
+//You can start the day by opening myPotato to view the tasks to be completed for the current day.<br>
 
-Note: myPotato can help you to automatically sort your tasks according to their deadlines.<br>
-The earliest deadline will appear at the top of the list and floating tasks at the bottom.
+//Note: myPotato can help you to automatically sort your tasks according to their deadlines.<br>
+//The earliest deadline will appear at the top of the list and floating tasks at the bottom.
 
 
 ## 2. Features
@@ -75,15 +77,15 @@ After Launching the application, if you need a cheatsheet of the command formats
 
 
 ### Add Task : `add`
-You can add a task with or without deadline. Upon adding a task, the content of the task will be displayed on the right window for your verification. <br>
+You can add a task using the following format. Upon adding a task, details of the task will be displayed on the right window for your verification. <br>
 
-    Format: add TITLE d/[CONTENT] from/[DATE] [TIME] to/[DATE] [TIME] #[tags]
-            add TITLE d/[CONTENT] by/[DATE] [TIME] #[tags]
+    Format: add TITLE c/[CONTENT] start/[DATE] [TIME] end/[DATE] [TIME] #[tags]
 
 However, do take note of the following:
 
-> TITLE is the name of a task <br>
-> DATE can be in different formats
+TITLE is the name of a task. Only TITLE is compulsory when you want to add a task, other fields are optional<br>
+CONTENT is the description of a task <br>
+DATE can be in any of following formats
 
       dd/MM/yyyy (e.g 15/3/2017)
       dd/MM/yy (e.g 15/3/17)
@@ -92,23 +94,33 @@ However, do take note of the following:
       dd-MM-yy (e.g 15-3-17)
       dd-MM: year will be specified as current year (e.g 15-3)
       dd MMM: year will be specified as current year (e.g 15 Mar)
+      dd.MM.yy (e.g 15.03.17)
 
-> TIME can be in different formats
+TIME can be in any of following formats
 
       HH:mm (e.g 12:15)
       HH :mm am/pm (e.g 9:15pm)
       HH am/pm (e.g 10am)
-
-
+      
+After adding, the task is automatically highlighted. 
+Supported types of task:
+      Floating task: a task without date time
+      Deadline task: a task with an ending date time
+      Planning task: a task with an starting date time
+      Event: a task with starting and ending date time
+      
       Examples:
-      add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
+      Floating task: add Buy dinner
+      Deadline task: add Software engineering project submit end/11:59 10 apr
+      Planning task: add Visit granpa start/15 apr
+      Event: add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
 
 #### List all Tasks : `list`
 
 After adding the tasks you need, you can track them using the list command.<br>
 
-    Format: list
+    Format: list all/today/completed
 
 
 #### Select Task : `select`
