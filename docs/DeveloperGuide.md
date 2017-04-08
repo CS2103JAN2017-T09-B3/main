@@ -218,7 +218,7 @@ _Figure 3.5.1 : Structure of the Storage Component_
 
 [**API**](#api) : [`Storage.java`](../src/main/java/seedu/myPotato/storage/Storage.java) in `/src/main/java/seedu/myPotato/storage`
 
-The `Storage` component:
+From Figure 3.5.1, the `Storage` component consists of a StorageManager that calls `Save` and `Read` methods from UserPrefsStorage and JsonUserPrefsStorage Interface.
 
 * UserPrefsStorage can save `UserPref` objects in json format and read it upon opening myPotato.
 * TaskManagerStorage can save the Task Manager data in xml format and read it upon opening myPotato.
