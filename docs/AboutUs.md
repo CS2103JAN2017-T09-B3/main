@@ -52,7 +52,15 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [ZHANG YAN HAO](https://github.com/vane1992)
 <img src="images/vane1992.png" width="150"><br>
 **Role**: Scheduling and deadlines, Code quality <br>
-**Responsibilities**: Model
+**Responsibilities**: Model, Logic
+* Features implemented:
+    * [mark](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#mark-task-as-done--mark): mark a task as completed
+    * [unmark](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#mark-task-as-undone--unmark): mark a task as uncompleted
+* Code written: 
+    * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135753A.md)
+    * [test code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/test/A0135753A.md)
+* Other major contributions: 
+    * Added in SampleData
 
 -----
 
