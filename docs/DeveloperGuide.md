@@ -6,7 +6,12 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 ## Table Of Contents
 1. [Introduction](#1-introduction)
 2. [Setting Up](#2-setting-up)
-3. [Design](#3-design)
+3. [Design](#3-design)<br>
+ 3.1 [Architecture](#31-architecture)<br>
+ 3.2 [UI component](#32-ui-component)<br>
+ 3.3 [Logic component](#33-logic-component)<br>
+ 3.4 [Model component](#34-model-component)<br>
+ 3.5 [Storage component](#35-storage-component)<br>
 4. [Implementation](#4-implementation)
 5. [Testing](#5-testing)
 6. [Dev Ops](#6-dev-ops)
