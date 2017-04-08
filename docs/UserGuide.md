@@ -95,7 +95,9 @@ You can add a task using the following format. Upon adding a task, details of th
       HH :mm am/pm (e.g 9:15pm)
       HH am/pm (e.g 10am)
       
-* After adding, the task is automatically highlighted. 
+* If only time is given in ending date time, date is automatically specified as today.
+* If only time is given in starting date time, starting date is automatically specified as ending date. If there is ending date, starting date is automatically specified as today 
+* After adding, the task is automatically highlighted
 * Supported types of task:
       
       Floating task: a task without date time
