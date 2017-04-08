@@ -45,17 +45,12 @@ In this guide, we will guide you through all the features by the following list.
 | 8. [Find Tasks](#find-tasks--find) |
 | 9. [Delete Task](#delete-task--delete) |
 | 10. [Clear Tasks](#clear-tasks--clear) |
-| 11. [Undo](#undo-a-previous-command--undo) |
+| 11. [Undo](#undo--undo) |
 | 12. [Save TaskList](#save-tasklist--save) |
 | 13. [Open TaskList](#open-tasklist--open) |
 | 14. [Exit Program](#exit-program--exit) |
 
 ### Launch
-
-//You can start the day by opening myPotato to view the tasks to be completed for the current day.<br>
-
-//Note: myPotato can help you to automatically sort your tasks according to their deadlines.<br>
-//The earliest deadline will appear at the top of the list and floating tasks at the bottom.
 
 
 ## 2. Features
@@ -81,11 +76,9 @@ You can add a task using the following format. Upon adding a task, details of th
 
     Format: add TITLE c/[CONTENT] start/[DATE] [TIME] end/[DATE] [TIME] #[tags]
 
-However, do take note of the following:
-
-TITLE is the name of a task. Only TITLE is compulsory when you want to add a task, other parts are optional<br>
-CONTENT is the description of a task <br>
-DATE can be in any of following formats
+* TITLE is the name of a task. Only TITLE is compulsory when you want to add a task, other parts are optional<br>
+* CONTENT is the description of a task <br>
+* DATE can be in any of following formats
 
       dd/MM/yyyy (e.g 15/3/2017)
       dd/MM/yy (e.g 15/3/17)
@@ -96,26 +89,30 @@ DATE can be in any of following formats
       dd MMM: year will be specified as current year (e.g 15 Mar)
       dd.MM.yy (e.g 15.03.17)
 
-TIME can be in any of following formats
+* TIME can be in any of following formats
 
       HH:mm (e.g 12:15)
       HH :mm am/pm (e.g 9:15pm)
       HH am/pm (e.g 10am)
       
-After adding, the task is automatically highlighted. 
-Supported types of task:
+* After adding, the task is automatically highlighted. 
+* Supported types of task:
       
       Floating task: a task without date time
       Deadline task: a task with an ending date time
       Planning task: a task with an starting date time
       Event: a task with starting and ending date time
       
-Examples:
+**Examples:**
 
-      Floating task: add Buy dinner
-      Deadline task: add Software engineering project submit end/11:59 10 apr
-      Planning task: add Visit granpa start/15 apr
-      Event: add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
+   * add Buy dinner
+      >*Floating task*
+   * add Software engineering project submit end/11:59 10 apr
+      >*Deadline task*
+   * add Visit granpa start/15 apr
+      >*Planning task*
+   * add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
+      >*Event*
 
 
 #### List Tasks : `list`
@@ -124,11 +121,14 @@ After adding the tasks you need, you can track them using the list command.<br>
 
     Format: list all/today/completed
 
-Examples:
+**Examples:**
 
-      list all: list all the tasks
-      list today: list all tasks which start and end today
-      list completed: list all completed tasks
+   * list all
+      >*list all the tasks*
+   * list today
+      >*list all tasks which start and end today*
+   * list completed
+      >*list all completed tasks*
 
 #### Select Task : `select`
 
@@ -136,13 +136,14 @@ When you need the content to a specific task, you can use the select command to 
 
     Format: select INDEX
 
-> Alternative: click to the task in the showing list <br>
-> Select the task and display all details at the specified `INDEX`<br>
-> The INDEX refers to the index number shown in the most recent listing<br>
+* Alternative: click to the task in the showing list 
+* Select the task and display all details at the specified `INDEX`
+* The INDEX refers to the index number shown in the most recent listing
 
-    Examples:
+**Examples:**
 
-    select 2: select the second task in the current list
+   * select 2
+      >*select the second task in the current list*
     
 #### Edit Task : `edit`
 
@@ -150,20 +151,24 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
     Format: Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]
 
-> Edit the task at the specified INDEX<br>
-> The index refers to the index number shown in the last task listing<br>
-> Existing values will be updated to the new input values<br>
-> When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative<br>
-> You can remove all the task's tags by typing # without specifying any tags after it
-> You can remove the task's starting date time by typing start/ without specifying any date time after it
-> You can remove the task's ending date time by typing end/ without specifying any date time after it
+* Edit the task at the specified INDEX
+* The index refers to the index number shown in the last task listing
+* Existing values will be updated to the new input values
+* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative
+* You can remove all the task's tags by typing # without specifying any tags after it
+* You can remove the task's starting date time by typing start/ without specifying any date time after it
+* You can remove the task's ending date time by typing end/ without specifying any date time after it
 
-    Examples:
-    edit 1 c/new content: edits the content of task number 1 to "new content"
+**Examples:**
 
-    edit 2 start/3 apr 4pm: edits the start date time of task number 2 to 4pm of 3 April
+   * edit 1 c/new content
+      >*edits the content of task number 1 to "new content"*
+
+    * edit 2 start/3 apr 4pm
+      >*edits the start date time of task number 2 to 4pm of 3 April*
     
-    edit 3 end/6:30pm 4 apr #mrt: edits the end date time of task number 2 to 6:30pm of 4 April and add a tag mrt
+    * edit 3 end/6:30pm 4 apr #mrt
+      >*edits the end date time of task number 2 to 6:30pm of 4 April and add a tag mrt*
 
 #### Mark Task As Done : `mark`
 
@@ -173,28 +178,26 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
 In addition, you can simply find tasks by entering the `find` command accompanied with keywords or numbers in their title, description and dates.
 
-
     Format: find KEYWORD [MORE_KEYWORDS]
     Format: find content/ KEYWORD [MORE_KEYWORDS]
 
-However, do take note of the following:
+* The keyword is not case sensitive
 
-> The keyword is not case sensitive. <br>
+* The order of the keywords does not matter. <br>
+   > e.g. `Meeting Project` will match `Project Meeting`<br>
 
-> The order of the keywords does not matter. <br>
-> e.g. `Meeting Project` will match `Project Meeting`<br>
+* By default, finding is in title of task. With specifier "content/", finding is in both title and content of task<br>
 
-> By default, finding is in title of task. With specifier "content/", finding is in both title and content of task<br>
+* Partial word can be found<br>
+   > e.g. `ject` will also match `Projects`<br>
 
-> Partial word can be found<br>
-> e.g. `ject` will also match `Projects`<br>
+* Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
+   > e.g. `Project` will match `Project Meeting`
 
-> Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
-> e.g. `Project` will match `Project Meeting`
+**Examples:**
 
-Examples:
-
-    find Meeting: returns Project Meeting 
+   * find Meeting
+      >*returns Project Meeting*
 
 #### Delete Task : `delete`
 
@@ -202,14 +205,16 @@ If you have completed the task or need to delete unwanted task, simply input the
 
     Format: delete INDEX [TASK_DETAIL]
 
-> Task index can be found in the list on the left side of myPotato /**put a screenshot here**/<br>
-> Input the corresponding index number to delete the targeted task.<br>
-> TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline". 
+* Task index can be found in the list on the left side of myPotato /**put a screenshot here**/<br>
+* Input the corresponding index number to delete the targeted task.<br>
+* TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline". 
 
-    Examples:
-    delete 2: deletes the task number 2
+**Examples:**
 
-    delete 1 deadline: deletes only the deadline of task number 1
+   * delete 2
+      >*deletes the task number 2*
+   * delete 1 deadline
+      >*deletes only the deadline of task number 1*
 
 #### Clear Tasks : `clear`
 
@@ -217,7 +222,7 @@ Need an efficient way to remove all tasks? Simply enter `clear` to remove the en
 
     Format: clear
 
-> This command allows you to clear your tasks when you do not need them anymore.
+* This command allows you to clear your tasks when you do not need them anymore.
 
 #### Undo : `undo`
 
@@ -225,23 +230,23 @@ Accidentally removed your task? Fret not, simply enter the `undo` command to rev
 
     Format:  undo
 
-> This command will undo the previous add/delete command which you had entered.
-> Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.
+* This command will undo the previous add/delete command which you had entered.
+* Unless you exit the program, you should be able to undo all the previous add/delete command executed in the program.
 
 #### Save TaskList : `save`
 
 Specify your file directory or file path to `save` a back-up copy of your tasklist to your location conveniently. Upon successful command execution, `Tasks saved to FILELOCATION` message will be displayed.<br>
 
-> Note:<br>
-> Future changes will be automatically saved to your specified FILELOCATION.<br>
-> myPotato will load the most recent saved FILELOCATION on start-up.
-
     Format: save FILEPATH
 
-    Examples:
-    save C:\CS2103\Project
-    save C:\CS2103\Project\myPotato
-    save C:\CS2103\Project\myPotato.xml
+* Future changes will be automatically saved to your specified FILELOCATION.<br>
+* myPotato will load the most recent saved FILELOCATION on start-up.
+    
+ **Examples:**
+ 
+    * save C:\CS2103\Project
+    * save C:\CS2103\Project\myPotato
+    * save C:\CS2103\Project\myPotato.xml
 
 #### Open TaskList : `open`
 
@@ -249,8 +254,9 @@ Specify a valid xml file to load into myPotato. Upon successful command executio
 
     Format: open FILEPATH
 
-    Examples:
-    open C:\CS2103\Project\taskmanager.xml
+**Examples:**
+
+   * open C:\CS2103\Project\taskmanager.xml
 
 #### Exit program : `exit`
 
@@ -258,7 +264,7 @@ To exit the program, simply type `exit`.
 
     Format: exit
 
-> This command will allow you to exit and save your previous changes.
+* This command will allow you to exit and save your previous changes.
 
 
 ## 3. FAQ
