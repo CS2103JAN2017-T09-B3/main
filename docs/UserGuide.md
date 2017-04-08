@@ -165,9 +165,9 @@ You can update any part of a task using edit command. The formats of DATE and TI
     
     edit 3 end/6:30pm 4 apr #mrt: edits the end date time of task number 2 to 6:30pm of 4 April and add a tag mrt
 
-#### Mark Task As Done: `mark`
+#### Mark Task As Done : `mark`
 
-#### Mark Task As Undone: `unmark`
+#### Mark Task As Undone : `unmark`
 
 #### Find Tasks : `find`
 
@@ -274,23 +274,29 @@ To exit the program, simply type `exit`.
 | ----------- | ---------- |
 | [Help](#help--help) | help |
 | | e.g. help |
-| [Add](#add-task--add) | add t/TASK [d/task] [#tags] |
-| | e.g. add t/CS2103 meeting d/03/03 #Programming Lab 2 |
-| [List](#list-all-tasks--list) | show a list of task list in the list task |
-| | e.g. list Homework |
+| [Add](#add-task--add) | add TITLE c/[CONTENT] start/[DATE][TIME] end/[DATE][TIME] #[TAG] |
+| | e.g. add CS2103 meeting c/bring computer start/2pm end/4pm 3 mar #Programming Lab 2 |
+| [List](#list-tasks--list) | show a list of task list in the list task |
+| | e.g. list all |
+| | e.g. list today |
+| | e.g. list completed |
 | [Select](#select-task--select) | select INDEX |
 | | e.g. select 2 |
-| [Edit](#edit-task--edit) | edit INDEX [t/TASK] [d/DATE] [#tags] |
-| | e.g. edit 1 t/CS2101 meeting d/04/03 #Progress Report |
+| [Edit](#edit-task--edit) | edit INDEX [TITLE] c/[CONTENT] start/[DATE][TIME] end/[DATE][TIME] #[TAG] |
+| | e.g. edit 1 CS2101 meeting end/04/03 #Progress Report |
+| [Mark](#mark-task-as-done--mark) | mark INDEX |
+| | e.g. mark 2 |
+| [Unmark](#mark-task-as-undone--mark) | unmark INDEX |
+| | e.g. unmark 2 |
 | [Find](#find-tasks--find) | find KEYWORD [MORE_KEYWORDS] |
 | | e.g. find CS2101 meeting |
-| | e.g. find #Programming Lab 2 |
+| | e.g. find content/Programming Lab 2 |
 | [Delete](#delete-task--delete)| delete INDEX [TASKDETAIL] |
-| | e.g. ` delete 3` |
-| | e.g. ` delete 3 deadline` |
-| [Clear](#clear-all-tasks--clear)| clear |
+| | e.g. delete 3|
+| | e.g. delete 3 deadline |
+| [Clear](#clear-tasks--clear)| clear |
 | | e.g. clear |
-| [Undo](#undo-a-previous-command--undo)| undo |
+| [Undo](#undo--undo)| undo |
 | | e.g. `undo` |
 | [Save](#save-tasklist--save)| save FILEPATH |
 | | e.g. save C:\CS2103\Project\myPotato.xml |
