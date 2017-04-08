@@ -41,9 +41,11 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/e0011840.png" width="150"><br>
 **Role**: Integration <br>
 **Responsibilities**: [Storage](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/DeveloperGuide.md#35-storage)
+, GUI
 * Features Implemented:
     * [Save Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#save-tasklist--save)
     * [Open Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#open-tasklist--open)
+    * [Delete Command](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/docs/UserGuide.md#delete-task--delete)
     * Graphical User Interface: Right Panel of myPotato
 * Code written:
     * [functional code](https://github.com/CS2103JAN2017-T09-B3/main/blob/master/collated/main/A0135807A.md)
