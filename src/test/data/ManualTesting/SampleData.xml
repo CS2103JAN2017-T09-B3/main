@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addressbook>
+    <tasks>
+        <title>CS2103</title>
+        <content>demo</content>
+        <startDateTime>30.03.17 09:00</startDateTime>
+        <endDateTime>30.03.17 10:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>CG2271</title>
+        <content>Writing lab report</content>
+        <startDateTime></startDateTime>
+        <endDateTime>01.04.17 11:59</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>CS2101</title>
+        <content>dry run</content>
+        <startDateTime>30.03.17 12:00</startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>buy milk</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+        <tagged>chocolate</tagged>
+    </tasks>
+    <tasks>
+        <title>CS2010</title>
+        <content>PS5</content>
+        <startDateTime></startDateTime>
+        <endDateTime>01.04.17 11:59</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>EE2024</title>
+        <content>finish basic feature for project</content>
+        <startDateTime></startDateTime>
+        <endDateTime>02.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>CG2270</title>
+        <content>lab 6</content>
+        <startDateTime></startDateTime>
+        <endDateTime>05.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>CG2023</title>
+        <content>demo session</content>
+        <startDateTime>01.04.17 09:00</startDateTime>
+        <endDateTime>01.04.17 12:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>buy chocolate</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+        <tagged>chocolate</tagged>
+    </tasks>
+    <tasks>
+        <title>clean room</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+        <tagged>too dirty</tagged>
+    </tasks>
+    <tasks>
+        <title>add some tasks for V0.4 demo</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime>30.03.17 01:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Project</title>
+        <content>do user interface</content>
+        <startDateTime>23.03.17</startDateTime>
+        <endDateTime>26.03.17</endDateTime>
+        <status>false</status>
+        <tagged>nosleep</tagged>
+        <tagged>shag</tagged>
+    </tasks>
+    <tasks>
+        <title>Homework assignment</title>
+        <content>linear algebra</content>
+        <startDateTime></startDateTime>
+        <endDateTime>26.03.17</endDateTime>
+        <status>false</status>
+        <tagged>subspaces</tagged>
+    </tasks>
+    <tasks>
+        <title>housework</title>
+        <content>mop and sweep</content>
+        <startDateTime>24.03.17</startDateTime>
+        <endDateTime>26.03.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>GES1021</title>
+        <content>animals &amp; plants</content>
+        <startDateTime></startDateTime>
+        <endDateTime>25.03.17</endDateTime>
+        <status>false</status>
+        <tagged>mudlobster</tagged>
+    </tasks>
+    <tasks>
+        <title>Entertainment</title>
+        <content>Running man</content>
+        <startDateTime></startDateTime>
+        <endDateTime>21.03.17</endDateTime>
+        <status>false</status>
+        <tagged>jihyo</tagged>
+    </tasks>
+    <tasks>
+        <title>cook dinner</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime>26.03.17 18:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>breakfast</title>
+        <content>eggs and bread</content>
+        <startDateTime></startDateTime>
+        <endDateTime>26.03.17 07:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>clear my iRobot</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>midterm</title>
+        <content>CS3230</content>
+        <startDateTime></startDateTime>
+        <endDateTime>24.03.17 12:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>exercise</title>
+        <content>Pokemon go hatch egg</content>
+        <startDateTime>01.01.17 18:00</startDateTime>
+        <endDateTime>01.01.17 19:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>ST2334</title>
+        <content>revision during lecture</content>
+        <startDateTime>10.04.17</startDateTime>
+        <endDateTime>10.04.17</endDateTime>
+        <status>false</status>
+        <tagged>4MC</tagged>
+        <tagged>joke</tagged>
+    </tasks>
+    <tasks>
+        <title>CS2100</title>
+        <content>writing essay</content>
+        <startDateTime></startDateTime>
+        <endDateTime>10.04.17 14:00</endDateTime>
+        <status>false</status>
+        <tagged>fullmark</tagged>
+    </tasks>
+    <tasks>
+        <title>project</title>
+        <content>pass the project assignment</content>
+        <startDateTime>11.04.17</startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+        <tagged>forever</tagged>
+    </tasks>
+    <tasks>
+        <title>ST lecture</title>
+        <content>attent lecture</content>
+        <startDateTime>10.04.17 16:00</startDateTime>
+        <endDateTime>10.04.17 18:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>CG2022</title>
+        <content>tutorial</content>
+        <startDateTime>11.04.17 12:00</startDateTime>
+        <endDateTime>11.04.17 13:00</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Bayern</title>
+        <content>watch champion league</content>
+        <startDateTime>12.04.17 02:45</startDateTime>
+        <endDateTime>12.04.17 05:45</endDateTime>
+        <status>false</status>
+        <tagged>win</tagged>
+    </tasks>
+    <tasks>
+        <title>Real Madrid</title>
+        <content>RM comfirm lose</content>
+        <startDateTime>12.04.17 02:46</startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>you know</title>
+        <content>no tutorial</content>
+        <startDateTime>13.04.17 09:00</startDateTime>
+        <endDateTime>13.04.17 10:00</endDateTime>
+        <status>false</status>
+        <tagged>retake</tagged>
+    </tasks>
+    <tasks>
+        <title>Study</title>
+        <content>never study</content>
+        <startDateTime></startDateTime>
+        <endDateTime>17.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>drop school</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>never code anymore</title>
+        <content>stop coding</content>
+        <startDateTime>17.04.17</startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>CS2102</title>
+        <content>graded assignment</content>
+        <startDateTime></startDateTime>
+        <endDateTime>05.04.17</endDateTime>
+        <status>false</status>
+        <tagged>mugger</tagged>
+    </tasks>
+    <tasks>
+        <title>Apply internships</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Bugis Thai food</title>
+        <content>time to take a break</content>
+        <startDateTime></startDateTime>
+        <endDateTime>06.04.17 16:00</endDateTime>
+        <status>false</status>
+        <tagged>food</tagged>
+    </tasks>
+    <tasks>
+        <title>CS2013Ivan</title>
+        <content>Finish test cases</content>
+        <startDateTime></startDateTime>
+        <endDateTime>04.04.17</endDateTime>
+        <status>false</status>
+        <tagged>sadlife</tagged>
+    </tasks>
+    <tasks>
+        <title>JS2222</title>
+        <content>Prepare presentations</content>
+        <startDateTime></startDateTime>
+        <endDateTime>07.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Movie night</title>
+        <content>At Seletar Mall</content>
+        <startDateTime></startDateTime>
+        <endDateTime>07.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Hardcore revisions</title>
+        <content></content>
+        <startDateTime>08.04.17</startDateTime>
+        <endDateTime>09.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>CS2012</title>
+        <content>Presentation preparation</content>
+        <startDateTime></startDateTime>
+        <endDateTime>05.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Water the plants</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>GET1006</title>
+        <content>preparatory readings</content>
+        <startDateTime></startDateTime>
+        <endDateTime>06.04.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>La Liga</title>
+        <content>why barcelona can win back a game that they were losing 0:4.This seems too fake to me, I just dont feel this was real. PSG can do better, its just that they screw up. Anyway, good luck to Bayern, lets beat Real Madrid and enter into the semi-final</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>ManUnited vs Bayern</title>
+        <content>I think they cannot make it</content>
+        <startDateTime>08.04.17</startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>chelsea vs mancity</title>
+        <content>you think change coach useful meh?</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+        <tagged>fail</tagged>
+    </tasks>
+    <tasks>
+        <title>arsenal vs Bayern</title>
+        <content>another 5:0?</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>dortmund vs lipzig RB</title>
+        <content>not doing well this season</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+        <tagged>tryharder</tagged>
+    </tasks>
+    <tasks>
+        <title>wolvesburg vs gladbach</title>
+        <content>hope you can survive</content>
+        <startDateTime></startDateTime>
+        <endDateTime>10.07.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>Juventus vs AC Milan</title>
+        <content></content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+        <tagged>SerieA</tagged>
+    </tasks>
+    <tasks>
+        <title>Roma vs Inter</title>
+        <content>bandrupt</content>
+        <startDateTime>04.03.17</startDateTime>
+        <endDateTime>07.05.17</endDateTime>
+        <status>false</status>
+    </tasks>
+    <tasks>
+        <title>PSG vs FCB</title>
+        <content>look at your champion league result man, you are doomed</content>
+        <startDateTime></startDateTime>
+        <endDateTime></endDateTime>
+        <status>false</status>
+    </tasks>
+    <tags>chocolate</tags>
+    <tags>too dirty</tags>
+    <tags>nosleep</tags>
+    <tags>shag</tags>
+    <tags>subspaces</tags>
+    <tags>mudlobster</tags>
+    <tags>jihyo</tags>
+    <tags>4MC</tags>
+    <tags>joke</tags>
+    <tags>fullmark</tags>
+    <tags>forever</tags>
+    <tags>win</tags>
+    <tags>retake</tags>
+    <tags>mugger</tags>
+    <tags>food</tags>
+    <tags>sadlife</tags>
+    <tags>fail</tags>
+    <tags>tryharder</tags>
+    <tags>SerieA</tags>
+</addressbook>
