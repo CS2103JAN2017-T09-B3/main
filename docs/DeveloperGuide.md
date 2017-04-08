@@ -22,7 +22,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 
 MyPotato is a task manager which provides a platform for users to organize their tasks efficiently. Our objective is to create a user interface that allows the user to manage their tasks conveniently with minimal use of a mouse.
 
-The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to responding with a feedback message informing the user whether the command is executed successfully.
+The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to respond with a feedback message informing the user whether the command is executed successfully.
 
 ## 2. Setting up
 
