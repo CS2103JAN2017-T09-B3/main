@@ -51,7 +51,9 @@ In this guide, we will guide you through all the features by the following list.
 | 14. [Exit Program](#exit-program--exit) |
 
 ### Launch
+At launch, myPotato will show a list of sample tasks at the left panel. The first task will be loaded on the right hand panel with its task details and contents.
 
+If this is not the first time you are using myPotato, you can choose to import your previous task list from your desktop or you can clear the sample tasks to begin using myPotato.
 
 ## 2. Features
 
@@ -74,26 +76,26 @@ After Launching the application, if you need a cheatsheet of the command formats
 ### Add Task : `add`
 You can add a task using the following format. Upon adding a task, details of the task will be displayed on the right window for your verification. <br>
 
-    Format: add TITLE c/[CONTENT] start/[DATE] [TIME] end/[DATE] [TIME] #[tags]
+    Format: add TITLE c/[CONTENT] start/[DATE] [TIME] end/[DATE] [TIME] #[TAGS]
 
 * TITLE is the name of a task. Only TITLE is compulsory when you want to add a task, other parts are optional<br>
 * CONTENT is the description of a task <br>
 * DATE can be in any of following formats
 
-      dd/MM/yyyy (e.g 15/3/2017)
-      dd/MM/yy (e.g 15/3/17)
-      dd/MM: year will be specified as current year (e.g 15/3)
-      dd-MM-yyyy (e.g 15-3-2017)
-      dd-MM-yy (e.g 15-3-17)
-      dd-MM: year will be specified as current year (e.g 15-3)
-      dd MMM: year will be specified as current year (e.g 15 Mar)
-      dd.MM.yy (e.g 15.03.17)
+      dd/mm/yyyy (e.g 15/3/2017)
+      dd/mm/yy (e.g 15/3/17)
+      dd/mm: year will be specified as current year (e.g 15/3)
+      dd-mm-yyyy (e.g 15-3-2017)
+      dd-mm-yy (e.g 15-3-17)
+      dd-mm: year will be specified as current year (e.g 15-3)
+      dd mm: year will be specified as current year (e.g 15 Mar)
+      dd.mm.yy (e.g 15.03.17)
 
 * TIME can be in any of following formats
 
-      HH:mm (e.g 12:15)
-      HH :mm am/pm (e.g 9:15pm)
-      HH am/pm (e.g 10am)
+      hh:mm (e.g 12:15)
+      hh :mm am/pm (e.g 9:15pm)
+      hh am/pm (e.g 10am)
       
 * If only time is given in ending date time, date is automatically specified as today.
 * If only time is given in starting date time, starting date is automatically specified as ending date. If there is ending date, starting date is automatically specified as today 
@@ -111,7 +113,7 @@ You can add a task using the following format. Upon adding a task, details of th
       >*Floating task*
    * add Software engineering project submit end/11:59 10 apr
       >*Deadline task*
-   * add Visit granpa start/15 apr
+   * add Visit grandpa start/15 apr
       >*Planning task*
    * add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
       >*Event*
@@ -165,13 +167,13 @@ You can update any part of a task using edit command. The formats of DATE and TI
 **Examples:**
 
    * edit 1 c/new content
-      >*edits the content of task number 1 to "new content"*
+      >*edits the content of task at index 1 to "new content"*
 
     * edit 2 start/3 apr 4pm
-      >*edits the start date time of task number 2 to 4pm of 3 April*
+      >*edits the start date time of task at index 2 to 4pm of 3 April*
     
     * edit 3 end/4 apr 6:30 #mrt
-      >*edits the end date time of task number 2 to 6:30pm of 4 April and add a tag <kbd>mrt<kbd>*
+      >*edits the end date time of task at index 3 to 6:30pm of 4 April and add a tag <kbd>mrt<kbd>*
 
 ### Mark Task As Done : `mark`
 
@@ -186,7 +188,7 @@ You can mark a task as completed once you finished that task.<br>
 **Examples:**
 
    * mark 2
-      >*mark task number 2 in the current list as done*
+      >*mark task at index 2 of the task list as done*
     
 ### Mark Task As Undone : `unmark`
     
@@ -199,7 +201,7 @@ You can mark a task as completed once you finished that task.<br>
 **Examples:**
 
    * unmark 2
-      >*mark task number 2 in the current list as uncompleted*
+      >*mark task at index 2 of the task list as uncompleted*
     
 ### Find Tasks : `find`
 
@@ -302,7 +304,6 @@ To exit the program, simply type `exit`.
        the file that contains the data of your previous myPotato folder.
 **Q**: How do I know the commands if the user guide is not with me?<br>
 **A**: Don't worry, just type in the help command and it will show you all the possble input commands.
-**Q**: 
 
 
 ## 4. Command Summary
