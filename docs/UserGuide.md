@@ -313,6 +313,7 @@ To exit the program, simply type `exit`.
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
        the file that contains the data of your previous myPotato folder.
+
 **Q**: How do I know the commands if the user guide is not with me?<br>
 **A**: Don't worry, just type in the help command and it will show you all the possble input commands.
 
