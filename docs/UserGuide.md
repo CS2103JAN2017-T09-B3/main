@@ -206,7 +206,7 @@ You can mark a task as completed once you finished that task.<br>
 In addition, you can simply find tasks by entering the `find` command accompanied with keywords or numbers in their title, description and dates.
 
     Format: find KEYWORD [MORE_KEYWORDS]
-    Format: find content/ KEYWORD [MORE_KEYWORDS]
+    Format: find content/KEYWORD [MORE_KEYWORDS]
 
 * The keyword is not case sensitive
 
