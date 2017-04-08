@@ -22,7 +22,12 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [IVAN KOH](https://github.com/ivankws)
 <img src="images/Ivan_Koh_1.JPG" width="150"><br>
 **Role**: Code quality <br>
-**Responsibilities**: Documentation, Logic
+**Responsibilities**: Documentation, Logic, Model
+* Features implemented:
+    * [Undo AddCommand]
+    * [Undo DeleteCommand]
+    * [Undo EditCommand]
+    * [Undo ClearCommand]
 
 -----
 
