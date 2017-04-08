@@ -37,18 +37,18 @@ In this guide, we will guide you through all the features by the following list.
 | ---------- |
 | 1. [Help](#help--help) |
 | 2. [Add Task](#add-task--add) |
-| 3. [List Tasks](#list-all-tasks--list) |
+| 3. [List Tasks](#list-tasks--list) |
 | 4. [Select Task](#select-task--select) |
 | 5. [Edit Task](#edit-task--edit) |
-| 5. [Mark Task As Done]() |
-| 5. [Mark Task As UnDone]() |
-| 6. [Find Tasks](#find-tasks--find) |
-| 7. [Delete Task](#delete-task--delete) |
-| 8. [Clear Tasks](#clear-all-tasks--clear) |
-| 9. [Undo](#undo-a-previous-command--undo) |
-| 10. [Save TaskList](#save-tasklist--save) |
-| 11. [Open TaskList](#open-tasklist--open) |
-| 12. [Exit Program](#exit-program--exit) |
+| 6. [Mark Task As Done](#mark-task-as-done--mark) |
+| 7. [Mark Task As UnDone](#mark-task-as-undone--unmark) |
+| 8. [Find Tasks](#find-tasks--find) |
+| 9. [Delete Task](#delete-task--delete) |
+| 10. [Clear Tasks](#clear-tasks--clear) |
+| 11. [Undo](#undo-a-previous-command--undo) |
+| 12. [Save TaskList](#save-tasklist--save) |
+| 13. [Open TaskList](#open-tasklist--open) |
+| 14. [Exit Program](#exit-program--exit) |
 
 ### Launch
 
@@ -83,7 +83,7 @@ You can add a task using the following format. Upon adding a task, details of th
 
 However, do take note of the following:
 
-TITLE is the name of a task. Only TITLE is compulsory when you want to add a task, other fields are optional<br>
+TITLE is the name of a task. Only TITLE is compulsory when you want to add a task, other parts are optional<br>
 CONTENT is the description of a task <br>
 DATE can be in any of following formats
 
@@ -104,24 +104,31 @@ TIME can be in any of following formats
       
 After adding, the task is automatically highlighted. 
 Supported types of task:
+      
       Floating task: a task without date time
       Deadline task: a task with an ending date time
       Planning task: a task with an starting date time
       Event: a task with starting and ending date time
       
-      Examples:
+Examples:
+
       Floating task: add Buy dinner
       Deadline task: add Software engineering project submit end/11:59 10 apr
       Planning task: add Visit granpa start/15 apr
       Event: add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
 
-#### List all Tasks : `list`
+#### List Tasks : `list`
 
 After adding the tasks you need, you can track them using the list command.<br>
 
     Format: list all/today/completed
 
+Examples:
+
+      list all: list all the tasks
+      list today: list all tasks which start and end today
+      list completed: list all completed tasks
 
 #### Select Task : `select`
 
@@ -134,14 +141,9 @@ When you need the content to a specific task, you can use the select command to 
 > The INDEX refers to the index number shown in the most recent listing<br>
 
     Examples:
-    list
-    select 2
-    Select the 2nd task
 
-    find Project
-    select 1
-    Select the 1st task from the results returned from the find command
-
+    select 2: select the second task in the current list
+    
 #### Edit Task : `edit`
 
 You can update any part of a task using edit command. The formats of DATE and TIME are the same as add command.<br>
@@ -150,16 +152,22 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
 > Edit the task at the specified INDEX<br>
 > The index refers to the index number shown in the last task listing<br>
-> Existing values will be updated to the input values<br>
+> Existing values will be updated to the new input values<br>
 > When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative<br>
-> You can remove all the task's tags by typing t/ without specifying any tags after it
+> You can remove all the task's tags by typing # without specifying any tags after it
+> You can remove the task's starting date time by typing start/ without specifying any date time after it
+> You can remove the task's ending date time by typing end/ without specifying any date time after it
 
     Examples:
-    edit 1  d/22/03
-    Edits the due date of the 1st task to be 22/03
+    edit 1 c/new content: edits the content of task number 1 to "new content"
 
-    edit 2 Project meeting t/LT1
-    Edits the 2nd task to Project meeting and add hashtag LT1
+    edit 2 start/3 apr 4pm: edits the start date time of task number 2 to 4pm of 3 April
+    
+    edit 3 end/6:30pm 4 apr #mrt: edits the end date time of task number 2 to 6:30pm of 4 April and add a tag mrt
+
+#### Mark Task As Done: `mark`
+
+#### Mark Task As Undone: `unmark`
 
 #### Find Tasks : `find`
 
@@ -167,55 +175,43 @@ In addition, you can simply find tasks by entering the `find` command accompanie
 
 
     Format: find KEYWORD [MORE_KEYWORDS]
+    Format: find content/ KEYWORD [MORE_KEYWORDS]
 
 However, do take note of the following:
 
-> The keyword is case sensitive. <br>
-> e.g `project` will not match `Project`<br>
+> The keyword is not case sensitive. <br>
 
 > The order of the keywords does not matter. <br>
 > e.g. `Meeting Project` will match `Project Meeting`<br>
 
-> Search can based on title, description or dates.<br>
+> By default, finding is in title of task. With specifier "content/", finding is in both title and content of task<br>
 
-> Only complete word will be matched.  <br>
-> e.g. `Project` will not match `Projects`<br>
+> Partial word can be found<br>
+> e.g. `ject` will also match `Projects`<br>
 
 > Tasks matching at least one keyword will be returned (i.e. `OR` search).<br>
 > e.g. `Project` will match `Project Meeting`
 
-    Examples:
-    find Meeting
-    Returns Project Meeting
+Examples:
 
-    find 23/03
-    Returns Any task due by 23/03
+    find Meeting: returns Project Meeting 
 
 #### Delete Task : `delete`
 
 If you have completed the task or need to delete unwanted task, simply input the `delete` command.
 
-    Format: delete INDEX [TASKDETAIL]
+    Format: delete INDEX [TASK_DETAIL]
 
-> Alternative: choose the task showing in the list and type delete.<br>
-> Task index can be found in the panel List on the left side of myPotato.<br>
+> Task index can be found in the list on the left side of myPotato /**put a screenshot here**/<br>
 > Input the corresponding index number to delete the targeted task.<br>
-> If there is any deadline you need to remove from a task, simply key in `deadline` after the index.
+> TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline". 
 
     Examples:
-    list
-    delete 2
-    Deletes the 2nd task
+    delete 2: deletes the task number 2
 
-    list
-    delete 1 deadline
-    Deletes only the deadline of 1st task
+    delete 1 deadline: deletes only the deadline of task number 1
 
-    find Project
-    delete 1
-    Deletes the 1st task from the results of the `find` command
-
-#### Clear all Tasks : `clear`
+#### Clear Tasks : `clear`
 
 Need an efficient way to remove all tasks? Simply enter `clear` to remove the entire list of tasks.
 
@@ -223,7 +219,7 @@ Need an efficient way to remove all tasks? Simply enter `clear` to remove the en
 
 > This command allows you to clear your tasks when you do not need them anymore.
 
-#### Undo a Previous Command : `undo`
+#### Undo : `undo`
 
 Accidentally removed your task? Fret not, simply enter the `undo` command to revert your changes.
 
