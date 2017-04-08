@@ -274,9 +274,9 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
 * myPotato will load the most recent saved FILELOCATION on start-up.
     
  **Examples:**
-    * save C:\CS2103\Project
-    * save C:\CS2103\Project\myPotato
-    * save C:\CS2103\Project\myPotato.xml
+ * save C:\CS2103\Project
+ * save C:\CS2103\Project\myPotato
+ * save C:\CS2103\Project\myPotato.xml
 
 ### Open TaskList : `open`
 
