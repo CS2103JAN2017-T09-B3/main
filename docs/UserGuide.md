@@ -186,7 +186,7 @@ You can mark a task as completed once you finished that task.<br>
 **Examples:**
 
    * mark 2
-      >*mark the second task in the current list as done*
+      >*mark task number 2 in the current list as done*
     
 ### Mark Task As Undone : `unmark`
     
@@ -199,7 +199,7 @@ You can mark a task as completed once you finished that task.<br>
 **Examples:**
 
    * unmark 2
-      >*mark the second task in the current list as uncompleted*
+      >*mark task number 2 in the current list as uncompleted*
     
 ### Find Tasks : `find`
 
