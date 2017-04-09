@@ -22,16 +22,44 @@
 **Command:**
 
     add Buy dinner
+    
+**Expected result:**
+
+* Floating task buy dinner will be added at the back of the list.
+* Task will be selected after adding.
+* Tasks details will be reflected on the right panel after a task is added.
+    
+**Command:**
+
     add Software engineering project submit end/11:59 10 apr
+    add Problem Set 6 end/11pm
+
+
+**Expected result:**
+
+* Deadline task software engineering will be added after Floating task Buy dinner.
+* Deadline task problem set 6 will be added after Deadline task Software Engineering with today date.
+* Task will be selected after adding.
+* Tasks details will be reflected on the right panel after a task is added.
+
+**Command:**
+
     add Visit grandpa start/15 apr
+
+**Expected result:**
+
+* Planning task visit grandpa will be added after Deadline task problem set 6.
+* Task will be selected after adding.
+* Tasks details will be reflected on the right panel after a task is added.
+
+**Command:**
+
     add Meeting c/rehearse OP2 start/1pm end/4pm 22 Mar #CS2101
 
 **Expected result:**
 
-* Floating task buy dinner will be added at the back of the list.
-* Deadline task software engineering will be added after Floating task buy dinner.
-* Planning task visit grandpa will be added after Deadline task software engineering.
 * Event meeting will be added after Planning task visit grandpa.
+* Task will be selected after adding.
 * Tasks details will be reflected on the right panel after a task is added.
 
 **Command:**
@@ -46,14 +74,29 @@
 **Command:**
 
     list all
+
+**Expected result:**
+
+* The list containing all the completed tasks and uncompleted tasks are shown on the left panel.
+* "Listed all tasks" message will also be shown on the result display.
+
+**Command:**
+
     list today
+
+**Expected result:**
+
+* The list containing today's date tasks will be shown on the left panel.
+* "Listed all today tasks" message will also be shown on the result display.
+
+**Command:**
+
     list completed
 
 **Expected result:**
 
-* The list containing all the completed tasks and uncompleted tasks are shown on the left panel. "Listed all tasks" message will also be shown on the result display.
-* The list containing today's date tasks will be shown on the left panel. "Listed all today tasks" message will also be shown on the result display.
-* The list containing completed tasks will be shown on the left panel. "Listed all completed tasks" message will also be shown on the result display.
+* The list containing completed tasks will be shown on the left panel.
+* "Listed all completed tasks" message will also be shown on the result display.
 
 **Command:**
 
@@ -67,6 +110,29 @@
 
 **Command:**
 
+    list today
+    add software demo start/9am
+
+**Expected result:**
+
+* Today list is shown
+* Task software demo is added to the today list
+* Task is selected after added
+
+
+**Command:**
+
+    list completed
+    add lunch with prof Tan start/12pm end/1pm 12 apr
+
+**Expected result:**
+
+* Completed list is shown
+* Jump to all list. Task lunch with prof Tan is added to all list.
+* Task is selected after added
+
+**Command:**
+
     edit 52 c/new content
     edit 53 start/3 apr 4pm
     edit 54 end/4 apr 6:30pm #mrt
@@ -75,8 +141,8 @@
 
 * edits the content of task number 52 to "new content".
 * edits the start date time of task number 53 to 4pm of 3 April.
-* edits the end date time of task number 54 to 6:30pm of 4 April and add a tag, mrt.
-* After editing a task, the right panel should also reflect the changes.
+* edits the end date time of task number 54 to 6:30pm of 4 April and add a tag mrt.
+* After editing a task, it is selected and the right panel should also reflect the changes.
 
 **Command:**
 
@@ -105,7 +171,7 @@
 
 **Command:**
 
-    find content/new
+    find content/chicken
 
 **Expected result:**
 
