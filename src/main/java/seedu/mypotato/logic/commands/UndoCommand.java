@@ -101,8 +101,6 @@ public class UndoCommand extends Command {
                 Task updated = (Task) model.getOldTask().pop();
                 Task original = (Task) model.getCurrentTask().pop();
                 model.updateTask(original, updated);
-                model.getOldNextTask().push(original);
-                model.getNewNextTask().push(updated);
             } catch (UniqueTaskList.DuplicateTaskException utle) {
                 return new CommandResult(UndoCommand.MESSAGE_DUPLICATE_TASK);
             }
