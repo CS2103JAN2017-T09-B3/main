@@ -256,7 +256,9 @@ _Figure 3.5.1 : Structure of the Storage Component_
 From Figure 3.5.1, the `Storage` component consists of a StorageManager that calls `Save` and `Read` methods from UserPrefsStorage and JsonUserPrefsStorage Interface.
 
 * UserPrefsStorage can save `UserPref` objects in json format and read it upon opening myPotato.
-* TaskManagerStorage can save the Task Manager data in xml format and read it upon opening myPotato.
+* TaskManagerStorage can save the in-memory data in xml format and read it upon opening myPotato.
+
+Note: XmlSerializableTaskManager is a class to convert the in-memory UniqueTaskList and UniqueTagList to a .xml storage file and vice versa while XmlAdaptedTag and XmlAdaptedTask are classes to convert the respective UniqueTaskList and UniqueTagList to xml format.
 
 ### 3.6. Common classes
 
