@@ -91,7 +91,7 @@ choose Checkstyle > Activate Checkstyle
 <img src="images/Architecture.png" width="600"><br>
 _Figure 3.1.1 : Architecture Diagram_
 
-Tip:<br>
+Tip:
 The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
 To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
