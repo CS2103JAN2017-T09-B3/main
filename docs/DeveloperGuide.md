@@ -494,7 +494,7 @@ Use case ends.
 > 3a1. myPotato shows an error message<br>
   Use case resumes at Step 2
 
-####Use case: Undo a task
+#### Use case: Undo a task
 
 **MSS**
 
@@ -511,28 +511,34 @@ Use case ends.
 > 2a1. myPotato shows an error message
   Use case resumes at step 2
 
-####Use case: Setting Priority
+#### Use case: Save TaskList
 
 **MSS**
-
-1. User requests to list tasks
-2. myPotato shows the list of tasks
-3. User requests to set a priority for a task
-4. myPotato updates and save changes
+1. User requests to show the list of all tasks
+2. myPotato shows the list of all tasks
+1. User requests to save TaskList
+2. myPotato validate the filename and creates a file.
 Use case ends.
 
 **Extension**
 
-2a. The given task is invalid
+2a. The given filename is invalid
 
-> 2a1. myPotato shows an error message
+> 2a1. myPotato shows an invalid filename message
   Use case resumes at step 2
 
-3a. the list is empty
+#### Use case: Open TaskList
 
-> Use case ends
+**MSS**
+1. User requests to open storage file.
+2. myPotato validates, read from file before showing the list of all tasks
+Use case ends.
 
-{More to be added}
+**Extension**
+
+2a. The given storage file is invalid
+
+> 2a1. myPotato shows an invalid file message
 
 
 ## Appendix C : Non Functional Requirements
