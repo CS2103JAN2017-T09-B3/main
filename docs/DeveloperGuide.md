@@ -225,7 +225,7 @@ The model component contains 7 stacks specially designed to keep track of both p
 * getDeletedStackOfTasksIndex() stores the index of the task which was deleted by the users.
 * stackOfOldTask() stores the previous unedited task.
 * getCurrentTask() stores the new edited task
-* stackOfTasks() stores the previous list of tasks which had been cleared.
+* stackOfMyPotato() stores the previous list of tasks which had been cleared.
 
 Based on the previous command popped from the getUndoStack(), the undo command will call one of the following commandResult undoAdd(), undoDelete(), or undoClear() in the undoCommand class which will then restore the current task list to the previous state before the most recent command.
 
