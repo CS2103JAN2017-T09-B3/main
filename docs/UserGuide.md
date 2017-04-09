@@ -161,6 +161,8 @@ You can update any part of a task using edit command. The formats of DATE and TI
     Format: Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]
 
 * Alternative: You can edit directly on the right panel of myPotato and press `ENTER` after you make any change in any fields.
+* Note: Task Title cannot be left empty.
+
 * Edit the task at the specified INDEX
 * The index refers to the index number shown in the last task listing
 * After editing, edited task is automatically highlighted
@@ -245,8 +247,11 @@ If you want to delete deadline of the task without deleting the task, simply inp
 * Task index can be found in the list on the left panel of myPotato <br>
 > <img src="images/Index.png" width="600">
 * Input the corresponding index number to delete the targeted task.<br>
-* TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline".
-* A message "Deadline deleted for TITLE" will shown on the result display when deleting deadline only.
+* TASK_DETAIL is part of task that you want to delete. For now, you can only delete deadline from a task. So, TASK_DETAIL is only "deadline".
+* A message "Deadline deleted for TITLE" will be shown on the result display when deleting deadline only.
+* This extra command allows you to delete deadline of a task without deleting the entire task.
+* Alternatively, you can delete the task details from the right panel of myPotato. Remember to press `ENTER` to save your changes!
+* Note: Task Title cannot be left empty!
 
 **Examples:**
 
