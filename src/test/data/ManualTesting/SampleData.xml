@@ -377,34 +377,6 @@
         <endDateTime></endDateTime>
         <status>false</status>
     </tasks>
-    <tasks>
-        <title>Buy dinner</title>
-        <content>new content</content>
-        <startDateTime></startDateTime>
-        <endDateTime></endDateTime>
-        <status>true</status>
-    </tasks>
-    <tasks>
-        <title>software engineering</title>
-        <content></content>
-        <startDateTime></startDateTime>
-        <endDateTime></endDateTime>
-        <status>false</status>
-    </tasks>
-    <tasks>
-        <title>visit grandpa</title>
-        <content></content>
-        <startDateTime></startDateTime>
-        <endDateTime></endDateTime>
-        <status>false</status>
-    </tasks>
-    <tasks>
-        <title>event meeting</title>
-        <content></content>
-        <startDateTime></startDateTime>
-        <endDateTime></endDateTime>
-        <status>false</status>
-    </tasks>
     <tags>chocolate</tags>
     <tags>too dirty</tags>
     <tags>nosleep</tags>
@@ -425,5 +397,4 @@
     <tags>tryharder</tags>
     <tags>SerieA</tags>
     <tags>CS2101</tags>
-    <tags>mrt</tags>
 </addressbook>
