@@ -130,12 +130,6 @@ public class TaskDateTime {
         } else if (!isThereEndDateTime()) {
             return "Start: " + this.startDateTime.getStringValue();
         } else {
-//            if (this.startDateTime.getDateValue().equals(this.endDateTime.getDateValue())) {
-//                return this.startDateTime.getDateValue() + " "
-//                        + this.startDateTime.getTimeValue() + " - " + this.endDateTime.getTimeValue();
-//            } else {
-//                return this.startDateTime.getStringValue() + " - " + this.endDateTime.getStringValue();
-//            }
             return "Start: " + this.startDateTime.getStringValue()
                 + "\n" + "End: " + this.endDateTime.getStringValue();
         }
