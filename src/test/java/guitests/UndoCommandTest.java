@@ -146,7 +146,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
     @Test
     public void undoCommandFail() {
         // Undo without any previous commands
-	commandBox.runCommand("undo");
+        commandBox.runCommand("undo");
 	assertResultMessage(UndoCommand.MESSAGE_FAIL);
 
 	// Undo those commands that are not undoable
