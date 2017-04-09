@@ -1,8 +1,8 @@
 package seedu.mypotato.model.util;
 
 import seedu.mypotato.commons.exceptions.IllegalValueException;
-import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.ReadOnlyTaskManager;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.tag.UniqueTagList;
 import seedu.mypotato.model.task.Content;
 import seedu.mypotato.model.task.Status;
