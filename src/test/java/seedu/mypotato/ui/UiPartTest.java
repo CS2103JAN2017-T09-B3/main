@@ -12,7 +12,6 @@ import org.junit.rules.TemporaryFolder;
 
 import javafx.fxml.FXML;
 import seedu.mypotato.MainApp;
-import seedu.mypotato.ui.UiPart;
 
 public class UiPartTest {
 

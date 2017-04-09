@@ -16,7 +16,6 @@ import seedu.mypotato.commons.util.FileUtil;
 import seedu.mypotato.model.AddressBook;
 import seedu.mypotato.model.ReadOnlyAddressBook;
 import seedu.mypotato.model.task.Task;
-import seedu.mypotato.storage.XmlAddressBookStorage;
 import seedu.mypotato.testutil.TypicalTestTasks;
 
 public class XmlAddressBookStorageTest {
