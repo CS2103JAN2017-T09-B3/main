@@ -214,7 +214,7 @@ The `Model`:
    e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
-* calls functions from `ListFilter` to filter data based on different criteria. 
+* calls functions from `ListFilter` to filter data based on different criteria.
 
 #### Handling undo commands
 
@@ -235,7 +235,7 @@ Based on the previous command popped from the getUndoStack(), the undo command w
 <img src="images/TaskDateTimeClassDiagram.png" width="800"><br>
 _Figure 3.5.1 : Structure of the TaskDateTime class_
 
-TaskDateTime contains two DateValue objects: one is for start datetime, the other is for end datetime. 
+TaskDateTime contains two DateValue objects: one is for start datetime, the other is for end datetime.
 
 * Floating task: both start and end datetime are null
 * Deadline task: start datetime is null, end datetime is specified
