@@ -14,8 +14,8 @@ import org.junit.rules.TemporaryFolder;
 
 import seedu.mypotato.commons.events.model.TaskManagerChangedEvent;
 import seedu.mypotato.commons.events.storage.DataSavingExceptionEvent;
-import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.ReadOnlyTaskManager;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.UserPrefs;
 import seedu.mypotato.testutil.EventsCollector;
 import seedu.mypotato.testutil.TypicalTestTasks;
