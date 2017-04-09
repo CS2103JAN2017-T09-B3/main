@@ -520,8 +520,8 @@ Use case ends.
 **MSS**
 1. User requests to show the list of all tasks
 2. myPotato shows the list of all tasks
-1. User requests to save TaskList
-2. myPotato validate the filename and creates a file.
+3. User requests to save TaskList
+4. myPotato validate the filename and creates a file.
 Use case ends.
 
 **Extension**
@@ -552,7 +552,6 @@ Use case ends.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands)
    should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-{More to be added}
 
 ## Appendix D : Glossary
 
