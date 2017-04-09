@@ -91,14 +91,14 @@ choose Checkstyle > Activate Checkstyle
 <img src="images/Architecture.png" width="600"><br>
 _Figure 3.1.1 : Architecture Diagram_
 
-The **_Architecture Diagram_** given above explains the high-level design of myPotato.
-Given below is a quick overview of each component.
-
 Tip:<br>
 The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
 To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for
+The **_Architecture Diagram_** given in Figure 3.1.1 explains the high-level design of myPotato.
+Given below is a quick overview of each component.
+
+`Main` has only one class called [`MainApp`](../src/main/java/seedu/mypotato/MainApp.java). It is responsible for
 
 * Initializing the components in the correct sequence, and connects them up with each other at launch.
 * Shutting down the components and invokes cleanup method where necessary.
@@ -117,7 +117,6 @@ Let's dive into the 4 main components and observe how the classes are connected 
 * The [**`Model`**](#34-model-component)  manages the in-memory data and is independent from the 3 other main components.
 * The [**`Storage`**](#35-storage-component) writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
 
-Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 For each of the main component:
 
 * The [API](#api) in an `interface` is defined with the same name as the Component.
