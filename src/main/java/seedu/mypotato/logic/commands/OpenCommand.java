@@ -76,7 +76,7 @@ public class OpenCommand extends Command {
     */
     public static ReadOnlyAddressBook getDataFromFile(File file,
            Class <XmlSerializableAddressBook> readFromXml)throws JAXBException, IOException {
-       return XmlUtil.getDataFromFile(file, readFromXml);
+        return XmlUtil.getDataFromFile(file, readFromXml);
     }
 
     /**
