@@ -74,17 +74,17 @@ public class OpenCommand extends Command {
     * @throws JAXBException is thrown when either the file or the class is invalid.
     * @throws IOException is thrown when the file is not found.
     */
-   public static ReadOnlyAddressBook getDataFromFile(File file,
+    public static ReadOnlyAddressBook getDataFromFile(File file,
            Class <XmlSerializableAddressBook> readFromXml)throws JAXBException, IOException {
-           return XmlUtil.getDataFromFile(file, readFromXml);
-   }
+       return XmlUtil.getDataFromFile(file, readFromXml);
+    }
 
     /**
      * @param config to be modified with the path from the .xml file.
      * @param filename is the file location of the file to be read.
      * @throws IOException is thrown when with the {@code Config config}file is not found or unwritable.
      */
-    public static void setConfig(Config config, String filename) throws IOException, DataConversionException{
+    public static void setConfig(Config config, String filename) throws IOException, DataConversionException {
         config.setAddressBookFilePath(filename);
         config.setAppTitle(appTitle);
         config.setUserPrefsFilePath(userPrefsFilePath);

@@ -95,7 +95,7 @@ public class SaveCommand extends Command {
      * @throws JAXBException when saveDataToFile throws a JAXBException exception.
      * @throws IOException when saveDataToFile throws an IOException exception.
      */
-    public File createValidPathAndConvertToXml(File file) throws JAXBException, IOException{
+    public File createValidPathAndConvertToXml(File file) throws JAXBException, IOException {
         if (file.isDirectory()) {
             file = new File(file.getPath() + DEFAULT_FILE);
         }
