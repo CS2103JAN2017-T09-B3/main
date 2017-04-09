@@ -43,9 +43,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final Stack<Integer> stackOfDeletedTaskIndex;
     private final Stack<ReadOnlyTask> stackOfOldTask;
     private final Stack<ReadOnlyTask> stackOfCurrentTask;
-    private final Stack<ReadOnlyTask> stackOfOldNextTask;
-    private final Stack<ReadOnlyTask> stackOfNewNextTask;
-    private final Stack<ReadOnlyTaskManager> stackOfAddressBook;
+    private final Stack<ReadOnlyTaskManager> stackOfMyPotato;
 
     private Config config;
 
@@ -83,11 +81,11 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author A0125221Y
     @Override
     public void resetData(ReadOnlyTaskManager newData) {
-        stackOfAddressBook.push(new TaskManager(taskManager));
+        stackOfMyPotato.push(new TaskManager(taskManager));
         taskManager.resetData(newData);
         indicateAddressBookChanged();
     }
-  
+
     @Override
     public synchronized void revertData() {
         resetData(this.stackOfMyPotato.pop());
