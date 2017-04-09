@@ -113,7 +113,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
 
         //undo
         commandBox.runCommand("undo");
-        assertTrue(taskListPanel.isListMatching(oldTaskList));       
+        assertTrue(taskListPanel.isListMatching(oldTaskList));   
     }
 
     @Test
@@ -143,8 +143,8 @@ public class UndoCommandTest extends AddressBookGuiTest {
         assertTrue(taskListPanel.isListMatching(oldTaskList));
     }
 
-	@Test
-	public void undoCommandFail() {
+    @Test
+    public void undoCommandFail() {
         // Undo without any previous commands
 	commandBox.runCommand("undo");
 	assertResultMessage(UndoCommand.MESSAGE_FAIL);
