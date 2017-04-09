@@ -493,21 +493,21 @@ Use case ends.
 > 3a1. myPotato shows an error message<br>
   Use case resumes at Step 2
 
-#### Use case: Undo a task
+#### Use case: Undo previous command
 
 **MSS**
 
-1. User requests to show the list of deleted tasks
+1. User requests to show the list of all tasks
 2. myPotato shows the list of tasks
-3. User requests to undo a task
-4. myPotato brings the task back to the to do list
+3. User requests to undo a previous add/ delete/ edit/ clear command
+4. myPotato update the list back to the previous version before the most recent command
 Use case ends.
 
 **Extension**
 
-2a. The given task is invalid
+2a. No previous command found
 
-> 2a1. myPotato shows an error message
+> 2a1. myPotato shows an "No previous command found" message
   Use case resumes at step 2
 
 #### Use case: Save TaskList
@@ -516,7 +516,7 @@ Use case ends.
 1. User requests to show the list of all tasks
 2. myPotato shows the list of all tasks
 1. User requests to save TaskList
-2. myPotato validate the filename and creates a file.
+2. myPotato validate the filename and creates a file
 Use case ends.
 
 **Extension**
