@@ -70,7 +70,7 @@ public class OpenAndSaveCommandTest extends TaskManagerGuiTest {
     @Test
     public void read_XmlFile_DataConversionException() throws DataConversionException, IOException {
         thrown.expect(DataConversionException.class);
-        SaveCommand.readConfig(FILE_NAME);;
+        SaveCommand.readConfig(VALID_FILE.getAbsolutePath());;
     }
 
     /** Open and save files functionality. */
