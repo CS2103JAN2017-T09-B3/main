@@ -102,7 +102,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
         //undo
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(oldTaskList));
-        
+
         //edit deadline of task
         String detailsToEdit3 = "end/10 Dec 10pm";
 
@@ -113,7 +113,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
 
         //undo
         commandBox.runCommand("undo");
-        assertTrue(taskListPanel.isListMatching(oldTaskList));             
+        assertTrue(taskListPanel.isListMatching(oldTaskList));       
     }
 
     @Test
@@ -142,27 +142,27 @@ public class UndoCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("undo");
         assertTrue(taskListPanel.isListMatching(oldTaskList));
     }
-    
+
 	@Test
 	public void undoCommandFail() {
-		// Undo without any previous commands
-		commandBox.runCommand("undo");
-		assertResultMessage(UndoCommand.MESSAGE_FAIL);
+        // Undo without any previous commands
+	commandBox.runCommand("undo");
+	assertResultMessage(UndoCommand.MESSAGE_FAIL);
 
-		// Undo those commands that are not undoable
-		commandBox.runCommand("list all");
-		commandBox.runCommand("undo");
-		assertResultMessage(UndoCommand.MESSAGE_FAIL);
+	// Undo those commands that are not undoable
+	commandBox.runCommand("list all");
+	commandBox.runCommand("undo");
+	assertResultMessage(UndoCommand.MESSAGE_FAIL);
 
-		// Undo again after you had undo all the previous commands
-		commandBox.runCommand("delete 1");
-		commandBox.runCommand("delete 2");
-		commandBox.runCommand("clear");
-		commandBox.runCommand("undo");
-		commandBox.runCommand("undo");
-		commandBox.runCommand("undo");
-		commandBox.runCommand("undo");
-		assertResultMessage(UndoCommand.MESSAGE_FAIL);
+	// Undo again after you had undo all the previous commands
+	commandBox.runCommand("delete 1");
+	commandBox.runCommand("delete 2");
+	commandBox.runCommand("clear");
+	commandBox.runCommand("undo");
+	commandBox.runCommand("undo");
+	commandBox.runCommand("undo");
+	commandBox.runCommand("undo");
+	assertResultMessage(UndoCommand.MESSAGE_FAIL);
 	}
 
     private void assertEditSuccess(int filteredTaskListIndex, int addressBookIndex,
