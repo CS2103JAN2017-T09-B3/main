@@ -286,6 +286,7 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
 
     Format: save FILEPATH
 
+* Alternatively, you can click on `file` > `Saveas` from the top left corner of myPotato. Once the dialog window appears, navigate to the file to save.
 * Future changes will be automatically saved to your specified FILELOCATION.<br>
 * myPotato will load the most recent saved FILELOCATION on start-up.
 
@@ -299,6 +300,8 @@ Specify your file directory or file path to `save` a back-up copy of your taskli
 Specify a valid xml file to load into myPotato. Upon successful command execution, `Loaded FILENAME` message will be shown on the result display.
 
     Format: open FILEPATH
+
+* Alternatively, you can click on `file` > `Open...` from the top left corner of myPotato. Once the dialog window appears, navigate to the file to open.
 
 **Examples:**
 
