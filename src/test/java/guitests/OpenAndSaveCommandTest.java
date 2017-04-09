@@ -29,7 +29,7 @@ public class OpenAndSaveCommandTest extends TaskManagerGuiTest {
     public static final String FILE_ALTERNATEPATH_NAME = "src/test/data/sandbox/myPotato";
     public static final String FILE_XML_EXTENSION = ".xml";
     public static final String INVALID_FILENAME = "data/?*&^";
-    private static final String FILE_NAME = "taskmanager.xml";
+    private static final String FILE_NAME = "taskmanager.json";
     private static final File VALID_FILE = new File(FILE_PATH_DIR + "validTaskManager.xml");
     private static final File MISSING_FILE = new File(FILE_PATH_DIR + "missing.xml");
 
