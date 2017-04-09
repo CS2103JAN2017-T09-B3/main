@@ -14,8 +14,6 @@ import org.junit.rules.ExpectedException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.mypotato.model.AddressBook;
-import seedu.mypotato.model.ReadOnlyAddressBook;
 import seedu.mypotato.model.tag.Tag;
 import seedu.mypotato.model.task.ReadOnlyTask;
 import seedu.mypotato.model.task.Task;

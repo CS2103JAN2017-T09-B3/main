@@ -17,10 +17,6 @@ import seedu.mypotato.commons.events.storage.DataSavingExceptionEvent;
 import seedu.mypotato.model.AddressBook;
 import seedu.mypotato.model.ReadOnlyAddressBook;
 import seedu.mypotato.model.UserPrefs;
-import seedu.mypotato.storage.JsonUserPrefsStorage;
-import seedu.mypotato.storage.Storage;
-import seedu.mypotato.storage.StorageManager;
-import seedu.mypotato.storage.XmlAddressBookStorage;
 import seedu.mypotato.testutil.EventsCollector;
 import seedu.mypotato.testutil.TypicalTestTasks;
 

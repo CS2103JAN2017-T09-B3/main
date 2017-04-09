@@ -11,8 +11,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import seedu.mypotato.commons.util.FileUtil;
-import seedu.mypotato.commons.util.XmlUtil;
 import seedu.mypotato.model.AddressBook;
 import seedu.mypotato.storage.XmlSerializableAddressBook;
 import seedu.mypotato.testutil.AddressBookBuilder;

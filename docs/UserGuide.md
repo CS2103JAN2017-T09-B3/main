@@ -99,7 +99,7 @@ You can add a task using the following format. Upon adding a task, details of th
       hh am/pm (e.g 10am)
 
 * If only time is given in ending date time, date is automatically specified as today.
-* If only time is given in starting date time,starting date is automatically specified as ending date. If there is ending date, starting date is automatically specified as today 
+* If only time is given in starting date time,starting date is automatically specified as ending date. If there is ending date, starting date is automatically specified as today
 * After adding, the task is automatically highlighted.
 * Supported types of task:
 
@@ -242,7 +242,7 @@ If you want to delete deadline of the task without deleting the task, simply inp
 
     Format: delete INDEX [TASK_DETAIL]
 
-* Task index can be found in the list on the left panel of myPotato <br> 
+* Task index can be found in the list on the left panel of myPotato <br>
 > <img src="images/Index.png" width="600">
 * Input the corresponding index number to delete the targeted task.<br>
 * TASK_DETAIL is part of task that you want to delete. For now, you only can delete deadline from a task. So, TASK_DETAIL is only "deadline".

@@ -7,8 +7,6 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import seedu.mypotato.commons.util.FileUtil;
-import seedu.mypotato.commons.util.JsonUtil;
 import seedu.mypotato.testutil.SerializableTestClass;
 import seedu.mypotato.testutil.TestUtil;
 

@@ -15,8 +15,6 @@ import org.junit.rules.TemporaryFolder;
 
 import seedu.mypotato.commons.core.Config;
 import seedu.mypotato.commons.exceptions.DataConversionException;
-import seedu.mypotato.commons.util.ConfigUtil;
-import seedu.mypotato.commons.util.FileUtil;
 
 public class ConfigUtilTest {
 

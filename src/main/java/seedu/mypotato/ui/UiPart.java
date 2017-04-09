@@ -11,6 +11,7 @@ import seedu.mypotato.MainApp;
 import seedu.mypotato.commons.core.EventsCenter;
 import seedu.mypotato.commons.events.BaseEvent;
 
+
 /**
  * Represents a distinct part of the UI. e.g. Windows, dialogs, panels, status bars, etc.
  * It contains a scene graph with a root node of type {@code T}.

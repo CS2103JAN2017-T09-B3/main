@@ -4,7 +4,6 @@ import java.util.function.Supplier;
 
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import seedu.mypotato.MainApp;
 import seedu.mypotato.commons.core.Config;
 import seedu.mypotato.commons.core.GuiSettings;
 import seedu.mypotato.model.ReadOnlyAddressBook;
