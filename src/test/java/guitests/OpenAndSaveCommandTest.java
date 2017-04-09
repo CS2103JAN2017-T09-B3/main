@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.mypotato.commons.core.Messages;
+import seedu.mypotato.commons.exceptions.DataConversionException;
 import seedu.mypotato.commons.util.FileUtil;
 import seedu.mypotato.logic.commands.OpenCommand;
 import seedu.mypotato.logic.commands.SaveCommand;
@@ -44,11 +45,11 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
 
     /** Test for Valid and Invalid fileNames */
     @Test
-    public void isValidFile() {
-        assertTrue(SaveCommand.isValidFile(new File(FILE_DIR)));
-        assertTrue(SaveCommand.isValidFile(new File(FILE_NAME + FILE_XML_EXTENSION)));
+    public void isValidPath() {
+        assertTrue(SaveCommand.isValidPath(new File(FILE_DIR)));
+        assertTrue(SaveCommand.isValidPath(new File(FILE_NAME + FILE_XML_EXTENSION)));
 
-        assertFalse(SaveCommand.isValidFile(new File(INVALID_FILENAME)));
+        assertFalse(SaveCommand.isValidPath(new File(INVALID_FILENAME)));
     }
 
     /** Test for Exception catch */
@@ -63,6 +64,12 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
     public void saveDataToFile_missingFile_IOException() throws Exception {
         thrown.expect(IOException.class);
         SaveCommand.saveDataToFile(MISSING_FILE, new AddressBook());
+    }
+
+    @Test
+    public void read_XmlFile_DataConversionException() throws DataConversionException, IOException {
+        thrown.expect(DataConversionException.class);
+        SaveCommand.readConfig(VALID_FILE.toString());;
     }
 
     /** Open and save files functionality. */
@@ -102,10 +109,12 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
         commandBox.runCommand(OpenCommand.COMMAND_WORD + FILE_NAME);
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+
         commandBox.runCommand(COMMAND_SAVE + EMPTY);
         assertResultMessage(SaveCommand.MESSAGE_INVALID_PATH);
         commandBox.runCommand(COMMAND_OPEN + EMPTY);
         assertResultMessage(OpenCommand.MESSAGE_INVALID_PATH);
+
         commandBox.runCommand(COMMAND_SAVE + INVALID_FILENAME);
         assertResultMessage(SaveCommand.MESSAGE_INVALID_PATH);
     }
