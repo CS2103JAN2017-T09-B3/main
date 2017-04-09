@@ -10,12 +10,21 @@ import seedu.address.model.task.DateWithTime;
 import seedu.address.model.task.ReadOnlyTask;
 
 //@@author A0144895N
+/**
+ * A class performs filtering for data in model
+ */
 public class ListFilter {
 
+    /**Update filter to show all tasks*/
     public static void filterAll(FilteredList<ReadOnlyTask> filteredList) {
         filteredList.setPredicate(null);
     }
 
+    /**
+     * Update filter to show tasks with keywords in title.
+     * If {@param isInContent} is true, update filter to show tasks with keywords in title and content
+     * @param keywords: list of keywords, partial words still match
+     */
     public static void filterKeywords(FilteredList<ReadOnlyTask> filteredList,
             boolean isInContent, Set<String> keywords) {
         ListFilter.filterExpression(filteredList,
@@ -26,6 +35,7 @@ public class ListFilter {
         filteredList.setPredicate(expression::satisfies);
     }
 
+    /**Update filter to show tasks that have the same end datetime as parameter dateValue*/
     public static void filterEndDate(FilteredList<ReadOnlyTask> filteredList, DateValue dateValue) {
         assert dateValue != null;
         if (dateValue.isWithTime()) {
@@ -39,6 +49,7 @@ public class ListFilter {
         }
     }
 
+    /**Update filter to show tasks that have the same start datetime as parameter dateValue*/
     public static void filterStartDate(FilteredList<ReadOnlyTask> filteredList, DateValue dateValue) {
         assert dateValue != null;
         if (dateValue.isWithTime()) {
@@ -52,7 +63,8 @@ public class ListFilter {
         }
     }
 
-    public static void filterStartAndEndDate(FilteredList<ReadOnlyTask> filteredList, DateValue dateValue) {
+    /**Update filter to show tasks that have the same start datetime or end datetime as parameter dateValue*/
+    public static void filterStartOrEndDate(FilteredList<ReadOnlyTask> filteredList, DateValue dateValue) {
         assert dateValue != null;
         if (dateValue.isWithTime()) {
             filteredList.setPredicate(
@@ -69,11 +81,13 @@ public class ListFilter {
         }
     }
 
+    /**Update filter to show tasks that start or end by today*/
     public static void filterToday(FilteredList<ReadOnlyTask> filteredList) {
         DateValue todayDate = DateMaker.getCurrentDate();
-        ListFilter.filterStartAndEndDate(filteredList, todayDate);
+        ListFilter.filterStartOrEndDate(filteredList, todayDate);
     }
 
+    /**Update filter to show completed tasks*/
     public static void filterCompleted (FilteredList<ReadOnlyTask> filteredList) {
         filteredList.setPredicate(t -> t.getStatus().getStatus());
     }

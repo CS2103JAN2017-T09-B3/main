@@ -12,6 +12,12 @@ public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list";
 
+    public static final String KEYWORD_TODAY = "today";
+
+    public static final String KEYWORD_ALL = "all";
+
+    public static final String KEYWORD_COMPLETED = "completed";
+
     public static final String MESSAGE_ALL_SUCCESS = "Listed all tasks";
 
     public static final String MESSAGE_TODAY_SUCCESS = "Listed all today tasks";
@@ -26,6 +32,10 @@ public class ListCommand extends Command {
     private boolean isToday;
     private boolean isCompleted;
 
+    /**
+     * Validates the given requested list
+     * @throws IllegalValueException if none or more than 1 boolean parameters are set to be true
+     */
     public ListCommand(boolean isAll, boolean isToday, boolean isCompleted) throws IllegalValueException {
 
         checkValidList(isAll, isToday, isCompleted);
@@ -48,23 +58,23 @@ public class ListCommand extends Command {
     @Override
     public CommandResult execute() {
         if (isToday) {
-            EventsCenter.getInstance().post(new SwitchToTabRequestEvent("today"));
-            model.setCurrentList("today");
+            EventsCenter.getInstance().post(new SwitchToTabRequestEvent(KEYWORD_TODAY));
+            model.setCurrentList(KEYWORD_TODAY);
             model.updateFilteredListToShowToday();
             return new CommandResult(MESSAGE_TODAY_SUCCESS);
         } else if (isCompleted) {
-            EventsCenter.getInstance().post(new SwitchToTabRequestEvent("completed"));
-            model.setCurrentList("completed");
+            EventsCenter.getInstance().post(new SwitchToTabRequestEvent(KEYWORD_COMPLETED));
+            model.setCurrentList(KEYWORD_COMPLETED);
             model.updateFilteredListToShowCompleted();
             return new CommandResult(MESSAGE_COMPLETED_SUCCESS);
         } else if (isAll) {
-            EventsCenter.getInstance().post(new SwitchToTabRequestEvent("all"));
-            model.setCurrentList("all");
+            EventsCenter.getInstance().post(new SwitchToTabRequestEvent(KEYWORD_ALL));
+            model.setCurrentList(KEYWORD_ALL);
             model.updateFilteredListToShowAll();
             return new CommandResult(MESSAGE_ALL_SUCCESS);
         } else {
-            EventsCenter.getInstance().post(new SwitchToTabRequestEvent("all"));
-            model.setCurrentList("all");
+            EventsCenter.getInstance().post(new SwitchToTabRequestEvent(KEYWORD_ALL));
+            model.setCurrentList(KEYWORD_ALL);
             model.updateFilteredListToShowAll();
             return new CommandResult(MESSAGE_ALL_SUCCESS);
         }

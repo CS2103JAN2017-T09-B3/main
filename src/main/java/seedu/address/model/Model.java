@@ -67,6 +67,7 @@ public interface Model {
 
     void updateTask(ReadOnlyTask old, Task toUpdate) throws TaskNotFoundException, DuplicateTaskException;
 
+    /**Updates current showing list*/
     void setCurrentList(String currentList);
 
     /** Returns the filtered task list as an {@code UnmodifiableObservableList<ReadOnlyTask>} */
