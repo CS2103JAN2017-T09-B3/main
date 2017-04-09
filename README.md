@@ -6,7 +6,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6faaace319294f89ad0578a0bfdcbbca)](https://www.codacy.com/app/e0011840/main?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=CS2103JAN2017-T09-B3/main&amp;utm_campaign=Badge_Grade)
 
 
-<img src="docs/images/MyPotato-1.PNG" width="600"><br>
+<img src="docs/images/Ui.png" width="600"><br>
 * This is a desktop Task Manager application. It has a GUI but most of the user interactions happen using
   a CLI (Command Line Interface).
 * It is a Java application intended for people to organize their tasks.
