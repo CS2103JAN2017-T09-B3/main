@@ -1,14 +1,14 @@
 package seedu.mypotato.commons.events.model;
 
 import seedu.mypotato.commons.events.BaseEvent;
-import seedu.mypotato.model.ReadOnlyAddressBook;
+import seedu.mypotato.model.ReadOnlyTaskManager;
 
 /** Indicates the AddressBook in the model has changed*/
-public class AddressBookChangedEvent extends BaseEvent {
+public class TaskManagerChangedEvent extends BaseEvent {
 
-    public final ReadOnlyAddressBook data;
+    public final ReadOnlyTaskManager data;
 
-    public AddressBookChangedEvent(ReadOnlyAddressBook data) {
+    public TaskManagerChangedEvent(ReadOnlyTaskManager data) {
         this.data = data;
     }
 

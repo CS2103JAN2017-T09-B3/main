@@ -8,7 +8,7 @@ import seedu.mypotato.logic.commands.ListCommand;
 import seedu.mypotato.testutil.TestTask;
 
 //@@author A0144895N
-public class ListCommandTest extends AddressBookGuiTest {
+public class ListCommandTest extends TaskManagerGuiTest {
 
     @Test
     public void testNoRequestedList() {

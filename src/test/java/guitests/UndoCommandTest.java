@@ -13,7 +13,7 @@ import seedu.mypotato.testutil.TaskBuilder;
 import seedu.mypotato.testutil.TestTask;
 import seedu.mypotato.testutil.TestUtil;
 
-public class UndoCommandTest extends AddressBookGuiTest {
+public class UndoCommandTest extends TaskManagerGuiTest {
 
     @Test
     public void undoAddSuccess() {

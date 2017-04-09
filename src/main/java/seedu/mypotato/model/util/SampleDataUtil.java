@@ -1,8 +1,8 @@
 package seedu.mypotato.model.util;
 
 import seedu.mypotato.commons.exceptions.IllegalValueException;
-import seedu.mypotato.model.AddressBook;
-import seedu.mypotato.model.ReadOnlyAddressBook;
+import seedu.mypotato.model.TaskManager;
+import seedu.mypotato.model.ReadOnlyTaskManager;
 import seedu.mypotato.model.tag.UniqueTagList;
 import seedu.mypotato.model.task.Content;
 import seedu.mypotato.model.task.Status;
@@ -51,9 +51,9 @@ public class SampleDataUtil {
         }
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
+    public static ReadOnlyTaskManager getSampleAddressBook() {
         try {
-            AddressBook sampleAB = new AddressBook();
+            TaskManager sampleAB = new TaskManager();
             for (Task sampleTask : getSampleTasks()) {
                 sampleAB.addTask(sampleTask);
             }

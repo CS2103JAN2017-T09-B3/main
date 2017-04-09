@@ -11,7 +11,7 @@ import seedu.mypotato.commons.core.ComponentManager;
 import seedu.mypotato.commons.core.Config;
 import seedu.mypotato.commons.core.LogsCenter;
 import seedu.mypotato.commons.core.UnmodifiableObservableList;
-import seedu.mypotato.commons.events.model.AddressBookChangedEvent;
+import seedu.mypotato.commons.events.model.TaskManagerChangedEvent;
 import seedu.mypotato.commons.events.model.ReadFirstTaskEvent;
 import seedu.mypotato.commons.events.storage.ChangedFileLocationRequestEvent;
 import seedu.mypotato.commons.events.ui.LoadFirstTaskEvent;
@@ -32,7 +32,7 @@ import seedu.mypotato.model.task.UniqueTaskList.TaskNotFoundException;
 public class ModelManager extends ComponentManager implements Model {
 
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
-    private final AddressBook taskManager;
+    private final TaskManager taskManager;
     private final FilteredList<ReadOnlyTask> filteredTasks;
 
     private String currentList;
@@ -43,7 +43,9 @@ public class ModelManager extends ComponentManager implements Model {
     private final Stack<Integer> stackOfDeletedTaskIndex;
     private final Stack<ReadOnlyTask> stackOfOldTask;
     private final Stack<ReadOnlyTask> stackOfCurrentTask;
-    private final Stack<ReadOnlyAddressBook> stackOfMyPotato;
+    private final Stack<ReadOnlyTask> stackOfOldNextTask;
+    private final Stack<ReadOnlyTask> stackOfNewNextTask;
+    private final Stack<ReadOnlyTaskManager> stackOfAddressBook;
 
     private Config config;
 
@@ -53,7 +55,7 @@ public class ModelManager extends ComponentManager implements Model {
      * @throws DuplicateTaskException
      * @throws DuplicateTagException
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs, Config config)
+    public ModelManager(ReadOnlyTaskManager addressBook, UserPrefs userPrefs, Config config)
             throws DuplicateTagException, DuplicateTaskException {
         super();
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
@@ -69,23 +71,23 @@ public class ModelManager extends ComponentManager implements Model {
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.taskManager = new AddressBook(addressBook);
+        this.taskManager = new TaskManager(addressBook);
         filteredTasks = new FilteredList<>(this.taskManager.getTaskList());
         this.currentList = "all";
     }
 
     public ModelManager() throws DuplicateTagException, DuplicateTaskException {
-        this(new AddressBook(), new UserPrefs(), new Config());
+        this(new TaskManager(), new UserPrefs(), new Config());
     }
 
     //@@author A0125221Y
     @Override
-    public void resetData(ReadOnlyAddressBook newData) {
-        stackOfMyPotato.push(new AddressBook(taskManager));
+    public void resetData(ReadOnlyTaskManager newData) {
+        stackOfAddressBook.push(new TaskManager(taskManager));
         taskManager.resetData(newData);
         indicateAddressBookChanged();
     }
-
+  
     @Override
     public synchronized void revertData() {
         resetData(this.stackOfMyPotato.pop());
@@ -100,13 +102,13 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    public ReadOnlyTaskManager getAddressBook() {
         return taskManager;
     }
 
     /** Raises an event to indicate the model has changed */
     private void indicateAddressBookChanged() {
-        raise(new AddressBookChangedEvent(taskManager));
+        raise(new TaskManagerChangedEvent(taskManager));
     }
 
     //@@author A0135807A

@@ -1,7 +1,7 @@
 package seedu.mypotato.testutil;
 
 import seedu.mypotato.commons.exceptions.IllegalValueException;
-import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.tag.Tag;
 import seedu.mypotato.model.task.Task;
 import seedu.mypotato.model.task.UniqueTaskList;
@@ -11,25 +11,25 @@ import seedu.mypotato.model.task.UniqueTaskList;
  * Example usage: <br>
  *     {@code AddressBook ab = new AddressBookBuilder().withPerson("John", "Doe").withTag("Friend").build();}
  */
-public class AddressBookBuilder {
+public class TaskManagerBuilder {
 
-    private AddressBook addressBook;
+    private TaskManager addressBook;
 
-    public AddressBookBuilder(AddressBook addressBook) {
+    public TaskManagerBuilder(TaskManager addressBook) {
         this.addressBook = addressBook;
     }
 
-    public AddressBookBuilder withPerson(Task task) throws UniqueTaskList.DuplicateTaskException {
+    public TaskManagerBuilder withPerson(Task task) throws UniqueTaskList.DuplicateTaskException {
         addressBook.addTask(task);
         return this;
     }
 
-    public AddressBookBuilder withTag(String tagName) throws IllegalValueException {
+    public TaskManagerBuilder withTag(String tagName) throws IllegalValueException {
         addressBook.addTag(new Tag(tagName));
         return this;
     }
 
-    public AddressBook build() {
+    public TaskManager build() {
         return addressBook;
     }
 }

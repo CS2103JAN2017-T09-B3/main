@@ -91,14 +91,14 @@ choose Checkstyle > Activate Checkstyle
 <img src="images/Architecture.png" width="600"><br>
 _Figure 3.1.1 : Architecture Diagram_
 
-The **_Architecture Diagram_** given above explains the high-level design of myPotato.
-Given below is a quick overview of each component.
-
 Tip:<br>
 The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
 To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for
+The **_Architecture Diagram_** given in Figure 3.1.1 explains the high-level design of myPotato.
+Given below is a quick overview of each component.
+
+`Main` has only one class called [`MainApp`](../src/main/java/seedu/mypotato/MainApp.java). It is responsible for
 
 * Initializing the components in the correct sequence, and connects them up with each other at launch.
 * Shutting down the components and invokes cleanup method where necessary.
@@ -117,7 +117,6 @@ Let's dive into the 4 main components and observe how the classes are connected 
 * The [**`Model`**](#34-model-component)  manages the in-memory data and is independent from the 3 other main components.
 * The [**`Storage`**](#35-storage-component) writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
 
-Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 For each of the main component:
 
 * The [API](#api) in an `interface` is defined with the same name as the Component.
@@ -156,14 +155,14 @@ Author: Long & Di Feng
 <img src="images/UIClassDiagram.png" width="800"><br>
 _Figure 3.2.1 : Structure of the UI Component_
 
-[**API**](#api) : [`Ui.java`](../src/main/java/seedu/myPotato/ui/Ui.java) in `/src/main/java/seedu/myPotato/ui`
+[**API**](#api) : [`Ui.java`](../src/main/java/seedu/mypotato/ui/Ui.java) in `/src/main/java/seedu/mypotato/ui`
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
 `StatusBarFooter`, `TaskDescription` , `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
- For example, the layout of the [`MainWindow`](../src/main/java/seedu/myPotato/ui/MainWindow.java) is specified in
+ For example, the layout of the [`MainWindow`](../src/main/java/seedu/mypotato/ui/MainWindow.java) is specified in
  [`MainWindow.fxml`](../src/main/resources/view/MainWindow.fxml)
 
 The `UI` component:
@@ -181,7 +180,7 @@ _Figure 3.3.1 : Structure of the Logic Component_
 
 Logic component is the place where we implement our features. It contains most of the basic functionality of myPotato. For the design pattern of logic component, my group follows command pattern. We separate duties according to commands we are going to use. The Command.java and its sub classes implement the Command Pattern.
 
-[**API**](#api) : [`Logic.java`](../src/main/java/seedu/myPotato/logic/Logic.java) in `src/main/java/seedu/myPotato/logic`
+[**API**](#api) : [`Logic.java`](../src/main/java/seedu/mypotato/logic/Logic.java) in `src/main/java/seedu/mypotato/logic`
 
 1. `Logic` uses the `Parser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
@@ -202,7 +201,7 @@ Author: Ivan Koh, Yan Hao, Long
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
 
-[**API**](#api) : [`Model.java`](../src/main/java/seedu/myPotato/model/Model.java) in `src/main/java/seedu/myPotato/model`
+[**API**](#api) : [`Model.java`](../src/main/java/seedu/mypotato/model/Model.java) in `src/main/java/seedu/mypotato/model`
 
 Model component contains task class and tag class, and it ensures that myPotato can give the correct output according to the user input.
 
@@ -214,7 +213,7 @@ The `Model`:
    e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
-* calls functions from `ListFilter` to filter data based on different criteria. 
+* calls functions from `ListFilter` to filter data based on different criteria.
 
 #### Handling undo commands
 
@@ -235,7 +234,7 @@ Based on the previous command popped from the getUndoStack(), the undo command w
 <img src="images/TaskDateTimeClassDiagram.png" width="800"><br>
 _Figure 3.5.1 : Structure of the TaskDateTime class_
 
-TaskDateTime contains two DateValue objects: one is for start datetime, the other is for end datetime. 
+TaskDateTime contains two DateValue objects: one is for start datetime, the other is for end datetime.
 
 * Floating task: both start and end datetime are null
 * Deadline task: start datetime is null, end datetime is specified
@@ -251,7 +250,7 @@ Author: Di Feng
 <img src="images/StorageClassDiagram.png" width="800"><br>
 _Figure 3.5.1 : Structure of the Storage Component_
 
-[**API**](#api) : [`Storage.java`](../src/main/java/seedu/myPotato/storage/Storage.java) in `/src/main/java/seedu/myPotato/storage`
+[**API**](#api) : [`Storage.java`](../src/main/java/seedu/mypotato/storage/Storage.java) in `/src/main/java/seedu/mypotato/storage`
 
 From Figure 3.5.1, the `Storage` component consists of a StorageManager that calls `Save` and `Read` methods from UserPrefsStorage and JsonUserPrefsStorage Interface.
 
@@ -262,7 +261,7 @@ Note: XmlSerializableTaskManager is a class to convert the in-memory UniqueTaskL
 
 ### 3.6. Common classes
 
-Classes used by multiple components are in the `seedu.myPotato.commons` package.
+Classes used by multiple components are in the `seedu.mypotato.commons` package.
 
 
 ## 4. Implementation
@@ -314,13 +313,13 @@ There are two types of tests:
 
 2. **Non-GUI Tests** - These are tests not involving the GUI. They include,
    * _Unit tests_ targeting the lowest level methods/classes. <br>
-      e.g. `seedu.myPotato.commons.UrlUtilTest`
+      e.g. `seedu.mypotato.commons.UrlUtilTest`
    * _Integration tests_ that are checking the integration of multiple code units
      (those code units are assumed to be working).<br>
-      e.g. `seedu.myPotato.storage.StorageManagerTest`
+      e.g. `seedu.mypotato.storage.StorageManagerTest`
    * Hybrids of unit and integration tests. These test are checking multiple code units as well as
       how they are connected together.<br>
-      e.g. `seedu.myPotato.logic.LogicManagerTest`
+      e.g. `seedu.mypotato.logic.LogicManagerTest`
 
 #### Headless GUI Testing
 Thanks to the [TestFX](https://github.com/TestFX/TestFX) library we use,
@@ -494,7 +493,7 @@ Use case ends.
 > 3a1. myPotato shows an error message<br>
   Use case resumes at Step 2
 
-####Use case: Undo a task
+#### Use case: Undo a task
 
 **MSS**
 
@@ -511,28 +510,34 @@ Use case ends.
 > 2a1. myPotato shows an error message
   Use case resumes at step 2
 
-####Use case: Setting Priority
+#### Use case: Save TaskList
 
 **MSS**
-
-1. User requests to list tasks
-2. myPotato shows the list of tasks
-3. User requests to set a priority for a task
-4. myPotato updates and save changes
+1. User requests to show the list of all tasks
+2. myPotato shows the list of all tasks
+1. User requests to save TaskList
+2. myPotato validate the filename and creates a file.
 Use case ends.
 
 **Extension**
 
-2a. The given task is invalid
+2a. The given filename is invalid
 
-> 2a1. myPotato shows an error message
+> 2a1. myPotato shows an invalid filename message
   Use case resumes at step 2
 
-3a. the list is empty
+#### Use case: Open TaskList
 
-> Use case ends
+**MSS**
+1. User requests to open storage file.
+2. myPotato validates, read from file before showing the list of all tasks
+Use case ends.
 
-{More to be added}
+**Extension**
+
+2a. The given storage file is invalid
+
+> 2a1. myPotato shows an invalid file message
 
 
 ## Appendix C : Non Functional Requirements

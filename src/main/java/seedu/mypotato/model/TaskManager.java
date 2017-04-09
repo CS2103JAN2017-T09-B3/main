@@ -24,7 +24,7 @@ import seedu.mypotato.model.task.UniqueTaskList.TaskNotFoundException;
  * Wraps all data at the address-book level Duplicates are not allowed (by
  * .equals comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class TaskManager implements ReadOnlyTaskManager {
 
     private final UniqueTaskList tasks;
     private final UniqueTagList tags;
@@ -42,7 +42,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         tags = new UniqueTagList();
     }
 
-    public AddressBook() {
+    public TaskManager() {
     }
 
     /**
@@ -52,7 +52,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @throws DuplicateTaskException
      * @throws DuplicateTagException
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public TaskManager(ReadOnlyTaskManager toBeCopied) {
 
         // this(toBeCopied.getUniqueTaskList(), toBeCopied.getUniqueTagList());
 
@@ -61,7 +61,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     // @@author A0125221Y
-    public AddressBook(UniqueTaskList tasks, UniqueTagList tags) {
+    public TaskManager(UniqueTaskList tasks, UniqueTagList tags) {
         resetData(tasks.getInternalList(), tags.getInternalList());
     }
     // @@author
@@ -76,7 +76,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.tags.setTags(tags);
     }
 
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyTaskManager newData) {
         assert newData != null;
         try {
             setTasks(newData.getTaskList());
@@ -106,7 +106,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         syncMasterTagListWith(tasks);
     }
 
-    public synchronized void revertEmptyAddressBook(ReadOnlyAddressBook backUp)
+    public synchronized void revertEmptyAddressBook(ReadOnlyTaskManager backUp)
             throws DuplicateTagException, DuplicateTaskException {
         resetData(backUp.getTaskList(), backUp.getTagList());
     }
@@ -241,9 +241,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                        && this.tasks.equals(((AddressBook) other).tasks)
-                        && this.tags.equalsOrderInsensitive(((AddressBook) other).tags));
+                || (other instanceof TaskManager // instanceof handles nulls
+                        && this.tasks.equals(((TaskManager) other).tasks)
+                        && this.tags.equalsOrderInsensitive(((TaskManager) other).tags));
     }
 
     @Override

@@ -12,7 +12,7 @@ import seedu.mypotato.logic.parser.CliSyntax;
 import seedu.mypotato.ui.TaskDescription;
 
 //@@author A0135807A
-public class TaskDescriptionTest extends AddressBookGuiTest {
+public class TaskDescriptionTest extends TaskManagerGuiTest {
 
     private static final String CONTENT_THAT_SUCCEEDS = "Amazon Buy 1 Get 1 Free";
     private static final String CONTENT_THAT_FAILS = "invalid command./";

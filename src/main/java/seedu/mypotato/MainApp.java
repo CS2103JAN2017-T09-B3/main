@@ -20,10 +20,10 @@ import seedu.mypotato.commons.util.ConfigUtil;
 import seedu.mypotato.commons.util.StringUtil;
 import seedu.mypotato.logic.Logic;
 import seedu.mypotato.logic.LogicManager;
-import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.Model;
 import seedu.mypotato.model.ModelManager;
-import seedu.mypotato.model.ReadOnlyAddressBook;
+import seedu.mypotato.model.ReadOnlyTaskManager;
 import seedu.mypotato.model.UserPrefs;
 import seedu.mypotato.model.tag.UniqueTagList.DuplicateTagException;
 import seedu.mypotato.model.task.UniqueTaskList.DuplicateTaskException;
@@ -76,8 +76,8 @@ public class MainApp extends Application {
 
     private Model initModelManager(Storage storage, UserPrefs userPrefs, Config config)
             throws DuplicateTagException, DuplicateTaskException {
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        Optional<ReadOnlyTaskManager> addressBookOptional;
+        ReadOnlyTaskManager initialData;
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
@@ -86,10 +86,10 @@ public class MainApp extends Application {
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            initialData = new TaskManager();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            initialData = new TaskManager();
         }
 
         return new ModelManager(initialData, userPrefs, config);

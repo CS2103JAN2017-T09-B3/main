@@ -30,10 +30,10 @@ public interface Model {
     /** Clears existing backing model and replaces with the provided new data.
      * @throws DuplicateTaskException
      * @throws DuplicateTagException */
-    void resetData(ReadOnlyAddressBook newData);
+    void resetData(ReadOnlyTaskManager newData);
 
     /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyTaskManager getAddressBook();
 
     /**Returns the config*/
     Config getConfig();

@@ -10,7 +10,7 @@ import seedu.mypotato.logic.commands.AddCommand;
 import seedu.mypotato.testutil.TestTask;
 import seedu.mypotato.testutil.TestUtil;
 
-public class AddCommandTest extends AddressBookGuiTest {
+public class AddCommandTest extends TaskManagerGuiTest {
 
     @Test
     public void add() {

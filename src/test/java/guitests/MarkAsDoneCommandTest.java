@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import seedu.mypotato.testutil.TestTask;
 
-public class MarkAsDoneCommandTest extends AddressBookGuiTest {
+public class MarkAsDoneCommandTest extends TaskManagerGuiTest {
 
     @Test
     public void mark() {

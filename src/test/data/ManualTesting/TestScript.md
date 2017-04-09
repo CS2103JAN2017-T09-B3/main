@@ -22,13 +22,13 @@
 **Command:**
 
     add Buy dinner
-    
+
 **Expected result:**
 
 * Floating task buy dinner will be added at the back of the list.
 * Task will be selected after adding.
 * Tasks details will be reflected on the right panel after a task is added.
-    
+
 **Command:**
 
     add Software engineering project submit end/11:59 10 apr

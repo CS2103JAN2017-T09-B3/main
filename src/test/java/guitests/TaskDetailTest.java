@@ -12,7 +12,7 @@ import seedu.mypotato.logic.parser.CliSyntax;
 import seedu.mypotato.ui.TaskDetail;
 
 //@@author A0135807A
-public class TaskDetailTest extends AddressBookGuiTest {
+public class TaskDetailTest extends TaskManagerGuiTest {
 
     private static final String TAGS_THAT_SUCCEEDS = "#JUnit";
     private static final String TAGS_THAT_FAILS = "#JUnit*#@";

@@ -13,16 +13,17 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.mypotato.commons.core.Messages;
+import seedu.mypotato.commons.exceptions.DataConversionException;
 import seedu.mypotato.commons.util.FileUtil;
 import seedu.mypotato.logic.commands.OpenCommand;
 import seedu.mypotato.logic.commands.SaveCommand;
-import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.testutil.TestTask;
 import seedu.mypotato.testutil.TestUtil;
 
 //@@author A0135807A
 /** files are automatically written to the saved location. */
-public class OpenAndSaveCommandTest extends AddressBookGuiTest {
+public class OpenAndSaveCommandTest extends TaskManagerGuiTest {
     public static final String FILE_DIR = "src/test/data/sandbox/";
     public static final String FILE_NAME = "src/test/data/sandbox/taskmanager";
     public static final String FILE_ALTERNATE_NAME = "src/test/data/sandbox/myPotato";
@@ -44,11 +45,11 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
 
     /** Test for Valid and Invalid fileNames */
     @Test
-    public void isValidFile() {
-        assertTrue(SaveCommand.isValidFile(new File(FILE_DIR)));
-        assertTrue(SaveCommand.isValidFile(new File(FILE_NAME + FILE_XML_EXTENSION)));
+    public void isValidPath() {
+        assertTrue(SaveCommand.isValidPath(new File(FILE_DIR)));
+        assertTrue(SaveCommand.isValidPath(new File(FILE_NAME + FILE_XML_EXTENSION)));
 
-        assertFalse(SaveCommand.isValidFile(new File(INVALID_FILENAME)));
+        assertFalse(SaveCommand.isValidPath(new File(INVALID_FILENAME)));
     }
 
     /** Test for Exception catch */
@@ -62,7 +63,13 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
     @Test
     public void saveDataToFile_missingFile_IOException() throws Exception {
         thrown.expect(IOException.class);
-        SaveCommand.saveDataToFile(MISSING_FILE, new AddressBook());
+        SaveCommand.saveDataToFile(MISSING_FILE, new TaskManager());
+    }
+
+    @Test
+    public void read_XmlFile_DataConversionException() throws DataConversionException, IOException {
+        thrown.expect(DataConversionException.class);
+        SaveCommand.readConfig(FILE_NAME);;
     }
 
     /** Open and save files functionality. */
@@ -102,10 +109,12 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
         commandBox.runCommand(OpenCommand.COMMAND_WORD + FILE_NAME);
         assertResultMessage(Messages.MESSAGE_UNKNOWN_COMMAND);
+
         commandBox.runCommand(COMMAND_SAVE + EMPTY);
         assertResultMessage(SaveCommand.MESSAGE_INVALID_PATH);
         commandBox.runCommand(COMMAND_OPEN + EMPTY);
         assertResultMessage(OpenCommand.MESSAGE_INVALID_PATH);
+
         commandBox.runCommand(COMMAND_SAVE + INVALID_FILENAME);
         assertResultMessage(SaveCommand.MESSAGE_INVALID_PATH);
     }

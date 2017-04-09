@@ -9,7 +9,7 @@ import org.junit.Test;
 import seedu.mypotato.testutil.TestTask;
 import seedu.mypotato.testutil.TestUtil;
 
-public class DeleteCommandTest extends AddressBookGuiTest {
+public class DeleteCommandTest extends TaskManagerGuiTest {
 
     @Test
     public void delete() {

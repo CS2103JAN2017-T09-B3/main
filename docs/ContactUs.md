@@ -5,8 +5,8 @@
 
 * **Contributing** : We welcome pull requests. Follow the process described [here](https://github.com/oss-generic/process).
 
-* **Email us** : If you have any feedback, you may contact any of the team members as follow: 
-  * [Long](mailto:myduyhoanglong@gmail.com) 
-  * [Tang Di Feng](mailto:innovation_16@hotmail.com) 
-  * [Zhang Yanhao](mailto:salvotore1992@gmail.com) 
+* **Email us** : If you have any feedback, you may contact any of the team members as follow:
+  * [Long](mailto:myduyhoanglong@gmail.com)
+  * [Tang Di Feng](mailto:innovation_16@hotmail.com)
+  * [Zhang Yanhao](mailto:salvotore1992@gmail.com)
   * [Ivan Koh](mailto:a0125221@u.nus.edu)
