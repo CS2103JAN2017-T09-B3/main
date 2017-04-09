@@ -158,7 +158,7 @@ _Figure 3.2.1 : Structure of the UI Component_
 [**API**](#api) : [`Ui.java`](../src/main/java/seedu/mypotato/ui/Ui.java) in `/src/main/java/seedu/mypotato/ui`
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
-`StatusBarFooter`, `TaskDescription` , `TaskDetail`, `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class. The UI component communicates with the storage through the event centre.
+`StatusBarFooter`, `TaskDescription` , `TaskDetail`, `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class. The UI component communicates with the Storage component through the Event Centre.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
@@ -203,7 +203,7 @@ _Figure 3.4.1 : Structure of the Model Component_
 
 [**API**](#api) : [`Model.java`](../src/main/java/seedu/mypotato/model/Model.java) in `src/main/java/seedu/mypotato/model`
 
-Model component consists of a ModelManager which is an active component that constantly handles the user input, updates the storage and provide responses to the UI component. This processes can be done through the use of the event centre that handles the communication between the storage and UI. It helps to reduce coupling between components in this way.
+Model component consists of a ModelManager which is an active component that constantly handles the user input, updates the storage and provide responses to the UI component. This processes can be done through the use of the Event Centre that handles the communication between the Storage and UI. It helps to reduce coupling between components in this way.
 
 The `Model`:
 
