@@ -126,9 +126,6 @@ For each of the main component:
 For example, the `Logic` component (see the class diagram given below) defines its [API](#api) as `Logic.java`
 interface and exposes its functionality using the `LogicManager.java` class.<br>
 
-<img src="images/LogicClassDiagram.png" width="800"><br>
-_Figure 3.1.2 : Class Diagram of the Logic Component_
-
 #### Events-Driven nature of the design
 
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
@@ -162,7 +159,7 @@ _Figure 3.2.1 : Structure of the UI Component_
 [**API**](#api) : [`Ui.java`](../src/main/java/seedu/myPotato/ui/Ui.java) in `/src/main/java/seedu/myPotato/ui`
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
-`StatusBarFooter`, `TaskDescription` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+`StatusBarFooter`, `TaskDescription` , `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
@@ -200,7 +197,7 @@ _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Comma
 
 ### 3.4. Model component
 
-Author: Ivan Koh, Yan Hao
+Author: Ivan Koh, Yan Hao, Long
 
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
@@ -217,6 +214,7 @@ The `Model`:
    e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
+* calls functions from `ListFilter` to filter data based on different criteria. 
 
 #### Handling undo commands
 
@@ -232,6 +230,20 @@ The model component contains 7 stacks specially designed to keep track of both p
 
 Based on the previous command popped from the getUndoStack(), the undo command will call one of the following commandResult undoAdd(), undoDelete(), or undoClear() in the undoCommand class which will then restore the current task list to the previous state before the most recent command.
 
+#### Design date and time
+
+<img src="images/TaskDateTimeClassDiagram.png" width="800"><br>
+_Figure 3.5.1 : Structure of the TaskDateTime class_
+
+TaskDateTime contains two DateValue objects: one is for start datetime, the other is for end datetime. 
+
+* Floating task: both start and end datetime are null
+* Deadline task: start datetime is null, end datetime is specified
+* Planning task: start datetime is specified, end datetime is null
+* Event: both start and end datetime are specified
+
+DateMaker class is designed specially for convert input string to DateValue object.
+
 ### 3.5. Storage component
 
 Author: Di Feng
@@ -246,10 +258,10 @@ From Figure 3.5.1, the `Storage` component consists of a StorageManager that cal
 * UserPrefsStorage can save `UserPref` objects in json format and read it upon opening myPotato.
 * TaskManagerStorage can save the Task Manager data in xml format and read it upon opening myPotato.
 
-
 ### 3.6. Common classes
 
 Classes used by multiple components are in the `seedu.myPotato.commons` package.
+
 
 ## 4. Implementation
 
@@ -324,6 +336,7 @@ Thanks to the [TestFX](https://github.com/TestFX/TestFX) library we use,
  * Solution: Enable assertions in JUnit tests as described
    [here](http://stackoverflow.com/questions/2522897/eclipse-junit-ea-vm-option). <br>
    Delete run configurations created when you ran tests earlier.
+
 
 ## 6. Dev Ops
 
@@ -455,26 +468,6 @@ Use case ends.
 
 > 3a1. myPotato shows an error message <br>
   Use case resumes at step 2
-
-#### Use Case: Sort tasks by date
-
-**MSS**
-
-1. User choose a date;
-2. myPotato show all the tasks in that day;
-3. User type in command sort;
-4. myPotato sort and shows the list of tasks according to deadlines;
-Use case ends.
-
-**Extensions**
-
-2a. If there is no task in that day
-
-> 2a1. myPotato shows an error message <br>
-
-3a.If there are more than one tasks sharing the same deadline:
-
-> 3a1. System show the list according to alphabetic order among those tasks.
 
 #### Use Case: Edit tasks
 
