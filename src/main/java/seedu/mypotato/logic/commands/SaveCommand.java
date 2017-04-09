@@ -12,7 +12,7 @@ import seedu.mypotato.commons.util.ConfigUtil;
 import seedu.mypotato.commons.util.FileUtil;
 import seedu.mypotato.commons.util.XmlUtil;
 import seedu.mypotato.logic.commands.exceptions.CommandException;
-import seedu.mypotato.storage.XmlSerializableAddressBook;
+import seedu.mypotato.storage.XmlSerializableTaskManager;
 
 //@@author A0135807A
 /**
@@ -103,7 +103,7 @@ public class SaveCommand extends Command {
             file = new File(file.getPath() + ".xml");
         }
         FileUtil.createIfMissing(file);
-        saveDataToFile(file, new XmlSerializableAddressBook(model.getAddressBook()));
+        saveDataToFile(file, new XmlSerializableTaskManager(model.getAddressBook()));
         return file;
     }
 

@@ -8,7 +8,7 @@ import seedu.mypotato.commons.core.Config;
 import seedu.mypotato.commons.core.GuiSettings;
 import seedu.mypotato.model.ReadOnlyAddressBook;
 import seedu.mypotato.model.UserPrefs;
-import seedu.mypotato.storage.XmlSerializableAddressBook;
+import seedu.mypotato.storage.XmlSerializableTaskManager;
 import seedu.mypotato.testutil.TestUtil;
 
 /**
@@ -36,7 +36,7 @@ public class TestApp extends MainApp {
         // If some initial local data has been provided, write those to the file
         if (initialDataSupplier.get() != null) {
             TestUtil.createDataFileWithData(
-                    new XmlSerializableAddressBook(this.initialDataSupplier.get()),
+                    new XmlSerializableTaskManager(this.initialDataSupplier.get()),
                     this.saveFileLocation);
         }
     }

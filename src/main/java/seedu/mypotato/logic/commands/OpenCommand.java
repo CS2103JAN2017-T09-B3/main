@@ -12,7 +12,7 @@ import seedu.mypotato.commons.util.ConfigUtil;
 import seedu.mypotato.commons.util.XmlUtil;
 import seedu.mypotato.logic.commands.exceptions.CommandException;
 import seedu.mypotato.model.ReadOnlyAddressBook;
-import seedu.mypotato.storage.XmlSerializableAddressBook;
+import seedu.mypotato.storage.XmlSerializableTaskManager;
 
 //@@author A0135807A
 /**
@@ -53,7 +53,7 @@ public class OpenCommand extends Command {
         assert model != null;
         assert file != null;
         try {
-            ReadOnlyAddressBook taskData = getDataFromFile(file, XmlSerializableAddressBook.class);
+            ReadOnlyAddressBook taskData = getDataFromFile(file, XmlSerializableTaskManager.class);
             setConfig(model.getConfig(), file.getAbsolutePath());
             model.updateFileLocation();
             setModelData(taskData);
@@ -75,7 +75,7 @@ public class OpenCommand extends Command {
     * @throws IOException is thrown when the file is not found.
     */
     public static ReadOnlyAddressBook getDataFromFile(File file,
-           Class <XmlSerializableAddressBook> readFromXml)throws JAXBException, IOException {
+           Class <XmlSerializableTaskManager> readFromXml)throws JAXBException, IOException {
         return XmlUtil.getDataFromFile(file, readFromXml);
     }
 

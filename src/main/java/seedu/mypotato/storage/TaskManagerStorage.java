@@ -9,7 +9,7 @@ import seedu.mypotato.model.ReadOnlyAddressBook;
 /**
  * Represents a storage for {@link seedu.mypotato.model.AddressBook}.
  */
-public interface AddressBookStorage {
+public interface TaskManagerStorage {
 
     /**
      * Returns the file path of the data file.

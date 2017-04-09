@@ -20,7 +20,7 @@ import seedu.mypotato.model.task.Task;
  * An Immutable AddressBook that is serializable to XML format
  */
 @XmlRootElement(name = "addressbook")
-public class XmlSerializableAddressBook implements ReadOnlyAddressBook {
+public class XmlSerializableTaskManager implements ReadOnlyAddressBook {
 
     @XmlElement
     private List<XmlAdaptedTask> tasks;
@@ -31,7 +31,7 @@ public class XmlSerializableAddressBook implements ReadOnlyAddressBook {
      * Creates an empty XmlSerializableAddressBook.
      * This empty constructor is required for marshalling.
      */
-    public XmlSerializableAddressBook() {
+    public XmlSerializableTaskManager() {
         tasks = new ArrayList<>();
         tags = new ArrayList<>();
     }
@@ -39,7 +39,7 @@ public class XmlSerializableAddressBook implements ReadOnlyAddressBook {
     /**
      * Conversion
      */
-    public XmlSerializableAddressBook(ReadOnlyAddressBook src) {
+    public XmlSerializableTaskManager(ReadOnlyAddressBook src) {
         this();
         tasks.addAll(src.getTaskList().stream().map(XmlAdaptedTask::new).collect(Collectors.toList()));
         tags.addAll(src.getTagList().stream().map(XmlAdaptedTag::new).collect(Collectors.toList()));
