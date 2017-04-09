@@ -34,12 +34,12 @@ public interface TaskManagerStorage {
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyTaskManager addressBook) throws IOException;
+    void saveTaskList(ReadOnlyTaskManager addressBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyTaskManager)
+     * @see #saveTaskList(ReadOnlyTaskManager)
      */
-    void saveAddressBook(ReadOnlyTaskManager addressBook, String filePath) throws IOException;
+    void saveTaskList(ReadOnlyTaskManager addressBook, String filePath) throws IOException;
 
     void setFileLocation(String filepath);
 

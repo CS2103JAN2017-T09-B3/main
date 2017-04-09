@@ -21,13 +21,13 @@ import seedu.mypotato.model.UserPrefs;
 public class StorageManager extends ComponentManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private TaskManagerStorage addressBookStorage;
+    private TaskManagerStorage taskManagerStorage;
     private UserPrefsStorage userPrefsStorage;
 
 
     public StorageManager(TaskManagerStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
         super();
-        this.addressBookStorage = addressBookStorage;
+        this.taskManagerStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
 
@@ -52,46 +52,46 @@ public class StorageManager extends ComponentManager implements Storage {
 
     @Override
     public String getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+        return taskManagerStorage.getAddressBookFilePath();
     }
 
     @Override
     public Optional<ReadOnlyTaskManager> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+        return readAddressBook(taskManagerStorage.getAddressBookFilePath());
     }
 
     @Override
     public Optional<ReadOnlyTaskManager> readAddressBook(String filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return taskManagerStorage.readAddressBook(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyTaskManager addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveTaskList(ReadOnlyTaskManager addressBook) throws IOException {
+        saveTaskList(addressBook, taskManagerStorage.getAddressBookFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyTaskManager addressBook, String filePath) throws IOException {
+    public void saveTaskList(ReadOnlyTaskManager addressBook, String filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        taskManagerStorage.saveTaskList(addressBook, filePath);
     }
 
   //@@author A0135807A
     @Override
     public void setFileLocation(String filepath) {
-        addressBookStorage.setFileLocation(filepath);
+        taskManagerStorage.setFileLocation(filepath);
     }
 
     @Override
     @Subscribe
-    public void handleAddressBookChangedEvent(TaskManagerChangedEvent event) {
+    public void handleTaskListChangedEvent(TaskManagerChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "Local data changed, saving to file"));
         try {
-            if (addressBookStorage == null) {
-                saveAddressBook(event.data);
+            if (taskManagerStorage == null) {
+                saveTaskList(event.data);
             } else {
-                saveAddressBook(event.data, addressBookStorage.getAddressBookFilePath());
+                saveTaskList(event.data, taskManagerStorage.getAddressBookFilePath());
             }
         } catch (IOException e) {
             raise(new DataSavingExceptionEvent(e));

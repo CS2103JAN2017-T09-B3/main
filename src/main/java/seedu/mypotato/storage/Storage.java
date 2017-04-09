@@ -28,14 +28,14 @@ public interface Storage extends TaskManagerStorage, UserPrefsStorage {
     Optional<ReadOnlyTaskManager> readAddressBook() throws DataConversionException, IOException;
 
     @Override
-    void saveAddressBook(ReadOnlyTaskManager addressBook) throws IOException;
+    void saveTaskList(ReadOnlyTaskManager addressBook) throws IOException;
 
     /**
      * Saves the current version of the Address Book to the hard disk.
      *   Creates the data file if it is missing.
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
      */
-    void handleAddressBookChangedEvent(TaskManagerChangedEvent abce);
+    void handleTaskListChangedEvent(TaskManagerChangedEvent abce);
 
     void handleTaskManagerChangedEvent(ChangedFileLocationRequestEvent event);
 }
