@@ -160,7 +160,7 @@ You can update any part of a task using edit command. The formats of DATE and TI
 
     Format: Edit INDEX [NEW_TITLE] c/[NEW_CONTENT] start/[NEW_TIME] [NEW_DATE] end/[NEW_TIME] [NEW_DATE] #[NEW_TAGS]
 
-* Alternative: You can edit directly on the right panel of myPotato and press `ENTER` after you make any change in any fields.
+* Alternatively, You can edit directly on the right panel of myPotato and press `ENTER` after you make any change in any fields.
 * Note: Task Title cannot be left empty.
 
 * Edit the task at the specified INDEX
