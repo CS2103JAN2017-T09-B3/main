@@ -9,6 +9,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 
 //@@author A0144895N
+/**
+ * A UI for tab panel
+ */
 public class TabList extends UiPart<Region> {
 
     private static final String[] TAB_LIST = { "All", "Today", "Completed" };
@@ -27,6 +30,7 @@ public class TabList extends UiPart<Region> {
         initTabs();
     }
 
+    /*updates tab list to select a tab*/
     public void switchTo(String tab) {
         assert tab != null;
 
@@ -41,6 +45,7 @@ public class TabList extends UiPart<Region> {
         tabList.getSelectionModel().select(tabIndex);
     }
 
+    /*returns name of the selected tab*/
     public String getCurrentTab() {
         return tabList.getSelectionModel().getSelectedItem().textProperty().toString();
     }
