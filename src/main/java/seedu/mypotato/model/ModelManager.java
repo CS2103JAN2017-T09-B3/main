@@ -64,11 +64,9 @@ public class ModelManager extends ComponentManager implements Model {
         stackOfDeletedTasksAdd = new Stack<>();
         stackOfDeletedTasks = new Stack<>();
         stackOfDeletedTaskIndex = new Stack<>();
-        stackOfAddressBook = new Stack<>();
+        stackOfMyPotato = new Stack<>();
         stackOfOldTask = new Stack<>();
         stackOfCurrentTask = new Stack<>();
-        stackOfOldNextTask = new Stack<>();
-        stackOfNewNextTask = new Stack<>();
         this.config = config;
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
@@ -89,11 +87,11 @@ public class ModelManager extends ComponentManager implements Model {
         taskManager.resetData(newData);
         indicateAddressBookChanged();
     }
-
+  
     @Override
     public synchronized void revertData() {
-        resetData(this.stackOfAddressBook.pop());
-        // AddressBook.revertEmptyAddressBook(stackOfAddressBook.pop());
+        resetData(this.stackOfMyPotato.pop());
+        // AddressBook.revertEmptyAddressBook(stackOfMyPotato.pop());
         indicateAddressBookChanged();
     }
     //@@author
@@ -204,15 +202,6 @@ public class ModelManager extends ComponentManager implements Model {
         return stackOfCurrentTask;
     }
 
-    @Override
-    public Stack<ReadOnlyTask> getOldNextTask() {
-        return stackOfOldNextTask;
-    }
-
-    @Override
-    public Stack<ReadOnlyTask> getNewNextTask() {
-        return stackOfNewNextTask;
-    }
     //@@author
 
     @Override

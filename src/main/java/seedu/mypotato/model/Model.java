@@ -23,8 +23,6 @@ public interface Model {
     Stack<ReadOnlyTask> getAddedStackOfTasks();
     Stack<ReadOnlyTask> getDeletedStackOfTasks();
     Stack<Integer> getDeletedStackOfTasksIndex();
-    Stack<ReadOnlyTask> getOldNextTask();
-    Stack<ReadOnlyTask> getNewNextTask();
     Stack<ReadOnlyTask> getOldTask();
     Stack<ReadOnlyTask> getCurrentTask();
     //@@author
