@@ -237,6 +237,9 @@ public class MainWindow extends UiPart<Region> {
         raise(new NewResultAvailableEvent(MESSAGE_SUCCESS_SAVE + file.getName()));
     }
 
+    /** Allows the user to select a file to open/read.
+     * @throws CommandException when the file cannot be open/read.
+     */
     @FXML
     public void handleOpen() throws CommandException {
         FileChooser fileChooser = new FileChooser();
