@@ -163,7 +163,7 @@ public class UndoCommandTest extends AddressBookGuiTest {
 	commandBox.runCommand("undo");
 	commandBox.runCommand("undo");
 	assertResultMessage(UndoCommand.MESSAGE_FAIL);
-	}
+    }
 
     private void assertEditSuccess(int filteredTaskListIndex, int addressBookIndex,
                 String detailsToEdit, TestTask editedTask) {
