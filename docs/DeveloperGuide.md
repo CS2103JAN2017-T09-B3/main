@@ -171,6 +171,11 @@ The `UI` component:
 * Binds itself to some data in the `Model` so that the UI can auto-update when data in the `Model` change.
 * Responds to events raised from various parts of the [App](#app) and updates the UI accordingly.
 
+<img src="images/TaskDetailSequenceDiagram.png" width="800"><br>
+_Figure 3.2.2: Edit on the TextField and TextArea of the right Panel.
+
+When the user edit on the textfield, an edit command will be executed in the logic component which will call the updateTask method in the model component. The model component will post two events. One event will be to update the storage component while another event will be to update the UI Task details and Task description.
+
 ### 3.3. Logic component
 
 Author: Long, Ivan, Di Feng, Yan Hao
@@ -232,7 +237,7 @@ Based on the previous command popped from the getUndoStack(), the undo command w
 #### Design date and time
 
 <img src="images/TaskDateTimeClassDiagram.png" width="800"><br>
-_Figure 3.5.1 : Structure of the TaskDateTime class_
+_Figure 3.4.2 : Structure of the TaskDateTime class_
 
 TaskDateTime contains two DateValue objects: one is for start datetime, the other is for end datetime.
 
