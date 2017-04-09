@@ -10,17 +10,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8.0.111"
-	xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
 	<children>
 		<GridPane HBox.hgrow="ALWAYS">
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
-					prefWidth="150.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
 			</columnConstraints>
 			<children>
-				<HBox GridPane.columnIndex="0" alignment="CENTER_LEFT"
-					minWidth="200.0">
+				<HBox alignment="CENTER_LEFT" minWidth="200.0" GridPane.columnIndex="0">
 					<children>
 						<VBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT" minHeight="100.0" minWidth="200.0">
 							<stylesheets>
@@ -39,7 +36,7 @@
 												<Insets bottom="0" left="0" right="0" top="0" />
 											</padding>
 											<Label id="id" fx:id="id" minWidth="10.0" />
-											<Label id="title" fx:id="title" text="title" minWidth="50.0" />
+											<Label id="title" fx:id="title" minWidth="50.0" text="title" />
 											<FlowPane id="tags" fx:id="tags" />
 										</HBox>
 									</children>
@@ -48,13 +45,12 @@
 
 							</children>
 						</VBox>
-						<HBox HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT" minWidth="100.0" >
+						<HBox alignment="CENTER_RIGHT" minWidth="100.0" HBox.hgrow="ALWAYS">
 								<padding>
 									<Insets bottom="0" left="0" right="15.0" top="0" />
 								</padding>
 							<children>
-								<Label alignment="CENTER_RIGHT" id="dateTime" fx:id="dateTime" text="dateTime"
-									minWidth="150.0" />
+								<Label id="dateTime" fx:id="dateTime" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="150.0" text="dateTime" />
 							</children>
 						</HBox>
 					</children>

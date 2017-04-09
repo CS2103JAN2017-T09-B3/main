@@ -109,8 +109,9 @@ public class ParserUtil {
 
   //@@author A0135807A
     /**
-     * @param command
-     * @return String
+     * @param String command
+     * parses the given command.
+     * @return String keyword(deadline) if matched from the given command.
      */
     public static Optional<String> parseDeadline(String command) {
         final Matcher matcher = DEADLINE_ARGS_FORMAT.matcher(command.trim());

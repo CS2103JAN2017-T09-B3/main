@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import seedu.address.logic.parser.CliSyntax;
 import seedu.address.ui.TaskDescription;
 
 public class TaskDescriptionTest extends AddressBookGuiTest {
@@ -33,7 +34,7 @@ public class TaskDescriptionTest extends AddressBookGuiTest {
     public void taskDescription_commandSucceeds_textClearedAndStyleClassRemainsTheSame() {
         taskDescription.runContent(CONTENT_THAT_SUCCEEDS);
 
-        assertEquals("", commandBox.getCommandInput());
+        assertEquals(CliSyntax.EMPTY_STRING, commandBox.getCommandInput());
         assertEquals(defaultStyleOfTaskDecription, taskDescription.getStyleClass());
     }
 
