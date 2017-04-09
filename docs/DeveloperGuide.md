@@ -156,14 +156,14 @@ Author: Long & Di Feng
 <img src="images/UIClassDiagram.png" width="800"><br>
 _Figure 3.2.1 : Structure of the UI Component_
 
-[**API**](#api) : [`Ui.java`](../src/main/java/seedu/myPotato/ui/Ui.java) in `/src/main/java/seedu/myPotato/ui`
+[**API**](#api) : [`Ui.java`](../src/main/java/seedu/mypotato/ui/Ui.java) in `/src/main/java/seedu/mypotato/ui`
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
 `StatusBarFooter`, `TaskDescription` , `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
- For example, the layout of the [`MainWindow`](../src/main/java/seedu/myPotato/ui/MainWindow.java) is specified in
+ For example, the layout of the [`MainWindow`](../src/main/java/seedu/mypotato/ui/MainWindow.java) is specified in
  [`MainWindow.fxml`](../src/main/resources/view/MainWindow.fxml)
 
 The `UI` component:
@@ -181,7 +181,7 @@ _Figure 3.3.1 : Structure of the Logic Component_
 
 Logic component is the place where we implement our features. It contains most of the basic functionality of myPotato. For the design pattern of logic component, my group follows command pattern. We separate duties according to commands we are going to use. The Command.java and its sub classes implement the Command Pattern.
 
-[**API**](#api) : [`Logic.java`](../src/main/java/seedu/myPotato/logic/Logic.java) in `src/main/java/seedu/myPotato/logic`
+[**API**](#api) : [`Logic.java`](../src/main/java/seedu/mypotato/logic/Logic.java) in `src/main/java/seedu/mypotato/logic`
 
 1. `Logic` uses the `Parser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
@@ -202,7 +202,7 @@ Author: Ivan Koh, Yan Hao, Long
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
 
-[**API**](#api) : [`Model.java`](../src/main/java/seedu/myPotato/model/Model.java) in `src/main/java/seedu/myPotato/model`
+[**API**](#api) : [`Model.java`](../src/main/java/seedu/mypotato/model/Model.java) in `src/main/java/seedu/mypotato/model`
 
 Model component contains task class and tag class, and it ensures that myPotato can give the correct output according to the user input.
 
@@ -251,7 +251,7 @@ Author: Di Feng
 <img src="images/StorageClassDiagram.png" width="800"><br>
 _Figure 3.5.1 : Structure of the Storage Component_
 
-[**API**](#api) : [`Storage.java`](../src/main/java/seedu/myPotato/storage/Storage.java) in `/src/main/java/seedu/myPotato/storage`
+[**API**](#api) : [`Storage.java`](../src/main/java/seedu/mypotato/storage/Storage.java) in `/src/main/java/seedu/mypotato/storage`
 
 From Figure 3.5.1, the `Storage` component consists of a StorageManager that calls `Save` and `Read` methods from UserPrefsStorage and JsonUserPrefsStorage Interface.
 
@@ -262,7 +262,7 @@ Note: XmlSerializableTaskManager is a class to convert the in-memory UniqueTaskL
 
 ### 3.6. Common classes
 
-Classes used by multiple components are in the `seedu.myPotato.commons` package.
+Classes used by multiple components are in the `seedu.mypotato.commons` package.
 
 
 ## 4. Implementation
@@ -314,13 +314,13 @@ There are two types of tests:
 
 2. **Non-GUI Tests** - These are tests not involving the GUI. They include,
    * _Unit tests_ targeting the lowest level methods/classes. <br>
-      e.g. `seedu.myPotato.commons.UrlUtilTest`
+      e.g. `seedu.mypotato.commons.UrlUtilTest`
    * _Integration tests_ that are checking the integration of multiple code units
      (those code units are assumed to be working).<br>
-      e.g. `seedu.myPotato.storage.StorageManagerTest`
+      e.g. `seedu.mypotato.storage.StorageManagerTest`
    * Hybrids of unit and integration tests. These test are checking multiple code units as well as
       how they are connected together.<br>
-      e.g. `seedu.myPotato.logic.LogicManagerTest`
+      e.g. `seedu.mypotato.logic.LogicManagerTest`
 
 #### Headless GUI Testing
 Thanks to the [TestFX](https://github.com/TestFX/TestFX) library we use,
