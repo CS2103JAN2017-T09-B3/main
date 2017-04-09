@@ -88,7 +88,7 @@ public class TaskDetail extends UiPart<Region> {
      * @param String newDetail to be updated to the right task.
      * @param TextField field to read user input.
      */
-    public void saveAndShowContent(ReadOnlyTask taskToEdit, Prefix prefix, String newDetail, TextField field) {
+    public void saveAndShowTaskDetail(ReadOnlyTask taskToEdit, Prefix prefix, String newDetail, TextField field) {
         assert logic != null;
 
         try {
@@ -128,9 +128,9 @@ public class TaskDetail extends UiPart<Region> {
                 }
             }
             if (keyEvent.getCode() == KeyCode.ENTER && !tagsTextField.getText().isEmpty()) {
-                saveAndShowContent(task, PREFIX_EMPTY, tagging, tagsTextField);
+                saveAndShowTaskDetail(task, PREFIX_EMPTY, tagging, tagsTextField);
             } else if (keyEvent.getCode() == KeyCode.ENTER && tagsTextField.getText().isEmpty()) {
-                saveAndShowContent(task, PREFIX_TAG, EMPTY_STRING, tagsTextField);
+                saveAndShowTaskDetail(task, PREFIX_TAG, EMPTY_STRING, tagsTextField);
             }
         });
     }
@@ -148,7 +148,7 @@ public class TaskDetail extends UiPart<Region> {
     public void initKeyPressedEvents(ReadOnlyTask task, Prefix prefix, String updatedText, TextField field) {
         field.setOnKeyPressed(keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ENTER) {
-                saveAndShowContent(task, prefix, field.getText(), field);
+                saveAndShowTaskDetail(task, prefix, field.getText(), field);
             }
         });
     }
