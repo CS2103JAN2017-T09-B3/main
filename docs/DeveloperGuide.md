@@ -178,7 +178,7 @@ Author: Long, Ivan, Di Feng, Yan Hao
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.3.1 : Structure of the Logic Component_
 
-Logic component is the place where we implement our features. It contains most of the basic functionality of myPotato. For the design pattern of logic component, my group follows command pattern. We separate duties according to commands we are going to use. The Command.java and its sub classes implement the Command Pattern.
+Logic component parses user input and determine which command to execute. When there are arguments for parsing, a Command Parser Object will be created instead before creating a Command object for execution. This process follows the command design pattern. 
 
 [**API**](#api) : [`Logic.java`](../src/main/java/seedu/mypotato/logic/Logic.java) in `src/main/java/seedu/mypotato/logic`
 
@@ -516,7 +516,7 @@ Use case ends.
 1. User requests to show the list of all tasks
 2. myPotato shows the list of all tasks
 1. User requests to save TaskList
-2. myPotato validate the filename and creates a file
+2. myPotato validate the filename and creates a file.
 Use case ends.
 
 **Extension**
