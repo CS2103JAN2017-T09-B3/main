@@ -156,7 +156,7 @@ The sections below provide more details of each component.
 
 Author: Long & Di Feng
 
-<img src="images/UiClassDiagram.png" width="800"><br>
+<img src="images/UIClassDiagram.png" width="800"><br>
 _Figure 3.2.1 : Structure of the UI Component_
 
 [**API**](#api) : [`Ui.java`](../src/main/java/seedu/myPotato/ui/Ui.java) in `/src/main/java/seedu/myPotato/ui`
