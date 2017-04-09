@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import seedu.mypotato.TestApp;
 import seedu.mypotato.commons.core.EventsCenter;
 import seedu.mypotato.commons.events.BaseEvent;
-import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.task.ReadOnlyTask;
 import seedu.mypotato.testutil.TestUtil;
 import seedu.mypotato.testutil.TypicalTestTasks;
@@ -33,7 +33,7 @@ import seedu.mypotato.testutil.TypicalTestTasks;
 /**
  * A GUI Test class for AddressBook.
  */
-public abstract class AddressBookGuiTest {
+public abstract class TaskManagerGuiTest {
 
     /* The TestName Rule makes the current test name available inside test methods */
     @Rule
@@ -89,8 +89,8 @@ public abstract class AddressBookGuiTest {
      * Override this in child classes to set the initial local data.
      * Return null to use the data in the file specified in {@link #getDataFileLocation()}
      */
-    protected AddressBook getInitialData() {
-        AddressBook ab = new AddressBook();
+    protected TaskManager getInitialData() {
+        TaskManager ab = new TaskManager();
         TypicalTestTasks.loadAddressBookWithSampleData(ab);
         return ab;
     }

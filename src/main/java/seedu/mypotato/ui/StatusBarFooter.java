@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import seedu.mypotato.commons.core.LogsCenter;
-import seedu.mypotato.commons.events.model.AddressBookChangedEvent;
+import seedu.mypotato.commons.events.model.TaskManagerChangedEvent;
 import seedu.mypotato.commons.util.FxViewUtil;
 
 /**
@@ -50,7 +50,7 @@ public class StatusBarFooter extends UiPart<Region> {
     }
 
     @Subscribe
-    public void handleAddressBookChangedEvent(AddressBookChangedEvent abce) {
+    public void handleAddressBookChangedEvent(TaskManagerChangedEvent abce) {
         SimpleDateFormat df = new SimpleDateFormat("EEE dd.MM.yyyy HH:mm:ss");
         String lastUpdated = df.format(new Date());
         logger.info(LogsCenter.getEventHandlingLogMessage(abce, "Setting last updated status to " + lastUpdated));

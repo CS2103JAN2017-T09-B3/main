@@ -29,7 +29,7 @@ import seedu.mypotato.TestApp;
 import seedu.mypotato.commons.exceptions.IllegalValueException;
 import seedu.mypotato.commons.util.FileUtil;
 import seedu.mypotato.commons.util.XmlUtil;
-import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.tag.Tag;
 import seedu.mypotato.model.tag.UniqueTagList;
 import seedu.mypotato.model.task.Content;
@@ -145,7 +145,7 @@ public class TestUtil {
     }
 
     public static XmlSerializableTaskManager generateSampleStorageAddressBook() {
-        return new XmlSerializableTaskManager(new AddressBook());
+        return new XmlSerializableTaskManager(new TaskManager());
     }
 
     /**

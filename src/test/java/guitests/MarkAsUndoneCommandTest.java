@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import seedu.mypotato.testutil.TestTask;
 
-public class MarkAsUndoneCommandTest extends AddressBookGuiTest {
+public class MarkAsUndoneCommandTest extends TaskManagerGuiTest {
 
     @Test
     public void unmark() {

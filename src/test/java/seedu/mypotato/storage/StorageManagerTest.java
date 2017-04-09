@@ -12,10 +12,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import seedu.mypotato.commons.events.model.AddressBookChangedEvent;
+import seedu.mypotato.commons.events.model.TaskManagerChangedEvent;
 import seedu.mypotato.commons.events.storage.DataSavingExceptionEvent;
-import seedu.mypotato.model.AddressBook;
-import seedu.mypotato.model.ReadOnlyAddressBook;
+import seedu.mypotato.model.TaskManager;
+import seedu.mypotato.model.ReadOnlyTaskManager;
 import seedu.mypotato.model.UserPrefs;
 import seedu.mypotato.testutil.EventsCollector;
 import seedu.mypotato.testutil.TypicalTestTasks;
@@ -60,10 +60,10 @@ public class StorageManagerTest {
          * {@link XmlAddressBookStorage} class.
          * More extensive testing of UserPref saving/reading is done in {@link XmlAddressBookStorageTest} class.
          */
-        AddressBook original = new TypicalTestTasks().getTypicalAddressBook();
+        TaskManager original = new TypicalTestTasks().getTypicalAddressBook();
         storageManager.saveAddressBook(original);
-        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-        assertEquals(original, new AddressBook(retrieved));
+        ReadOnlyTaskManager retrieved = storageManager.readAddressBook().get();
+        assertEquals(original, new TaskManager(retrieved));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class StorageManagerTest {
         Storage storage = new StorageManager(new XmlAddressBookStorageExceptionThrowingStub("dummy"),
                                              new JsonUserPrefsStorage("dummy"));
         EventsCollector eventCollector = new EventsCollector();
-        storage.handleAddressBookChangedEvent(new AddressBookChangedEvent(new AddressBook()));
+        storage.handleAddressBookChangedEvent(new TaskManagerChangedEvent(new TaskManager()));
         assertTrue(eventCollector.get(0) instanceof DataSavingExceptionEvent);
     }
 
@@ -92,7 +92,7 @@ public class StorageManagerTest {
         }
 
         @Override
-        public void saveAddressBook(ReadOnlyAddressBook addressBook, String filePath) throws IOException {
+        public void saveAddressBook(ReadOnlyTaskManager addressBook, String filePath) throws IOException {
             throw new IOException("dummy exception");
         }
     }

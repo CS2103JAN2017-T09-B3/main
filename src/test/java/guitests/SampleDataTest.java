@@ -4,14 +4,14 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.model.task.Task;
 import seedu.mypotato.model.util.SampleDataUtil;
 import seedu.mypotato.testutil.TestUtil;
 
-public class SampleDataTest extends AddressBookGuiTest {
+public class SampleDataTest extends TaskManagerGuiTest {
     @Override
-    protected AddressBook getInitialData() {
+    protected TaskManager getInitialData() {
         // return null to force test app to load data from file only
         return null;
     }

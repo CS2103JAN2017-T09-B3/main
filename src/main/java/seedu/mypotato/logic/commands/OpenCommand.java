@@ -11,7 +11,7 @@ import seedu.mypotato.commons.exceptions.DataConversionException;
 import seedu.mypotato.commons.util.ConfigUtil;
 import seedu.mypotato.commons.util.XmlUtil;
 import seedu.mypotato.logic.commands.exceptions.CommandException;
-import seedu.mypotato.model.ReadOnlyAddressBook;
+import seedu.mypotato.model.ReadOnlyTaskManager;
 import seedu.mypotato.storage.XmlSerializableTaskManager;
 
 //@@author A0135807A
@@ -53,7 +53,7 @@ public class OpenCommand extends Command {
         assert model != null;
         assert file != null;
         try {
-            ReadOnlyAddressBook taskData = getDataFromFile(file, XmlSerializableTaskManager.class);
+            ReadOnlyTaskManager taskData = getDataFromFile(file, XmlSerializableTaskManager.class);
             setConfig(model.getConfig(), file.getAbsolutePath());
             model.updateFileLocation();
             setModelData(taskData);
@@ -74,7 +74,7 @@ public class OpenCommand extends Command {
     * @throws JAXBException is thrown when either the file or the class is invalid.
     * @throws IOException is thrown when the file is not found.
     */
-    public static ReadOnlyAddressBook getDataFromFile(File file,
+    public static ReadOnlyTaskManager getDataFromFile(File file,
            Class <XmlSerializableTaskManager> readFromXml)throws JAXBException, IOException {
         return XmlUtil.getDataFromFile(file, readFromXml);
     }
@@ -103,7 +103,7 @@ public class OpenCommand extends Command {
     }
 
     /** reset data in model and load first task from the PanelList */
-    public void setModelData(ReadOnlyAddressBook taskData) {
+    public void setModelData(ReadOnlyTaskManager taskData) {
         model.resetData(taskData);
         model.handleLoadFirstTaskEvent(new LoadFirstTaskEvent());
     }

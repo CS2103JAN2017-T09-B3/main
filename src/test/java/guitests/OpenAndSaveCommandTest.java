@@ -17,13 +17,13 @@ import seedu.mypotato.commons.exceptions.DataConversionException;
 import seedu.mypotato.commons.util.FileUtil;
 import seedu.mypotato.logic.commands.OpenCommand;
 import seedu.mypotato.logic.commands.SaveCommand;
-import seedu.mypotato.model.AddressBook;
+import seedu.mypotato.model.TaskManager;
 import seedu.mypotato.testutil.TestTask;
 import seedu.mypotato.testutil.TestUtil;
 
 //@@author A0135807A
 /** files are automatically written to the saved location. */
-public class OpenAndSaveCommandTest extends AddressBookGuiTest {
+public class OpenAndSaveCommandTest extends TaskManagerGuiTest {
     public static final String FILE_DIR = "src/test/data/sandbox/";
     public static final String FILE_NAME = "src/test/data/sandbox/taskmanager";
     public static final String FILE_ALTERNATE_NAME = "src/test/data/sandbox/myPotato";
@@ -63,7 +63,7 @@ public class OpenAndSaveCommandTest extends AddressBookGuiTest {
     @Test
     public void saveDataToFile_missingFile_IOException() throws Exception {
         thrown.expect(IOException.class);
-        SaveCommand.saveDataToFile(MISSING_FILE, new AddressBook());
+        SaveCommand.saveDataToFile(MISSING_FILE, new TaskManager());
     }
 
     @Test
