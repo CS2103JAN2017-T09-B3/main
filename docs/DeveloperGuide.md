@@ -158,7 +158,7 @@ _Figure 3.2.1 : Structure of the UI Component_
 [**API**](#api) : [`Ui.java`](../src/main/java/seedu/mypotato/ui/Ui.java) in `/src/main/java/seedu/mypotato/ui`
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
-`StatusBarFooter`, `TaskDescription` , `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+`StatusBarFooter`, `TaskDescription` , `TaskDetail`, `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class. The UI component communicates with the storage through the event centre.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
@@ -178,9 +178,9 @@ Author: Long, Ivan, Di Feng, Yan Hao
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.3.1 : Structure of the Logic Component_
 
-Logic component parses user input and determine which command to execute. When there are arguments for parsing, a Command Parser Object will be created instead before creating a Command object for execution. This process follows the command design pattern. 
-
 [**API**](#api) : [`Logic.java`](../src/main/java/seedu/mypotato/logic/Logic.java) in `src/main/java/seedu/mypotato/logic`
+
+Logic component parses user input and determine which command to execute. When there are arguments for parsing, a Command Parser Object will be created instead before creating a Command object for execution. This process follows the command design pattern.
 
 1. `Logic` uses the `Parser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
@@ -203,7 +203,7 @@ _Figure 3.4.1 : Structure of the Model Component_
 
 [**API**](#api) : [`Model.java`](../src/main/java/seedu/mypotato/model/Model.java) in `src/main/java/seedu/mypotato/model`
 
-Model component contains task class and tag class, and it ensures that myPotato can give the correct output according to the user input.
+Model component consists of a ModelManager which is an active component that constantly handles the user input, updates the storage and provide responses to the UI component. This processes can be done through the use of the event centre that handles the communication between the storage and UI. It helps to reduce coupling between components in this way.
 
 The `Model`:
 
