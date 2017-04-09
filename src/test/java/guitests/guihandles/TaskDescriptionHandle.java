@@ -4,8 +4,9 @@ import guitests.GuiRobot;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
+import seedu.mypotato.TestApp;
 
+//@@author A0135807A
 /**
  * A handle to the Content TextArea in the GUI.
  */

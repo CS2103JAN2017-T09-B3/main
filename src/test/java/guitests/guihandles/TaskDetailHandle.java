@@ -3,8 +3,9 @@ package guitests.guihandles;
 import guitests.GuiRobot;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
-import seedu.address.TestApp;
+import seedu.mypotato.TestApp;
 
+//@@author A0135807A
 /**
  * A handle to the title, startTime, endTime, tags TextField in the GUI.
  */

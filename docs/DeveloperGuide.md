@@ -6,7 +6,12 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 ## Table Of Contents
 1. [Introduction](#1-introduction)
 2. [Setting Up](#2-setting-up)
-3. [Design](#3-design)
+3. [Design](#3-design)<br>
+ 3.1 [Architecture](#31-architecture)<br>
+ 3.2 [UI component](#32-ui-component)<br>
+ 3.3 [Logic component](#33-logic-component)<br>
+ 3.4 [Model component](#34-model-component)<br>
+ 3.5 [Storage component](#35-storage-component)<br>
 4. [Implementation](#4-implementation)
 5. [Testing](#5-testing)
 6. [Dev Ops](#6-dev-ops)
@@ -22,7 +27,7 @@ By : `Team myPotato`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&n
 
 MyPotato is a task manager which provides a platform for users to organize their tasks efficiently. Our objective is to create a user interface that allows the user to manage their tasks conveniently with minimal use of a mouse.
 
-The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to responding with a constructive feedback.
+The purpose of this guide is to aid the developer in enhancing the application and creating extensions. The Developer Guide provides an overview of the major components and how information flows from user input to respond with a feedback message informing the user whether the command is executed successfully.
 
 ## 2. Setting up
 
@@ -61,10 +66,10 @@ _Figure 2.2.1 : Architecture Diagram_
 7. Click OK twice. Rebuild project if prompted
 
 
-> Note:<br>
-> In step 6, click on `files from packages` in order to enable the `Change...` button<br>
-> Right click on the project (in Eclipse package explorer) to activate Checkstyle,
-> choose Checkstyle > Activate Checkstyle
+Note:<br>
+In step 6, click on `files from packages` in order to enable the `Change...` button<br>
+Right click on the project (in Eclipse package explorer) to activate Checkstyle,<br>
+choose Checkstyle > Activate Checkstyle
 
 ### 2.4. Troubleshooting project setup
 
@@ -89,14 +94,14 @@ _Figure 3.1.1 : Architecture Diagram_
 The **_Architecture Diagram_** given above explains the high-level design of myPotato.
 Given below is a quick overview of each component.
 
-> Tip:
-> The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
-> To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
+Tip:<br>
+The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
+To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
-`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
+`Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for
 
-* At launch: Initializes the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup method where necessary.
+* Initializing the components in the correct sequence, and connects them up with each other at launch.
+* Shutting down the components and invokes cleanup method where necessary.
 
 [**`Commons`**](#36-common-classes) represents a collection of classes used by multiple other components.
 Two of those classes play important roles at the architecture level.
@@ -107,10 +112,10 @@ Two of those classes play important roles at the architecture level.
 
 Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 
-* The [**`UI`**](#32-ui-component) represents a collection of classes that provides support for the user to interact with our application.
-* The [**`Logic`**](#33-logic-component) represents a collection of classes that parses the user input to execute the right command before returning an appropriate feedback.
-* The [**`Model`**](#34-model-component) represents a collection of classes that are independent from the 3 other main components and manages the in-memory data.
-* The [**`Storage`**](#35-storage-component) represents a collection of classes that writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
+* The [**`UI`**](#32-ui-component) provides support for the user to interact with our application.
+* The [**`Logic`**](#33-logic-component) parses the user input to execute the right command before returning a success message.
+* The [**`Model`**](#34-model-component)  manages the in-memory data and is independent from the 3 other main components.
+* The [**`Storage`**](#35-storage-component) writes and store data to your local drive. The data stored will be initialized upon re-opening of the application.
 
 Let's dive into the 4 main components and observe how the classes are connected and the work flow of various events.
 For each of the main component:
@@ -121,9 +126,6 @@ For each of the main component:
 For example, the `Logic` component (see the class diagram given below) defines its [API](#api) as `Logic.java`
 interface and exposes its functionality using the `LogicManager.java` class.<br>
 
-<img src="images/LogicClassDiagram.png" width="800"><br>
-_Figure 3.1.2 : Class Diagram of the Logic Component_
-
 #### Events-Driven nature of the design
 
 The _Sequence Diagram_ below shows how the components interact for the scenario where the user issues the
@@ -132,8 +134,8 @@ command `delete 1`.
 <img src="images/SDforDeletePerson.png" width="800"><br>
 _Figure 3.1.3a : Component interactions for `delete 1` command (part 1)_
 
-> Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data is changed,
- instead of asking the `Storage` to save the updates to the hard disk.
+Note how the `Model` simply raises a `TaskManagerChangedEvent` when the Task Manager data is changed,
+instead of asking the `Storage` to save the updates to the hard disk.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
 being saved to the hard disk and the status bar of the UI being updated to reflect the 'Last Updated' time. <br>
@@ -141,23 +143,23 @@ being saved to the hard disk and the status bar of the UI being updated to refle
 <img src="images/SDforDeletePersonEventHandling.png" width="800"><br>
 _Figure 3.1.3b : Component interactions for `delete 1` command (part 2)_
 
-> Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
-  to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct
-  coupling between components.
+Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
+to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct
+coupling between components.
 
 The sections below provide more details of each component.
 
 ### 3.2. UI component
 
-Author: Long & Ivan
+Author: Long & Di Feng
 
-<img src="images/UiClassDiagram.png" width="800"><br>
+<img src="images/UIClassDiagram.png" width="800"><br>
 _Figure 3.2.1 : Structure of the UI Component_
 
 [**API**](#api) : [`Ui.java`](../src/main/java/seedu/myPotato/ui/Ui.java) in `/src/main/java/seedu/myPotato/ui`
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
-`StatusBarFooter`, `TaskDescription` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+`StatusBarFooter`, `TaskDescription` , `TabList` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
  that are in the `src/main/resources/view` folder.<br>
@@ -177,6 +179,8 @@ Author: Long, Ivan, Di Feng, Yan Hao
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 3.3.1 : Structure of the Logic Component_
 
+Logic component is the place where we implement our features. It contains most of the basic functionality of myPotato. For the design pattern of logic component, my group follows command pattern. We separate duties according to commands we are going to use. The Command.java and its sub classes implement the Command Pattern.
+
 [**API**](#api) : [`Logic.java`](../src/main/java/seedu/myPotato/logic/Logic.java) in `src/main/java/seedu/myPotato/logic`
 
 1. `Logic` uses the `Parser` class to parse the user command.
@@ -193,12 +197,14 @@ _Figure 3.3.2 : Interactions Inside the Logic Component for the `delete 1` Comma
 
 ### 3.4. Model component
 
-Author: Yan Hao
+Author: Ivan Koh, Yan Hao, Long
 
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 3.4.1 : Structure of the Model Component_
 
 [**API**](#api) : [`Model.java`](../src/main/java/seedu/myPotato/model/Model.java) in `src/main/java/seedu/myPotato/model`
+
+Model component contains task class and tag class, and it ensures that myPotato can give the correct output according to the user input.
 
 The `Model`:
 
@@ -208,6 +214,35 @@ The `Model`:
    e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
+* calls functions from `ListFilter` to filter data based on different criteria. 
+
+#### Handling undo commands
+
+The model component contains 7 stacks specially designed to keep track of both previous commands and tasks. These stacks will be implemented by the undo command in the logic component to undo the most recent command input by the user.
+
+* getUndoStack() stores all the previous commands from the user input.
+* getAddedStackOfTasks() stores all the tasks which was previously added by the users.
+* getDeletedStackOfTasks() stores all the tasks which was previously added by the users.
+* getDeletedStackOfTasksIndex() stores the index of the task which was deleted by the users.
+* stackOfOldTask() stores the previous unedited task.
+* getCurrentTask() stores the new edited task
+* stackOfTasks() stores the previous list of tasks which had been cleared.
+
+Based on the previous command popped from the getUndoStack(), the undo command will call one of the following commandResult undoAdd(), undoDelete(), or undoClear() in the undoCommand class which will then restore the current task list to the previous state before the most recent command.
+
+#### Design date and time
+
+<img src="images/TaskDateTimeClassDiagram.png" width="800"><br>
+_Figure 3.5.1 : Structure of the TaskDateTime class_
+
+TaskDateTime contains two DateValue objects: one is for start datetime, the other is for end datetime. 
+
+* Floating task: both start and end datetime are null
+* Deadline task: start datetime is null, end datetime is specified
+* Planning task: start datetime is specified, end datetime is null
+* Event: both start and end datetime are specified
+
+DateMaker class is designed specially for convert input string to DateValue object.
 
 ### 3.5. Storage component
 
@@ -218,15 +253,15 @@ _Figure 3.5.1 : Structure of the Storage Component_
 
 [**API**](#api) : [`Storage.java`](../src/main/java/seedu/myPotato/storage/Storage.java) in `/src/main/java/seedu/myPotato/storage`
 
-The `Storage` component:
+From Figure 3.5.1, the `Storage` component consists of a StorageManager that calls `Save` and `Read` methods from UserPrefsStorage and JsonUserPrefsStorage Interface.
 
 * UserPrefsStorage can save `UserPref` objects in json format and read it upon opening myPotato.
 * TaskManagerStorage can save the Task Manager data in xml format and read it upon opening myPotato.
 
-
 ### 3.6. Common classes
 
 Classes used by multiple components are in the `seedu.myPotato.commons` package.
+
 
 ## 4. Implementation
 
@@ -302,6 +337,7 @@ Thanks to the [TestFX](https://github.com/TestFX/TestFX) library we use,
    [here](http://stackoverflow.com/questions/2522897/eclipse-junit-ea-vm-option). <br>
    Delete run configurations created when you ran tests earlier.
 
+
 ## 6. Dev Ops
 
 ### 6.1. Build Automation
@@ -324,7 +360,7 @@ Here are the steps to create a new release.
 
  1. Generate a JAR file [using Gradle](UsingGradle.md#creating-the-jar-file).
  2. Tag the repo with the version number. e.g. `v0.1`
- 2. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
+ 3. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/)
     and upload the JAR file you created.
 
 ### 6.5. Converting Documentation to PDF format
@@ -335,11 +371,11 @@ as Chrome's PDF engine preserves hyperlinks used in webpages.
 Here are the steps to convert the project documentation files to PDF format.
 
  1. Make sure you have set up GitHub Pages as described in [UsingGithubPages.md](UsingGithubPages.md#setting-up).
- 1. Using Chrome, go to the [GitHub Pages version](UsingGithubPages.md#viewing-the-project-site) of the
+ 2. Using Chrome, go to the [GitHub Pages version](UsingGithubPages.md#viewing-the-project-site) of the
     documentation file. <br>
     e.g. For [UserGuide.md](UserGuide.md), the URL will be `https://<your-username-or-organization-name>.github.io/myPotato-level4/docs/UserGuide.html`.
- 1. Click on the `Print` option in Chrome's menu.
- 1. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format. <br>
+ 3. Click on the `Print` option in Chrome's menu.
+ 4. Set the destination to `Save as PDF`, then click `Save` to save a copy of the file in PDF format. <br>
     For best results, use the settings indicated in the screenshot below. <br>
     <img src="images/chrome_save_as_pdf.png" width="300"><br>
     _Figure 5.4.1 : Saving documentation as PDF files in Chrome_
@@ -432,26 +468,6 @@ Use case ends.
 
 > 3a1. myPotato shows an error message <br>
   Use case resumes at step 2
-
-#### Use Case: Sort tasks by date
-
-**MSS**
-
-1. User choose a date;
-2. myPotato show all the tasks in that day;
-3. User type in command sort;
-4. myPotato sort and shows the list of tasks according to deadlines;
-Use case ends.
-
-**Extensions**
-
-2a. If there is no task in that day
-
-> 2a1. myPotato shows an error message <br>
-
-3a.If there are more than one tasks sharing the same deadline:
-
-> 3a1. System show the list according to alphabetic order among those tasks.
 
 #### Use Case: Edit tasks
 

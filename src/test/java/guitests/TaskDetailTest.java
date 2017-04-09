@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.address.logic.parser.CliSyntax;
-import seedu.address.ui.TaskDetail;
+import seedu.mypotato.logic.parser.CliSyntax;
+import seedu.mypotato.ui.TaskDetail;
 
+//@@author A0135807A
 public class TaskDetailTest extends AddressBookGuiTest {
 
     private static final String TAGS_THAT_SUCCEEDS = "#JUnit";

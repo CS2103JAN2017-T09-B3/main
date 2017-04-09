@@ -1,12 +1,13 @@
 package guitests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
+import static seedu.mypotato.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
 
 import org.junit.Test;
 
-import seedu.address.testutil.TestTask;
-import seedu.address.testutil.TestUtil;
+import seedu.mypotato.testutil.TestTask;
+import seedu.mypotato.testutil.TestUtil;
 
 public class DeleteCommandTest extends AddressBookGuiTest {
 
@@ -32,6 +33,13 @@ public class DeleteCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("delete " + currentList.length + 1);
         assertResultMessage("The task index provided is invalid");
 
+        //@@author A0135807A
+        //delete Task 1 endDateTime, taskListPanel zero indexing
+        assertFalse(taskListPanel.getTask(0).getDateTime().getEndDateTimeString().isEmpty());
+        commandBox.runCommand("delete " + 1 + " deadline");
+        assertTrue(taskListPanel.getTask(0).getDateTime().getStartDateTimeString().isEmpty());
+        assertTrue(taskListPanel.getTask(0).getDateTime().getEndDateTimeString().isEmpty());
+        //author
     }
 
     /**

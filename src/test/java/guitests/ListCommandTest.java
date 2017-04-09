@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.testutil.TestTask;
+import seedu.mypotato.logic.commands.ListCommand;
+import seedu.mypotato.testutil.TestTask;
 
 //@@author A0144895N
 public class ListCommandTest extends AddressBookGuiTest {

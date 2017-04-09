@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.address.logic.parser.CliSyntax;
-import seedu.address.ui.TaskDescription;
+import seedu.mypotato.logic.parser.CliSyntax;
+import seedu.mypotato.ui.TaskDescription;
 
+//@@author A0135807A
 public class TaskDescriptionTest extends AddressBookGuiTest {
 
     private static final String CONTENT_THAT_SUCCEEDS = "Amazon Buy 1 Get 1 Free";
     private static final String CONTENT_THAT_FAILS = "invalid command./";
+    private static final String NEW_LINE = "\n";
 
     private ArrayList<String> defaultStyleOfTaskDecription;
     private ArrayList<String> errorStyleOfTaskDescription;
@@ -43,7 +45,7 @@ public class TaskDescriptionTest extends AddressBookGuiTest {
 
         commandBox.clickOnTextField();
         taskDescription.runContent(CONTENT_THAT_FAILS);
-        assertEquals(CONTENT_THAT_FAILS + "\n", taskDescription.getContentInput());
+        assertEquals(CONTENT_THAT_FAILS + NEW_LINE, taskDescription.getContentInput());
         assertEquals(errorStyleOfTaskDescription, taskDescription.getStyleClass());
     }
 
@@ -51,9 +53,7 @@ public class TaskDescriptionTest extends AddressBookGuiTest {
     public void taskDescription_commandSucceedsAfterFailedCommand_textClearedAndErrorStyleClassRemoved() {
         // add error style to simulate a failed command
         taskDescription.getStyleClass().add(TaskDescription.ERROR_STYLE_CLASS);
-
         taskDescription.runContent(CONTENT_THAT_SUCCEEDS);
-
         assertEquals(CONTENT_THAT_SUCCEEDS, taskDescription.getContentInput());
         assertEquals(defaultStyleOfTaskDecription, taskDescription.getStyleClass());
     }
