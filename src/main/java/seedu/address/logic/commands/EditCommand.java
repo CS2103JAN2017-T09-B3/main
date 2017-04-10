@@ -66,7 +66,12 @@ public class EditCommand extends Command {
         }
         // model.getUndoStack().push(COMMAND_WORD);
         ReadOnlyTask taskToEdit = lastShownList.get(filteredTaskListIndex);
-        Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
+        Task editedTask = null;
+        try {
+            editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
+        } catch (IllegalValueException ive) {
+            throw new CommandException(ive.getMessage());
+        }
         // ReadOnlyTask testing = lastShownList.get(filteredTaskListIndex - 1);
 
         try {
@@ -99,7 +104,8 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
      * edited with {@code editTaskDescriptor}.
      */
-    private static Task createEditedTask(ReadOnlyTask taskToEdit, EditTaskDescriptor editTaskDescriptor) {
+    private static Task createEditedTask(ReadOnlyTask taskToEdit, EditTaskDescriptor editTaskDescriptor)
+            throws IllegalValueException {
         assert taskToEdit != null;
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
         Content updatedContent = editTaskDescriptor.getContent().orElseGet(taskToEdit::getContent);
@@ -112,11 +118,7 @@ public class EditCommand extends Command {
         if (editTaskDescriptor.getDateTime().isPresent()) {
             updatedDateTime = editTaskDescriptor.getDateTime().get();
         } else {
-            try {
-                updatedDateTime = new TaskDateTime(updatedStartDateTime, updatedEndDateTime);
-            } catch (IllegalValueException ive) {
-
-            }
+            updatedDateTime = new TaskDateTime(updatedStartDateTime, updatedEndDateTime);
         }
 
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
